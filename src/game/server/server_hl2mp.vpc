@@ -20,10 +20,75 @@ $Configuration
 	}
 }
 
-$Project "Server (HL2MP)"
+$Project "Server (TEAM-CONFLICT)"
 {
 	$Folder	"Source Files"
 	{
+		$Folder "TC DLL"
+		{
+			$Folder "NextBot"
+			{
+				$Folder "Behavior"
+				{
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Behavior\BehaviorBackUp.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Behavior\BehaviorMoveTo.h"
+				}
+				$Folder "NavMeshEntities"
+				{
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\NavMeshEntities\func_nav_prerequisite.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\NavMeshEntities\func_nav_prerequisite.h"
+				}
+				$Folder "Path"
+				{
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotChasePath.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotChasePath.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotPath.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotPath.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotPathFollow.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotPathFollow.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Path\NextBotRetreatPath.h"
+				}
+				$Folder "Player"
+				{
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayer.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayer.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayerBody.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayerBody.h"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayerLocomotion.cpp"
+					$File	"$SRCDIR\game\server\TC DLL\NextBot\Player\NextBotPlayerLocomotion.h"
+				}
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBot.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBot.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotAttentionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotAttentionInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotBehavior.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotBodyInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotBodyInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotComponentInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotComponentInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotContextualQueryInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotDebug.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotEventResponderInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotGroundLocomotion.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotGroundLocomotion.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotHearingInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotIntentionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotIntentionInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotKnownEntity.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotLocomotionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotLocomotionInterface.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotManager.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotManager.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotUtil.h"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotVisionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\NextBotVisionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\simple_bot.cpp"
+				$File	"$SRCDIR\game\server\TC DLL\NextBot\simple_bot.h"
+			}
+		}
+		
 		$File	"ai_relationship.cpp"
 		$File	"basegrenade_concussion.cpp"
 		$File	"basegrenade_contact.cpp"

@@ -39,9 +39,7 @@
 #include "saverestoretypes.h"
 #include "nav_mesh.h"
 
-#ifdef NEXT_BOT
-#include "NextBot/NextBotManager.h"
-#endif
+#include "TC DLL/NextBot/NextBotManager.h"
 
 #ifdef HL2_DLL
 #include "weapon_physcannon.h"
@@ -1672,10 +1670,8 @@ void CBaseCombatCharacter::Event_Killed( const CTakeDamageInfo &info )
 	}
 #endif
 	
-#ifdef NEXT_BOT
 	// inform bots
 	TheNextBots().OnKilled( this, info );
-#endif
 
 #ifdef GLOWS_ENABLE
 	RemoveGlowEffect();
@@ -3427,7 +3423,6 @@ float CBaseCombatCharacter::GetFogObscuredRatio( float range ) const
 //-----------------------------------------------------------------------------
 void CBaseCombatCharacter::UpdateLastKnownArea( void )
 {
-#ifdef NEXT_BOT
 	if ( TheNavMesh->IsGenerating() )
 	{
 		ClearLastKnownArea();
@@ -3472,7 +3467,6 @@ void CBaseCombatCharacter::UpdateLastKnownArea( void )
 
 		m_lastNavArea = area;
 	}
-#endif
 }
 
 

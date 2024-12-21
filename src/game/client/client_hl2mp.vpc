@@ -19,7 +19,7 @@ $Configuration
 	}
 }
 
-$Project "Client (HL2MP)"
+$Project "Client (TEAM-CONFLICT)"
 {
 	$Folder	"Source Files"
 	{
@@ -34,6 +34,15 @@ $Project "Client (HL2MP)"
 		$File	"$SRCDIR\game\shared\predicted_viewmodel.h"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.cpp"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.h"
+		
+		$Folder "TC DLL"
+		{
+			$Folder "NextBot"
+			{
+				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.cpp"
+				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.h"
+			}
+		}
 
 		$Folder	"HL2 DLL"
 		{

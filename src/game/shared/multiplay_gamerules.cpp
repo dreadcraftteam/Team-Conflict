@@ -38,9 +38,7 @@
 	#include "usermessages.h"
 	#include "tier0/icommandline.h"
 
-#ifdef NEXT_BOT
-	#include "NextBotManager.h"
-#endif
+	#include "TC DLL/NextBot/NextBotManager.h"
 
 #endif
 
@@ -1740,7 +1738,6 @@ ConVarRef suitcharger( "sk_suitcharger" );
 
 				pPlayer->NoteSpokeVoiceCommand( szResponse );
 
-#ifdef NEXT_BOT
 				// let bots react to player's voice commands
 				CUtlVector< INextBot * > botVector;
 				TheNextBots().CollectAllBots( &botVector );
@@ -1749,7 +1746,6 @@ ConVarRef suitcharger( "sk_suitcharger" );
 				{
 					botVector[i]->OnActorEmoted( pPlayer, pItem->m_iConcept );
 				}
-#endif
 			}
 			else
 			{

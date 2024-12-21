@@ -109,9 +109,7 @@ extern ConVar tf_mm_servermode;
 #include "nav_mesh.h"
 #endif
 
-#ifdef NEXT_BOT
-#include "NextBotManager.h"
-#endif
+#include "TC DLL/NextBot/NextBotManager.h"
 
 #ifdef USES_ECON_ITEMS
 #include "econ_item_system.h"
@@ -1138,9 +1136,7 @@ void CServerGameDLL::ServerActivate( edict_t *pEdictList, int edictCount, int cl
 	TheBots->ServerActivate();
 #endif
 
-#ifdef NEXT_BOT
 	TheNextBots().OnMapLoaded();
-#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -1228,9 +1224,7 @@ void CServerGameDLL::GameFrame( bool simulating )
 	TheNavMesh->Update();
 #endif
 
-#ifdef NEXT_BOT
 	TheNextBots().Update();
-#endif
 
 	gamestatsuploader->UpdateConnection();
 #endif

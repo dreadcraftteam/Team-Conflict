@@ -21,9 +21,7 @@
 #endif
 #include "functorutils.h"
 
-#ifdef NEXT_BOT
-#include "NextBot/NavMeshEntities/func_nav_prerequisite.h"
-#endif
+#include "TC DLL/NextBot/NavMeshEntities/func_nav_prerequisite.h"
 
 // NOTE: This has to be the last file included!
 #include "tier0/memdbgon.h"
@@ -307,12 +305,10 @@ void CNavMesh::Update( void )
 		DrawFuncNavPrefer();
 	}
 
-#ifdef NEXT_BOT
 	if ( nav_show_func_nav_prerequisite.GetBool() )
 	{
 		DrawFuncNavPrerequisite();
 	}
-#endif
 
 	if ( nav_show_potentially_visible.GetBool() )
 	{
@@ -581,7 +577,7 @@ void CNavMesh::OnServerActivate( void )
 	}
 }
 
-#ifdef NEXT_BOT
+
 
 //--------------------------------------------------------------------------------------------------------------
 class CRegisterPrerequisite
@@ -601,7 +597,6 @@ public:
 	CFuncNavPrerequisite *m_prereq;
 };
 
-#endif
 
 //--------------------------------------------------------------------------------------------------------------
 /**
@@ -624,7 +619,6 @@ void CNavMesh::OnRoundRestart( void )
 {
 	m_updateBlockedAreasTimer.Start( 1.0f );
 
-#ifdef NEXT_BOT
 	FOR_EACH_VEC( TheNavAreas, pit )
 	{
 		CNavArea *area = TheNavAreas[ pit ];
@@ -643,7 +637,6 @@ void CNavMesh::OnRoundRestart( void )
 
 		ForAllAreasOverlappingExtent( apply, prereqExtent );
 	}
-#endif
 }
 
 
@@ -1480,7 +1473,6 @@ void CNavMesh::DrawFuncNavPrefer( void ) const
 }
 
 
-#ifdef NEXT_BOT
 //--------------------------------------------------------------------------------------------------------------
 /**
  * Draw bot preference areas from func_nav_prerequisite entities
@@ -1497,7 +1489,6 @@ void CNavMesh::DrawFuncNavPrerequisite( void ) const
 		}
 	}
 }
-#endif
 
 
 //--------------------------------------------------------------------------------------------------------------

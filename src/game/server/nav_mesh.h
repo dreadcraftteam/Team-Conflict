@@ -339,10 +339,10 @@ public:
 	void DrawDanger( void ) const;										// draw the current danger levels
 	void DrawPlayerCounts( void ) const;								// draw the current player counts for each area
 	void DrawFuncNavAvoid( void ) const;								// draw bot avoidance areas from func_nav_avoid entities
-	void DrawFuncNavPrefer( void ) const;								// draw bot preference areas from func_nav_prefer entities
-#ifdef NEXT_BOT
+	void DrawFuncNavPrefer( void ) const;		// draw bot preference areas from func_nav_prefer entities
+	
 	void DrawFuncNavPrerequisite( void ) const;							// draw bot prerequisite areas from func_nav_prerequisite entities
-#endif
+
 	//-------------------------------------------------------------------------------------
 	// Auto-generation
 	//
