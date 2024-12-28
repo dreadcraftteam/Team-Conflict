@@ -11,10 +11,6 @@
       "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\basecombatcharacter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\USERS\\DREADCRAFT\\DESKTOP\\TEAM-CONFLICT\\SRC\\GAME\\SERVER\\FUNCTORUTILS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:GAME\\SERVER\\FUNCTORUTILS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\gameinterface.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\gameinterface.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -65,6 +61,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\functorutils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:game\\server\\functorutils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -84,7 +84,7 @@
               "RelativeDocumentMoniker": "game\\server\\nav_mesh.cpp",
               "ToolTip": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\nav_mesh.cpp",
               "RelativeToolTip": "game\\server\\nav_mesh.cpp",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAewBcAAAAZAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAewB8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-21T20:36:48.057Z",
               "EditorCaption": ""
@@ -99,12 +99,11 @@
               "RelativeToolTip": "game\\server\\basecombatcharacter.cpp",
               "ViewState": "AQIAABMAAAAAAAAAAAAewCkAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:36:34.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:36:34.681Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 15,
               "Title": "functorutils.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\functorutils.h",
               "RelativeDocumentMoniker": "game\\server\\functorutils.h",
@@ -112,12 +111,11 @@
               "RelativeToolTip": "game\\server\\functorutils.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:36:25.932Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:36:25.932Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "gameinterface.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\gameinterface.cpp",
               "RelativeDocumentMoniker": "game\\server\\gameinterface.cpp",
@@ -125,12 +123,11 @@
               "RelativeToolTip": "game\\server\\gameinterface.cpp",
               "ViewState": "AQIAAFkAAAAAAAAAAAAewG8AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:36:22.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:36:22.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "multiplay_gamerules.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\shared\\multiplay_gamerules.cpp",
               "RelativeDocumentMoniker": "game\\shared\\multiplay_gamerules.cpp",
@@ -138,12 +135,11 @@
               "RelativeToolTip": "game\\shared\\multiplay_gamerules.cpp",
               "ViewState": "AQIAABIAAAAAAAAAAAAewCgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:35:59.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:35:59.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "NextBotPlayerLocomotion.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.h",
@@ -151,12 +147,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:27:52.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:52.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "NextBotPlayerBody.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.h",
@@ -164,12 +159,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:27:37.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:37.865Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "NextBotPlayer.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.h",
@@ -177,12 +171,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:27:36.279Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:36.279Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "NextBotPlayerLocomotion.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.cpp",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.cpp",
@@ -190,12 +183,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerLocomotion.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:27:17.601Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:17.601Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "NextBotPathFollow.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Path\\NextBotPathFollow.cpp",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPathFollow.cpp",
@@ -203,12 +195,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPathFollow.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:27:10.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:10.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "NextBotPlayer.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.cpp",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.cpp",
@@ -216,12 +207,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayer.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:27:07.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:07.425Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "NextBotPlayerBody.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.cpp",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.cpp",
@@ -229,12 +219,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Player\\NextBotPlayerBody.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:27:04.146Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:27:04.146Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "NextBotPath.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.cpp",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.cpp",
@@ -242,12 +231,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-21T20:26:57.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:26:57.619Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "NextBotInterface.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\NextBotInterface.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\NextBotInterface.h",
@@ -255,12 +243,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\NextBotInterface.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:26:07.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:26:07.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "NextBotChasePath.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Path\\NextBotChasePath.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Path\\NextBotChasePath.h",
@@ -268,12 +255,11 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Path\\NextBotChasePath.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:26:00.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:26:00.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "NextBotPath.h",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.h",
               "RelativeDocumentMoniker": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.h",
@@ -281,8 +267,7 @@
               "RelativeToolTip": "game\\server\\TC DLL\\NextBot\\Path\\NextBotPath.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-21T20:25:39.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T20:25:39.761Z"
             }
           ]
         }
