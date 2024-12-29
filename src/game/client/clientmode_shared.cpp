@@ -65,7 +65,7 @@ extern ConVar replay_rendersetting_renderglow;
 #include "econ_item_description.h"
 #endif
 
-#include "TC DLL/Glow Effect/ge_screeneffects.h"
+#include "TC-DLL/Glow/ge_screeneffects.h"
 #include "ScreenSpaceEffects.h"
 
 // memdbgon must be the last include file in a .cpp file!!!

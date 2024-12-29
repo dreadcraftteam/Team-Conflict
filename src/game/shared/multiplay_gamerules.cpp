@@ -38,7 +38,7 @@
 	#include "usermessages.h"
 	#include "tier0/icommandline.h"
 
-	#include "TC DLL/NextBot/NextBotManager.h"
+	#include "TC-DLL/NextBot/NextBotManager.h"
 
 #endif
 

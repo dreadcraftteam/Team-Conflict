@@ -7,10 +7,10 @@
 #define _NEXT_BOT_CHASE_PATH_
 
 #include "nav.h"
-#include "TC DLL/NextBot/NextBotInterface.h"
-#include "TC DLL/NextBot/NextBotLocomotionInterface.h"
+#include "TC-DLL/NextBot/NextBotInterface.h"
+#include "TC-DLL/NextBot/NextBotLocomotionInterface.h"
 #include "NextBotChasePath.h"
-#include "TC DLL/NextBot/NextBotUtil.h"
+#include "TC-DLL/NextBot/NextBotUtil.h"
 #include "NextBotPathFollow.h"
 #include "tier0/vprof.h"
 

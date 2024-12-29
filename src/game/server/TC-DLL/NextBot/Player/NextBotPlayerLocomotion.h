@@ -6,9 +6,9 @@
 #ifndef _NEXT_BOT_PLAYER_LOCOMOTION_H_
 #define _NEXT_BOT_PLAYER_LOCOMOTION_H_
 
-#include "TC DLL/NextBot/NextBot.h"
-#include "TC DLL/NextBot/NextBotLocomotionInterface.h"
-#include "TC DLL/NextBot/Path/NextBotPathFollow.h"
+#include "TC-DLL/NextBot/NextBot.h"
+#include "TC-DLL/NextBot/NextBotLocomotionInterface.h"
+#include "TC-DLL/NextBot/Path/NextBotPathFollow.h"
 
 class CBasePlayer;
 

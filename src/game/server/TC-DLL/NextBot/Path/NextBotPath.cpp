@@ -9,10 +9,10 @@
 #include "fmtstr.h"
 
 #include "NextBotPath.h"
-#include "TC DLL/NextBot/NextBotInterface.h"
-#include "TC DLL/NextBot/NextBotLocomotionInterface.h"
-#include "TC DLL/NextBot/NextBotBodyInterface.h"
-#include "TC DLL/NextBot/NextBotUtil.h"
+#include "TC-DLL/NextBot/NextBotInterface.h"
+#include "TC-DLL/NextBot/NextBotLocomotionInterface.h"
+#include "TC-DLL/NextBot/NextBotBodyInterface.h"
+#include "TC-DLL/NextBot/NextBotUtil.h"
 
 #include "tier0/vprof.h"
 

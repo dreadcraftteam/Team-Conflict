@@ -39,7 +39,7 @@
 #include "saverestoretypes.h"
 #include "nav_mesh.h"
 
-#include "TC DLL/NextBot/NextBotManager.h"
+#include "TC-DLL/NextBot/NextBotManager.h"
 
 #ifdef HL2_DLL
 #include "weapon_physcannon.h"

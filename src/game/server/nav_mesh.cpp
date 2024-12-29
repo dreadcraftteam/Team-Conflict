@@ -21,7 +21,7 @@
 #endif
 #include "functorutils.h"
 
-#include "TC DLL/NextBot/NavMeshEntities/func_nav_prerequisite.h"
+#include "TC-DLL/NextBot/NavMeshEntities/func_nav_prerequisite.h"
 
 // NOTE: This has to be the last file included!
 #include "tier0/memdbgon.h"

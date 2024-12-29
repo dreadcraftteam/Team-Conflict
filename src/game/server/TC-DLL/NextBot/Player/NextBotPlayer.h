@@ -9,10 +9,10 @@
 #include "cbase.h"
 #include "gameinterface.h"
 
-#include "TC DLL/NextBot/NextBot.h"
-#include "TC DLL/NextBot/Path/NextBotPathFollow.h"
+#include "TC-DLL/NextBot/NextBot.h"
+#include "TC-DLL/NextBot/Path/NextBotPathFollow.h"
 //#include "NextBotPlayerBody.h"
-#include "TC DLL/NextBot/NextBotBehavior.h"
+#include "TC-DLL/NextBot/NextBotBehavior.h"
 
 #include "in_buttons.h"
 

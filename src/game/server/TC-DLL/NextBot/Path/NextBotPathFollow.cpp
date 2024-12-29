@@ -8,13 +8,13 @@
 #include "BasePropDoor.h"
 
 #include "nav_mesh.h"
-#include "TC DLL/NextBot/NextBot.h"
+#include "TC-DLL/NextBot/NextBot.h"
 #include "NextBotPathFollow.h"
-#include "TC DLL/NextBot/NextBotUtil.h"
+#include "TC-DLL/NextBot/NextBotUtil.h"
 
-#include "TC DLL/NextBot/NextBotLocomotionInterface.h"
-#include "TC DLL/NextBot/NextBotBodyInterface.h"
-#include "TC DLL/NextBot/NextBotVisionInterface.h"
+#include "TC-DLL/NextBot/NextBotLocomotionInterface.h"
+#include "TC-DLL/NextBot/NextBotBodyInterface.h"
+#include "TC-DLL/NextBot/NextBotVisionInterface.h"
 
 #include "tier0/vprof.h"
 

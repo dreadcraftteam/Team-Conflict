@@ -6,7 +6,7 @@
 #ifndef _NEXT_BOT_INTERFACE_H_
 #define _NEXT_BOT_INTERFACE_H_
 
-#include "TC DLL/NextBot/NextBotKnownEntity.h"
+#include "TC-DLL/NextBot/NextBotKnownEntity.h"
 #include "NextBotComponentInterface.h"
 #include "NextBotLocomotionInterface.h"
 #include "NextBotBodyInterface.h"

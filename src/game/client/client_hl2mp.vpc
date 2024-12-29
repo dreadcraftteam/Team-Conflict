@@ -35,19 +35,17 @@ $Project "Client (TEAM-CONFLICT)"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.cpp"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.h"
 		
-		$Folder "TC DLL"
+		$Folder "TC-DLL"
 		{
 			$Folder "NextBot"
 			{
-				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.cpp"
-				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.h"
+				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.h"
 			}
 			$Folder "Glow Effect"
 			{
-				$File 	"$SRCDIR\game\client\TC DLL\Glow Effect\ge_screeneffects.cpp"
-				$File 	"$SRCDIR\game\client\TC DLL\Glow Effect\ge_screeneffects.h"
-				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.cpp"
-				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.h"
+				$File 	"$SRCDIR\game\client\TC-DLL\Glow\ge_screeneffects.cpp"
+				$File 	"$SRCDIR\game\client\TC-DLL\Glow\ge_screeneffects.h"
 			}
 		}
 
