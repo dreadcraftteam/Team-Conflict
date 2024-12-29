@@ -1,7 +1,7 @@
 [vpc crc file version 2]
 b9c20ec3 C:\Users\DREADCRAFT\Desktop\TEAM-CONFLICT\src\devtools\bin\vpc.exe
 _Nc_VS2013/vpcgame:hl2mp_
-fe82cb62 server_hl2mp.vpc
+6f138050 server_hl2mp.vpc
 cd2921c2 ..\..\game\server\server_base.vpc
 4832e67a ..\..\vpc_scripts\source_dll_base.vpc
 d752cf80 ..\..\vpc_scripts\platform_dirs.vpc

@@ -26,6 +26,12 @@ $Project "Server (TEAM-CONFLICT)"
 	{
 		$Folder "TC DLL"
 		{
+			$Folder "Glow Effect"
+			{
+				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.cpp"
+				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.h"
+			}
+		
 			$Folder "NextBot"
 			{
 				$Folder "Behavior"

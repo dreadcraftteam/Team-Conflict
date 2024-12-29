@@ -65,6 +65,9 @@ extern ConVar replay_rendersetting_renderglow;
 #include "econ_item_description.h"
 #endif
 
+#include "TC DLL/Glow Effect/ge_screeneffects.h"
+#include "ScreenSpaceEffects.h"
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -858,6 +861,7 @@ void ClientModeShared::LevelInit( const char *newmap )
 //-----------------------------------------------------------------------------
 void ClientModeShared::LevelShutdown( void )
 {
+	g_pScreenSpaceEffects->DisableScreenSpaceEffect("ge_entglow");
 	// Reset the third person camera so we don't crash
 	g_ThirdPersonManager.Init();
 

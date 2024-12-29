@@ -63,6 +63,12 @@ CSimpleBot::CSimpleBot()
 	ALLOCATE_INTENTION_INTERFACE( CSimpleBot );
 
 	m_locomotor = new NextBotGroundLocomotion( this );
+
+	// default weapons
+	smg1 = Weapon_Create("weapon_smg1");
+	shotgun = Weapon_Create("weapon_shotgun");
+	pistol = Weapon_Create("weapon_pistol");
+	crowbar = Weapon_Create("weapon_crowbar");
 }
 
 
@@ -83,11 +89,34 @@ void CSimpleBot::Precache()
 	PrecacheModel( "models/kleiner.mdl" );
 }
 
+//-----------------------------------------------------------------------------------------------------
+CBaseCombatWeapon *CSimpleBot::GetBestWeapon()
+{
+	int num = RandomInt(1, 4);
+
+	switch (num)
+	{
+	case 1:
+		return smg1;
+	case 2:
+		return shotgun;
+	case 3:
+		return pistol;
+	case 4:
+		return crowbar;
+	default:
+		return crowbar;
+	}
+}
 
 //-----------------------------------------------------------------------------------------------------
 void CSimpleBot::Spawn( void )
 {
 	BaseClass::Spawn();
+
+	// wtf??
+	Weapon_Equip( GetBestWeapon() );
+	Weapon_SetActivity( Weapon_TranslateActivity( ACT_HL2MP_RUN ), 0 );
 
 	SetModel( "models/kleiner.mdl" );
 }

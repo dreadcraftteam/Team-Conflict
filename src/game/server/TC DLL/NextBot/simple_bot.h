@@ -27,6 +27,11 @@ public:
 	virtual void Precache();
 	virtual void Spawn( void );
 
+	virtual CBaseCombatWeapon *GetBestWeapon();
+
+	// default weapons
+	CBaseCombatWeapon *smg1, *shotgun, *pistol, *crowbar;
+
 	// INextBot
 	DECLARE_INTENTION_INTERFACE( CSimpleBot )
 	virtual NextBotGroundLocomotion	*GetLocomotionInterface( void ) const	{ return m_locomotor; }

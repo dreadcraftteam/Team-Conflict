@@ -42,6 +42,13 @@ $Project "Client (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.cpp"
 				$File	"$SRCDIR\game\client\TC DLL\NextBot\c_NextBot.h"
 			}
+			$Folder "Glow Effect"
+			{
+				$File 	"$SRCDIR\game\client\TC DLL\Glow Effect\ge_screeneffects.cpp"
+				$File 	"$SRCDIR\game\client\TC DLL\Glow Effect\ge_screeneffects.h"
+				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.cpp"
+				$File 	"$SRCDIR\game\shared\TC DLL\generictoken.h"
+			}
 		}
 
 		$Folder	"HL2 DLL"
