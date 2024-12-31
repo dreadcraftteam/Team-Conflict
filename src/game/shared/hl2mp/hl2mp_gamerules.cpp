@@ -179,8 +179,8 @@ char *sTeamNames[] =
 {
 	"Unassigned",
 	"Spectator",
-	"Combine",
-	"Rebels",
+	"Green",
+	"Red",
 };
 
 CHL2MPRules::CHL2MPRules()
