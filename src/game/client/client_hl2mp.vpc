@@ -42,11 +42,6 @@ $Project "Client (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.cpp"
 				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.h"
 			}
-			$Folder "Glow Effect"
-			{
-				$File 	"$SRCDIR\game\client\TC-DLL\Glow\ge_screeneffects.cpp"
-				$File 	"$SRCDIR\game\client\TC-DLL\Glow\ge_screeneffects.h"
-			}
 			$Folder "VGUI"
 			{
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_browser.cpp"

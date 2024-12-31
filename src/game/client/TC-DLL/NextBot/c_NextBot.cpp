@@ -8,7 +8,9 @@
 #include "debugoverlay_shared.h"
 #include <bitbuf.h>
 #include "viewrender.h"
-#include "TC-DLL/Glow/ge_screeneffects.h"
+
+//Old glow system:
+//#include "TC-DLL/Glow/ge_screeneffects.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

@@ -49,9 +49,6 @@
     <Filter Include="Source Files\TC-DLL">
       <UniqueIdentifier>{C9B047B5-5B5B-6202-2748-B64910557737}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TC-DLL\Glow Effect">
-      <UniqueIdentifier>{D0548077-8F86-61BD-369B-E0A67D672667}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TC-DLL\NextBot">
       <UniqueIdentifier>{8F936C12-33C6-F4E7-6BFA-13B88C395115}</UniqueIdentifier>
     </Filter>
@@ -1949,9 +1946,6 @@
     <ClInclude Include="..\..\game\shared\sixense\sixense_convars_extern.h">
       <Filter>Source Files\Sixense</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Glow\ge_screeneffects.h">
-      <Filter>Source Files\TC-DLL\Glow Effect</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.h">
       <Filter>Source Files\TC-DLL\NextBot</Filter>
     </ClInclude>
@@ -3327,9 +3321,6 @@
     </ClCompile>
     <ClCompile Include="..\..\game\shared\sixense\sixense_convars.cpp">
       <Filter>Source Files\Sixense</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Glow\ge_screeneffects.cpp">
-      <Filter>Source Files\TC-DLL\Glow Effect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">
       <Filter>Source Files\TC-DLL\NextBot</Filter>

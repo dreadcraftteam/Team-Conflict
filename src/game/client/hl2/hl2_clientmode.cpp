@@ -9,7 +9,9 @@
 #include "ivmodemanager.h"
 #include "clientmode_hlnormal.h"
 #include "panelmetaclassmgr.h"
-#include "TC-DLL/Glow/ge_screeneffects.h"
+
+//Old glow system:
+//#include "TC-DLL/Glow/ge_screeneffects.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -64,14 +66,16 @@ void CHLModeManager::CreateMove( float flInputSampleTime, CUserCmd *cmd )
 
 void CHLModeManager::LevelInit( const char *newmap )
 {
-	g_pScreenSpaceEffects->EnableScreenSpaceEffect("ge_entglow");
+	//Old glow system:
+	//	g_pScreenSpaceEffects->EnableScreenSpaceEffect("ge_entglow");
 
 	g_pClientMode->LevelInit( newmap );
 }
 
 void CHLModeManager::LevelShutdown( void )
 {
-	g_pScreenSpaceEffects->DisableScreenSpaceEffect("ge_entglow");
+	//Old glow system:
+	//g_pScreenSpaceEffects->DisableScreenSpaceEffect("ge_entglow");
 
 	g_pClientMode->LevelShutdown();
 }
