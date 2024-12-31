@@ -23,8 +23,8 @@ extern ConVar sv_footsteps;
 const char *g_ppszPlayerSoundPrefixNames[PLAYER_SOUNDS_MAX] =
 {
 	"NPC_Citizen",
-	"NPC_CombineS",
-	"NPC_MetroPolice",
+	"NPC_Citizen",
+	"NPC_Citizen",
 };
 
 const char *CHL2MP_Player::GetPlayerModelSoundPrefix( void )
