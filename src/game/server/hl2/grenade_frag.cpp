@@ -11,9 +11,7 @@
 #include "Sprite.h"
 #include "SpriteTrail.h"
 #include "soundent.h"
-#include "hl2mp_gamerules.h"
-#include "team.h"
-#include "hl2_player.h"
+#include "hl2mp_player.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -42,11 +40,8 @@ class CGrenadeFrag : public CBaseGrenade
 					
 	~CGrenadeFrag( void );
 
-private:
-	CBasePlayer *pOwner;
-
 public:
-	void	Spawn(CBasePlayer *pOwner);
+	void	Spawn( void );
 	void	OnRestore( void );
 	void	Precache( void );
 	bool	CreateVPhysics( void );
@@ -108,11 +103,9 @@ CGrenadeFrag::~CGrenadeFrag( void )
 {
 }
 
-void CGrenadeFrag::Spawn(CBasePlayer *pPlayer)
+void CGrenadeFrag::Spawn( void )
 {
 	Precache( );
-
-	pOwner = pPlayer;
 
 	SetModel( GRENADE_MODEL );
 
@@ -171,7 +164,16 @@ void CGrenadeFrag::CreateEffects( void )
 	{
 		m_pMainGlow->FollowEntity( this );
 		m_pMainGlow->SetAttachment( this, nAttachment );
-		m_pMainGlow->SetTransparency( kRenderGlow, 255, 255, 255, 200, kRenderFxNoDissipation );
+
+		if ( ToHL2MPPlayer( ToBasePlayer( GetThrower() ) )->GetTeamNumber() == 2 )
+		{
+			m_pMainGlow->SetTransparency( kRenderGlow, 0, 255, 0, 255, kRenderFxNoDissipation );
+		}
+		else
+		{
+			m_pMainGlow->SetTransparency( kRenderGlow, 255, 0, 0, 255, kRenderFxNoDissipation );
+		}
+
 		m_pMainGlow->SetScale( 0.2f );
 		m_pMainGlow->SetGlowProxySize( 4.0f );
 	}
@@ -183,17 +185,14 @@ void CGrenadeFrag::CreateEffects( void )
 	{
 		m_pGlowTrail->FollowEntity( this );
 		m_pGlowTrail->SetAttachment( this, nAttachment );
-		if (ToHL2MPPlayer(pOwner)->GetTeamNumber() == 2) {
-			m_pGlowTrail->SetTransparency(kRenderTransAdd, 0, 255, 0, 255, kRenderFxNone);
-			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
+		
+		if ( ToHL2MPPlayer( ToBasePlayer( GetThrower() ) )->GetTeamNumber() == 2 )
+		{
+			m_pGlowTrail->SetTransparency( kRenderTransAdd, 0, 255, 0, 255, kRenderFxNone );
 		}
-		else if (ToHL2MPPlayer(pOwner)->GetTeamNumber() == 3) {
-			m_pGlowTrail->SetTransparency(kRenderTransAdd, 255, 0, 0, 255, kRenderFxNone);
-			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
-		}
-		else {
-			//m_pGlowTrail->SetTransparency(kRenderTransAdd, 0, 255, 0, 255, kRenderFxNone);
-			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
+		else
+		{
+			m_pGlowTrail->SetTransparency( kRenderTransAdd, 255, 0, 0, 255, kRenderFxNone );
 		}
 
 		m_pGlowTrail->SetStartWidth( 8.0f );
