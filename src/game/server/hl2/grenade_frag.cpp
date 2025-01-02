@@ -11,6 +11,9 @@
 #include "Sprite.h"
 #include "SpriteTrail.h"
 #include "soundent.h"
+#include "hl2mp_gamerules.h"
+#include "team.h"
+#include "hl2_player.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -39,8 +42,11 @@ class CGrenadeFrag : public CBaseGrenade
 					
 	~CGrenadeFrag( void );
 
+private:
+	CBasePlayer *pOwner;
+
 public:
-	void	Spawn( void );
+	void	Spawn(CBasePlayer *pOwner);
 	void	OnRestore( void );
 	void	Precache( void );
 	bool	CreateVPhysics( void );
@@ -102,9 +108,11 @@ CGrenadeFrag::~CGrenadeFrag( void )
 {
 }
 
-void CGrenadeFrag::Spawn( void )
+void CGrenadeFrag::Spawn(CBasePlayer *pPlayer)
 {
 	Precache( );
+
+	pOwner = pPlayer;
 
 	SetModel( GRENADE_MODEL );
 
@@ -154,7 +162,6 @@ void CGrenadeFrag::OnRestore( void )
 //-----------------------------------------------------------------------------
 void CGrenadeFrag::CreateEffects( void )
 {
-	
 	// Start up the eye glow
 	m_pMainGlow = CSprite::SpriteCreate( "sprites/redglow1.vmt", GetLocalOrigin(), false );
 
@@ -176,7 +183,19 @@ void CGrenadeFrag::CreateEffects( void )
 	{
 		m_pGlowTrail->FollowEntity( this );
 		m_pGlowTrail->SetAttachment( this, nAttachment );
-		m_pGlowTrail->SetTransparency( kRenderTransAdd, 255, 0, 0, 255, kRenderFxNone );
+		if (ToHL2MPPlayer(pOwner)->GetTeamNumber() == 2) {
+			m_pGlowTrail->SetTransparency(kRenderTransAdd, 0, 255, 0, 255, kRenderFxNone);
+			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
+		}
+		else if (ToHL2MPPlayer(pOwner)->GetTeamNumber() == 3) {
+			m_pGlowTrail->SetTransparency(kRenderTransAdd, 255, 0, 0, 255, kRenderFxNone);
+			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
+		}
+		else {
+			//m_pGlowTrail->SetTransparency(kRenderTransAdd, 0, 255, 0, 255, kRenderFxNone);
+			Msg("TEAM NUMBER: ", GetTeamNumber(), "\n");
+		}
+
 		m_pGlowTrail->SetStartWidth( 8.0f );
 		m_pGlowTrail->SetEndWidth( 1.0f );
 		m_pGlowTrail->SetLifeTime( 0.5f );
