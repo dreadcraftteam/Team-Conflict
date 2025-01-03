@@ -3380,19 +3380,18 @@ extern ConVar muzzleflash_light;
 void C_BaseAnimating::ProcessMuzzleFlashEvent()
 {
 	// If we have an attachment, then stick a light on it.
-	if ( muzzleflash_light.GetBool() )
+	if (muzzleflash_light.GetBool())
 	{
-		//FIXME: We should really use a named attachment for this
+		// FIXME: We should really use a named attachment for this
 		if (m_Attachments.Count() > 0)
 		{
 			Vector vAttachment;
 			QAngle dummyAngles;
 			GetAttachment(1, vAttachment, dummyAngles);
 
-			// Make an elight
-			dlight_t *el = effects->CL_AllocElight(LIGHT_INDEX_MUZZLEFLASH + index);
+			dlight_t *el = effects->CL_AllocDlight(LIGHT_INDEX_MUZZLEFLASH + index);
 			el->origin = vAttachment;
-			el->radius = random->RandomInt(32, 64);
+			el->radius = 165;
 			el->decay = el->radius / 0.05f;
 			el->die = gpGlobals->curtime + 0.05f;
 			el->color.r = 255;
