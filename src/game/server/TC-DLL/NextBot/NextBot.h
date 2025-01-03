@@ -1,7 +1,8 @@
+//========= Copyright Valve Corporation, All rights reserved. ============//
 // NextBotCombatCharacter.h
 // Next generation bot system
 // Author: Michael Booth, April 2005
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========================================================================//
 
 #ifndef _NEXT_BOT_H_
 #define _NEXT_BOT_H_

@@ -89,8 +89,8 @@ const char *g_ppszRandomCombineModels[] =
 
 
 #define MAX_COMBINE_MODELS 4
-#define MODEL_CHANGE_INTERVAL 5.0f
-#define TEAM_CHANGE_INTERVAL 5.0f
+#define MODEL_CHANGE_INTERVAL 0.0f
+#define TEAM_CHANGE_INTERVAL 0.0f
 
 #define HL2MPPLAYER_PHYSDAMAGE_SCALE 4.0f
 

@@ -1,13 +1,12 @@
+//========= Copyright Valve Corporation, All rights reserved. ============//
 // NextBotCombatCharacter.cpp
 // Next generation bot system
 // Author: Michael Booth, April 2005
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========================================================================//
 
 #include "cbase.h"
-
 #include "team.h"
 #include "CRagdollMagnet.h"
-
 #include "NextBot.h"
 #include "NextBotLocomotionInterface.h"
 #include "NextBotBodyInterface.h"
@@ -19,13 +18,51 @@
 #include "vprof.h"
 #include "datacache/imdlcache.h"
 #include "EntityFlame.h"
-
+#include "dlight.h"
+#include "r_efx.h"
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
 
 ConVar NextBotStop( "nb_stop", "0", FCVAR_CHEAT | FCVAR_REPLICATED, "Stop all NextBots" );
 
+//-----------------------------------------------------------------------------------------------------
+// Command to add a Simple Bot where your crosshairs are aiming
+//-----------------------------------------------------------------------------------------------------
+CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
+{
+	CBasePlayer *player = UTIL_GetCommandClient();
+	if (!player)
+	{
+		return;
+	}
+
+	Vector forward;
+	player->EyeVectors(&forward);
+
+	trace_t result;
+	UTIL_TraceLine(player->EyePosition(), player->EyePosition() + 999999.9f * forward, MASK_BLOCKLOS_AND_NPCS | CONTENTS_IGNORE_NODRAW_OPAQUE, player, COLLISION_GROUP_NONE, &result);
+	if (!result.DidHit())
+	{
+		return;
+	}
+
+	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("simple_bot"));
+	if (bot)
+	{
+		Vector forward = player->GetAbsOrigin() - result.endpos;
+		forward.z = 0.0f;
+		forward.NormalizeInPlace();
+
+		QAngle angles;
+		VectorAngles(forward, angles);
+
+		bot->SetAbsAngles(angles);
+		bot->SetAbsOrigin(result.endpos + Vector(0, 0, 10.0f));
+
+		DispatchSpawn(bot);
+	}
+}
 
 //--------------------------------------------------------------------------------------------------------
 class CSendBotCommand

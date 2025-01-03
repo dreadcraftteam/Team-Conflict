@@ -2,50 +2,11 @@
 // simple_bot.cpp
 // A simple bot
 // Michael Booth, February 2009
+//========================================================================//
 
 #include "cbase.h"
 #include "simple_bot.h"
 #include "nav_mesh.h"
-
-
-//-----------------------------------------------------------------------------------------------------
-// Command to add a Simple Bot where your crosshairs are aiming
-//-----------------------------------------------------------------------------------------------------
-CON_COMMAND_F( nb_bot_add, "Add a simple bot.", FCVAR_CHEAT )
-{
-	CBasePlayer *player = UTIL_GetCommandClient();
-	if ( !player )
-	{
-		return;
-	}
-
-	Vector forward;
-	player->EyeVectors( &forward );
-
-	trace_t result;
-	UTIL_TraceLine( player->EyePosition(), player->EyePosition() + 999999.9f * forward, MASK_BLOCKLOS_AND_NPCS|CONTENTS_IGNORE_NODRAW_OPAQUE, player, COLLISION_GROUP_NONE, &result );
-	if ( !result.DidHit() )
-	{
-		return;
-	}
-
-	CSimpleBot *bot = static_cast< CSimpleBot * >( CreateEntityByName( "simple_bot" ) );
-	if ( bot )
-	{
-		Vector forward = player->GetAbsOrigin() - result.endpos;
-		forward.z = 0.0f;
-		forward.NormalizeInPlace();
-
-		QAngle angles;
-		VectorAngles( forward, angles );
-
-		bot->SetAbsAngles( angles );
-		bot->SetAbsOrigin( result.endpos + Vector( 0, 0, 10.0f ) );
-
-		DispatchSpawn( bot );
-	}
-}
-
 
 //-----------------------------------------------------------------------------------------------------
 // The Simple Bot
