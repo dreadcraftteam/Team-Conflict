@@ -256,26 +256,26 @@ void CHL2MP_Player::PickDefaultSpawnTeam( void )
 		}
 		else
 		{
-			CTeam *pCombine = g_Teams[TEAM_COMBINE];
-			CTeam *pRebels = g_Teams[TEAM_REBELS];
+			CTeam *pCombine = g_Teams[TEAM_GREEN];
+			CTeam *pRebels = g_Teams[TEAM_RED];
 
 			if ( pCombine == NULL || pRebels == NULL )
 			{
-				ChangeTeam( random->RandomInt( TEAM_COMBINE, TEAM_REBELS ) );
+				ChangeTeam( random->RandomInt( TEAM_GREEN, TEAM_RED ) );
 			}
 			else
 			{
 				if ( pCombine->GetNumPlayers() > pRebels->GetNumPlayers() )
 				{
-					ChangeTeam( TEAM_REBELS );
+					ChangeTeam( TEAM_RED );
 				}
 				else if ( pCombine->GetNumPlayers() < pRebels->GetNumPlayers() )
 				{
-					ChangeTeam( TEAM_COMBINE );
+					ChangeTeam( TEAM_GREEN );
 				}
 				else
 				{
-					ChangeTeam( random->RandomInt( TEAM_COMBINE, TEAM_REBELS ) );
+					ChangeTeam( random->RandomInt( TEAM_GREEN, TEAM_RED ) );
 				}
 			}
 		}
@@ -374,7 +374,7 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 	if ( modelIndex == -1 || ValidatePlayerModel( szModelName ) == false )
 	{
 		szModelName = "models/Combine_Soldier.mdl";
-		m_iModelType = TEAM_COMBINE;
+		m_iModelType = TEAM_GREEN;
 
 		char szReturnString[512];
 
@@ -382,7 +382,7 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 		engine->ClientCommand ( edict(), szReturnString );
 	}
 
-	if ( GetTeamNumber() == TEAM_COMBINE )
+	if ( GetTeamNumber() == TEAM_GREEN )
 	{
 		if ( Q_stristr( szModelName, "models/human") )
 		{
@@ -392,9 +392,9 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 			szModelName = g_ppszRandomCombineModels[g_iLastCombineModel];
 		}
 
-		m_iModelType = TEAM_COMBINE;
+		m_iModelType = TEAM_GREEN;
 	}
-	else if ( GetTeamNumber() == TEAM_REBELS )
+	else if ( GetTeamNumber() == TEAM_RED )
 	{
 		if ( !Q_stristr( szModelName, "models/human") )
 		{
@@ -404,7 +404,7 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 			szModelName = g_ppszRandomCitizenModels[g_iLastCitizenModel];
 		}
 
-		m_iModelType = TEAM_REBELS;
+		m_iModelType = TEAM_RED;
 	}
 	
 	SetModel( szModelName );
@@ -435,23 +435,23 @@ void CHL2MP_Player::SetPlayerModel( void )
 		szModelName = pszCurrentModelName;
 	}
 
-	if ( GetTeamNumber() == TEAM_COMBINE )
+	if ( GetTeamNumber() == TEAM_GREEN )
 	{
 		int nHeads = ARRAYSIZE( g_ppszRandomCombineModels );
 		
 		g_iLastCombineModel = ( g_iLastCombineModel + 1 ) % nHeads;
 		szModelName = g_ppszRandomCombineModels[g_iLastCombineModel];
 
-		m_iModelType = TEAM_COMBINE;
+		m_iModelType = TEAM_GREEN;
 	}
-	else if ( GetTeamNumber() == TEAM_REBELS )
+	else if ( GetTeamNumber() == TEAM_RED )
 	{
 		int nHeads = ARRAYSIZE( g_ppszRandomCitizenModels );
 
 		g_iLastCitizenModel = ( g_iLastCitizenModel + 1 ) % nHeads;
 		szModelName = g_ppszRandomCitizenModels[g_iLastCitizenModel];
 
-		m_iModelType = TEAM_REBELS;
+		m_iModelType = TEAM_RED;
 	}
 	else
 	{
@@ -462,11 +462,11 @@ void CHL2MP_Player::SetPlayerModel( void )
 
 		if ( Q_stristr( szModelName, "models/human") )
 		{
-			m_iModelType = TEAM_REBELS;
+			m_iModelType = TEAM_RED;
 		}
 		else
 		{
-			m_iModelType = TEAM_COMBINE;
+			m_iModelType = TEAM_GREEN;
 		}
 	}
 
@@ -475,7 +475,7 @@ void CHL2MP_Player::SetPlayerModel( void )
 	if ( modelIndex == -1 )
 	{
 		szModelName = "models/Combine_Soldier.mdl";
-		m_iModelType = TEAM_COMBINE;
+		m_iModelType = TEAM_GREEN;
 
 		char szReturnString[512];
 
@@ -654,7 +654,7 @@ bool CHL2MP_Player::WantsLagCompensationOnEntity( const CBasePlayer *pPlayer, co
 
 Activity CHL2MP_Player::TranslateTeamActivity( Activity ActToTranslate )
 {
-	if ( m_iModelType == TEAM_COMBINE )
+	if ( m_iModelType == TEAM_GREEN )
 		 return ActToTranslate;
 	
 	if ( ActToTranslate == ACT_RUN )
@@ -1319,12 +1319,12 @@ CBaseEntity* CHL2MP_Player::EntSelectSpawnPoint( void )
 
 	if ( HL2MPRules()->IsTeamplay() == true )
 	{
-		if ( GetTeamNumber() == TEAM_COMBINE )
+		if ( GetTeamNumber() == TEAM_GREEN )
 		{
 			pSpawnpointName = "info_player_combine";
 			pLastSpawnPoint = g_pLastCombineSpawn;
 		}
-		else if ( GetTeamNumber() == TEAM_REBELS )
+		else if ( GetTeamNumber() == TEAM_RED )
 		{
 			pSpawnpointName = "info_player_rebel";
 			pLastSpawnPoint = g_pLastRebelSpawn;
@@ -1392,11 +1392,11 @@ ReturnSpot:
 
 	if ( HL2MPRules()->IsTeamplay() == true )
 	{
-		if ( GetTeamNumber() == TEAM_COMBINE )
+		if ( GetTeamNumber() == TEAM_GREEN )
 		{
 			g_pLastCombineSpawn = pSpot;
 		}
-		else if ( GetTeamNumber() == TEAM_REBELS ) 
+		else if ( GetTeamNumber() == TEAM_RED ) 
 		{
 			g_pLastRebelSpawn = pSpot;
 		}

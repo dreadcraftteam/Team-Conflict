@@ -325,8 +325,8 @@ void CHL2MPRules::Think( void )
 	{
 		if( IsTeamplay() == true )
 		{
-			CTeam *pCombine = g_Teams[TEAM_COMBINE];
-			CTeam *pRebels = g_Teams[TEAM_REBELS];
+			CTeam *pCombine = g_Teams[TEAM_GREEN];
+			CTeam *pRebels = g_Teams[TEAM_RED];
 
 			if ( pCombine->GetScore() >= flFragLimit || pRebels->GetScore() >= flFragLimit )
 			{
@@ -801,11 +801,11 @@ void CHL2MPRules::ClientSettingsChanged( CBasePlayer *pPlayer )
 		{
 			if ( Q_stristr( szModelName, "models/human") )
 			{
-				pHL2Player->ChangeTeam( TEAM_REBELS );
+				pHL2Player->ChangeTeam( TEAM_RED );
 			}
 			else
 			{
-				pHL2Player->ChangeTeam( TEAM_COMBINE );
+				pHL2Player->ChangeTeam( TEAM_GREEN );
 			}
 		}
 	}
@@ -959,7 +959,7 @@ CAmmoDef *GetAmmoDef()
 		int count = 1;
 		count = clamp( count, 1, 16 );
 
-		int iTeam = TEAM_COMBINE;
+		int iTeam = TEAM_GREEN;
 				
 		// Look at -frozen.
 		bool bFrozen = false;
@@ -1030,8 +1030,8 @@ void CHL2MPRules::RestartGame()
 
 	// Respawn entities (glass, doors, etc..)
 
-	CTeam *pRebels = GetGlobalTeam( TEAM_REBELS );
-	CTeam *pCombine = GetGlobalTeam( TEAM_COMBINE );
+	CTeam *pRebels = GetGlobalTeam( TEAM_RED );
+	CTeam *pCombine = GetGlobalTeam( TEAM_GREEN );
 
 	if ( pRebels )
 	{
