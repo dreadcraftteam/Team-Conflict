@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Moon\\Desktop\\TEAM-CONFLICT\\src\\",
+  "WorkspaceRootPath": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\Moon\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_bot_temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\hl2mp\\hl2mp_bot_temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\hl2\\grenade_frag.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "hl2mp_bot_temp.cpp",
+              "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
+              "RelativeDocumentMoniker": "game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
+              "ToolTip": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
+              "RelativeToolTip": "game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAQwCcAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-04T21:50:26.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "grenade_frag.cpp",
-              "DocumentMoniker": "C:\\Users\\Moon\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp",
+              "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp",
               "RelativeDocumentMoniker": "game\\server\\hl2\\grenade_frag.cpp",
-              "ToolTip": "C:\\Users\\Moon\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp",
+              "ToolTip": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp",
               "RelativeToolTip": "game\\server\\hl2\\grenade_frag.cpp",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-02T08:36:53.853Z",
               "EditorCaption": ""
