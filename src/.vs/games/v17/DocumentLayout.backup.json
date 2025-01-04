@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\hl2mp\\hl2mp_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_bot_temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{33B7DFDC-BECB-3678-1190-6C951E393EB3}|game\\server\\server_hl2mp.vcxproj|solutionrelative:game\\server\\hl2mp\\hl2mp_bot_temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "hl2mp_client.cpp",
+              "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_client.cpp",
+              "RelativeDocumentMoniker": "game\\server\\hl2mp\\hl2mp_client.cpp",
+              "ToolTip": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_client.cpp",
+              "RelativeToolTip": "game\\server\\hl2mp\\hl2mp_client.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAQwD8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-04T22:02:28.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "hl2mp_bot_temp.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
               "RelativeDocumentMoniker": "game\\server\\hl2mp\\hl2mp_bot_temp.cpp",
@@ -35,7 +52,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "grenade_frag.cpp",
               "DocumentMoniker": "C:\\Users\\DREADCRAFT\\Desktop\\TEAM-CONFLICT\\src\\game\\server\\hl2\\grenade_frag.cpp",
               "RelativeDocumentMoniker": "game\\server\\hl2\\grenade_frag.cpp",
