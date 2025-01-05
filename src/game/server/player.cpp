@@ -233,6 +233,7 @@ void CC_GiveCurrentAmmo( void )
 }
 static ConCommand givecurrentammo("givecurrentammo", CC_GiveCurrentAmmo, "Give a supply of ammo for current weapon..\n", FCVAR_CHEAT );
 
+ConVar cl_class("cl_class", "0", FCVAR_CLIENTDLL, "the current class of the player");
 
 // pl
 BEGIN_SIMPLE_DATADESC( CPlayerState )
@@ -639,6 +640,8 @@ CBasePlayer::CBasePlayer( )
 	m_flMovementTimeForUserCmdProcessingRemaining = 0.0f;
 
 	m_flLastObjectiveTime = -1.f;
+
+	m_iClass = CLASS_UNASSIGNED;
 }
 
 CBasePlayer::~CBasePlayer( )
@@ -4897,6 +4900,206 @@ void CBasePlayer::InitialSpawn( void )
 }
 
 //-----------------------------------------------------------------------------
+// Purpose: Sets health+max health based off current class
+//-----------------------------------------------------------------------------
+void CBasePlayer::SetClassSpeed(void)
+{
+	switch (GetPlayerClass())
+	{
+	case CLASS_COMMANDER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_SUPPORTER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_BUILDER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_RASHER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_SOLDIER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_FLAMER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_SNIPER:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	case CLASS_MEDIC:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	default:
+	{
+		m_flSpeed = 150;
+		m_flMaxspeed = 150;
+	}
+	break;
+	}
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Sets health+max health based off current class
+//-----------------------------------------------------------------------------
+void CBasePlayer::SetClassHealth(void)
+{
+	switch (GetPlayerClass())
+	{
+	case CLASS_COMMANDER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_SUPPORTER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_BUILDER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_RASHER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_SOLDIER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_FLAMER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_SNIPER:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	case CLASS_MEDIC:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	default:
+	{
+		m_iMaxHealth = 100;
+		m_iHealth = 100;
+	}
+	break;
+	}
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Gives items based off current class
+//-----------------------------------------------------------------------------
+void CBasePlayer::GiveClassItems(void)
+{
+	RemoveAllItems(false);
+
+	switch (GetPlayerClass())
+	{
+	case CLASS_COMMANDER:
+	{
+		GiveNamedItem("weapon_smg1");
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_SUPPORTER:
+	{
+		GiveNamedItem("weapon_ar2");
+		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_BUILDER:
+	{
+		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_RASHER:
+	{
+		GiveNamedItem("weapon_smg1");
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_SOLDIER:
+	{
+		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_FLAMER:
+	{
+		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_SNIPER:
+	{
+		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	case CLASS_MEDIC:
+	{
+		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_shotgun");
+		GiveNamedItem("weapon_crowbar");
+	}
+	break;
+	default:
+	{
+	}
+	break;
+	}
+}
+
+//-----------------------------------------------------------------------------
 // Purpose: Called everytime the player respawns
 //-----------------------------------------------------------------------------
 void CBasePlayer::Spawn( void )
@@ -5059,6 +5262,9 @@ void CBasePlayer::Spawn( void )
 	UpdateLastKnownArea();
 
 	m_weaponFiredTimer.Invalidate();
+
+	SetPlayerClass(cl_class.GetInt());
+	SetClassHealth();
 }
 
 void CBasePlayer::Activate( void )
@@ -6184,7 +6390,7 @@ void CBasePlayer::CheatImpulseCommands( int iImpulse )
 		GiveNamedItem( "weapon_357" );
 		GiveNamedItem( "weapon_crossbow" );
 #ifdef HL2_EPISODIC
-		// GiveNamedItem( "weapon_magnade" );
+		// GiveNamedItem( "weapon_magnade" ); MAGNUSSON GRENade magnade xdxxdxdxdxd XD
 #endif
 		if ( GetHealth() < 100 )
 		{

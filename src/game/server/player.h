@@ -115,6 +115,23 @@ enum PlayerPhysFlag_e
 };
 
 //
+// Classes
+//
+
+enum Classes
+{
+	CLASS_UNASSIGNED = 0,
+	CLASS_COMMANDER,
+	CLASS_SUPPORTER,
+	CLASS_BUILDER,
+	CLASS_RASHER,
+	CLASS_SOLDIER,
+	CLASS_FLAMER,
+	CLASS_SNIPER,
+	CLASS_MEDIC,
+};
+
+//
 // generic player
 //
 //-----------------------------------------------------
@@ -242,6 +259,20 @@ protected:
 	// HACK FOR BOTS
 	friend class CBotManager;
 	static edict_t *s_PlayerEdict; // must be set before calling constructor
+
+private:
+	int m_iClass; // Unassigned - default
+
+public:
+	//Class system functions:
+
+	virtual void	SetPlayerClass(int m_pClass) { m_iClass = m_pClass; };
+	virtual int		GetPlayerClass() { return m_iClass; };
+
+	virtual void	SetClassHealth(void);
+	virtual void	GiveClassItems(void);
+	virtual void	SetClassSpeed(void);
+
 public:
 	DECLARE_DATADESC();
 	DECLARE_SERVERCLASS();
