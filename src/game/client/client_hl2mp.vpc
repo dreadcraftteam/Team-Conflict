@@ -16,6 +16,7 @@ $Configuration
 	{
 		$AdditionalIncludeDirectories		"$BASE;hl2mp\ui,.\hl2mp,$SRCDIR\game\shared\hl2mp,.\hl2,.\hl2\elements,$SRCDIR\game\shared\hl2"
 		$PreprocessorDefinitions			"$BASE;HL2MP;HL2_CLIENT_DLL"
+		$TreatWarningsAsErrors			    "No (/WX-)"
 	}
 }
 
@@ -50,6 +51,11 @@ $Project "Client (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_classmenu.h"
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_teammenu.cpp"
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_teammenu.h"
+			}
+			$Folder "Weapons"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.h"
 			}
 		}
 

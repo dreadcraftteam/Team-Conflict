@@ -49,6 +49,9 @@
     <Filter Include="Source Files\TC DLL\NextBot\Player">
       <UniqueIdentifier>{A4F19D52-07DA-DF64-825E-E4BAC8B53517}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC DLL\Weapons">
+      <UniqueIdentifier>{AF06E64C-8DF1-8310-E1D9-1D544C7907CE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\temporary entities">
       <UniqueIdentifier>{EE0D1E04-BD60-DE4A-710E-2457C590BA24}</UniqueIdentifier>
     </Filter>
@@ -1901,6 +1904,9 @@
     <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.h">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.h">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClInclude>
     <ClInclude Include="plasma.h">
       <Filter>Source Files\temporary entities</Filter>
     </ClInclude>
@@ -3543,6 +3549,9 @@
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.cpp">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="basetempentity.cpp">
       <Filter>Source Files\temporary entities</Filter>

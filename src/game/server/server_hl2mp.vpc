@@ -17,6 +17,7 @@ $Configuration
 	{
 		$AdditionalIncludeDirectories	"$BASE;$SRCDIR\game\shared\hl2,.\hl2,.\hl2mp,$SRCDIR\game\shared\hl2mp"
 		$PreprocessorDefinitions		"$BASE;HL2MP;HL2_DLL"
+		$TreatWarningsAsErrors			"No (/WX-)"
 	}
 }
 
@@ -86,6 +87,11 @@ $Project "Server (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.h"
+			}
+			$Folder "Weapons"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.h"
 			}
 		}
 		

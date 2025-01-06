@@ -5045,14 +5045,14 @@ void CBasePlayer::GiveClassItems(void)
 	break;
 	case CLASS_SUPPORTER:
 	{
-		GiveNamedItem("weapon_ar2");
-		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_smg1");
+		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}
 	break;
 	case CLASS_BUILDER:
 	{
-		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_smg1");
 		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}
@@ -5066,28 +5066,28 @@ void CBasePlayer::GiveClassItems(void)
 	break;
 	case CLASS_SOLDIER:
 	{
-		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_smg1");
 		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}
 	break;
 	case CLASS_FLAMER:
 	{
-		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_smg1");
 		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}
 	break;
 	case CLASS_SNIPER:
 	{
-		GiveNamedItem("weapon_pistol");
+		GiveNamedItem("weapon_smg1");
 		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}
 	break;
 	case CLASS_MEDIC:
 	{
-		GiveNamedItem("weapon_pistol");	
+		GiveNamedItem("weapon_smg1");
 		GiveNamedItem("weapon_shotgun");
 		GiveNamedItem("weapon_crowbar");
 	}

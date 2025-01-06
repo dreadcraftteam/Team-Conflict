@@ -589,6 +589,42 @@ public:
 
 LINK_ENTITY_TO_CLASS( item_ammo_ar2_altfire, CItem_AR2AltFireRound );
 
+// ========================================================================
+//	>> CItem_GaussEnergy
+// ========================================================================
+class CItem_GaussEnergy : public CItem
+{
+public:
+	DECLARE_CLASS(CItem_GaussEnergy, CItem);
+
+	void Precache(void)
+	{
+		PrecacheModel("models/items/battery.mdl");
+	}
+
+	void Spawn(void)
+	{
+		Precache();
+		SetModel("models/items/battery.mdl");
+		BaseClass::Spawn();
+	}
+
+	bool MyTouch(CBasePlayer* pPlayer)
+	{
+		if (ITEM_GiveAmmo(pPlayer, SIZE_AMMO_GAUSSGUN, "GaussEnergy"))
+		{
+			if (g_pGameRules->ItemShouldRespawn(this) == GR_ITEM_RESPAWN_NO)
+			{
+				UTIL_Remove(this);
+			}
+			return true;
+		}
+		return false;
+	}
+};
+
+LINK_ENTITY_TO_CLASS(item_ammo_gaussenergy, CItem_GaussEnergy);
+
 // ==================================================================
 // Ammo crate which will supply infinite ammo of the specified type
 // ==================================================================
@@ -607,6 +643,7 @@ enum
 	AMMOCRATE_AR2_ALTFIRE,
 	AMMOCRATE_SMG_ALTFIRE,
 	NUM_AMMO_CRATE_TYPES,
+	AMMOCRATE_GAUSSGUN,
 };
 
 // Ammo crate
