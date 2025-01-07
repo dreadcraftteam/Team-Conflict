@@ -206,9 +206,7 @@ void VGui_CreateGlobalPanels( void )
 	internalCenterPrint->Create( gameToolParent );
 	loadingdisc->Create( gameToolParent );
 	messagechars->Create( gameToolParent );
-#if 0
-	classmenu->Create(toolParent);
-#endif
+
 	// Debugging or related tool
 	fps->Create( toolParent );
 #if defined( TRACK_BLOCKING_IO )
@@ -229,9 +227,7 @@ void VGui_CreateGlobalPanels( void )
 void VGui_Shutdown()
 {
 	VGUI_DestroyClientDLLRootPanel();
-#if 0
-	classmenu->Destroy();
-#endif
+
 #ifndef _X360
 	MP3Player_Destroy();
 #endif

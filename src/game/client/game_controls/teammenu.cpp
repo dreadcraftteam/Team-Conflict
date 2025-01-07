@@ -92,7 +92,7 @@ CTeamMenu::CTeamMenu(IViewPort *pViewPort) : Frame(NULL, PANEL_TEAM )
 	m_pMapInfoHTML = new HTML( this, "MapInfoHTML");
 #endif
 
-	LoadControlSettings("Resource/UI/TeamMenu.res");
+	//LoadControlSettings("Resource/UI/TeamMenu.res");
 	InvalidateLayout();
 
 	m_szMapName[0] = 0;
@@ -442,4 +442,15 @@ void CTeamMenu::OnKeyCodePressed(KeyCode code)
 	{
 		BaseClass::OnKeyCodePressed( code );
 	}
+}
+
+void CTeamMenu::OnCommand(const char* command)
+{
+	if (Q_stricmp(command, "vguicancel"))
+	{
+		engine->ClientCmd(const_cast<char*>(command));
+	}
+	Close();
+	gViewPortInterface->ShowBackGround(false);
+	BaseClass::OnCommand(command);
 }

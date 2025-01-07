@@ -18,6 +18,9 @@
 #include "hl2mpclientscoreboard.h"
 #include "hl2mptextwindow.h"
 #include "ienginevgui.h"
+#include "TC-DLL\VGUI\vgui_classmenu.h"
+#include "TC-DLL\VGUI\vgui_teammenu.h"
+#include "viewrender.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -67,29 +70,51 @@ int ClientModeHL2MPNormal::GetDeathMessageStartHeight( void )
 	return m_pViewport->GetDeathMessageStartHeight();
 }
 
+void ClientModeHL2MPNormal::Viewport::CreateDefaultPanels()
+{
+	AddNewPanel(CreatePanelByName(PANEL_TEAM), "PANEL_TEAM");
+	AddNewPanel(CreatePanelByName(PANEL_CLASS), "PANEL_CLASS");
+	AddNewPanel(CreatePanelByName(PANEL_SCOREBOARD), "PANEL_SCOREBOARD");
+}
+
 IViewPortPanel* CHudViewport::CreatePanelByName( const char *szPanelName )
 {
 	IViewPortPanel* newpanel = NULL;
 
-	if ( Q_strcmp( PANEL_SCOREBOARD, szPanelName) == 0 )
+	if ( Q_strcmp(PANEL_TEAM, szPanelName) == 0 )
+	{
+	//	newpanel = new CFortressTeamMenu( this );
+		return newpanel;
+	}
+	else if ( Q_strcmp(PANEL_CLASS, szPanelName) == 0 )
+	{
+		newpanel = new TCClassMenu( this );
+		return newpanel;
+	}
+	else if ( Q_strcmp(PANEL_SCOREBOARD, szPanelName) == 0 )
 	{
 		newpanel = new CHL2MPClientScoreBoardDialog( this );
-		return newpanel;
-	}
-	else if ( Q_strcmp(PANEL_INFO, szPanelName) == 0 )
-	{
-		newpanel = new CHL2MPTextWindow( this );
-		return newpanel;
-	}
-	else if ( Q_strcmp(PANEL_SPECGUI, szPanelName) == 0 )
-	{
-		newpanel = new CHL2MPSpectatorGUI( this );	
 		return newpanel;
 	}
 
 	
 	return BaseClass::CreatePanelByName( szPanelName ); 
 }
+
+/*IViewPortPanel* ClientModeTFNormal::Viewport::CreatePanelByName(const char* szPanelName)
+{
+	if (!V_strcmp(PANEL_TEAM, szPanelName)) {
+		return new CFortressTeamMenu(this);
+	}
+	else if (!V_strcmp(PANEL_CLASS, szPanelName)) {
+		return new CFortressClassMenu(this);
+	}
+	else if (!V_strcmp(PANEL_SCOREBOARD, szPanelName)) {
+		return new CHL2MPClientScoreBoardDialog(this);
+	}
+
+	return BaseClass::CreatePanelByName(szPanelName);
+}*/
 
 //-----------------------------------------------------------------------------
 // ClientModeHLNormal implementation

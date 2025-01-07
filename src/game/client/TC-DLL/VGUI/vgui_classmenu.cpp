@@ -1,7 +1,7 @@
 ﻿//The following include files are necessary to allow your MyPanel.cpp to compile.
 #include "cbase.h"
 
-#if 0
+#if 1
 #include "vgui_classmenu.h"
 using namespace vgui;
 #include <vgui/IVGui.h>
@@ -114,40 +114,6 @@ CClassMenu::CClassMenu(vgui::VPANEL parent)
 
 	InvalidateLayout();
 }
-
-//Class: CClassMenuInterface Class. Used for construction.
-class CClassMenuInterface : public TCClassMenu
-{
-private:
-	CClassMenu* TCClassMenu;
-public:
-	CClassMenuInterface()
-	{
-		TCClassMenu = NULL;
-	}
-	void Create(vgui::VPANEL parent)
-	{
-		TCClassMenu = new CClassMenu(parent);
-	}
-	void Destroy()
-	{
-		if (TCClassMenu)
-		{
-			TCClassMenu->SetParent((vgui::Panel*)NULL);
-			delete TCClassMenu;
-		}
-	}
-	void Activate(void)
-	{
-		if (TCClassMenu)
-		{
-			TCClassMenu->Activate();
-		}
-	}
-};
-static CClassMenuInterface g_TCClassMenu;
-TCClassMenu* classmenu = (TCClassMenu*)&g_TCClassMenu;
-
 ConVar cl_classmenu("cl_classmenu", "0", FCVAR_CLIENTDLL, "Sets the state of classMenu <state>");
 
 void CClassMenu::OnTick()
@@ -156,12 +122,6 @@ void CClassMenu::OnTick()
 	SetVisible(cl_classmenu.GetBool());
 }
 
-CON_COMMAND(OpenClassMenu, "Opens class menu")
-{
-	cl_classmenu.SetValue(!cl_classmenu.GetBool());
-	classmenu->Activate();
-};
-
 void CClassMenu::OnCommand(const char* pcCommand)
 {
 	BaseClass::OnCommand(pcCommand);
@@ -169,4 +129,6 @@ void CClassMenu::OnCommand(const char* pcCommand)
 	if (!Q_stricmp(pcCommand, "turnoff"))
 		cl_classmenu.SetValue(0);
 }
+
+
 #endif

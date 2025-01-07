@@ -68,7 +68,8 @@ protected:
 	virtual void SetLabelText(const char *textEntryName, const char *text);
 	virtual void LoadMapPage( const char *mapName );
 	// virtual void MakeTeamButtons( void );
-	
+	virtual void OnCommand(const char* command);
+
 	// command callbacks
 	// MESSAGE_FUNC_INT( OnTeamButton, "TeamButton", team );
 
