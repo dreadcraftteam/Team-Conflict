@@ -1,7 +1,7 @@
 ﻿//The following include files are necessary to allow your MyPanel.cpp to compile.
 #include "cbase.h"
 
-#if 1
+#if 0
 #include "vgui_classmenu.h"
 using namespace vgui;
 #include <vgui/IVGui.h>
