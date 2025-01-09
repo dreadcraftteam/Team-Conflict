@@ -1160,11 +1160,11 @@ bool CBaseGameStats_Driver::AddBaseDataForSend( KeyValues *pKV, StatSendType_t s
 
 #ifndef	NO_STEAM
 			// We can now get the game language from steam :)
-	//		if ( steamapicontext && steamapicontext->SteamApps() )
-	//		{
-//				const char *currentLanguage = steamapicontext->SteamApps()->GetCurrentGameLanguage();
-		//		pKV->SetString( "Language", currentLanguage ? currentLanguage : "unknown" );
-		//	}
+			if ( steamapicontext && steamapicontext->SteamApps() )
+			{
+				const char *currentLanguage = steamapicontext->SteamApps()->GetCurrentGameLanguage();
+				pKV->SetString( "Language", currentLanguage ? currentLanguage : "unknown" );
+			}
 #endif
 
 			// We need to filter out client side dev work from playtest work for the stat reporting.

@@ -2612,16 +2612,16 @@ bool CHLClient::IsConnectedUserInfoChangeAllowed( IConVar *pCvar )
 CSteamID GetSteamIDForPlayerIndex( int iPlayerIndex )
 {
 	player_info_t pi;
-	//if ( steamapicontext && steamapicontext->SteamUtils() )
-	//{
-	//	if ( engine->GetPlayerInfo( iPlayerIndex, &pi ) )
-	//	{
-	//		if ( pi.friendsID )
-	///		{
-//	//			return CSteamID( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
-	//		}
-	//	}
-	//}
+	if ( steamapicontext && steamapicontext->SteamUtils() )
+	{
+		if ( engine->GetPlayerInfo( iPlayerIndex, &pi ) )
+		{
+			if ( pi.friendsID )
+			{
+				return CSteamID( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
+			}
+		}
+	}
 	return CSteamID();
 }
 

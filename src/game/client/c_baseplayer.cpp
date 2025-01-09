@@ -2831,21 +2831,21 @@ bool C_BasePlayer::GetSteamID( CSteamID *pID )
 	player_info_t pi;
 	if ( engine->GetPlayerInfo( entindex(), &pi ) )
 	{
-//		if ( pi.friendsID && steamapicontext && steamapicontext->SteamUtils() )
-	//	{
+		if ( pi.friendsID && steamapicontext && steamapicontext->SteamUtils() )
+		{
 #if 1	// new
-	//		static EUniverse universe = k_EUniverseInvalid;
-//
-	//		if ( universe == k_EUniverseInvalid )
-//	/			universe = steamapicontext->SteamUtils()->GetConnectedUniverse();
+			static EUniverse universe = k_EUniverseInvalid;
 
-//pID->InstancedSet( pi.friendsID, 1, universe, k_EAccountTypeIndividual );
+			if ( universe == k_EUniverseInvalid )
+				universe = steamapicontext->SteamUtils()->GetConnectedUniverse();
+
+			pID->InstancedSet( pi.friendsID, 1, universe, k_EAccountTypeIndividual );
 #else	// old
-		//	pID->InstancedSet( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
+			pID->InstancedSet( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
 #endif
 
-		//	return true;
-		//}
+			return true;
+		}
 	}
 	return false;
 }

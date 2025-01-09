@@ -40,9 +40,6 @@
     <Filter Include="Source Files\HL2MP\Weapons">
       <UniqueIdentifier>{382A0C79-1859-D554-1EB7-DCBE8F115956}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\P2P">
-      <UniqueIdentifier>{1ABEED18-79A8-71FB-20DF-A4CF80F858EC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Precompiled Header">
       <UniqueIdentifier>{A7D26A13-21F4-C6B5-5922-8A4FB05AF07D}</UniqueIdentifier>
     </Filter>
@@ -97,12 +94,6 @@
       <Filter>Link Libraries</Filter>
     </Library>
     <Library Include="..\..\lib\public\particles.lib">
-      <Filter>Link Libraries</Filter>
-    </Library>
-    <Library Include="..\..\p2p\lib\SDL2.lib">
-      <Filter>Link Libraries</Filter>
-    </Library>
-    <Library Include="..\..\p2p\lib\SDL2_net.lib">
       <Filter>Link Libraries</Filter>
     </Library>
     <Library Include="..\..\lib\public\steam_api.lib">
@@ -1949,21 +1940,6 @@
     <ClInclude Include="..\..\game\shared\hl2mp\weapon_slam.h">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\p2p\src\p2p.h">
-      <Filter>Source Files\P2P</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\p2p\src\p2p_client.h">
-      <Filter>Source Files\P2P</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\p2p\src\p2p_connection.h">
-      <Filter>Source Files\P2P</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\p2p\src\p2p_host.h">
-      <Filter>Source Files\P2P</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\p2p\src\p2p_system.h">
-      <Filter>Source Files\P2P</Filter>
-    </ClInclude>
     <ClInclude Include="sixense\in_sixense.h">
       <Filter>Source Files\Sixense</Filter>
     </ClInclude>
@@ -3346,18 +3322,6 @@
     <ClCompile Include="..\..\game\shared\hl2mp\weapon_stunstick.cpp">
       <Filter>Source Files\HL2MP\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\p2p\src\p2p_client.cpp">
-      <Filter>Source Files\P2P</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\p2p\src\p2p_connection.cpp">
-      <Filter>Source Files\P2P</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\p2p\src\p2p_host.cpp">
-      <Filter>Source Files\P2P</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\p2p\src\p2p_system.cpp">
-      <Filter>Source Files\P2P</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\Precompiled Header</Filter>
     </ClCompile>
@@ -3599,9 +3563,6 @@
       <Filter>VPC Scripts</Filter>
     </None>
     <None Include="..\..\vpc_scripts\loadaddress.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\p2p\src\p2p.vpc">
       <Filter>VPC Scripts</Filter>
     </None>
     <None Include="..\..\vpc_scripts\platform_dirs.vpc">
