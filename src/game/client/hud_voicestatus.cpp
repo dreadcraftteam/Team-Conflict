@@ -248,11 +248,11 @@ void CHudVoiceStatus::OnThink( void )
 				player_info_t pi;
 				if ( engine->GetPlayerInfo( iPlayerIndex, &pi ) )
 				{
-					if ( steamapicontext != NULL && steamapicontext->SteamUtils() != NULL )
-					{
-						CSteamID steamIDForPlayer( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
-						activeSpeaker.pAvatar->SetAvatarSteamID(steamIDForPlayer, k_EAvatarSize32x32);
-					}
+//					if ( steamapicontext != NULL && steamapicontext->SteamUtils() != NULL )
+				///	{
+				//		CSteamID steamIDForPlayer( pi.friendsID, 1, steamapicontext->SteamUtils()->GetConnectedUniverse(), k_EAccountTypeIndividual );
+				//		activeSpeaker.pAvatar->SetAvatarSteamID(steamIDForPlayer, k_EAvatarSize32x32);
+				//	}
 				}
 
 				activeSpeaker.pAvatar->SetAvatarSize( avatar_wide, avatar_tall);

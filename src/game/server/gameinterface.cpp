@@ -136,13 +136,13 @@ extern ConVar commentary;
 #ifndef NO_STEAM
 // this context is not available on dedicated servers
 // WARNING! always check if interfaces are available before using
-static CSteamAPIContext s_SteamAPIContext;	
-CSteamAPIContext *steamapicontext = &s_SteamAPIContext;
+//static CSteamAPIContext s_SteamAPIContext;	
+//CSteamAPIContext *steamapicontext = &s_SteamAPIContext;
 
 // this context is not available on a pure client connected to a remote server.
 // WARNING! always check if interfaces are available before using
-static CSteamGameServerAPIContext s_SteamGameServerAPIContext;
-CSteamGameServerAPIContext *steamgameserverapicontext = &s_SteamGameServerAPIContext;
+//static CSteamGameServerAPIContext s_SteamGameServerAPIContext;
+//CSteamGameServerAPIContext *steamgameserverapicontext = &s_SteamGameServerAPIContext;
 #endif
 
 IUploadGameStats *gamestatsuploader = NULL;
@@ -577,8 +577,8 @@ bool CServerGameDLL::DLLInit( CreateInterfaceFn appSystemFactory,
 		return false;
 
 #ifndef _X360
-	s_SteamAPIContext.Init();
-	s_SteamGameServerAPIContext.Init();
+	//s_SteamAPIContext.Init();
+	//s_SteamGameServerAPIContext.Init();
 #endif
 
 	// init each (seperated for ease of debugging)
@@ -791,8 +791,8 @@ void CServerGameDLL::DLLShutdown( void )
 #endif
 
 #ifndef _X360
-	s_SteamAPIContext.Clear(); // Steam API context shutdown
-	s_SteamGameServerAPIContext.Clear();
+//	s_SteamAPIContext.Clear(); // Steam API context shutdown
+	//s_SteamGameServerAPIContext.Clear();
 #endif	
 
 	gameeventmanager = NULL;
@@ -1145,12 +1145,12 @@ void CServerGameDLL::ServerActivate( edict_t *pEdictList, int edictCount, int cl
 void CServerGameDLL::GameServerSteamAPIActivated( void )
 {
 #ifndef NO_STEAM
-	steamgameserverapicontext->Clear();
-	steamgameserverapicontext->Init();
-	if ( steamgameserverapicontext->SteamGameServer() && engine->IsDedicatedServer() )
-	{
-		steamgameserverapicontext->SteamGameServer()->GetGameplayStats();
-	}
+	//steamgameserverapicontext->Clear();
+	//steamgameserverapicontext->Init();
+	//if ( steamgameserverapicontext->SteamGameServer() && engine->IsDedicatedServer() )
+	//{
+	//	steamgameserverapicontext->SteamGameServer()->GetGameplayStats();
+	//}
 #endif
 
 #ifdef TF_DLL
@@ -1166,10 +1166,10 @@ void CServerGameDLL::GameServerSteamAPIActivated( void )
 void CServerGameDLL::GameServerSteamAPIShutdown( void )
 {
 #if !defined( NO_STEAM )
-	if ( steamgameserverapicontext )
-	{
-		steamgameserverapicontext->Clear();
-	}
+	//if ( steamgameserverapicontext )
+	//{
+	//	steamgameserverapicontext->Clear();
+	//}
 #endif
 #ifdef TF_DLL
 	GCClientSystem()->Shutdown();
@@ -1364,7 +1364,7 @@ void CServerGameDLL::LevelShutdown( void )
 #ifndef NO_STEAM
 	IGameSystem::LevelShutdownPreClearSteamAPIContextAllSystems();
 
-	steamgameserverapicontext->Clear();
+	//steamgameserverapicontext->Clear();
 #endif
 
 	g_pServerBenchmark->EndBenchmark();

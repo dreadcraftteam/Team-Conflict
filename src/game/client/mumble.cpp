@@ -204,25 +204,25 @@ void CMumbleSystem::PostRender()
 		m_bHasSetPlayerUniqueId = false;
 	}
 
-	if ( !m_bHasSetPlayerUniqueId && steamapicontext && steamapicontext->SteamUser() )
-	{
-		CSteamID steamid = steamapicontext->SteamUser()->GetSteamID();
-		if ( steamid.IsValid() )
-		{
-			int unTeam = pPlayer ? pPlayer->GetTeamNumber() : 0;
-			char szSteamId[256];
-			V_sprintf_safe( szSteamId, "universe:%u;account_type:%u;id:%u;instance:%u;team:%d", steamid.GetEUniverse(), steamid.GetEAccountType(), steamid.GetAccountID(), steamid.GetUnAccountInstance(), unTeam );
+	//if ( !m_bHasSetPlayerUniqueId && steamapicontext && steamapicontext->SteamUser() )
+	//{
+	//	CSteamID steamid = steamapicontext->SteamUser()->GetSteamID();
+	//	if ( steamid.IsValid() )
+	//	{
+	//		int unTeam = pPlayer ? pPlayer->GetTeamNumber() : 0;
+	//		char szSteamId[256];
+	//		V_sprintf_safe( szSteamId, "universe:%u;account_type:%u;id:%u;instance:%u;team:%d", steamid.GetEUniverse(), steamid.GetEAccountType(), steamid.GetAccountID(), steamid.GetUnAccountInstance(), unTeam );
 
-			wchar_t wcsSteamId[256];
-			Q_UTF8ToUnicode( szSteamId, wcsSteamId, sizeof(wcsSteamId) );
+	//		wchar_t wcsSteamId[256];
+	//		Q_UTF8ToUnicode( szSteamId, wcsSteamId, sizeof(wcsSteamId) );
 
-			// Identifier which uniquely identifies a certain player in a context.
-			V_wcscpy_safe( g_pMumbleMemory->identity, wcsSteamId );
+	//		// Identifier which uniquely identifies a certain player in a context.
+	//		V_wcscpy_safe( g_pMumbleMemory->identity, wcsSteamId );
 
-			m_bHasSetPlayerUniqueId = true;
-			m_nTeamSetInUniqueId = unTeam;
-		}
-	}
+	//		m_bHasSetPlayerUniqueId = true;
+	//		m_nTeamSetInUniqueId = unTeam;
+	//	}
+	//}
 
 	// Context should be equal for players which should be able to hear each other positional and
 	// differ for those who shouldn't (e.g. it could contain the server+port and team)

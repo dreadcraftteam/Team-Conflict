@@ -88,7 +88,7 @@ IViewPortPanel* CHudViewport::CreatePanelByName( const char *szPanelName )
 	}
 	else if ( Q_strcmp(PANEL_CLASS, szPanelName) == 0 )
 	{
-		newpanel = new TCClassMenu( this );
+//		newpanel = new TCClassMenu( this );
 		return newpanel;
 	}
 	else if ( Q_strcmp(PANEL_SCOREBOARD, szPanelName) == 0 )
