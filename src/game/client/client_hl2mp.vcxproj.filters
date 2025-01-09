@@ -25,6 +25,9 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{BA03E055-4FA2-FCE3-8A1C-D348547D379C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Coplay">
+      <UniqueIdentifier>{1D28E765-F0E1-0839-8D25-D79F6AD822B0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\game_controls">
       <UniqueIdentifier>{1E7DB91A-DC0A-B17F-617D-4C4FB3FA7A3E}</UniqueIdentifier>
     </Filter>
@@ -94,6 +97,12 @@
       <Filter>Link Libraries</Filter>
     </Library>
     <Library Include="..\..\lib\public\particles.lib">
+      <Filter>Link Libraries</Filter>
+    </Library>
+    <Library Include="..\..\coplay\lib\SDL2.lib">
+      <Filter>Link Libraries</Filter>
+    </Library>
+    <Library Include="..\..\coplay\lib\SDL2_net.lib">
       <Filter>Link Libraries</Filter>
     </Library>
     <Library Include="..\..\lib\public\steam_api.lib">
@@ -1847,6 +1856,21 @@
     <ClInclude Include="viewpostprocess.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay.h">
+      <Filter>Source Files\Coplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_client.h">
+      <Filter>Source Files\Coplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_connection.h">
+      <Filter>Source Files\Coplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_host.h">
+      <Filter>Source Files\Coplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_system.h">
+      <Filter>Source Files\Coplay</Filter>
+    </ClInclude>
     <ClInclude Include="game_controls\basemodel_panel.h">
       <Filter>Source Files\game_controls</Filter>
     </ClInclude>
@@ -3013,6 +3037,18 @@
     <ClCompile Include="WorldDimsProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_client.cpp">
+      <Filter>Source Files\Coplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_connection.cpp">
+      <Filter>Source Files\Coplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_host.cpp">
+      <Filter>Source Files\Coplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
+      <Filter>Source Files\Coplay</Filter>
+    </ClCompile>
     <ClCompile Include="game_controls\basemodel_panel.cpp">
       <Filter>Source Files\game_controls</Filter>
     </ClCompile>
@@ -3560,6 +3596,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\game\client\client_base.vpc">
+      <Filter>VPC Scripts</Filter>
+    </None>
+    <None Include="..\..\coplay\src\coplay.vpc">
       <Filter>VPC Scripts</Filter>
     </None>
     <None Include="..\..\vpc_scripts\loadaddress.vpc">
