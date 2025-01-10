@@ -188,7 +188,12 @@ void CHL2MP_Player::GiveDefaultItems( void )
 	CBasePlayer::GiveAmmo(1, "grenade");
 	CBasePlayer::GiveAmmo(2, "slam");
 
-	BaseClass::GiveClassItems();
+	const char* szClass = engine->GetClientConVarValue(ENTINDEX(edict()), "tc_class");
+
+	SetPlayerClass(atoi(szClass));
+	SetClassHealth();
+	SetClassSpeed();
+	GiveClassItems();
 }
 
 void CHL2MP_Player::PickDefaultSpawnTeam( void )
@@ -290,8 +295,6 @@ void CHL2MP_Player::Spawn(void)
 	SetPlayerUnderwater(false);
 
 	m_bReady = false;
-
-	BaseClass::SetClassSpeed();
 }
 
 void CHL2MP_Player::PickupObject( CBaseEntity *pObject, bool bLimitMassAndSize )

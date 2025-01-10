@@ -43,6 +43,8 @@ END_PREDICTION_DATA()
 static ConVar cl_playermodel( "cl_playermodel", "none", FCVAR_USERINFO | FCVAR_ARCHIVE | FCVAR_SERVER_CAN_EXECUTE, "Default Player Model");
 static ConVar cl_defaultweapon( "cl_defaultweapon", "weapon_physcannon", FCVAR_USERINFO | FCVAR_ARCHIVE, "Default Spawn Weapon");
 
+static ConVar tc_class("tc_class", "0", FCVAR_USERINFO | FCVAR_CLIENTDLL | FCVAR_SERVER_CAN_EXECUTE, "the current class of the player");
+
 void SpawnBlood (Vector vecSpot, const Vector &vecDir, int bloodColor, float flDamage);
 
 C_HL2MP_Player::C_HL2MP_Player() : m_PlayerAnimState( this ), m_iv_angEyeAngles( "C_HL2MP_Player::m_iv_angEyeAngles" )

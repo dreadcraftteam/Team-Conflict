@@ -148,6 +148,11 @@
 #include "fbxsystem/fbxsystem.h"
 #endif
 
+// discord includes
+#include "discord_register.h"
+#include "discord_rpc.h"
+#include <time.h>
+
 extern vgui::IInputInternal *g_InputInternal;
 
 //=============================================================================
@@ -332,6 +337,10 @@ static ConVar s_CV_ShowParticleCounts("showparticlecounts", "0", 0, "Display num
 static ConVar s_cl_team("cl_team", "default", FCVAR_USERINFO|FCVAR_ARCHIVE, "Default team when joining a game");
 static ConVar s_cl_class("cl_class", "default", FCVAR_USERINFO|FCVAR_ARCHIVE, "Default class when joining a game");
 
+#define DISCORD_APP_ID "1247844323500888166"
+
+static int64_t startTimestamp = time(0);
+
 #ifdef HL1MP_CLIENT_DLL
 static ConVar s_cl_load_hl1_content("cl_load_hl1_content", "0", FCVAR_ARCHIVE, "Mount the content from Half-Life: Source if possible");
 #endif
@@ -339,6 +348,8 @@ static ConVar s_cl_load_hl1_content("cl_load_hl1_content", "0", FCVAR_ARCHIVE, "
 
 // Physics system
 bool g_bLevelInitialized;
+bool g_bDescordRPCINIT = Discord_Initialize;
+bool g_bDescordRPCREG = Discord_Register;
 bool g_bTextMode = false;
 class IClientPurchaseInterfaceV2 *g_pClientPurchaseInterface = (class IClientPurchaseInterfaceV2 *)(&g_bTextMode + 156);
 
@@ -837,6 +848,44 @@ bool IsEngineThreaded()
 }
 
 //-----------------------------------------------------------------------------
+// Discord RPC
+//-----------------------------------------------------------------------------
+static void HandleDiscordReady(const DiscordUser* connectedUser)
+{
+	DevMsg("Discord: Connected to user %s#%s - %s\n",
+		connectedUser->username,
+		connectedUser->discriminator,
+		connectedUser->userId);
+}
+
+static void HandleDiscordDisconnected(int errcode, const char* message)
+{
+	DevMsg("Discord: Disconnected (%d: %s)\n", errcode, message);
+}
+
+static void HandleDiscordError(int errcode, const char* message)
+{
+	DevMsg("Discord: Error (%d: %s)\n", errcode, message);
+}
+
+static void HandleDiscordJoin(const char* secret)
+{
+	char szCommand[128];
+	Q_snprintf(szCommand, sizeof(szCommand), "connect %s\n", secret);
+	engine->ExecuteClientCmd(szCommand);
+}
+
+static void HandleDiscordSpectate(const char* secret)
+{
+	// Not implemented
+}
+
+static void HandleDiscordJoinRequest(const DiscordUser* request)
+{
+	Discord_Respond(request->userId, DISCORD_REPLY_YES);
+}
+
+//-----------------------------------------------------------------------------
 // Constructor
 //-----------------------------------------------------------------------------
 
@@ -932,6 +981,24 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CreateInterfaceFn physi
 	if ( ( gamestatsuploader = (IUploadGameStats *)appSystemFactory( INTERFACEVERSION_UPLOADGAMESTATS, NULL )) == NULL )
 		return false;
 #endif
+
+	// Discord RPC
+	DiscordEventHandlers handlers;
+	memset(&handlers, 0, sizeof(handlers));
+
+	handlers.ready = HandleDiscordReady;
+	handlers.disconnected = HandleDiscordDisconnected;
+	handlers.errored = HandleDiscordError;
+	handlers.joinGame = HandleDiscordJoin;
+	handlers.spectateGame = HandleDiscordSpectate;
+	handlers.joinRequest = HandleDiscordJoinRequest;
+
+	char appid[255];
+	sprintf(appid, "%d", engine->GetAppID());
+	char command[512];
+	V_snprintf(command, sizeof(command), "%s -game \"%s\" -novid -steam\n", CommandLine()->GetParm(0), CommandLine()->ParmValue("-game"));
+	Discord_Register(DISCORD_APP_ID, command);
+	Discord_Initialize(DISCORD_APP_ID, &handlers, 1, appid);
 
 #if defined( REPLAY_ENABLED )
 	if ( IsPC() && (g_pEngineReplay = (IEngineReplay *)appSystemFactory( ENGINE_REPLAY_INTERFACE_VERSION, NULL )) == NULL )
@@ -1089,6 +1156,31 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CreateInterfaceFn physi
 	HookHapticMessages(); // Always hook the messages
 #endif
 
+	if (!g_bDescordRPCINIT)
+	{
+		ConColorMsg(Color(102, 178, 255, 255), "[DISCORD] RPC initialized successfully.\n");
+	}
+
+	if (!g_bDescordRPCREG)
+	{
+		ConColorMsg(Color(102, 178, 255, 255), "[DISCORD] RPC registered successfully.\n");
+	}
+
+	//LoadLua();
+
+
+	if (!g_bTextMode)
+	{
+		DiscordRichPresence discordPresence;
+		memset(&discordPresence, 0, sizeof(discordPresence));
+
+		//discordPresence.state = "Main Menu";
+		discordPresence.startTimestamp = startTimestamp;
+		discordPresence.partySize = 0;
+		discordPresence.largeImageKey = "icon";
+		Discord_UpdatePresence(&discordPresence);
+	}
+
 	return true;
 }
 
@@ -1199,6 +1291,9 @@ void CHLClient::Shutdown( void )
 	
 	gHUD.Shutdown();
 	VGui_Shutdown();
+
+	// Discord RPC
+	Discord_Shutdown();
 	
 	ParticleMgr()->Term();
 	
@@ -1595,6 +1690,33 @@ void CHLClient::LevelInitPreEntity( char const* pMapName )
 	tempents->LevelInit();
 	ResetToneMapping(1.0);
 
+	// Discord RPC
+	if (!g_bTextMode)
+	{
+		DiscordRichPresence discordPresence;
+		memset(&discordPresence, 0, sizeof(discordPresence));
+
+		int maxPlayers = gpGlobals->maxClients;
+
+		// PracticeMedicine: assholery shitty stuff but it will work
+
+		if (engine->IsConnected())
+		{
+			char state[128];
+			sprintf(state, "%s", pMapName, "\n");
+
+			discordPresence.state = state;
+			discordPresence.startTimestamp = startTimestamp;
+			discordPresence.joinSecret = NULL;
+			discordPresence.partyMax = 0;
+			discordPresence.partyId = NULL;
+			discordPresence.largeImageKey = "icon";
+			Discord_UpdatePresence(&discordPresence);
+		}
+
+		Discord_UpdatePresence(&discordPresence);
+	}
+
 	IGameSystem::LevelInitPreEntityAllSystems(pMapName);
 
 #ifdef USES_ECON_ITEMS
@@ -1698,6 +1820,20 @@ void CHLClient::LevelShutdown( void )
 
 	// Now release/delete the entities
 	cl_entitylist->Release();
+
+	// Discord RPC
+	if (!g_bTextMode)
+	{
+		DiscordRichPresence discordPresence;
+		memset(&discordPresence, 0, sizeof(discordPresence));
+
+		discordPresence.startTimestamp = startTimestamp;
+		discordPresence.joinSecret = NULL;
+		discordPresence.partyMax = 0;
+		discordPresence.partyId = NULL;
+		discordPresence.largeImageKey = "icon";
+		Discord_UpdatePresence(&discordPresence);
+	}
 
 	C_BaseEntityClassList *pClassList = s_pClassLists;
 	while ( pClassList )

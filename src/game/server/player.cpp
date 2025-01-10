@@ -232,9 +232,7 @@ void CC_GiveCurrentAmmo( void )
 	}
 }
 static ConCommand givecurrentammo("givecurrentammo", CC_GiveCurrentAmmo, "Give a supply of ammo for current weapon..\n", FCVAR_CHEAT );
-#ifndef CLIENT_DLL
-ConVar cl_class("cl_class", "0", FCVAR_CLIENTDLL, "the current class of the player");
-#endif
+
 // pl
 BEGIN_SIMPLE_DATADESC( CPlayerState )
 	// DEFINE_FIELD( netname, FIELD_STRING ),  // Don't stomp player name with what's in save/restore
@@ -5092,10 +5090,6 @@ void CBasePlayer::GiveClassItems(void)
 		GiveNamedItem("weapon_crowbar");
 	}
 	break;
-	default:
-	{
-	}
-	break;
 	}
 }
 
@@ -5262,9 +5256,6 @@ void CBasePlayer::Spawn( void )
 	UpdateLastKnownArea();
 
 	m_weaponFiredTimer.Invalidate();
-
-	SetPlayerClass(cl_class.GetInt());
-	SetClassHealth();
 }
 
 void CBasePlayer::Activate( void )
