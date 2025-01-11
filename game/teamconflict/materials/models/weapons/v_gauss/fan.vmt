@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/Weapons/V_Gauss/fan"
+	"$bumpmap" "models/weapons/V_Gauss/fan_normal"
+
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[.2 4 1]"
+
+	"360?$color2" "[ 0.4 0.4 0.4 ]"
+}

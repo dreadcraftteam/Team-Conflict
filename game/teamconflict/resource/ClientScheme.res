@@ -757,7 +757,7 @@ Scheme
 		{
 			"1"
 			{
-				"name"  "HL2MP"
+				"name"  "Britannic Bold"
 				"tall"  "46"
 				"weight" "0"
 				"additive" "0"

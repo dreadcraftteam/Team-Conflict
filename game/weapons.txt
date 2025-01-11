@@ -18,4 +18,3 @@ weapon_m249
 weapon_shovel
 weapon_pipewrench
 weapon_hands
-weapon_
