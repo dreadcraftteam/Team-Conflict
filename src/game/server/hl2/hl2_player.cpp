@@ -484,33 +484,33 @@ void CHL2_Player::HandleSpeedChanges( void )
 
 	bool bCanSprint = CanSprint();
 	bool bIsSprinting = IsSprinting();
-	bool bWantSprint = ( bCanSprint && IsSuitEquipped() && (m_nButtons & IN_SPEED) );
-	if ( bIsSprinting != bWantSprint && (buttonsChanged & IN_SPEED) )
-	{
-		// If someone wants to sprint, make sure they've pressed the button to do so. We want to prevent the
-		// case where a player can hold down the sprint key and burn tiny bursts of sprint as the suit recharges
-		// We want a full debounce of the key to resume sprinting after the suit is completely drained
-		if ( bWantSprint )
-		{
-			if ( sv_stickysprint.GetBool() )
-			{
-				StartAutoSprint();
-			}
-			else
-			{
-				StartSprinting();
-			}
-		}
-		else
-		{
-			if ( !sv_stickysprint.GetBool() )
-			{
-				StopSprinting();
-			}
-			// Reset key, so it will be activated post whatever is suppressing it.
-			m_nButtons &= ~IN_SPEED;
-		}
-	}
+//	bool bWantSprint = ( bCanSprint && IsSuitEquipped() && (m_nButtons & IN_SPEED) );
+	//if ( bIsSprinting != bWantSprint && (buttonsChanged & IN_SPEED) )
+	//{
+	//	// If someone wants to sprint, make sure they've pressed the button to do so. We want to prevent the
+	//	// case where a player can hold down the sprint key and burn tiny bursts of sprint as the suit recharges
+	//	// We want a full debounce of the key to resume sprinting after the suit is completely drained
+	//	if ( bWantSprint )
+	//	{
+	//		if ( sv_stickysprint.GetBool() )
+	//		{
+	//			StartAutoSprint();
+	//		}
+	//		else
+	//		{
+	//			StartSprinting();
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if ( !sv_stickysprint.GetBool() )
+	//		{
+	//			StopSprinting();
+	//		}
+	//		// Reset key, so it will be activated post whatever is suppressing it.
+	//		m_nButtons &= ~IN_SPEED;
+	//	}
+	//}
 
 	bool bIsWalking = IsWalking();
 	// have suit, pressing button, not sprinting or ducking
@@ -1199,12 +1199,12 @@ void CHL2_Player::StartSprinting( void )
 		// amount of suit power.
 		
 		// debounce the button for sound playing
-		if ( m_afButtonPressed & IN_SPEED )
-		{
-			CPASAttenuationFilter filter( this );
-			filter.UsePredictionRules();
-			EmitSound( filter, entindex(), "HL2Player.SprintNoPower" );
-		}
+		//if ( m_afButtonPressed & IN_SPEED )
+		//{
+		//	CPASAttenuationFilter filter( this );
+		//	filter.UsePredictionRules();
+		//	EmitSound( filter, entindex(), "HL2Player.SprintNoPower" );
+		//}
 		return;
 	}
 

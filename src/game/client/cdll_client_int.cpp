@@ -1698,8 +1698,6 @@ void CHLClient::LevelInitPreEntity( char const* pMapName )
 
 		int maxPlayers = gpGlobals->maxClients;
 
-		// PracticeMedicine: assholery shitty stuff but it will work
-
 		if (engine->IsConnected())
 		{
 			char state[128];

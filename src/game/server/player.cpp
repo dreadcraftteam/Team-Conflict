@@ -8022,7 +8022,7 @@ int CMovementSpeedMod::GetDisabledButtonMask( void )
 	
 	if ( HasSpawnFlags( SF_SPEED_MOD_SUPPRESS_SPEED ) )
 	{
-		nMask |= IN_SPEED;
+//		nMask |= IN_SPEED;
 	}
 	
 	if ( HasSpawnFlags( SF_SPEED_MOD_SUPPRESS_ATTACK ) )

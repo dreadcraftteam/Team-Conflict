@@ -1448,7 +1448,7 @@ int CInput::GetButtonBits( int bResetState )
 {
 	int bits = 0;
 
-	CalcButtonBits( bits, IN_SPEED, s_ClearInputState, &in_speed, bResetState );
+//	CalcButtonBits( bits, IN_SPEED, s_ClearInputState, &in_speed, bResetState );
 	CalcButtonBits( bits, IN_WALK, s_ClearInputState, &in_walk, bResetState );
 	CalcButtonBits( bits, IN_ATTACK, s_ClearInputState, &in_attack, bResetState );
 	CalcButtonBits( bits, IN_DUCK, s_ClearInputState, &in_duck, bResetState );

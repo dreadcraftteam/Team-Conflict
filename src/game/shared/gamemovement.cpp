@@ -2187,10 +2187,10 @@ void CGameMovement::FullObserverMove( void )
 
 	float factor = sv_specspeed.GetFloat();
 
-	if ( mv->m_nButtons & IN_SPEED )
-	{
-		factor /= 2.0f;
-	}
+	//if ( mv->m_nButtons & IN_SPEED )
+	//{
+	//	factor /= 2.0f;
+	//}
 
 	float fmove = mv->m_flForwardMove * factor;
 	float smove = mv->m_flSideMove * factor;
@@ -2263,10 +2263,10 @@ void CGameMovement::FullNoClipMove( float factor, float maxacceleration )
 
 	AngleVectors (mv->m_vecViewAngles, &forward, &right, &up);  // Determine movement angles
 
-	if ( mv->m_nButtons & IN_SPEED )
-	{
-		factor /= 2.0f;
-	}
+	//if ( mv->m_nButtons & IN_SPEED )
+	//{
+	//	factor /= 2.0f;
+	//}
 	
 	// Copy movement amounts
 	float fmove = mv->m_flForwardMove * factor;

@@ -1167,7 +1167,7 @@ bool C_BasePlayer::CreateMove( float flInputSampleTime, CUserCmd *pCmd )
 		{
 			if ( input->KeyState( &in_joyspeed ) != 0.0f )
 			{
-				pCmd->buttons |= IN_SPEED;
+//				pCmd->buttons |= IN_SPEED;
 			}
 		}
 
