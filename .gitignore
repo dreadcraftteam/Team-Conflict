@@ -64,5 +64,5 @@ config.cfg
 # shader files
 *.tmp
 
-# dreadcraft's folders
-tools/
+# dreadcraft's files
+src/game/client/TC-DLL-PRIVATE/
