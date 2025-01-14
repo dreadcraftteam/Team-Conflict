@@ -63,3 +63,6 @@ config.cfg
 
 # shader files
 *.tmp
+
+# dreadcraft's folders
+tools/
