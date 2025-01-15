@@ -1219,6 +1219,8 @@ bool CHLClient::ReplayPostInit()
 #endif
 }
 
+void SwapDisconnectCommand();
+
 //-----------------------------------------------------------------------------
 // Purpose: Called after client & server DLL are loaded and all systems initialized
 //-----------------------------------------------------------------------------
@@ -1248,6 +1250,8 @@ void CHLClient::PostInit()
 		}
 	}
 #endif
+
+	SwapDisconnectCommand();
 }
 
 //-----------------------------------------------------------------------------

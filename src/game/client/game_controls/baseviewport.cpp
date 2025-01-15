@@ -56,6 +56,8 @@
 #include "replay/ienginereplay.h"
 #endif
 
+#include "TC-DLL\animated_background.h"
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -176,6 +178,8 @@ CBaseViewport::CBaseViewport() : vgui::EditablePanel( NULL, "CBaseViewport")
 	m_pLastActivePanel = NULL;
 	g_lastPanel = NULL;
 
+	m_pMainMenuPanel = NULL;
+
 	vgui::HScheme scheme = vgui::scheme()->LoadSchemeFromFileEx( enginevgui->GetPanel( PANEL_CLIENTDLL ), "resource/ClientScheme.res", "ClientScheme");
 	SetScheme(scheme);
 	SetProportional( true );
@@ -222,6 +226,18 @@ void CBaseViewport::OnScreenSizeChanged(int iOldWide, int iOldTall)
 #ifndef _XBOX
 	vgui::ipanel()->MoveToBack( m_pBackGround->GetVPanel() ); // really send it to the back 
 #endif
+
+	bool bRestartMainMenuVideo = false;
+
+	if (m_pMainMenuPanel)
+		bRestartMainMenuVideo = m_pMainMenuPanel->IsVideoPlaying();
+
+	m_pMainMenuPanel = new CMainMenu(NULL, NULL);
+	m_pMainMenuPanel->SetZPos(500);
+	m_pMainMenuPanel->SetVisible(false);
+
+	if (bRestartMainMenuVideo)
+		m_pMainMenuPanel->StartVideo();
 
 	// hide all panels when reconnecting 
 	ShowPanel( PANEL_ALL, false );
@@ -464,6 +480,12 @@ IViewPortPanel* CBaseViewport::GetActivePanel( void )
 
 void CBaseViewport::RemoveAllPanels( void)
 {
+	if (m_pMainMenuPanel)
+	{
+		m_pMainMenuPanel->MarkForDeletion();
+		m_pMainMenuPanel = NULL;
+	}
+
 	g_lastPanel = NULL;
 	for ( int i=0; i < m_Panels.Count(); i++ )
 	{
@@ -484,6 +506,11 @@ void CBaseViewport::RemoveAllPanels( void)
 
 CBaseViewport::~CBaseViewport()
 {
+	if (!m_bHasParent && m_pMainMenuPanel)
+		m_pMainMenuPanel->MarkForDeletion();
+	m_pMainMenuPanel = NULL;
+
+
 	m_bInitialized = false;
 
 #ifndef _XBOX
@@ -512,6 +539,12 @@ void CBaseViewport::Start( IGameUIFuncs *pGameUIFuncs, IGameEventManager2 * pGam
 	m_pBackGround->SetZPos( -20 ); // send it to the back 
 	m_pBackGround->SetVisible( false );
 #endif
+
+	m_pMainMenuPanel = new CMainMenu(NULL, NULL);
+	m_pMainMenuPanel->SetZPos(500);
+	m_pMainMenuPanel->SetVisible(false);
+	m_pMainMenuPanel->StartVideo();
+
 	CreateDefaultPanels();
 
 	m_GameEventManager->AddListener( this, "game_newmap", false );
@@ -717,6 +750,24 @@ void CBaseViewport::ReloadScheme(const char *fromFile)
 int CBaseViewport::GetDeathMessageStartHeight( void )
 {
 	return YRES(2);
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void CBaseViewport::StartMainMenuVideo()
+{
+	if (m_pMainMenuPanel)
+		m_pMainMenuPanel->StartVideo();
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void CBaseViewport::StopMainMenuVideo()
+{
+	if (m_pMainMenuPanel)
+		m_pMainMenuPanel->StopVideo();
 }
 
 void CBaseViewport::Paint()

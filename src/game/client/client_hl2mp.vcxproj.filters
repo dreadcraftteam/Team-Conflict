@@ -25,9 +25,6 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{BA03E055-4FA2-FCE3-8A1C-D348547D379C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Coplay">
-      <UniqueIdentifier>{1D28E765-F0E1-0839-8D25-D79F6AD822B0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\game_controls">
       <UniqueIdentifier>{1E7DB91A-DC0A-B17F-617D-4C4FB3FA7A3E}</UniqueIdentifier>
     </Filter>
@@ -52,8 +49,14 @@
     <Filter Include="Source Files\TC-DLL">
       <UniqueIdentifier>{C9B047B5-5B5B-6202-2748-B64910557737}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC-DLL\Background">
+      <UniqueIdentifier>{17B183EF-9708-3239-04F0-93A2058A860A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC-DLL\NextBot">
       <UniqueIdentifier>{8F936C12-33C6-F4E7-6BFA-13B88C395115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC-DLL\P2P">
+      <UniqueIdentifier>{45DFCA29-5862-1DCC-D76F-F31EC8DEE27F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\TC-DLL\VGUI">
       <UniqueIdentifier>{AE9CD192-F05D-83D8-F5EC-A93BF47A1F01}</UniqueIdentifier>
@@ -1859,21 +1862,6 @@
     <ClInclude Include="viewpostprocess.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\coplay\src\coplay.h">
-      <Filter>Source Files\Coplay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\coplay\src\coplay_client.h">
-      <Filter>Source Files\Coplay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\coplay\src\coplay_connection.h">
-      <Filter>Source Files\Coplay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\coplay\src\coplay_host.h">
-      <Filter>Source Files\Coplay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\coplay\src\coplay_system.h">
-      <Filter>Source Files\Coplay</Filter>
-    </ClInclude>
     <ClInclude Include="game_controls\basemodel_panel.h">
       <Filter>Source Files\game_controls</Filter>
     </ClInclude>
@@ -1976,8 +1964,26 @@
     <ClInclude Include="..\..\game\shared\sixense\sixense_convars_extern.h">
       <Filter>Source Files\Sixense</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\animated_background.h">
+      <Filter>Source Files\TC-DLL\Background</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.h">
       <Filter>Source Files\TC-DLL\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay.h">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_client.h">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_connection.h">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_host.h">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\coplay\src\coplay_system.h">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
     </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.h">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
@@ -3040,18 +3046,6 @@
     <ClCompile Include="WorldDimsProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\coplay\src\coplay_client.cpp">
-      <Filter>Source Files\Coplay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\coplay\src\coplay_connection.cpp">
-      <Filter>Source Files\Coplay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\coplay\src\coplay_host.cpp">
-      <Filter>Source Files\Coplay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
-      <Filter>Source Files\Coplay</Filter>
-    </ClCompile>
     <ClCompile Include="game_controls\basemodel_panel.cpp">
       <Filter>Source Files\game_controls</Filter>
     </ClCompile>
@@ -3373,8 +3367,23 @@
     <ClCompile Include="..\..\game\shared\sixense\sixense_convars.cpp">
       <Filter>Source Files\Sixense</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\animated_background.cpp">
+      <Filter>Source Files\TC-DLL\Background</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">
       <Filter>Source Files\TC-DLL\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_client.cpp">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_connection.cpp">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_host.cpp">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
+      <Filter>Source Files\TC-DLL\P2P</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
       <Filter>Source Files\TC-DLL\VGUI</Filter>

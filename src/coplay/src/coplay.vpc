@@ -36,24 +36,27 @@ $Configuration
 	}
 }
 
-$Project // "Coplay"
+$Project
 {
     $Folder "Source Files"
     {
-        $Folder "Coplay"
-        {
-			$File	"$COPLAY_SRCDIR\coplay_connection.cpp" \
-					"$COPLAY_SRCDIR\coplay_system.cpp" \
-					"$COPLAY_SRCDIR\coplay_client.cpp" \
-					"$COPLAY_SRCDIR\coplay_host.cpp"
+		$Folder "TC-DLL"
+		{
+			$Folder "P2P"
+			{
+				$File	"$COPLAY_SRCDIR\coplay_connection.cpp" \
+						"$COPLAY_SRCDIR\coplay_system.cpp" \
+						"$COPLAY_SRCDIR\coplay_client.cpp" \
+						"$COPLAY_SRCDIR\coplay_host.cpp"
 
 
-            $File	"$COPLAY_SRCDIR\coplay.h" \
-					"$COPLAY_SRCDIR\coplay_connection.h" \
-					"$COPLAY_SRCDIR\coplay_system.h" \
-					"$COPLAY_SRCDIR\coplay_client.h" \
-					"$COPLAY_SRCDIR\coplay_host.h"
-        }
+				$File	"$COPLAY_SRCDIR\coplay.h" \
+						"$COPLAY_SRCDIR\coplay_connection.h" \
+						"$COPLAY_SRCDIR\coplay_system.h" \
+						"$COPLAY_SRCDIR\coplay_client.h" \
+						"$COPLAY_SRCDIR\coplay_host.h"
+			}
+		}
     }
 
     $Folder	"Link Libraries"

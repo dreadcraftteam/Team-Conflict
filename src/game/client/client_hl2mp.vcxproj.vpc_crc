@@ -1,7 +1,7 @@
 [vpc crc file version 2]
 b9c20ec3 C:\Users\DREADCRAFT\Desktop\TEAM-CONFLICT\src\devtools\bin\vpc.exe
 _Nc_VS2013/vpcgame:hl2mp_
-b39494ab client_hl2mp.vpc
+98542e48 client_hl2mp.vpc
 92e66859 ..\..\game\client\client_base.vpc
 4832e67a ..\..\vpc_scripts\source_dll_base.vpc
 d752cf80 ..\..\vpc_scripts\platform_dirs.vpc
@@ -15,5 +15,5 @@ b0ea7ed5 ..\..\vpc_scripts\source_dll_win32_release.vpc
 346bda4a ..\..\vpc_scripts\source_video_base.vpc
 c209a88e ..\..\vpc_scripts\protobuf_builder.vpc
 d1c158fe ..\..\game\protobuf_include.vpc
-dbc166d2 ..\..\coplay\src\coplay.vpc
+44e76b19 ..\..\coplay\src\coplay.vpc
 30bf2216 ..\..\vpc_scripts\definitions\win32_2010.def
