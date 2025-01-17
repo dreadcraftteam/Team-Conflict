@@ -20,6 +20,7 @@
 #include "grenade_satchel.h"
 #include "eventqueue.h"
 #include "gamestats.h"
+#include "basecombatcharacter.h"
 
 #include "engine/IEngineSound.h"
 #include "SoundEmitterSystem/isoundemittersystembase.h"
@@ -354,6 +355,7 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 		
 			g_iLastCombineModel = ( g_iLastCombineModel + 1 ) % nHeads;
 			szModelName = g_ppszRandomCombineModels[g_iLastCombineModel];
+			
 		}
 
 		m_iModelType = TEAM_GREEN;
