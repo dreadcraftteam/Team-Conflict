@@ -355,6 +355,7 @@ void CHL2MP_Player::SetPlayerTeamModel( void )
 		
 			g_iLastCombineModel = ( g_iLastCombineModel + 1 ) % nHeads;
 			szModelName = g_ppszRandomCombineModels[g_iLastCombineModel];
+			
 		}
 
 		m_iModelType = TEAM_GREEN;
