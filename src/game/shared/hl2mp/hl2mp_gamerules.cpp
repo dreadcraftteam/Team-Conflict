@@ -33,9 +33,9 @@
 	#include "hl2mp_gameinterface.h"
 	#include "hl2mp_cvars.h"
 
-#ifdef DEBUG	
+//#ifdef DEBUG	
 	#include "hl2mp_bot_temp.h"
-#endif
+//#endif
 
 extern void respawn(CBaseEntity *pEdict, bool fCopyCorpse);
 
@@ -948,7 +948,7 @@ CAmmoDef *GetAmmoDef()
 
 #else
 
-#ifdef DEBUG
+//#ifdef DEBUG
 
 	// Handler for the "bot" command.
 	void Bot_f()
@@ -972,7 +972,7 @@ CAmmoDef *GetAmmoDef()
 
 	ConCommand cc_Bot( "bot", Bot_f, "Add a bot.", FCVAR_CHEAT );
 
-#endif
+//#endif
 
 	bool CHL2MPRules::FShouldSwitchWeapon( CBasePlayer *pPlayer, CBaseCombatWeapon *pWeapon )
 	{		
