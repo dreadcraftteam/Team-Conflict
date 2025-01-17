@@ -33,19 +33,6 @@
 	    "visible" "0"
 	    "enabled" "1"
 		"xpos"	"16"
-		"ypos"	"398"
-	    "wide" "480"
-	    "tall" "60"
-	    "text_xpos" "8"
-	    "text_ypos" "4"
-	}
-	
-	ClassDisplay
-	{
-		"fieldName" "ClassDisplay"
-	    "visible" "0"
-	    "enabled" "1"
-		"xpos"	"16"
 		"ypos"	"415"
 	    "wide" "480"
 	    "tall" "60"
