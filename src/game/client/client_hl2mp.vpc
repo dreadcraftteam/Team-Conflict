@@ -48,10 +48,6 @@ $Project "Client (TEAM-CONFLICT)"
 			{
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_browser.cpp"
 				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_browser.h"
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_classmenu.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_classmenu.h"
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_teammenu.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_teammenu.h"
 			}
 			$Folder "Weapons"
 			{

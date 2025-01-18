@@ -1988,12 +1988,6 @@
     <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.h">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_classmenu.h">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_teammenu.h">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.h">
       <Filter>Source Files\TC-DLL\Weapons</Filter>
     </ClInclude>
@@ -3386,12 +3380,6 @@
       <Filter>Source Files\TC-DLL\P2P</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_classmenu.cpp">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_teammenu.cpp">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp">

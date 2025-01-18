@@ -1874,9 +1874,6 @@
     <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotUtil.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\simple_bot.h">
-      <Filter>Source Files\TC DLL\NextBot</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Behavior\BehaviorBackUp.h">
       <Filter>Source Files\TC DLL\NextBot\Behavior</Filter>
     </ClInclude>
@@ -3527,9 +3524,6 @@
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp">
-      <Filter>Source Files\TC DLL\NextBot</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\simple_bot.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.cpp">
