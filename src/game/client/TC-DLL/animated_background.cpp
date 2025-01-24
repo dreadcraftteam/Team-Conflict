@@ -90,23 +90,9 @@ void CMainMenu::StartVideo()
 		isWide = true;
 
 	m_bLoaded = false;
-	if (isWide)
-	{
-		if (BeginPlayback("media/background_wide.bik"))
-		{
-			m_bLoaded = true;
-		}
-		else
-		{
-			if (BeginPlayback("media/background.bik"))
-				m_bLoaded = true;
-		}
-	}
-	else
-	{
-		if (BeginPlayback("media/background.bik"))
-			m_bLoaded = true;
-	}
+
+	if (BeginPlayback("media/tc_background.bik"))
+		m_bLoaded = true;
 }
 
 //-----------------------------------------------------------------------------
