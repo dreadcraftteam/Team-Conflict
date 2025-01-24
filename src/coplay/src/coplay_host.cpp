@@ -1,14 +1,3 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
-//================================================
-// CoaXioN Implementation of Steam P2P networking on Source SDK: "CoaXioN Coplay"
-// Author : Tholp / Jackson S
-//================================================
-
 #include <cbase.h>
 #include <inetchannel.h>
 #include <inetchannelinfo.h>
@@ -34,7 +23,7 @@ void ChangeLobbyType(IConVar* var, const char* pOldValue, float flOldValue)
 }
 
 extern ConVar coplay_timeoutduration;
-ConVar coplay_joinfilter("coplay_joinfilter", "-1", FCVAR_ARCHIVE, "Whos allowed to connect to our Game? Will also call coplay_opensocket on server start if set above -1.\n"
+ConVar coplay_joinfilter("p2p_joinfilter", "-1", FCVAR_ARCHIVE, "Whos allowed to connect to our Game? Will also call p2p_opensocket on server start if set above -1.\n"
                        "-1 : Off\n"
                        "0  : Controlled\n"
                        "1  : Friends Only\n"
@@ -270,7 +259,7 @@ bool CCoplayHost::AddConnection(HSteamNetConnection hConnection)
     SteamNetConnectionInfo_t newinfo;
     if (!SteamNetworkingSockets()->GetConnectionInfo(hConnection, &newinfo))
     {
-        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Couldn't make a new connection\n");
+        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Couldn't make a new connection\n");
         return false;
     }
 

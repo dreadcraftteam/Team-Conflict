@@ -1,29 +1,18 @@
-﻿/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
-//================================================
-// CoaXioN Implementation of Steam P2P networking on Source SDK: "CoaXioN Coplay"
-// Author : Tholp / Jackson S
-//================================================
-
-#include "cbase.h"
+﻿#include "cbase.h"
 #include "coplay_connection.h"
 #include "coplay_system.h"
 #include <inetchannel.h>
 #include <inetchannelinfo.h>
 
-ConVar coplay_timeoutduration("coplay_timeoutduration", "30", FCVAR_ARCHIVE);
-ConVar coplay_portrange_begin("coplay_portrange_begin", "3600", FCVAR_ARCHIVE, "Where to start looking for ports to bind on, a range of atleast 64 is recomended.\n");
-ConVar coplay_portrange_end  ("coplay_portrange_end", "3700", FCVAR_ARCHIVE, "Where to stop looking for ports to bind on, a range of atleast 64 is recomended.\n");
+ConVar coplay_timeoutduration("p2p_timeoutduration", "30", FCVAR_ARCHIVE);
+ConVar coplay_portrange_begin("p2p_portrange_begin", "3600", FCVAR_ARCHIVE, "Where to start looking for ports to bind on, a range of atleast 64 is recomended.\n");
+ConVar coplay_portrange_end  ("p2p_portrange_end", "3700", FCVAR_ARCHIVE, "Where to stop looking for ports to bind on, a range of atleast 64 is recomended.\n");
 
-ConVar coplay_debuglog_socketspam("coplay_debuglog_socketspam", "0", 0, "Prints the number of packets recieved by either interface if more than 0.\n");
-ConVar coplay_debuglog_scream("coplay_debuglog_scream", "0", 0, "Yells if the connection loop is working\n");
+ConVar coplay_debuglog_socketspam("p2p_debuglog_socketspam", "0", 0, "Prints the number of packets recieved by either interface if more than 0.\n");
+ConVar coplay_debuglog_scream("p2p_debuglog_scream", "0", 0, "Yells if the connection loop is working\n");
 
-ConVar coplay_debuglog_socketcreation("coplay_debuglog_socketcreation", "0", 0, "Prints more information when a socket is opened or closed.\n");
-ConVar coplay_connectionthread_hz("coplay_connectionthread_hz", "300", FCVAR_ARCHIVE,
+ConVar coplay_debuglog_socketcreation("p2p_debuglog_socketcreation", "0", 0, "Prints more information when a socket is opened or closed.\n");
+ConVar coplay_connectionthread_hz("p2p_connectionthread_hz", "300", FCVAR_ARCHIVE,
     "Number of times to run a connection per second. Only change this if you know what it means.\n",
     true, 10, false, 0);
 
@@ -42,7 +31,7 @@ CCoplayConnection::CCoplayConnection(HSteamNetConnection hConn) : m_localSocket(
         sock = SDLNet_UDP_Open(port);
         if(!sock)
         {
-			ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Couldn't bind to port %u\n", port);
+			ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Couldn't bind to port %u\n", port);
             continue;
 		}
 
@@ -53,7 +42,7 @@ CCoplayConnection::CCoplayConnection(HSteamNetConnection hConn) : m_localSocket(
 
     if (!sock)
     {
-        Warning("[Coplay Error] What do you need all those ports for anyway? (Couldn't bind to a port on range %d-%d!)\n", 
+        Warning("P2P ERROR: What do you need all those ports for anyway? (Couldn't bind to a port on range %d-%d!)\n", 
             coplay_portrange_begin.GetInt(), coplay_portrange_end.GetInt());
     }
 
@@ -93,16 +82,16 @@ CCoplayConnection::CCoplayConnection(HSteamNetConnection hConn) : m_localSocket(
 
     if (coplay_debuglog_socketcreation.GetBool())
     {
-        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] New socket : %u\n", m_port);
+        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: New socket : %u\n", m_port);
     }
 
-    std::string threadname = "coplayconnection_" + std::to_string(m_port);
+    std::string threadname = "p2pconnection_" + std::to_string(m_port);
     SetName(threadname.c_str());
 }
 
 void CCoplayConnection::ConnectToHost()
 {
-    ConColorMsg(COPLAY_MSG_COLOR, "[Coplay] Connecting to server...\n");
+    ConColorMsg(COPLAY_MSG_COLOR, "P2P: Connecting to server...\n");
 	char cmd[128];
     byte ipnum[4];
 	*(uint32*)(ipnum) = m_sendbackAddress.host;
@@ -134,7 +123,7 @@ int CCoplayConnection::Run()
         while (!m_gameReady && !m_deletionQueued && m_timeStarted + coplay_timeoutduration.GetFloat() > gpGlobals->curtime)
         {
             if (coplay_debuglog_scream.GetBool())
-                Msg("Waiting for Server response..\n");
+                Msg("P2P: Waiting for Server response..\n");
             ThreadSleep(50);
             numSteamRecv = SteamNetworkingSockets()->ReceiveMessagesOnConnection(m_hSteamConnection, InboundSteamMessages, sizeof(InboundSteamMessages));
             for (int i = 0; i < numSteamRecv; i++)
@@ -151,7 +140,7 @@ int CCoplayConnection::Run()
                 else if (recvMsg == std::string(COPLAY_NETMSG_OK))
                     m_gameReady = true;//Server said our password was good, start relaying packets
                 else
-                    Warning("[Coplay] Got unexpected handshake message, \"%s\"\n", recvMsg.c_str());
+                    Warning("P2P: Got unexpected handshake message, \"%s\"\n", recvMsg.c_str());
             }
         }
     }
@@ -165,7 +154,7 @@ int CCoplayConnection::Run()
         }
         if (m_localSocket == NULL || m_hSteamConnection == 0)
         {
-            Warning("[Coplay Warning] A registered Coplay socket was invalid! Deleting.\n");
+            Warning("P2P WARNING: A registered Coplay socket was invalid! Deleting.\n");
             QueueForDeletion();
             continue;
         }
@@ -188,13 +177,13 @@ int CCoplayConnection::Run()
 
         if( numSDLRecv > 0 && coplay_debuglog_socketspam.GetBool())
         {
-            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] SDL %i\n", numSDLRecv);
+            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: SDL %i\n", numSDLRecv);
         }
 
         if (numSDLRecv == -1)
         {
             // TODO - warn as we don't crash out, I think
-            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] SDL Error! %s\n", SDLNet_GetError());
+            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: SDL Error! %s\n", SDLNet_GetError());
         }
 
         for (int j = 0; j < numSDLRecv; j++)
@@ -204,7 +193,7 @@ int CCoplayConnection::Run()
                                                               k_nSteamNetworkingSend_UnreliableNoDelay | k_nSteamNetworkingSend_UseCurrentThread,
                                                               &messageOut);//use unreliable mode, source already handles it, dont do double duty for no reason
             //if (coplay_debuglog_socketspam.GetBool())
-            //    ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Result %i\n", result);
+            //    ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Result %i\n", result);
         }
 
         if (coplay_debuglog_scream.GetBool())
@@ -218,7 +207,7 @@ int CCoplayConnection::Run()
 
         if (numSteamRecv > 0 && coplay_debuglog_socketspam.GetBool())
         {
-            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Steam %i\n", numSteamRecv);
+            ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Steam %i\n", numSteamRecv);
         }
 
         if (numSteamRecv > 0 || engine->IsConnected())
@@ -234,7 +223,7 @@ int CCoplayConnection::Run()
 
             if (!SDLNet_UDP_Send(m_localSocket, 1, &SteamPacket))
             {
-                ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Wasnt sent! %s\n", SDLNet_GetError());
+                ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Wasnt sent! %s\n", SDLNet_GetError());
             }
         }
 
@@ -246,7 +235,7 @@ int CCoplayConnection::Run()
         if (m_lastPacketTime + coplay_timeoutduration.GetFloat() < gpGlobals->realtime)
         {
             if (coplay_debuglog_socketcreation.GetBool())
-                ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Socket with port %i timed out.\n", m_port);
+                ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Socket with port %i timed out.\n", m_port);
             QueueForDeletion();
         }
     }
@@ -258,7 +247,7 @@ int CCoplayConnection::Run()
 
     if (coplay_debuglog_socketcreation.GetBool())
     {
-        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Debug] Socket with port %i closed.\n", m_port);
+        ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P DEBUG: Socket with port %i closed.\n", m_port);
     }
 
     return 0;

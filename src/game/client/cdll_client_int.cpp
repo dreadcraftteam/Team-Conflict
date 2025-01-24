@@ -1156,19 +1156,6 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CreateInterfaceFn physi
 	HookHapticMessages(); // Always hook the messages
 #endif
 
-	if (!g_bDescordRPCINIT)
-	{
-		ConColorMsg(Color(102, 178, 255, 255), "[DISCORD] RPC initialized successfully.\n");
-	}
-
-	if (!g_bDescordRPCREG)
-	{
-		ConColorMsg(Color(102, 178, 255, 255), "[DISCORD] RPC registered successfully.\n");
-	}
-
-	//LoadLua();
-
-
 	if (!g_bTextMode)
 	{
 		DiscordRichPresence discordPresence;

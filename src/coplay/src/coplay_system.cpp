@@ -1,14 +1,3 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
-//================================================
-// CoaXioN Implementation of Steam P2P networking on Source SDK: "CoaXioN Coplay"
-// Author : Tholp / Jackson S
-//================================================
-
 #include "cbase.h"
 #include "coplay_system.h"
 #include <inetchannel.h>
@@ -24,11 +13,11 @@ CCoplaySystem* CCoplaySystem::s_instance = nullptr;
 
 #ifdef COPLAY_USE_LOBBIES
 // This is mostly a convar for easier testing, dont set the COPLAY_USE_LOBBIES conditional in your vpc if you want this off
-ConVar coplay_use_lobbies("coplay_use_lobbies", "1", FCVAR_HIDDEN, "Use Steam Lobbies for connections.\n");
+ConVar coplay_use_lobbies("p2p_use_lobbies", "1", FCVAR_HIDDEN, "Use Steam Lobbies for connections.\n");
 #endif
-ConVar coplay_debuglog_steamconnstatus("coplay_debuglog_steamconnstatus", "0", 0, "Prints more detailed steam connection statuses.\n");
-ConVar coplay_debuglog_lobbyupdated("coplay_debuglog_lobbyupdated", "0", 0, "Prints when a lobby is created, joined or left.\n");
-ConVar coplay_autoopen("coplay_autoopen", "1", FCVAR_ARCHIVE, "Open game for listening on local server start");
+ConVar coplay_debuglog_steamconnstatus("p2p_debuglog_steamconnstatus", "0", 0, "Prints more detailed steam connection statuses.\n");
+ConVar coplay_debuglog_lobbyupdated("p2p_debuglog_lobbyupdated", "0", 0, "Prints when a lobby is created, joined or left.\n");
+ConVar coplay_autoopen("p2p_autoopen", "1", FCVAR_ARCHIVE, "Open game for listening on local server start");
 extern ConVar coplay_joinfilter;
 
 CCoplaySystem::CCoplaySystem() : CAutoGameSystemPerFrame("CoplaySystem")
@@ -45,7 +34,7 @@ CCoplaySystem* CCoplaySystem::GetInstance()
 
 bool CCoplaySystem::Init()
 {
-    ConColorMsg(COPLAY_MSG_COLOR, "[Coplay] Initialization started...\n");
+    ConColorMsg(COPLAY_MSG_COLOR, "P2P: Initialization started!\n");
 
     if (SDL_Init(0))
     {
@@ -126,7 +115,7 @@ void CCoplaySystem::Update(float frametime)
         {
             std::string connect = "+" + GetConnectCommand();
             SteamFriends()->SetRichPresence("connect", connect.c_str());
-            SteamFriends()->SetRichPresence("coplay_playercount", std::to_string(GetHost()->GetConnectionCount()+1).c_str());
+            SteamFriends()->SetRichPresence("p2p_playercount", std::to_string(GetHost()->GetConnectionCount()+1).c_str());
         }
         else if (GetRole() == eConnectionRole_INACTIVE && engine->IsConnected()) // On normal server
         {
@@ -134,12 +123,12 @@ void CCoplaySystem::Update(float frametime)
             std::string connect = "+connect ";
             connect += netinfo->GetAddress();
             SteamFriends()->SetRichPresence("connect",connect.c_str());
-            SteamFriends()->SetRichPresence("coplay_playercount", "");
+            SteamFriends()->SetRichPresence("p2p_playercount", "");
         }
         else
         {
             SteamFriends()->SetRichPresence("connect", "");
-            SteamFriends()->SetRichPresence("coplay_playercount", "");
+            SteamFriends()->SetRichPresence("p2p_playercount", "");
         }
         lastupdated = gpGlobals->realtime;
     }
@@ -148,7 +137,7 @@ void CCoplaySystem::Update(float frametime)
     if (SteamNetworkingUtils()->GetRelayNetworkStatus(nullptr) == k_ESteamNetworkingAvailability_Current
         && !m_queuedCommand.empty())
     {
-        m_queuedCommand = "coplay_connect " + m_queuedCommand;
+        m_queuedCommand = "p2p_connect " + m_queuedCommand;
         CCommand args;
         args.Tokenize(m_queuedCommand.c_str());
         CoplayConnect(args);
@@ -260,7 +249,7 @@ void CCoplaySystem::JoinGame(GameRichPresenceJoinRequested_t *pParam)
 	if (command.empty() || (command.find("+connect") != 0 && command.find("+coplay_connect") != 0)
 		|| command.find_first_of("\'\"\\/;") != std::string::npos )
 	{
-		ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "[Coplay Warning] Got a bad join string ( %s ) "
+		ConColorMsg(COPLAY_DEBUG_MSG_COLOR, "P2P WARNING: Got a bad join string ( %s ) "
 											"\nMake sure you trust whomever you're trying to connect to and that you are both on the same version of the game.\n",
 												command.c_str());
 		return;
@@ -301,7 +290,7 @@ void CCoplaySystem::CoplayConnect(const CCommand& args)
     // what you're here for
     if (SteamNetworkingUtils()->GetRelayNetworkStatus(nullptr) != k_ESteamNetworkingAvailability_Current)
     {
-        Warning("[Coplay Warning] Can't Connect! Connection to Steam Datagram Relay not yet established.\n");
+        Warning("P2P WARNING: Can't Connect! Connection to Steam Datagram Relay not yet established.\n");
         // Game is probably just starting, queue the command to be run once the Steam network connection is established
         queuedcommand = std::string(args.GetCommandString());
         return;
@@ -319,7 +308,7 @@ void CCoplaySystem::CoplayConnect(const CCommand& args)
     if (UseCoplayLobbies() && steamid.IsLobby())
     {
 		// we have to join the lobby before we can connect to the host
-		ConColorMsg(COPLAY_MSG_COLOR, "[Coplay] Attempting to join lobby with ID %s....\n", destination.c_str());
+		ConColorMsg(COPLAY_MSG_COLOR, "P2P: Attempting to join lobby with ID %s....\n", destination.c_str());
         SteamMatchmaking()->JoinLobby(steamid);
         return;
     }
@@ -330,7 +319,7 @@ void CCoplaySystem::CoplayConnect(const CCommand& args)
         ConnectToHost(steamid, args.Arg(2));
         return;
     }
-    Warning("Coplay_Connect was called with an invalid SteamID! ( %llu )\n", steamid.ConvertToUint64());
+    Warning("p2p_Connect was called with an invalid SteamID! ( %llu )\n", steamid.ConvertToUint64());
 }
 
 void CCoplaySystem::OpenSocket(const CCommand& args)
@@ -358,28 +347,6 @@ void CCoplaySystem::OnListLobbiesCmd(LobbyMatchList_t *pLobbyMatchList, bool IOF
     }
 }
 
-void CCoplaySystem::PrintAbout(const CCommand& args)
-{
-    ConColorMsg(COPLAY_MSG_COLOR, "Coplay provides an implementation of Steam Networking within the Source SDK. Visit the Github page for more information and source code\n");
-    ConColorMsg(COPLAY_MSG_COLOR, "https://github.com/CoaXioN-Games/coplay\n\n");
-    ConColorMsg(COPLAY_MSG_COLOR, "The loaded Coplay version is %s.\nBuilt on %s at %s GMT-0.\n\n", COPLAY_VERSION, __DATE__, __TIME__);
-
-    ConColorMsg(COPLAY_MSG_COLOR, "Active Coplay build options:\n");
-#ifdef COPLAY_USE_LOBBIES
-     ConColorMsg(COPLAY_MSG_COLOR, " - COPLAY_USE_LOBBIES\n");
-#endif
-#ifdef COPLAY_DONT_UPDATE_RPC
-    ConColorMsg(COPLAY_MSG_COLOR, " - COPLAY_DONT_UPDATE_RPC\n");
-#endif
-#ifdef COPLAY_DONT_LINK_SDL2
-    ConColorMsg(COPLAY_MSG_COLOR, " - COPLAY_DONT_LINK_SDL2\n");
-#endif
-#ifdef COPLAY_DONT_LINK_SDL2_NET
-    ConColorMsg(COPLAY_MSG_COLOR, " - COPLAY_DONT_LINK_SDL2_NET\n");
-#endif
-
-}
-
 std::string CCoplaySystem::GetConnectCommand()
 {
     std::string cmd = "";
@@ -400,9 +367,9 @@ std::string CCoplaySystem::GetConnectCommand()
     }
 
     if (coplay_joinfilter.GetInt() == eP2PFilter_CONTROLLED && !UseCoplayLobbies())
-        cmd = "coplay_connect " + std::to_string(id) + " " + GetHost()->GetPasscode();
+        cmd = "p2p_connect " + std::to_string(id) + " " + GetHost()->GetPasscode();
     else
-        cmd = "coplay_connect " + std::to_string(id);
+        cmd = "p2p_connect " + std::to_string(id);
 
     return cmd;
 }
@@ -412,7 +379,7 @@ void CCoplaySystem::InvitePlayer(const CCommand& args)
     if (m_role != eConnectionRole_HOST
         || (UseCoplayLobbies() && GetHost()->GetLobby().ConvertToUint64() == 0) )
     {
-        ConColorMsg(COPLAY_MSG_COLOR, "You're not currently hosting a game joinable by Coplay.\n");
+        ConColorMsg(COPLAY_MSG_COLOR, "You're not currently hosting a game joinable by P2P.\n");
         return;
     }
 
@@ -461,7 +428,7 @@ void CCoplaySystem::PrintStatus(const CCommand& args)
 void CCoplaySystem::ConnectToLobby(const CCommand& args)
 {
     // Steam appends '+connect_lobby (id64)' to launch options when boot joining
-    std::string cmd = "coplay_connect ";
+    std::string cmd = "p2p_connect ";
     cmd += args.ArgS();
     engine->ClientCmd_Unrestricted(cmd.c_str());
 }

@@ -1,13 +1,3 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
-//================================================
-// CoaXioN Implementation of Steam P2P networking on Source SDK: "CoaXioN Coplay"
-// Author : Tholp / Jackson S
-//================================================
 #include "cbase.h"
 #include "coplay_client.h"
 #include <inetchannel.h>
@@ -35,7 +25,7 @@ void CCoplayClient::ConnectToHost(CSteamID host, std::string passcode)
     else
         netID.SetSteamID(host);
 
-    ConColorMsg(COPLAY_MSG_COLOR, "[Coplay] Attempting Connection to user with ID %llu....\n", netID.GetSteamID64());
+    ConColorMsg(COPLAY_MSG_COLOR, "P2P: Attempting Connection to user with ID %llu....\n", netID.GetSteamID64());
     m_passcode = passcode;
     SteamNetworkingSockets()->ConnectP2P(netID, 0, 0, NULL);
 }

@@ -1,14 +1,3 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
-//================================================
-// CoaXioN Implementation of Steam P2P networking on Source SDK: "CoaXioN Coplay"
-// Author : Tholp / Jackson S
-//================================================
-
 #ifndef COPLAY_SYSTEM_H
 #define COPLAY_SYSTEM_H
 #pragma once
@@ -51,7 +40,7 @@ public:
     CCoplayClient* GetClient() {return &m_client; }
     CCoplayHost*   GetHost() { return &m_host; }
 
-    CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_connect", CoplayConnect, "Connect to a Coplay game", FCVAR_NONE);
+    CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_connect", CoplayConnect, "Connect to a P2P game", FCVAR_NONE);
 
     std::string GetConnectCommand();
 private:
@@ -76,15 +65,14 @@ private:
 
 private:
     // Commands
-	CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_opensocket", OpenSocket, "Manually (re)open your game to P2P connections", FCVAR_NONE);
-    CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_closesocket", CloseSocket, "Manually close your game to P2P connections", FCVAR_NONE);
-	CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_about", PrintAbout, "", FCVAR_NONE);
-	CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_invite", InvitePlayer, "Prints a command for other people to join you", FCVAR_NONE);
-	CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_rerandomize_password", ReRandomizePassword, "Randomizes the password given by coplay_getconnectcommand", FCVAR_NONE);
-	CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_status", PrintStatus, "", FCVAR_NONE);
+	CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_opensocket", OpenSocket, "Manually (re)open your game to P2P connections", FCVAR_NONE);
+    CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_closesocket", CloseSocket, "Manually close your game to P2P connections", FCVAR_NONE);
+	CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_invite", InvitePlayer, "Prints a command for other people to join you", FCVAR_NONE);
+	CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_rerandomize_password", ReRandomizePassword, "Randomizes the password given by p2p_invite", FCVAR_NONE);
+	CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_status", PrintStatus, "", FCVAR_NONE);
 
 #ifdef COPLAY_USE_LOBBIES
-    CON_COMMAND_MEMBER_F(CCoplaySystem, "coplay_listlobbies", ListLobbies, "List all joinable lobbies", FCVAR_NONE);
+    CON_COMMAND_MEMBER_F(CCoplaySystem, "p2p_listlobbies", ListLobbies, "List all joinable lobbies", FCVAR_NONE);
     CON_COMMAND_MEMBER_F(CCoplaySystem, "connect_lobby", ConnectToLobby, "", FCVAR_HIDDEN);
 #endif
 
