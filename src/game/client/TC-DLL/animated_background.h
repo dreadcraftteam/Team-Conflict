@@ -1,4 +1,4 @@
-//========= Copyright Jorge "BSVino" Rodriguez, All rights reserved. ============//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
 //
 // Purpose: 
 //
