@@ -80,8 +80,6 @@ void CMainMenu::StartVideo()
 {
 	Msg("BINK: Video started!\n");
 
-	m_bToolsMode = (IsPC() && (CommandLine()->CheckParm("-tools") != NULL)) ? true : false;
-
 	SetVisible(true);
 	SetPaintEnabled(true);
 

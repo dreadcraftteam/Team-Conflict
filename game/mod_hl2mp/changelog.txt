@@ -1,0 +1,26 @@
+//
+// TEAM-CONFLICT v1.0.0
+//
+
+[Added] Class System
+[Added] P2P
+[Added] Discord RPC
+[Added] Glow Effect
+[Added] NextBot AI
+[Added] Browser Menu
+[Added] Muzzleflash light
+[Added] Team grenades
+[Added] Animated background
+[Added] New ammo_pickup.wav sound
+
+[Updated] Create Server Menu
+[Updated] Team colors
+[Updated] Team names
+[Updated] NoClip
+[Updated] Roll angle
+
+[Fixed] Sounds bug
+[Fixed] Player footsteps
+
+[Removed] Valve original intro
+[Removed] Sprint

@@ -1,7 +1,6 @@
 "GameInfo"
 {
 	game	"TEAM-CONFLICT"
-	title	"TEAM-CONFLICT"
 
 	type multiplayer_only
 
