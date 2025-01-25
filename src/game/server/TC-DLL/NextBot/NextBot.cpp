@@ -47,7 +47,7 @@ CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
 		return;
 	}
 
-	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("roam_bot"));
+	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("simple_bot"));
 	if (bot)
 	{
 		Vector forward = player->GetAbsOrigin() - result.endpos;
@@ -248,39 +248,10 @@ bool VisionTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask )
 //----------------------------------------------------------------------------------------------------------
 
 NextBotCombatCharacter::NextBotCombatCharacter( void )
+
 {
 	m_lastAttacker = NULL;
 	m_didModelChange = false;
-
-	// default weapons
-	SMG1	=	Weapon_Create("weapon_smg1");
-	SHOTGUN =	Weapon_Create("weapon_shotgun");
-	PISTOL	=	Weapon_Create("weapon_pistol");
-	AR2		=	Weapon_Create("weapon_ar2");
-	SLAM	=	Weapon_Create("weapon_slam");
-}
-
-
-//-----------------------------------------------------------------------------------------------------
-CBaseCombatWeapon* NextBotCombatCharacter::GetBotWeapon()
-{
-	int num = RandomInt(1, 4);
-
-	switch (num)
-	{
-	case 1:
-		return SMG1;
-	case 2:
-		return SHOTGUN;
-	case 3:
-		return PISTOL;
-	case 4:
-		return AR2;
-	case 5:
-		return SLAM;
-	default:
-		return PISTOL;
-	}
 }
 
 
@@ -310,19 +281,8 @@ void NextBotCombatCharacter::Spawn( void )
 	SetNextThink( gpGlobals->curtime );
 
 	m_lastAttacker = NULL;
-
-	SetModel("models/kleiner.mdl");
-
-	Weapon_Equip(GetBotWeapon());
 }
 
-//-----------------------------------------------------------------------------------------------------
-void NextBotCombatCharacter::Precache()
-{
-	BaseClass::Precache();
-
-	PrecacheModel("models/kleiner.mdl");
-}
 
 bool NextBotCombatCharacter::IsAreaTraversable( const CNavArea *area ) const
 {

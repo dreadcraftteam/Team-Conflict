@@ -31,12 +31,6 @@ $Project "Server (TEAM-CONFLICT)"
 			{
 				$Folder "Behavior"
 				{
-					$Folder "Actions"
-					{
-						$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\Actions\NextBotRoam.cpp"
-						$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\Actions\NextBotRoam.h"
-					}
-					
 					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorBackUp.h"
 					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorMoveTo.h"
 				}
@@ -91,6 +85,13 @@ $Project "Server (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotUtil.h"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
+				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.cpp"
+				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.h"
+			}
+			$Folder "Weapons"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.h"
 			}
 		}
 		

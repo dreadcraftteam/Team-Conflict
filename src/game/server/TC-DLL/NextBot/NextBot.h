@@ -37,13 +37,6 @@ public:
 
 	virtual void Spawn( void );
 
-	virtual void Precache();
-
-	virtual CBaseCombatWeapon* GetBotWeapon();
-
-	// default weapons
-	CBaseCombatWeapon* SMG1, * SHOTGUN, * PISTOL, * AR2, * SLAM;
-
 	virtual Vector EyePosition( void );
 
 	virtual INextBot *MyNextBotPointer( void ) { return this; }

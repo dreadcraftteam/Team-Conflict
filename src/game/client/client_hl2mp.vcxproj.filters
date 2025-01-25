@@ -58,9 +58,6 @@
     <Filter Include="Source Files\TC-DLL\P2P">
       <UniqueIdentifier>{45DFCA29-5862-1DCC-D76F-F31EC8DEE27F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TC-DLL\Source Shader Editor">
-      <UniqueIdentifier>{27CFD353-73DF-E3D4-6E4A-19EFD67751FC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TC-DLL\VGUI">
       <UniqueIdentifier>{AE9CD192-F05D-83D8-F5EC-A93BF47A1F01}</UniqueIdentifier>
     </Filter>
@@ -1988,18 +1985,6 @@
     <ClInclude Include="..\..\coplay\src\coplay_system.h">
       <Filter>Source Files\TC-DLL\P2P</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\ShaderEditor\ISEdit_ModelRender.h">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\ShaderEditor\IVShaderEditor.h">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\ShaderEditor\SEdit_ModelRender.h">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\ShaderEditor\ShaderEditorSystem.h">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.h">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClInclude>
@@ -3393,12 +3378,6 @@
     </ClCompile>
     <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
       <Filter>Source Files\TC-DLL\P2P</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\ShaderEditor\SEdit_ModelRender.cpp">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\ShaderEditor\ShaderEditorSystem.cpp">
-      <Filter>Source Files\TC-DLL\Source Shader Editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
       <Filter>Source Files\TC-DLL\VGUI</Filter>

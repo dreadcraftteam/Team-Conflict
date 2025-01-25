@@ -16,7 +16,7 @@ $Configuration
 	$Compiler
 	{
 		$AdditionalIncludeDirectories		"$BASE;hl2mp\ui,.\hl2mp,$SRCDIR\game\shared\hl2mp,.\hl2,.\hl2\elements,$SRCDIR\game\shared\hl2"
-		$PreprocessorDefinitions			"$BASE;HL2MP;HL2_CLIENT_DLL;GLOWS_ENABLE;SOURCE_2013"
+		$PreprocessorDefinitions			"$BASE;HL2MP;HL2_CLIENT_DLL;GLOWS_ENABLE"
 		$TreatWarningsAsErrors			    "No (/WX-)"
 	}
 }
@@ -58,17 +58,6 @@ $Project "Client (TEAM-CONFLICT)"
 			{
 				$File	"$SRCDIR\game\client\TC-DLL\animated_background.cpp"
 				$File	"$SRCDIR\game\client\TC-DLL\animated_background.h"
-			}
-			$Folder "Source Shader Editor"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\ShaderEditorSystem.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\SEdit_ModelRender.cpp"
-				//$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\Grass\CGrassCluster.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\ISEdit_ModelRender.h"
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\IVShaderEditor.h"
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\ShaderEditorSystem.h"
-				$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\SEdit_ModelRender.h"
-				//$File	"$SRCDIR\game\client\TC-DLL\ShaderEditor\Grass\CGrassCluster.h"
 			}
 		}
 
