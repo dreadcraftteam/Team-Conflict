@@ -58,6 +58,15 @@
     <Filter Include="Source Files\TC-DLL\P2P">
       <UniqueIdentifier>{45DFCA29-5862-1DCC-D76F-F31EC8DEE27F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC-DLL\Shader Editor">
+      <UniqueIdentifier>{CAB0C752-6BBD-60DF-6F91-9F23E757E9DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC-DLL\Shader Editor\Header Files">
+      <UniqueIdentifier>{59DE7A72-DCFD-9377-3152-36AF1870E7E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC-DLL\Shader Editor\Implementation Files">
+      <UniqueIdentifier>{D30F06B3-0489-997A-22F8-F8A9C2CDCA1D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC-DLL\VGUI">
       <UniqueIdentifier>{AE9CD192-F05D-83D8-F5EC-A93BF47A1F01}</UniqueIdentifier>
     </Filter>
@@ -1985,6 +1994,18 @@
     <ClInclude Include="..\..\coplay\src\coplay_system.h">
       <Filter>Source Files\TC-DLL\P2P</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\game\client\ShaderEditor\ISEdit_ModelRender.h">
+      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\ShaderEditor\IVShaderEditor.h">
+      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\ShaderEditor\SEdit_ModelRender.h">
+      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\ShaderEditor\ShaderEditorSystem.h">
+      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.h">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClInclude>
@@ -3378,6 +3399,12 @@
     </ClCompile>
     <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
       <Filter>Source Files\TC-DLL\P2P</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\ShaderEditor\SEdit_ModelRender.cpp">
+      <Filter>Source Files\TC-DLL\Shader Editor\Implementation Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\ShaderEditor\ShaderEditorSystem.cpp">
+      <Filter>Source Files\TC-DLL\Shader Editor\Implementation Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
       <Filter>Source Files\TC-DLL\VGUI</Filter>

@@ -1904,9 +1904,6 @@
     <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.h">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.h">
-      <Filter>Source Files\TC DLL\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="plasma.h">
       <Filter>Source Files\temporary entities</Filter>
     </ClInclude>
@@ -3546,9 +3543,6 @@
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.cpp">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp">
-      <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="basetempentity.cpp">
       <Filter>Source Files\temporary entities</Filter>
