@@ -47,7 +47,7 @@ CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
 		return;
 	}
 
-	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("nb_bot"));
+	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("simple_bot"));
 	if (bot)
 	{
 		Vector forward = player->GetAbsOrigin() - result.endpos;

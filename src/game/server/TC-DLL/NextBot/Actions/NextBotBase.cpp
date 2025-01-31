@@ -11,7 +11,7 @@
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-LINK_ENTITY_TO_CLASS(nb_bot, CNextBotBase);
+LINK_ENTITY_TO_CLASS(simple_bot, CNextBotBase);
 
 //-----------------------------------------------------------------------------
 // Purpose: 
@@ -170,7 +170,7 @@ public:
 	}
 
 
-	virtual const char* GetName(void) const { return "Roam"; }		// return name of this action
+	virtual const char* GetName(void) const { return "Base"; }		// return name of this action
 
 private:
 	PathFollower m_path;
