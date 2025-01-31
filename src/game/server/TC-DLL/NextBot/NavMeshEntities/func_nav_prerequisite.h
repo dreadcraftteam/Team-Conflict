@@ -1,15 +1,17 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
-// NextBot paths that go through this entity must fulfill the given prerequisites to pass
-// Michael Booth, August 2009
+//
+// 
+//
+//========================================================================//
 
 #ifndef FUNC_NAV_PREREQUISITE_H
 #define FUNC_NAV_PREREQUISITE_H
 
 #include "triggers.h"
 
-/**
- * NextBot paths that pass through this entity must fulfill the given prerequisites to pass
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 DECLARE_AUTO_LIST( IFuncNavPrerequisiteAutoList );
 
 class CFuncNavPrerequisite : public CBaseTrigger, public IFuncNavPrerequisiteAutoList

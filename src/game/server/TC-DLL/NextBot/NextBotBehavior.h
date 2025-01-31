@@ -1,7 +1,8 @@
-// NextBotBehaviorEngine.h
-// Behavioral system constructed from Actions
-// Author: Michael Booth, April 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _BEHAVIOR_ENGINE_H_
 #define _BEHAVIOR_ENGINE_H_
@@ -51,9 +52,9 @@ extern ConVar NextBotDebugHistory;
 // forward declaration
 template < typename Actor > class Action;
 
-/**
- * The possible consequences of an Action
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 enum ActionResultType
 { 
 	CONTINUE,			// continue executing this action next frame - nothing has changed
@@ -64,12 +65,9 @@ enum ActionResultType
 };
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Actions and Event processors return results derived from this class.
- * Do not assemble this yourself - use the Continue(), ChangeTo(), Done(), and SuspendFor()
- * methods within Action.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 struct IActionResult
 {
@@ -115,12 +113,9 @@ struct IActionResult
 };
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * When an Action is executed it returns this result.
- * Do not assemble this yourself - use the Continue(), ChangeTo(), Done(), and SuspendFor()
- * methods within Action.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 struct ActionResult : public IActionResult< Actor >
 {
@@ -129,14 +124,9 @@ struct ActionResult : public IActionResult< Actor >
 };
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * When an event is processed, it returns this DESIRED result,
- * which may or MAY NOT happen, depending on other event results
- * that occur simultaneously.
- * Do not assemble this yourself - use the TryContinue(), TryChangeTo(), TryDone(), TrySustain(),
- * and TrySuspendFor() methods within Action.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 enum EventResultPriorityType
 {
 	RESULT_NONE,		// no result
@@ -157,13 +147,9 @@ struct EventDesiredResult : public IActionResult< Actor >
 };
 
 
-//-------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------
-/**
- * A Behavior is the root of an Action hierarchy as well as its container/manager.
- * Instantiate a Behavior with the root Action of your behavioral system, and
- * call Behavior::Update() to drive it.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 class Behavior : public INextBotEventResponder, public IContextualQuery
 {
@@ -303,7 +289,7 @@ public:
 		return m_name;
 	}
 
-	// INextBotEventResponder propagation ----------------------------------------------------------------------
+	// INextBotEventResponder propagation
 	virtual INextBotEventResponder *FirstContainedResponder( void ) const
 	{
 		return m_action;
@@ -314,7 +300,7 @@ public:
 		return NULL;
 	}
 
-	// IContextualQuery propagation ----------------------------------------------------------------------------
+	// IContextualQuery propagation
 	virtual QueryResultType ShouldPickUp( const INextBot *me, CBaseEntity *item ) const		// if the desired item was available right now, should we pick it up?
 	{
 		QueryResultType result = ANSWER_UNDEFINED;
@@ -497,11 +483,9 @@ public:
 	}
 
 
-	/**
-	 * Allow bot to approve of positions game movement tries to put him into.
-	 * This is most useful for bots derived from CBasePlayer that go through
-	 * the player movement system.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual QueryResultType IsPositionAllowed( const INextBot *me, const Vector &pos ) const
 	{
 		QueryResultType result = ANSWER_UNDEFINED;
@@ -577,13 +561,9 @@ private:
 };
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Something an Actor does.
- * Actions can contain Actions, representing the precise context of the Actor's behavior.
- * A system of Actions is contained within a Behavior, which acts as the manager
- * of the Action system.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 class Action : public INextBotEventResponder, public IContextualQuery
 {
@@ -598,7 +578,6 @@ public:
 	virtual const char *GetFullName( void ) const;		// return a temporary string showing the full lineage of this one action
 	Actor *GetActor( void ) const;						// return the Actor performing this Action (valid just before OnStart() is invoked)
 
-	//-----------------------------------------------------------------------------------------
 	/**
 	 * Try to start the Action. Result is immediately processed, 
 	 * which can cause an immediate transition, another OnStart(), etc.
@@ -637,7 +616,6 @@ public:
 	// create and return an Action to start as sub-action within this Action when it starts
 	virtual Action< Actor > *InitialContainedAction( Actor *me )	{ return NULL; }
 
-	//-----------------------------------------------------------------------------------------
 	/**
 	 * Override the event handler methods below to respond to events that occur during this Action
 	 * NOTE: These are identical to the events in INextBotEventResponder with the addition
@@ -686,7 +664,7 @@ public:
 	virtual EventDesiredResult< Actor > OnWin( Actor *me )														{ return TryContinue(); }
 	virtual EventDesiredResult< Actor > OnLose( Actor *me )														{ return TryContinue(); }
 
-#ifdef DOTA_SERVER_DLL
+#ifdef DOTA_SERVER_DLL // Dota 2? NEXTBOTS IN DOTA? WHAT ARE YOU FUCKING DOING?!
 	virtual EventDesiredResult< Actor > OnCommandMoveTo( Actor *me, const Vector &pos ) { return TryContinue(); }
 	virtual EventDesiredResult< Actor > OnCommandMoveToAggressive( Actor *me, const Vector &pos ) { return TryContinue(); }
 	virtual EventDesiredResult< Actor > OnCommandAttack( Actor *me, CBaseEntity *victim, bool bDeny ) { return TryContinue(); }
@@ -701,11 +679,11 @@ public:
 	virtual EventDesiredResult< Actor > OnCancelAttack( Actor *me, CBaseEntity *pTarget ) { return TryContinue(); }
 	virtual EventDesiredResult< Actor > OnDominated( Actor *me ) { return TryContinue(); }
 	virtual EventDesiredResult< Actor > OnWarped( Actor *me, Vector vStartPos ) { return TryContinue(); }
-#endif
+#endif // I hate Dota 2.
 
-	/**
-	 * Event handlers must return one of these.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	EventDesiredResult< Actor > TryContinue( EventResultPriorityType priority = RESULT_TRY ) const;
 	EventDesiredResult< Actor > TryChangeTo( Action< Actor > *action, EventResultPriorityType priority = RESULT_TRY, const char *reason = NULL ) const;
 	EventDesiredResult< Actor > TrySuspendFor( Action< Actor > *action, EventResultPriorityType priority = RESULT_TRY, const char *reason = NULL ) const;
@@ -713,32 +691,31 @@ public:
 	EventDesiredResult< Actor > TryToSustain( EventResultPriorityType priority = RESULT_TRY, const char *reason = NULL ) const;
 
 
-	//-----------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 	Action< Actor > *GetActiveChildAction( void ) const;
 	Action< Actor > *GetParentAction( void ) const;			// the Action that I'm running inside of
 
-	bool IsSuspended( void ) const;						// return true if we are currently suspended for another Action
+	bool IsSuspended( void ) const;							// return true if we are currently suspended for another Action
 
-	const char *DebugString( void ) const;								// return a temporary string describing the current action stack for debugging
+	const char *DebugString( void ) const;					// return a temporary string describing the current action stack for debugging
 
-	/**
-	 * Sometimes we want to pass through other NextBots. OnContact() will always
-	 * be invoked, but collision resolution can be skipped if this
-	 * method returns false.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual bool IsAbleToBlockMovementOf( const INextBot *botInMotion ) const	{ return true; }
 
-	// INextBotEventResponder propagation ----------------------------------------------------------------------
+	// INextBotEventResponder propagation 
 	virtual INextBotEventResponder *FirstContainedResponder( void ) const;
 	virtual INextBotEventResponder *NextContainedResponder( INextBotEventResponder *current ) const;
 
 
 private:
 	
-	/**
-	 * These macros are used below to translate INextBotEventResponder event methods
-	 * into Action event handler methods
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	#define PROCESS_EVENT( METHOD )							\
 		{													\
 			if ( !m_isStarted )								\
@@ -891,10 +868,9 @@ private:
 		}
 
 
-	/**
-	 * Translate incoming events into Action events
-	 * DO NOT OVERRIDE THESE METHODS
-	 */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 	virtual void OnLeaveGround( CBaseEntity *ground )					{ PROCESS_EVENT_WITH_1_ARG( OnLeaveGround, ground ); }
 	virtual void OnLandOnGround( CBaseEntity *ground )					{ PROCESS_EVENT_WITH_1_ARG( OnLandOnGround, ground ); }
 	virtual void OnContact( CBaseEntity *other, CGameTrace *result )	{ PROCESS_EVENT_WITH_2_ARGS( OnContact, other, result ); }
@@ -1095,7 +1071,9 @@ private:
 };
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor >::Action( void )
 {
@@ -1117,7 +1095,9 @@ Action< Actor >::Action( void )
 }
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor >::~Action()
 {
@@ -1240,7 +1220,9 @@ EventDesiredResult< Actor > Action< Actor >::TryToSustain( EventResultPriorityTy
 }
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor > *Action< Actor >::GetActiveChildAction( void ) const
 {
@@ -1248,8 +1230,9 @@ Action< Actor > *Action< Actor >::GetActiveChildAction( void ) const
 }
 
 
-//-------------------------------------------------------------------------------------------
-// the Action that I'm running inside of
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor > *Action< Actor >::GetParentAction( void ) const
 {
@@ -1257,10 +1240,9 @@ Action< Actor > *Action< Actor >::GetParentAction( void ) const
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Return true if we are currently suspended for another Action
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 bool Action< Actor >::IsSuspended( void ) const
 {
@@ -1268,11 +1250,9 @@ bool Action< Actor >::IsSuspended( void ) const
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Start this Action.
- * The act of calling InvokeOnStart is the edge case that 'enters' a state.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 ActionResult< Actor > Action< Actor >::InvokeOnStart( Actor *me, Behavior< Actor > *behavior, Action< Actor > *priorAction, Action< Actor > *buriedUnderMeAction )
 {
@@ -1374,15 +1354,9 @@ ActionResult< Actor > Action< Actor >::InvokeUpdate( Actor *me, Behavior< Actor 
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * This method calls the virtual OnEnd() method for the Action, its children, and Actions
- * stacked on top of it.
- * It does NOT delete resources, or disturb pointer relationships, because this Action
- * needs to remain valid for a short while as an argument to OnStart(), OnSuspend(), etc for
- * the next Action.
- * The destructor for the Action frees memory for this Action, its children, etc.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 void Action< Actor >::InvokeOnEnd( Actor *me, Behavior< Actor > *behavior, Action< Actor > *nextAction )
 {
@@ -1422,12 +1396,9 @@ void Action< Actor >::InvokeOnEnd( Actor *me, Behavior< Actor > *behavior, Actio
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Just invoke OnSuspend - when the interrupting Action is started it will
- * update our buried/covered pointers.
- * OnSuspend may cause this Action to exit.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor > * Action< Actor >::InvokeOnSuspend( Actor *me, Behavior< Actor > *behavior, Action< Actor > *interruptingAction )
 {
@@ -1467,7 +1438,9 @@ Action< Actor > * Action< Actor >::InvokeOnSuspend( Actor *me, Behavior< Actor >
 }
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 ActionResult< Actor > Action< Actor >::InvokeOnResume( Actor *me, Behavior< Actor > *behavior, Action< Actor > *interruptingAction )
 {
@@ -1515,10 +1488,9 @@ ActionResult< Actor > Action< Actor >::InvokeOnResume( Actor *me, Behavior< Acto
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Given the result of this Action's work, apply the result to potentially create a new Action
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 Action< Actor > *Action< Actor >::ApplyResult( Actor *me, Behavior< Actor > *behavior, ActionResult< Actor > result )
 {
@@ -1526,8 +1498,9 @@ Action< Actor > *Action< Actor >::ApplyResult( Actor *me, Behavior< Actor > *beh
 
 	switch( result.m_type )
 	{
-		//-----------------------------------------------------------------------------------------------------
-		// transition to new Action
+		//-----------------------------------------------------------------------------
+		// Purpose: 
+		//-----------------------------------------------------------------------------
 		case CHANGE_TO:
 		{
 			if ( newAction == NULL )
@@ -1586,8 +1559,9 @@ Action< Actor > *Action< Actor >::ApplyResult( Actor *me, Behavior< Actor > *beh
 			return newAction->ApplyResult( me, behavior, startResult );
 		}
 		
-		//-----------------------------------------------------------------------------------------------------
-		// temporarily suspend ourselves for the newAction, covering it on the stack
+		//-----------------------------------------------------------------------------
+		// Purpose: 
+		//-----------------------------------------------------------------------------
 		case SUSPEND_FOR:
 		{
 			// interrupting Action always goes on the TOP of the stack - find it
@@ -1633,7 +1607,9 @@ Action< Actor > *Action< Actor >::ApplyResult( Actor *me, Behavior< Actor > *beh
 			return newAction->ApplyResult( me, behavior, startResult );
 		}
 
-		//-----------------------------------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
+		// Purpose: 
+		//-----------------------------------------------------------------------------
 		case DONE:
 		{
 			// resume buried action
@@ -1703,10 +1679,9 @@ Action< Actor > *Action< Actor >::ApplyResult( Actor *me, Behavior< Actor > *beh
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Propagate events to sub actions
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 INextBotEventResponder *Action< Actor >::FirstContainedResponder( void ) const
 {
@@ -1720,10 +1695,9 @@ INextBotEventResponder *Action< Actor >::NextContainedResponder( INextBotEventRe
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Return a temporary string describing the current action stack for debugging
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 const char *Action< Actor >::DebugString( void ) const
 {
@@ -1742,7 +1716,9 @@ const char *Action< Actor >::DebugString( void ) const
 }
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 char *Action< Actor >::BuildDecoratedName( char *name, const Action< Actor > *action ) const
 {
@@ -1772,10 +1748,9 @@ char *Action< Actor >::BuildDecoratedName( char *name, const Action< Actor > *ac
 }
 
 
-//-------------------------------------------------------------------------------------------
-/**
- * Return a temporary string showing the full lineage of this one action
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 const char *Action< Actor >::GetFullName( void ) const
 {
@@ -1815,7 +1790,9 @@ const char *Action< Actor >::GetFullName( void ) const
 }
 
 
-//-------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 void Action< Actor >::PrintStateToConsole( void ) const
 {

@@ -1,7 +1,8 @@
-// NextBotPlayerLocomotion.cpp
-// Implementation of Locomotion interface for CBasePlayer-derived classes
-// Author: Michael Booth, November 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 #include "nav_mesh.h"
@@ -16,7 +17,9 @@
 
 ConVar NextBotPlayerMoveDirect( "nb_player_move_direct", "0" );
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::PlayerLocomotion( INextBot *bot ) : ILocomotion( bot )
 {
 	m_player = NULL;
@@ -24,10 +27,9 @@ PlayerLocomotion::PlayerLocomotion( INextBot *bot ) : ILocomotion( bot )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
- * Reset locomotor to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::Reset( void )
 {
 	m_player = static_cast< CBasePlayer * >( GetBot()->GetEntity() );
@@ -51,7 +53,9 @@ void PlayerLocomotion::Reset( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::TraverseLadder( void )
 {
 	switch( m_ladderState )
@@ -96,10 +100,9 @@ bool PlayerLocomotion::TraverseLadder( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
- * We're close, but not yet on, this ladder - approach it
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::ApproachAscendingLadder( void )
 {
 	if ( m_ladderInfo == NULL )
@@ -140,7 +143,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::ApproachAscendingLadder( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::ApproachDescendingLadder( void )
 {
 	if ( m_ladderInfo == NULL )
@@ -218,7 +223,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::ApproachDescendingLadder( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::AscendLadder( void )
 {
 	if ( m_ladderInfo == NULL )
@@ -257,7 +264,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::AscendLadder( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::DescendLadder( void )
 {
 	if ( m_ladderInfo == NULL )
@@ -296,7 +305,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::DescendLadder( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::DismountLadderTop( void )
 {
 	if ( m_ladderInfo == NULL || m_ladderTimer.IsElapsed() )
@@ -335,7 +346,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::DismountLadderTop( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerLocomotion::LadderState PlayerLocomotion::DismountLadderBottom( void )
 {
 	if ( m_ladderInfo == NULL || m_ladderTimer.IsElapsed() )
@@ -355,10 +368,9 @@ PlayerLocomotion::LadderState PlayerLocomotion::DismountLadderBottom( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
- * Update internal state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::Update( void )
 {
 	if ( TraverseLadder() )
@@ -424,7 +436,9 @@ void PlayerLocomotion::Update( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::AdjustPosture( const Vector &moveGoal )
 {
 	// This function has no effect if we're not standing or crouching
@@ -437,10 +451,9 @@ void PlayerLocomotion::AdjustPosture( const Vector &moveGoal )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
- * Build a user command to move this player towards the goal position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::Approach( const Vector &pos, float goalWeight )
 {
 	VPROF_BUDGET( "PlayerLocomotion::Approach", "NextBot" );
@@ -477,7 +490,7 @@ void PlayerLocomotion::Approach( const Vector &pos, float goalWeight )
 	float ahead = to.Dot( forward );
 	float side = to.Dot( right );
 
-#ifdef NEED_TO_INTEGRATE_MOTION_CONTROLLED_CODE_FROM_L4D_PLAYERS
+#ifdef NEED_TO_INTEGRATE_MOTION_CONTROLLED_CODE_FROM_L4D_PLAYERS // L4D code!!!11!
 	// If we're climbing ledges, we need to stay crouched to prevent player movement code from messing
 	// with our origin.
 	CTerrorPlayer *player = ToTerrorPlayer(m_player);
@@ -581,10 +594,9 @@ void PlayerLocomotion::Approach( const Vector &pos, float goalWeight )
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Move the bot to the precise given position immediately, 
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::DriveTo( const Vector &pos )
 {
 	BaseClass::DriveTo( pos );
@@ -593,7 +605,9 @@ void PlayerLocomotion::DriveTo( const Vector &pos )
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsClimbPossible( INextBot *me, const CBaseEntity *obstacle ) const
 {
 	// don't jump unless we have to
@@ -628,7 +642,9 @@ bool PlayerLocomotion::IsClimbPossible( INextBot *me, const CBaseEntity *obstacl
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::ClimbUpToLedge( const Vector &landingGoal, const Vector &landingForward, const CBaseEntity *obstacle )
 {
 	if ( !IsClimbPossible( GetBot(), obstacle ) )
@@ -646,7 +662,9 @@ bool PlayerLocomotion::ClimbUpToLedge( const Vector &landingGoal, const Vector &
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::JumpAcrossGap( const Vector &landingGoal, const Vector &landingForward )
 {
 	Jump();
@@ -660,7 +678,9 @@ void PlayerLocomotion::JumpAcrossGap( const Vector &landingGoal, const Vector &l
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::Jump( void )
 {
 	m_isJumping = true;
@@ -674,7 +694,9 @@ void PlayerLocomotion::Jump( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsClimbingOrJumping( void ) const
 {
 	if ( !m_isJumping )
@@ -690,44 +712,45 @@ bool PlayerLocomotion::IsClimbingOrJumping( void ) const
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsClimbingUpToLedge( void ) const
 {
 	return m_isClimbingUpToLedge;
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsJumpingAcrossGap( void ) const
 {
 	return m_isJumpingAcrossGap;
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Return true if standing on something
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsOnGround( void ) const
 {
 	return (m_player->GetGroundEntity() != NULL);
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Return the current ground entity or NULL if not on the ground
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 CBaseEntity *PlayerLocomotion::GetGround( void ) const
 {
 	return m_player->GetGroundEntity();
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Surface normal of the ground we are in contact with
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerLocomotion::GetGroundNormal( void ) const
 {
 	static Vector up( 0, 0, 1.0f );
@@ -737,10 +760,9 @@ const Vector &PlayerLocomotion::GetGroundNormal( void ) const
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Climb the given ladder to the top and dismount
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::ClimbLadder( const CNavLadder *ladder, const CNavArea *dismountGoal )
 {
 	// look up and push forward
@@ -754,10 +776,9 @@ void PlayerLocomotion::ClimbLadder( const CNavLadder *ladder, const CNavArea *di
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Descend the given ladder to the bottom and dismount
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::DescendLadder( const CNavLadder *ladder, const CNavArea *dismountGoal )
 {
 	// look down and push forward
@@ -771,17 +792,18 @@ void PlayerLocomotion::DescendLadder( const CNavLadder *ladder, const CNavArea *
 }
 
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerLocomotion::IsUsingLadder( void ) const
 {
 	return ( m_ladderState != NO_LADDER );
 }
 
 
-//----------------------------------------------------------------------------------------------------
-/**
- * Rotate body to face towards "target"
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerLocomotion::FaceTowards( const Vector &target )
 {
 	// player body follows view direction
@@ -791,34 +813,36 @@ void PlayerLocomotion::FaceTowards( const Vector &target )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
-* Return position of "feet" - point below centroid of bot at feet level
-*/
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerLocomotion::GetFeet( void ) const
 {
 	return m_player->GetAbsOrigin();
 }
 
 
-//-----------------------------------------------------------------------------------------------------
-/**
- * Return current world space velocity
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerLocomotion::GetVelocity( void ) const
 {
 	return m_player->GetAbsVelocity();
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerLocomotion::GetRunSpeed( void ) const
 {
 	return m_player->MaxSpeed();
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerLocomotion::GetWalkSpeed( void ) const
 {
 	return 0.5f * m_player->MaxSpeed();

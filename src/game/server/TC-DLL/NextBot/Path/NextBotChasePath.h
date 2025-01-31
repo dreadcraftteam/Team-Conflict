@@ -1,7 +1,8 @@
-// NextBotChasePath.h
-// Maintain and follow a "chase path" to a selected Actor
-// Author: Michael Booth, September 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_CHASE_PATH_
 #define _NEXT_BOT_CHASE_PATH_
@@ -15,11 +16,9 @@
 #include "tier0/vprof.h"
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * A ChasePath extends a PathFollower to periodically recompute a path to a chase
- * subject, and to move along the path towards that subject.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class ChasePath : public PathFollower
 {
 public:
@@ -92,10 +91,9 @@ inline void ChasePath::Invalidate( void )
 
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Maintain a path to our chase subject and move along that path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline void ChasePath::Update( INextBot *bot, CBaseEntity *subject, const IPathCost &cost, Vector *pPredictedSubjectPos )
 {
 	VPROF_BUDGET( "ChasePath::Update", "NextBot" );
@@ -108,10 +106,9 @@ inline void ChasePath::Update( INextBot *bot, CBaseEntity *subject, const IPathC
 }
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Return true if situation has changed enough to warrant recomputing the current path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline bool ChasePath::IsRepathNeeded( INextBot *bot, CBaseEntity *subject ) const
 {
 	// the closer we get, the more accurate our path needs to be
@@ -126,10 +123,9 @@ inline bool ChasePath::IsRepathNeeded( INextBot *bot, CBaseEntity *subject ) con
 }
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Periodically rebuild the path to our victim
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline void ChasePath::RefreshPath( INextBot *bot, CBaseEntity *subject, const IPathCost &cost, Vector *pPredictedSubjectPos )
 {
 	VPROF_BUDGET( "ChasePath::RefreshPath", "NextBot" );
@@ -269,11 +265,9 @@ inline void ChasePath::RefreshPath( INextBot *bot, CBaseEntity *subject, const I
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------------------------------
-/**
- * Directly beeline toward victim if we have a clear shot, otherwise pathfind.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class DirectChasePath : public ChasePath
 {
 public:
@@ -342,7 +336,9 @@ public:
 		return true;
 	}
 
-	//-------------------------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual bool IsRepathNeeded( INextBot *bot, CBaseEntity *subject ) const			// return true if situation has changed enough to warrant recomputing the current path
 	{
 		if ( ChasePath::IsRepathNeeded( bot, subject ) )
@@ -353,11 +349,9 @@ public:
 		return bot->GetLocomotionInterface()->IsStuck() && bot->GetLocomotionInterface()->GetStuckDuration() > 2.0f;
 	}
 
-	//-------------------------------------------------------------------------------------------------------
-	/**
-	 * Determine exactly where the path goes between the given two areas
-	 * on the path. Return this point in 'crossPos'.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual void ComputeAreaCrossing( INextBot *bot, const CNavArea *from, const Vector &fromPos, const CNavArea *to, NavDirType dir, Vector *crossPos ) const
 	{
 		Vector center;

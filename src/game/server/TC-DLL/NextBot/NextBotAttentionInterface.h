@@ -1,7 +1,8 @@
-// NextBotAttentionInterface.h
-// Manage what this bot pays attention to
-// Author: Michael Booth, April 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_ATTENTION_INTERFACE_H_
 #define _NEXT_BOT_ATTENTION_INTERFACE_H_
@@ -12,19 +13,17 @@ class INextBot;
 class IBody;
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface for managing what a bot pays attention to.
- * Vision determines what see see and notice -> Attention determines which of those things we look at -> Low level head/aiming simulation actually moves our head/eyes
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IAttention : public INextBotComponent
 {
 public:
 	IAttention( INextBot *bot ) : INextBotComponent( bot ) { }
 	virtual ~IAttention() { }
 
-	virtual void Reset( void );// {}										// reset to initial state
-	virtual void Update( void );// {}										// update internal state
+	virtual void Reset( void );// {}	// reset to initial state
+	virtual void Update( void );// {}	// update internal state
 
 	enum SignificanceLevel
 	{
@@ -47,7 +46,7 @@ public:
 	virtual bool IsAwareOf( CBaseEntity *what ) const;								// return true if given object is in our attending set
 	virtual float GetAwareDuration( CBaseEntity *what ) const;						// return how long we've been aware of this entity
 
-	// INextBotEventResponder ------------------------------------------------------------------
+	// INextBotEventResponder
 	virtual void OnInjured( const CTakeDamageInfo &info );							// when bot is damaged by something
 	virtual void OnContact( CBaseEntity *other, CGameTrace *result = NULL );		// invoked when bot touches 'other'
 	virtual void OnSight( CBaseEntity *subject );									// when subject initially enters bot's visual awareness

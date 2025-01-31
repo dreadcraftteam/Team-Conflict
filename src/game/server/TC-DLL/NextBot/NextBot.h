@@ -1,7 +1,7 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
-// NextBotCombatCharacter.h
-// Next generation bot system
-// Author: Michael Booth, April 2005
+//
+// 
+//
 //========================================================================//
 
 #ifndef _NEXT_BOT_H_
@@ -20,11 +20,9 @@ struct animevent_t;
 extern ConVar NextBotStop;
 
 
-//----------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------
-/**
- * A Next Bot derived from CBaseCombatCharacter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotCombatCharacter : public CBaseCombatCharacter, public INextBot
 {
 public:
@@ -41,17 +39,16 @@ public:
 
 	virtual INextBot *MyNextBotPointer( void ) { return this; }
 
-	// Event hooks into NextBot system ---------------------------------------
+	// Event hooks into NextBot system
 	virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
 	virtual int OnTakeDamage_Dying( const CTakeDamageInfo &info );
 	virtual void Event_Killed( const CTakeDamageInfo &info );
 	virtual void HandleAnimEvent( animevent_t *event );
-	virtual void OnNavAreaChanged( CNavArea *enteredArea, CNavArea *leftArea );	// invoked (by UpdateLastKnownArea) when we enter a new nav area (or it is reset to NULL)
+	virtual void OnNavAreaChanged( CNavArea *enteredArea, CNavArea *leftArea );
 	virtual void Touch( CBaseEntity *other );
 	virtual void SetModel( const char *szModelName );
 	virtual void Ignite( float flFlameLifetime, bool bNPCOnly = true, float flSize = 0.0f, bool bCalledByLevelDesigner = false );
 	virtual void Ignite( float flFlameLifetime, CBaseEntity *pAttacker );
-	//------------------------------------------------------------------------
 
 	virtual bool IsUseableEntity( CBaseEntity *entity, unsigned int requiredCaps = 0 );
 	void UseEntity( CBaseEntity *entity, USE_TYPE useType = USE_TOGGLE );
@@ -67,11 +64,11 @@ public:
 	// expose to public
 	int	GetLastHitGroup( void ) const;								// where on our body were we injured last
 
-	virtual bool IsAreaTraversable( const CNavArea *area ) const;							// return true if we can use the given area 
+	virtual bool IsAreaTraversable( const CNavArea *area ) const;	// return true if we can use the given area 
 
 	virtual CBaseCombatCharacter *GetLastAttacker( void ) const;	// return the character who last attacked me
 
-	// begin INextBot public interface ----------------------------------------------------------------
+	// begin INextBot public interface 
 	virtual NextBotCombatCharacter *GetEntity( void ) const			{ return const_cast< NextBotCombatCharacter * >( this ); }
 	virtual NextBotCombatCharacter *GetNextBotCombatCharacter( void ) const	{ return const_cast< NextBotCombatCharacter * >( this ); }
 	
@@ -93,7 +90,9 @@ inline int NextBotCombatCharacter::GetLastHitGroup( void ) const
 	return LastHitGroup();
 }
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotDestroyer
 {
 public:

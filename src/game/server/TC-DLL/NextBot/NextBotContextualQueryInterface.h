@@ -1,7 +1,8 @@
-// NextBotContextualQueryInterface.h
-// Queries within the context of the bot's current behavior state
-// Author: Michael Booth, June 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_CONTEXTUAL_QUERY_H_
 #define _NEXT_BOT_CONTEXTUAL_QUERY_H_
@@ -12,11 +13,9 @@ class CBaseCombatCharacter;
 class Path;
 class CKnownEntity;
 
-/** 
- * Since behaviors can have several concurrent actions active, we ask
- * the topmost child action first, and if it defers, its parent, and so
- * on, until we get a definitive answer.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 enum QueryResultType
 {
 	ANSWER_NO,
@@ -28,10 +27,9 @@ enum QueryResultType
 #define IS_ANY_HINDRANCE_POSSIBLE	( (CBaseEntity*)0xFFFFFFFF )
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface for queries that are dependent on the bot's current behavior state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IContextualQuery
 {
 public:
@@ -45,11 +43,9 @@ public:
 
 	virtual Vector					SelectTargetPoint( const INextBot *me, const CBaseCombatCharacter *subject ) const;		// given a subject, return the world space position we should aim at
 
-	/**
-	 * Allow bot to approve of positions game movement tries to put him into.
-	 * This is most useful for bots derived from CBasePlayer that go through
-	 * the player movement system.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual QueryResultType IsPositionAllowed( const INextBot *me, const Vector &pos ) const;
 
 	virtual const CKnownEntity *	SelectMoreDangerousThreat( const INextBot *me, 

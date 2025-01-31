@@ -1,7 +1,8 @@
-// NextBotLocomotionInterface.h
-// NextBot interface for movement through the environment
-// Author: Michael Booth, April 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_LOCOMOTION_INTERFACE_H_
 #define _NEXT_BOT_LOCOMOTION_INTERFACE_H_
@@ -12,10 +13,9 @@ class Path;
 class INextBot;
 class CNavLadder;
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface encapsulating *how* a bot moves through the world (walking? flying? etc)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class ILocomotion : public INextBotComponent
 {
 public:

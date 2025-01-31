@@ -1,7 +1,8 @@
-// NextBotUtil.h
-// Utilities for the NextBot system
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_UTIL_H_
 #define _NEXT_BOT_UTIL_H_
@@ -11,10 +12,9 @@
 #include "nav_mesh.h"
 #include "nav_pathfind.h"
 
-//--------------------------------------------------------------------------------------------
-/**
- * A simple filter interface for various NextBot queries
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotEntityFilter
 {
 public:
@@ -28,10 +28,9 @@ bool VisionTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask )
 bool IgnoreActorsTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask );
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that skips all players and NextBots
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotTraceFilterIgnoreActors : public CTraceFilterSimple
 {
 public:
@@ -41,10 +40,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that skips all players, NextBots, and non-LOS blockers
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotVisionTraceFilter : public CTraceFilterSimple
 {
 public:
@@ -54,10 +52,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that skips all NextBots, but includes Players
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotTraceFilterIgnoreNextBots : public CTraceFilterSimple
 {
 public:
@@ -84,10 +81,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that obeys INextBot::IsAbleToBlockMovementOf()
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotTraceFilter : public CTraceFilterSimple
 {
 public:
@@ -125,10 +121,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that only hits players and NextBots
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotTraceFilterOnlyActors : public CTraceFilterSimple
 {
 public:
@@ -161,13 +156,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------
-/**
- * Trace filter that skips "traversable" entities.  The "when" argument creates
- * a temporal context for asking if an entity is IMMEDIATELY traversable (like thin
- * glass that just breaks as we walk through it) or EVENTUALLY traversable (like a
- * breakable object that will take some time to break through)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotTraversableTraceFilter : public CTraceFilterSimple
 {
 public:
@@ -200,11 +191,9 @@ private:
 };
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Given a vector of entities, a nav area, and a max travel distance, return 
- * the entity that has the shortest travel distance.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline CBaseEntity *SelectClosestEntityByTravelDistance( INextBot *me, const CUtlVector< CBaseEntity * > &candidateEntities, CNavArea *startArea, float travelRange )
 {
 	// collect nearby walkable areas within travelRange
@@ -232,7 +221,7 @@ inline CBaseEntity *SelectClosestEntityByTravelDistance( INextBot *me, const CUt
 }
 
 
-#ifdef OBSOLETE
+#ifdef OBSOLETE // WTF?
 //--------------------------------------------------------------------------------------------
 /**
  * Trace filter that skips "traversable" entities, but hits other Actors.

@@ -3,6 +3,9 @@
 // Basic ground-based movement for NextBotCombatCharacters
 // Author: Michael Booth, February 2009
 // Note: This is a refactoring of ZombieBotLocomotion from L4D
+//========================================================================//
+
+//^^^ L4D source code part 3
 
 #ifndef NEXT_BOT_GROUND_LOCOMOTION_H
 #define NEXT_BOT_GROUND_LOCOMOTION_H
@@ -13,11 +16,9 @@
 
 class NextBotCombatCharacter;
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * Basic ground-based movement for NextBotCombatCharacters.
- * This locomotor resolves collisions and assumes a ground-based bot under the influence of gravity.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotGroundLocomotion : public ILocomotion
 {
 public:

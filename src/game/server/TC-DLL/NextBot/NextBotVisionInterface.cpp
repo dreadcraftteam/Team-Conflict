@@ -1,7 +1,8 @@
-// NextBotVisionInterface.cpp
-// Implementation of common vision system
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -27,17 +28,18 @@ ConVar nb_blind( "nb_blind", "0", FCVAR_CHEAT, "Disable vision" );
 ConVar nb_debug_known_entities( "nb_debug_known_entities", "0", FCVAR_CHEAT, "Show the 'known entities' for the bot that is the current spectator target" );
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 IVision::IVision( INextBot *bot ) : INextBotComponent( bot )
 { 
 	Reset();
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Reset to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::Reset( void )
 {
 	INextBotComponent::Reset();
@@ -56,12 +58,9 @@ void IVision::Reset( void )
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Ask the current behavior to select the most dangerous threat from
- * our set of currently known entities
- * TODO: Find a semantically better place for this to live.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const CKnownEntity *IVision::GetPrimaryKnownThreat( bool onlyVisibleThreats ) const
 {
 	if ( m_knownEntityVector.Count() == 0 )
@@ -113,10 +112,9 @@ const CKnownEntity *IVision::GetPrimaryKnownThreat( bool onlyVisibleThreats ) co
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Return the closest recognized entity
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const CKnownEntity *IVision::GetClosestKnown( int team ) const
 {
 	const Vector &myPos = GetBot()->GetPosition();
@@ -148,10 +146,9 @@ const CKnownEntity *IVision::GetClosestKnown( int team ) const
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Return the closest recognized entity that passes the given filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const CKnownEntity *IVision::GetClosestKnown( const INextBotEntityFilter &filter ) const
 {
 	const Vector &myPos = GetBot()->GetPosition();
@@ -183,10 +180,9 @@ const CKnownEntity *IVision::GetClosestKnown( const INextBotEntityFilter &filter
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Given an entity, return our known version of it (or NULL if we don't know of it)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const CKnownEntity *IVision::GetKnown( const CBaseEntity *entity ) const
 {
 	if ( entity == NULL )
@@ -206,12 +202,9 @@ const CKnownEntity *IVision::GetKnown( const CBaseEntity *entity ) const
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Introduce a known entity into the system. Its position is assumed to be known
- * and will be updated, and it is assumed to not yet have been seen by us, allowing for learning
- * of known entities by being told about them, hearing them, etc.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::AddKnownEntity( CBaseEntity *entity )
 {
 	if ( entity == NULL || entity->IsWorld() )
@@ -230,9 +223,9 @@ void IVision::AddKnownEntity( CBaseEntity *entity )
 }
 
 
-//------------------------------------------------------------------------------------------
-// Remove the given entity from our awareness (whether we know if it or not)
-// Useful if we've moved to where we last saw the entity, but it's not there any longer.
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::ForgetEntity( CBaseEntity *forgetMe )
 {
 	if ( !forgetMe )
@@ -251,17 +244,18 @@ void IVision::ForgetEntity( CBaseEntity *forgetMe )
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::ForgetAllKnownEntities( void )
 {
 	m_knownEntityVector.RemoveAll();
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Return the number of entity on the given team known to us closer than rangeLimit
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 int IVision::GetKnownCount( int team, bool onlyVisible, float rangeLimit ) const
 {
 	int count = 0;
@@ -288,8 +282,9 @@ int IVision::GetKnownCount( int team, bool onlyVisible, float rangeLimit ) const
 	return count;
 }
 
-
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PopulateVisibleVector
 {
 public:
@@ -308,11 +303,9 @@ public:
 };
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Populate "potentiallyVisible" with the set of all entities we could potentially see. 
- * Entities in this set will be tested for visibility/recognition in IVision::Update()
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::CollectPotentiallyVisibleEntities( CUtlVector< CBaseEntity * > *potentiallyVisible )
 {
 	potentiallyVisible->RemoveAll();
@@ -323,7 +316,9 @@ void IVision::CollectPotentiallyVisibleEntities( CUtlVector< CBaseEntity * > *po
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class CollectVisible
 {
 public:
@@ -363,7 +358,9 @@ public:
 };
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::UpdateKnownEntities( void )
 {
 	VPROF_BUDGET( "IVision::UpdateKnownEntities", "NextBot" );
@@ -534,10 +531,9 @@ void IVision::UpdateKnownEntities( void )
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Update internal state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::Update( void )
 {
 	VPROF_BUDGET( "IVision::Update", "NextBotExpensive" );
@@ -564,7 +560,9 @@ void IVision::Update( void )
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsAbleToSee( CBaseEntity *subject, FieldOfViewCheckType checkFOV, Vector *visibleSpot ) const
 {
 	VPROF_BUDGET( "IVision::IsAbleToSee", "NextBotExpensive" );
@@ -611,7 +609,9 @@ bool IVision::IsAbleToSee( CBaseEntity *subject, FieldOfViewCheckType checkFOV, 
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsAbleToSee( const Vector &pos, FieldOfViewCheckType checkFOV ) const
 {
 	VPROF_BUDGET( "IVision::IsAbleToSee", "NextBotExpensive" );
@@ -638,10 +638,9 @@ bool IVision::IsAbleToSee( const Vector &pos, FieldOfViewCheckType checkFOV ) co
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Angle given in degrees
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IVision::SetFieldOfView( float horizAngle )
 {
 	m_FOV = horizAngle;
@@ -652,7 +651,7 @@ void IVision::SetFieldOfView( float horizAngle )
 //------------------------------------------------------------------------------------------
 bool IVision::IsInFieldOfView( const Vector &pos ) const
 {
-#ifdef CHECK_OLD_CODE_AGAINST_NEW
+#ifdef CHECK_OLD_CODE_AGAINST_NEW // OK
 	bool bCheck = PointWithinViewAngle( GetBot()->GetBodyInterface()->GetEyePosition(), pos, GetBot()->GetBodyInterface()->GetViewVector(), m_cosHalfFOV );
 	Vector to = pos - GetBot()->GetBodyInterface()->GetEyePosition();
 	to.NormalizeInPlace();
@@ -676,7 +675,9 @@ bool IVision::IsInFieldOfView( const Vector &pos ) const
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsInFieldOfView( CBaseEntity *subject ) const
 {
 	/// @todo check more points
@@ -689,10 +690,9 @@ bool IVision::IsInFieldOfView( CBaseEntity *subject ) const
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Return true if the ray to the given point is unobstructed
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsLineOfSightClear( const Vector &pos ) const
 {
 	VPROF_BUDGET( "IVision::IsLineOfSightClear", "NextBot" );
@@ -707,10 +707,12 @@ bool IVision::IsLineOfSightClear( const Vector &pos ) const
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsLineOfSightClearToEntity( const CBaseEntity *subject, Vector *visibleSpot ) const
 {
-#ifdef TERROR
+#ifdef TERROR // L4D source code part 1488
 	// TODO: Integration querycache & its dependencies
 
 	VPROF_INCREMENT_COUNTER( "IVision::IsLineOfSightClearToEntity", 1 );
@@ -774,10 +776,9 @@ bool IVision::IsLineOfSightClearToEntity( const CBaseEntity *subject, Vector *vi
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Are we looking directly at the given position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsLookingAt( const Vector &pos, float cosTolerance ) const
 {
 	Vector to = pos - GetBot()->GetBodyInterface()->GetEyePosition();
@@ -790,10 +791,9 @@ bool IVision::IsLookingAt( const Vector &pos, float cosTolerance ) const
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Are we looking directly at the given actor
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IVision::IsLookingAt( const CBaseCombatCharacter *actor, float cosTolerance ) const
 {
 	return IsLookingAt( actor->EyePosition(), cosTolerance );

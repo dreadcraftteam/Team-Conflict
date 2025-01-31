@@ -1,7 +1,8 @@
-// NextBotPath.h
-// Encapsulate and manipulate a path through the world
-// Author: Michael Booth, February 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_PATH_H_
 #define _NEXT_BOT_PATH_H_
@@ -18,11 +19,9 @@ class CNavArea;
 class CNavLadder;
 
 
-//---------------------------------------------------------------------------------------------------------------
-/**
- * The interface for pathfinding costs.
- * TODO: Replace all template cost functors with this interface, so we can virtualize and derive from them.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IPathCost
 {
 public:
@@ -30,10 +29,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------------------------
-/**
- * The interface for selecting a goal area during "open goal" pathfinding
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IPathOpenGoalSelector
 {
 public:
@@ -42,12 +40,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------------------------
-/**
- * A Path through the world.
- * Not only does this encapsulate a path to get from point A to point B,
- * but also the selecting the decision algorithm for how to build that path.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class Path
 {
 public:
@@ -145,13 +140,9 @@ public:
 	virtual void Copy( INextBot *bot, const Path &path );	// Replace this path with the given path's data
 
 
-	//-----------------------------------------------------------------------------------------------------------------
-	/**
-	 * Compute shortest path from bot to given actor via A* algorithm.
-	 * If returns true, path was found to the subject.
-	 * If returns false, path may either be invalid (use IsValid() to check), or valid but 
-	 * doesn't reach all the way to the subject.
-	 */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 	template< typename CostFunctor >
 	bool Compute( INextBot *bot, CBaseCombatCharacter *subject, CostFunctor &costFunc, float maxPathLength = 0.0f, bool includeGoalIfPathFails = true )
 	{
@@ -266,13 +257,9 @@ public:
 	}
 
 
-	//-----------------------------------------------------------------------------------------------------------------
-	/**
-	 * Compute shortest path from bot to 'goal' via A* algorithm.
-	 * If returns true, path was found to the goal position.
-	 * If returns false, path may either be invalid (use IsValid() to check), or valid but 
-	 * doesn't reach all the way to the goal.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	template< typename CostFunctor >
 	bool Compute( INextBot *bot, const Vector &goal, CostFunctor &costFunc, float maxPathLength = 0.0f, bool includeGoalIfPathFails = true )
 	{
@@ -391,12 +378,9 @@ public:
 	}
 
 
-	//-----------------------------------------------------------------------------------------------------------------
-	/**
-	 * Build a path from bot's current location to an undetermined goal area
-	 * that minimizes the given cost along the final path and meets the
-	 * goal criteria.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual bool ComputeWithOpenGoal( INextBot *bot, const IPathCost &costFunc, const IPathOpenGoalSelector &goalSelector, float maxSearchRadius = 0.0f )
 	{
 		VPROF_BUDGET( "ComputeWithOpenGoal", "NextBot" );
@@ -507,11 +491,9 @@ public:
 	}
 
 
-	//-----------------------------------------------------------------------------------------------------------------
-	/**
-	 * Given the last area in a path with valid parent pointers, 
-	 * construct the actual path.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	void AssemblePrecomputedPath( INextBot *bot, const Vector &goal, CNavArea *endArea )
 	{
 		VPROF_BUDGET( "AssemblePrecomputedPath", "NextBot" );

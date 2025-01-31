@@ -1,7 +1,8 @@
-// NextBotInterface.h
-// Interface for NextBot
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_INTERFACE_H_
 #define _NEXT_BOT_INTERFACE_H_
@@ -17,10 +18,9 @@
 class CBaseCombatCharacter;
 class PathFollower;
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * A general purpose filter interface for various bot systems
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotFilter
 {
 public:
@@ -28,7 +28,9 @@ public:
 };
 
 
-//----------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBot : public INextBotEventResponder
 {
 public:
@@ -147,7 +149,6 @@ public:
 		char data[ MAX_NEXTBOT_DEBUG_LINE_LENGTH ];
 	};
 	void GetDebugHistory( unsigned int type, CUtlVector< const NextBotDebugLineType * > *lines ) const;	// build a vector of debug history of the given types
-	//------------------------------------------------------------------------------
 
 
 private:

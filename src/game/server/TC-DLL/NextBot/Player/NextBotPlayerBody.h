@@ -1,7 +1,8 @@
-// NextBotPlayerBody.h
-// Control and information about the bot's body state (posture, animation state, etc)
-// Author: Michael Booth, October 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_PLAYER_BODY_H_
 #define _NEXT_BOT_PLAYER_BODY_H_
@@ -9,11 +10,9 @@
 #include "TC-DLL/NextBot/NextBotBodyInterface.h"
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the fire button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PressFireButtonReply : public INextBotReply
 {
 public:
@@ -21,11 +20,9 @@ public:
 };
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the alt-fire button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PressAltFireButtonReply : public INextBotReply
 {
 public:
@@ -33,11 +30,9 @@ public:
 };
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the jump button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PressJumpButtonReply : public INextBotReply
 {
 public:
@@ -45,10 +40,9 @@ public:
 };
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface for control and information about the bot's body state (posture, animation state, etc)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PlayerBody : public IBody
 {
 public:

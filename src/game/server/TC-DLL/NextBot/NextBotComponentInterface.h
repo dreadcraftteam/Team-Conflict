@@ -1,7 +1,8 @@
-// NextBotComponentInterface.h
-// Interface for all components
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_COMPONENT_INTERFACE_H_
 #define _NEXT_BOT_COMPONENT_INTERFACE_H_
@@ -14,10 +15,9 @@ class CGameTrace;
 class CTakeDamageInfo;
 
 
-//--------------------------------------------------------------------------------------------------------------------------
-/**
- * Various processes can invoke a "reply" (ie: callback) via instances of this interface
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotReply
 {
 public:
@@ -33,10 +33,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------------------------------------
-/**
- * Next Bot component interface
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotComponent : public INextBotEventResponder
 {
 public:

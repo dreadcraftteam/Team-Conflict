@@ -1,17 +1,16 @@
-// BehaviorBackUp.h
-// Back up for a short duration
-// Author: Michael Booth, March 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _BEHAVIOR_BACK_UP_H_
 #define _BEHAVIOR_BACK_UP_H_
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Move backwards for a short duration away from a given position.  
- * Useful to dislodge ourselves if we get stuck while following our path.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 class BehaviorBackUp : public Action< Actor >
 {
@@ -34,7 +33,9 @@ private:
 };
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 inline BehaviorBackUp< Actor >::BehaviorBackUp( const Vector &avoidPos )
 {
@@ -42,7 +43,9 @@ inline BehaviorBackUp< Actor >::BehaviorBackUp( const Vector &avoidPos )
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 inline ActionResult< Actor > BehaviorBackUp< Actor >::OnStart( Actor *me, Action< Actor > *priorAction )
 {
@@ -66,8 +69,9 @@ inline ActionResult< Actor > BehaviorBackUp< Actor >::OnStart( Actor *me, Action
 	return Continue();
 }
 
-
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 inline ActionResult< Actor > BehaviorBackUp< Actor >::Update( Actor *me, float interval )
 {
@@ -105,7 +109,9 @@ inline ActionResult< Actor > BehaviorBackUp< Actor >::Update( Actor *me, float i
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor >
 inline EventDesiredResult< Actor > BehaviorBackUp< Actor >::OnStuck( Actor *me )
 {

@@ -1,7 +1,8 @@
-// NextBotPathFollow.cpp
-// Path following
-// Author: Michael Booth, April 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -32,10 +33,9 @@ ConVar NextBotAllowGapJumping( "nb_allow_gap_jumping", "1", FCVAR_CHEAT );
 ConVar NextBotDebugClimbing( "nb_debug_climbing", "0", FCVAR_CHEAT );
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Constructor
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PathFollower::PathFollower( void )
 {
 	m_goal = NULL;
@@ -52,7 +52,9 @@ PathFollower::PathFollower( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class CDetachPath
 {
 public:
@@ -70,7 +72,9 @@ public:
 	PathFollower *m_path;
 };
 
-//--------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PathFollower::~PathFollower()
 {
 	// allow bots to detach pointer to me
@@ -79,10 +83,9 @@ PathFollower::~PathFollower()
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * When the path is invalidated, the follower is also reset
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PathFollower::Invalidate( void )
 {
 	// extend
@@ -96,10 +99,9 @@ void PathFollower::Invalidate( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Invoked when the path is (re)computed (path is valid at the time of this call)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PathFollower::OnPathChanged( INextBot *bot, Path::ResultType result )
 {
 	// start from the beginning
@@ -107,10 +109,9 @@ void PathFollower::OnPathChanged( INextBot *bot, Path::ResultType result )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Adjust speed based on path curvature
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PathFollower::AdjustSpeed( INextBot *bot )
 {
 	ILocomotion *mover = bot->GetLocomotionInterface();
@@ -130,11 +131,9 @@ void PathFollower::AdjustSpeed( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Return true if reached current goal along path
- * NOTE: Ladder goals are handled elsewhere
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::IsAtGoal( INextBot *bot ) const
 {
 	VPROF_BUDGET( "PathFollower::IsAtGoal", "NextBot" );
@@ -260,10 +259,9 @@ bool PathFollower::IsAtGoal( INextBot *bot ) const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Move bot along ladder. Return true if ladder motion is in progress, false if complete.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::LadderUpdate( INextBot *bot )
 {
 	VPROF_BUDGET( "PathFollower::LadderUpdate", "NextBot" );
@@ -454,11 +452,9 @@ bool PathFollower::LadderUpdate( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Check if we have reached our current path goal and
- * iterate to next goal or finish the path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::CheckProgress( INextBot *bot )
 {
 	ILocomotion *mover = bot->GetLocomotionInterface();
@@ -565,10 +561,9 @@ bool PathFollower::CheckProgress( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Move mover along path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PathFollower::Update( INextBot *bot )
 {
 	VPROF_BUDGET( "PathFollower::Update", "NextBotSpiky" );
@@ -785,10 +780,9 @@ void PathFollower::Update( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * If entity is returned, it is blocking us from continuing along our path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 CBaseEntity *PathFollower::FindBlocker( INextBot *bot )
 {
 	IIntention *think = bot->GetIntentionInterface();
@@ -865,11 +859,9 @@ CBaseEntity *PathFollower::FindBlocker( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Do reflex avoidance movements of very nearby obstacles.
- * Return adjusted goal.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Vector PathFollower::Avoid( INextBot *bot, const Vector &goalPos, const Vector &forward, const Vector &left )
 {
 	VPROF_BUDGET( "PathFollower::Avoid", "NextBotExpensive" );
@@ -1082,7 +1074,7 @@ Vector PathFollower::Avoid( INextBot *bot, const Vector &goalPos, const Vector &
 }
 
 
-#ifdef EXPERIMENTAL_LEDGE_FINDER
+#ifdef EXPERIMENTAL_LEDGE_FINDER // L4D or not? hmm...
 //--------------------------------------------------------------------------------------------------------------
 /**
  * Given a hull that defines the area of space that may contain a climbable ledge,
@@ -1132,10 +1124,9 @@ bool PathFollower::FindClimbLedge( INextBot *bot, Vector startTracePos, Vector l
 #endif // _DEBUG
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Climb up ledges
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::Climbing( INextBot *bot, const Path::Segment *goal, const Vector &forward, const Vector &right, float goalRange )
 {
 	VPROF_BUDGET( "PathFollower::Climbing", "NextBot" );
@@ -1723,10 +1714,9 @@ bool PathFollower::Climbing( INextBot *bot, const Path::Segment *goal, const Vec
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Jump over gaps
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::JumpOverGaps( INextBot *bot, const Path::Segment *goal, const Vector &forward, const Vector &right, float goalRange )
 {
 	VPROF_BUDGET( "PathFollower::JumpOverGaps", "NextBot" );
@@ -1826,10 +1816,9 @@ bool PathFollower::JumpOverGaps( INextBot *bot, const Path::Segment *goal, const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Draw the path for debugging
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PathFollower::Draw( const Path::Segment *start ) const
 {
 	if ( m_goal == NULL )
@@ -1884,10 +1873,9 @@ void PathFollower::Draw( const Path::Segment *start ) const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Return true if there is a the given discontinuity ahead in the path within the given range (-1 = entire remaining path)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PathFollower::IsDiscontinuityAhead( INextBot *bot, Path::SegmentType type, float range ) const
 {
 	if ( m_goal )

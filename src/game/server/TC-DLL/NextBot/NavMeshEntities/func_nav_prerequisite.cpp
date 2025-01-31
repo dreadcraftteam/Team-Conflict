@@ -1,6 +1,8 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
-// NextBot paths that go through this entity must fulfill the given prerequisites to pass
-// Michael Booth, August 2009
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 #include "func_nav_prerequisite.h"
@@ -26,6 +28,8 @@ IMPLEMENT_AUTO_LIST( IFuncNavPrerequisiteAutoList );
 
 
 //-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 CFuncNavPrerequisite::CFuncNavPrerequisite()
 {
 	m_task = TASK_NONE;
@@ -33,6 +37,8 @@ CFuncNavPrerequisite::CFuncNavPrerequisite()
 }
 
 
+//-----------------------------------------------------------------------------
+// Purpose: 
 //-----------------------------------------------------------------------------
 void CFuncNavPrerequisite::Spawn( void )
 {
@@ -44,12 +50,16 @@ void CFuncNavPrerequisite::Spawn( void )
 
 
 //-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool CFuncNavPrerequisite::IsTask( TaskType task ) const
 {
 	return task == m_task ? true : false;
 }
 
 
+//-----------------------------------------------------------------------------
+// Purpose: 
 //-----------------------------------------------------------------------------
 CBaseEntity *CFuncNavPrerequisite::GetTaskEntity( void )
 {
@@ -61,14 +71,18 @@ CBaseEntity *CFuncNavPrerequisite::GetTaskEntity( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void CFuncNavPrerequisite::InputEnable( inputdata_t &inputdata )
 {
 	m_isDisabled = false;
 }
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void CFuncNavPrerequisite::InputDisable( inputdata_t &inputdata )
 {
 	m_isDisabled = true;

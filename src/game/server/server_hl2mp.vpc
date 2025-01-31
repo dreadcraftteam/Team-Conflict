@@ -34,6 +34,11 @@ $Project "Server (TEAM-CONFLICT)"
 					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorBackUp.h"
 					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorMoveTo.h"
 				}
+				$Folder "Actions"
+				{
+					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Actions\NextBotBase.cpp"
+					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Actions\NextBotBase.h"
+				}
 				$Folder "NavMeshEntities"
 				{
 					$File	"$SRCDIR\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.cpp"
@@ -85,13 +90,10 @@ $Project "Server (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotUtil.h"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\simple_bot.h"
 			}
 			$Folder "Weapons"
 			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.h"
+
 			}
 		}
 		

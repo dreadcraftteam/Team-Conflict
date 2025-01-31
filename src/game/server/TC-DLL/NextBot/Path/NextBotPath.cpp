@@ -1,7 +1,8 @@
-// NextBotPath.cpp
-// Encapsulate and manipulate a path through the world
-// Author: Michael Booth, February 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -23,7 +24,9 @@ ConVar NextBotPathDrawIncrement( "nb_path_draw_inc", "100", FCVAR_CHEAT );
 ConVar NextBotPathDrawSegmentCount( "nb_path_draw_segment_count", "100", FCVAR_CHEAT );
 ConVar NextBotPathSegmentInfluenceRadius( "nb_path_segment_influence_radius", "100", FCVAR_CHEAT );
 
-//--------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Path::Path( void )
 {
 	m_segmentCount = 0;
@@ -36,10 +39,9 @@ Path::Path( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Determine actual path positions
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool Path::ComputePathDetails( INextBot *bot, const Vector &start )
 {
 	VPROF_BUDGET( "Path::ComputePathDetails", "NextBot" );
@@ -379,10 +381,9 @@ bool Path::ComputePathDetails( INextBot *bot, const Vector &start )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Insert new segment at index i
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::InsertSegment( Segment newSegment, int i )
 {
 	if (m_segmentCount < MAX_PATH_SEGMENTS-1)
@@ -399,10 +400,9 @@ void Path::InsertSegment( Segment newSegment, int i )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Build trivial path when start and goal are in the same nav area
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool Path::BuildTrivialPath( INextBot *bot, const Vector &goal )
 {
 	const Vector &start = bot->GetPosition();
@@ -452,10 +452,9 @@ bool Path::BuildTrivialPath( INextBot *bot, const Vector &goal )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Draw the path for debugging.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::Draw( const Path::Segment *start ) const
 {
 	if ( !IsValid() )
@@ -521,10 +520,9 @@ void Path::Draw( const Path::Segment *start ) const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Draw the path for debugging - MODIFIES cursor position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::DrawInterpolated( float from, float to )
 {
 	if ( !IsValid() )
@@ -569,11 +567,9 @@ void Path::DrawInterpolated( float from, float to )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Check line of sight from 'anchor' node on path to subsequent nodes until
- * we find a node that can't been seen from 'anchor'.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 int Path::FindNextOccludedNode( INextBot *bot, int anchorIndex )
 {
 	ILocomotion *mover = bot->GetLocomotionInterface();
@@ -611,10 +607,9 @@ int Path::FindNextOccludedNode( INextBot *bot, int anchorIndex )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Smooth out path, removing redundant nodes
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::Optimize( INextBot *bot )
 {
 	// this is SUPER expensive - especially the IsGap() check
@@ -651,10 +646,9 @@ void Path::Optimize( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Compute final data for completed path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::PostProcess( void )
 {
 	VPROF_BUDGET( "Path::PostProcess", "NextBot" );
@@ -726,10 +720,9 @@ void Path::PostProcess( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Return a position on the path at the given distance from the path start
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &Path::GetPosition( float distanceFromStart, const Segment *start ) const
 {
 	if (!IsValid())
@@ -790,10 +783,9 @@ const Vector &Path::GetPosition( float distanceFromStart, const Segment *start )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Return the closest point on the path to the given position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &Path::GetClosestPosition( const Vector &pos, const Segment *start, float alongLimit ) const
 {
 	const Segment *segment = (start) ? start : &m_path[0];
@@ -837,10 +829,9 @@ const Vector &Path::GetClosestPosition( const Vector &pos, const Segment *start,
 
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Replace this path with the given path's data
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::Copy( INextBot *bot, const Path &path )
 {
 	VPROF_BUDGET( "Path::Copy", "NextBot" );
@@ -857,10 +848,9 @@ void Path::Copy( INextBot *bot, const Path &path )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Set cursor position to closest point on path to given position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::MoveCursorToClosestPosition( const Vector &pos, SeekType type, float alongLimit ) const
 {
 	if ( !IsValid() )
@@ -941,10 +931,9 @@ void Path::MoveCursorToClosestPosition( const Vector &pos, SeekType type, float 
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Return path state at the current cursor position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Path::Data &Path::GetCursorData( void ) const
 {
 	if ( IsValid() )
@@ -1047,11 +1036,9 @@ const Path::Data &Path::GetCursorData( void ) const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Determine exactly where the path goes between the given two areas
- * on the path. Return this point in 'crossPos'.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void Path::ComputeAreaCrossing( INextBot *bot, const CNavArea *from, const Vector &fromPos, const CNavArea *to, NavDirType dir, Vector *crossPos ) const
 {
 	from->ComputeClosestPointInPortal( to, dir, fromPos, crossPos );

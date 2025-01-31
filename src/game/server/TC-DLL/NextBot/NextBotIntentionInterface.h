@@ -1,7 +1,8 @@
-// NextBotIntentionInterface.h
-// Interface for intentional thinking
-// Author: Michael Booth, April 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_INTENTION_INTERFACE_H_
 #define _NEXT_BOT_INTENTION_INTERFACE_H_
@@ -59,16 +60,9 @@ class INextBot;
 #define DEALLOCATE_INTENTION_INTERFACE	{ if ( m_intention ) delete m_intention; }
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface for intentional thinking.
- * The assumption is that this is a container for one or more concurrent Behaviors.
- * The "primary" Behavior is the FirstContainedResponder, and so on.  
- * IContextualQuery requests are prioritized in contained responder order, such that the first responder
- * that returns a definitive answer is accepted.  WITHIN a given responder (ie: a Behavior), the deepest child
- * Behavior in the active stack is asked first, then its parent, and so on, allowing the most specific active
- * Behavior to override the query responses of its more general parent Behaviors.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IIntention : public INextBotComponent, public IContextualQuery
 {
 public:
@@ -78,7 +72,7 @@ public:
 	virtual void Reset( void )  { INextBotComponent::Reset(); }	// reset to initial state
 	virtual void Update( void ) { }								// update internal state
 
-	// IContextualQuery propagation --------------------------------
+	// IContextualQuery propagation
 	virtual QueryResultType			ShouldPickUp( const INextBot *me, CBaseEntity *item ) const;		// if the desired item was available right now, should we pick it up?
 	virtual QueryResultType			ShouldHurry( const INextBot *me ) const;							// are we in a hurry?
 	virtual QueryResultType			ShouldRetreat( const INextBot *me ) const;							// is it time to retreat?

@@ -1,6 +1,8 @@
-// NextBotManager.cpp
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -12,6 +14,8 @@
 #include "ZombieBot/Witch/Witch.h"
 #include "ZombieManager.h"
 #endif
+
+// ^^^ another L4D source code part
 
 #include "SharedFunctorUtils.h"
 //#include "../../common/blackbox_helper.h"
@@ -26,13 +30,9 @@ ConVar nb_update_framelimit( "nb_update_framelimit", ( IsDebug() ) ? "30" : "15"
 ConVar nb_update_maxslide( "nb_update_maxslide", "2", FCVAR_CHEAT );
 ConVar nb_update_debug( "nb_update_debug", "0", FCVAR_CHEAT );
 
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
-/**
- * Singleton accessor.
- * By returning a reference, we guarantee construction of the 
- * instance before its first use.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotManager &TheNextBots( void )
 {
 	if ( NextBotManager::GetInstance() )
@@ -49,8 +49,9 @@ NextBotManager &TheNextBots( void )
 
 NextBotManager* NextBotManager::sInstance = NULL;
 
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 static const char *debugTypeName[] =
 {
 	"BEHAVIOR",
@@ -135,7 +136,9 @@ static void CC_SetDebugFilter( const CCommand &args )
 static ConCommand SetDebugFilter( "nb_debug_filter", CC_SetDebugFilter, "Add items to the NextBot debug filter. Items can be entindexes or part of the indentifier of one or more bots.", FCVAR_CHEAT );
 
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class Selector
 {
 public:
@@ -176,6 +179,10 @@ public:
 	bool m_useLOS;
 };
 
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+
 static void CC_SelectBot( const CCommand &args )
 {
 	CBasePlayer *player = UTIL_GetListenServerHost();
@@ -195,7 +202,9 @@ static void CC_SelectBot( const CCommand &args )
 static ConCommand SelectBot( "nb_select", CC_SelectBot, "Select the bot you are aiming at for further debug operations.", FCVAR_CHEAT );
 
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 static void CC_ForceLookAt( const CCommand &args )
 {
 	CBasePlayer *player = UTIL_GetListenServerHost();
@@ -209,7 +218,9 @@ static void CC_ForceLookAt( const CCommand &args )
 static ConCommand ForceLookAt( "nb_force_look_at", CC_ForceLookAt, "Force selected bot to look at the local player's position", FCVAR_CHEAT );
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void CC_WarpSelectedHere( const CCommand &args )
 {
 	CBasePlayer *me = dynamic_cast< CBasePlayer * >( UTIL_GetCommandClient() ); 
@@ -234,8 +245,9 @@ void CC_WarpSelectedHere( const CCommand &args )
 static ConCommand WarpSelectedHere( "nb_warp_selected_here", CC_WarpSelectedHere, "Teleport the selected bot to your cursor position", FCVAR_CHEAT );
 
 
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotManager::NextBotManager( void )
 {
 	m_debugType = 0;
@@ -244,16 +256,17 @@ NextBotManager::NextBotManager( void )
 	m_iUpdateTickrate = 0;
 }
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotManager::~NextBotManager()
 {
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Reset to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::Reset( void )
 {
 	// remove the NextBots that should go away during a reset (they will unregister themselves as they go)
@@ -273,8 +286,9 @@ void NextBotManager::Reset( void )
 }
 
 
-//---------------------------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline bool IsDead( INextBot *pBot )
 {
 	CBaseCombatCharacter *pEntity = pBot->GetEntity();
@@ -298,9 +312,9 @@ inline bool IsDead( INextBot *pBot )
 	return false;
 }
 
-//---------------------------------------------------------------------------------------------
-
-// Debug stats for update balancing
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 static int g_nRun;
 static int g_nSlid;
 static int g_nBlockedSlides;
@@ -412,7 +426,9 @@ void NextBotManager::Update( void )
 	}
 }
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotManager::ShouldUpdate( INextBot *bot )
 {
 	if ( m_iUpdateTickrate < 1 )
@@ -461,7 +477,9 @@ bool NextBotManager::ShouldUpdate( INextBot *bot )
 	return false;
 }
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::NotifyBeginUpdate( INextBot *bot )
 {
 	if ( nb_update_debug.GetBool() )
@@ -476,41 +494,44 @@ void NextBotManager::NotifyBeginUpdate( INextBot *bot )
 	m_CurUpdateStartTime = Plat_FloatTime();
 }
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::NotifyEndUpdate( INextBot *bot )
 {
 	// This might be a good place to detect a particular bot had spiked [3/14/2008 tom]
 	m_SumFrameTime += Plat_FloatTime() - m_CurUpdateStartTime;
 }
 
-//---------------------------------------------------------------------------------------------
-/**
- * When the server has changed maps
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnMapLoaded( void )
 {
 	Reset();
 }
 
-
-//---------------------------------------------------------------------------------------------
-/**
- * When the scenario restarts
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnRoundRestart( void )
 {
 	Reset();
 }
 
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 int NextBotManager::Register( INextBot *bot )
 {
 	return m_botList.AddToHead( bot );
 }
 
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::UnRegister( INextBot *bot )
 {
 	m_botList.Remove( bot->GetBotId() );
@@ -523,13 +544,17 @@ void NextBotManager::UnRegister( INextBot *bot )
 }
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnBeginChangeLevel( void )
 {
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotKilledNotifyScan
 {
 public:
@@ -553,10 +578,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * When an actor is killed.  Propagate to all NextBots.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnKilled( CBaseCombatCharacter *victim, const CTakeDamageInfo &info )
 {
 	NextBotKilledNotifyScan notify( victim, info );
@@ -564,7 +588,9 @@ void NextBotManager::OnKilled( CBaseCombatCharacter *victim, const CTakeDamageIn
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotSoundNotifyScan
 {
 public:
@@ -587,10 +613,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * When an entity emits a sound
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnSound( CBaseEntity *source, const Vector &pos, KeyValues *keys )
 {
 	NextBotSoundNotifyScan notify( source, pos, keys );
@@ -610,7 +635,9 @@ void NextBotManager::OnSound( CBaseEntity *source, const Vector &pos, KeyValues 
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotResponseNotifyScan
 {
 public:
@@ -633,10 +660,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * When an Actor speaks a concept
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnSpokeConcept( CBaseCombatCharacter *who, AIConcept_t concept, AI_Response *response )
 {
 	NextBotResponseNotifyScan notify( who, concept, response );
@@ -652,7 +678,9 @@ void NextBotManager::OnSpokeConcept( CBaseCombatCharacter *who, AIConcept_t conc
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotWeaponFiredNotifyScan
 {
 public:
@@ -674,10 +702,9 @@ public:
 };
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * When someone fires a weapon
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::OnWeaponFired( CBaseCombatCharacter *whoFired, CBaseCombatWeapon *weapon )
 {
 	NextBotWeaponFiredNotifyScan notify( whoFired, weapon );
@@ -690,10 +717,9 @@ void NextBotManager::OnWeaponFired( CBaseCombatCharacter *whoFired, CBaseCombatW
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Add given entindex to the debug filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::DebugFilterAdd( int index )
 {
 	DebugFilter filter;
@@ -705,10 +731,9 @@ void NextBotManager::DebugFilterAdd( int index )
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Add given name to the debug filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::DebugFilterAdd( const char *name )
 {
 	DebugFilter filter;
@@ -720,10 +745,9 @@ void NextBotManager::DebugFilterAdd( const char *name )
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Remove given entindex from the debug filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::DebugFilterRemove( int index )
 {
 	for( int i=0; i<m_debugFilterList.Count(); ++i )
@@ -737,10 +761,9 @@ void NextBotManager::DebugFilterRemove( int index )
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Remove given name from the debug filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::DebugFilterRemove( const char *name )
 {
 	for( int i=0; i<m_debugFilterList.Count(); ++i )
@@ -755,20 +778,18 @@ void NextBotManager::DebugFilterRemove( const char *name )
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Clear the debug filter (remove all entries)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::DebugFilterClear( void )
 {
 	m_debugFilterList.RemoveAll();
 }
 
 
-//---------------------------------------------------------------------------------------------
-/**
- * Return true if the given bot matches the debug filter
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotManager::IsDebugFilterMatch( const INextBot *bot ) const
 {
 	// if the filter is empty, all bots match
@@ -820,10 +841,9 @@ bool NextBotManager::IsDebugFilterMatch( const INextBot *bot ) const
 	return false;
 }
 
-//---------------------------------------------------------------------------------------------
-/**
- * Get the bot under the given player's crosshair
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 INextBot *NextBotManager::GetBotUnderCrosshair( CBasePlayer *picker )
 {
 	if ( !picker )
@@ -840,7 +860,7 @@ INextBot *NextBotManager::GetBotUnderCrosshair( CBasePlayer *picker )
 	return NULL;
 }
 
-#ifdef NEED_BLACK_BOX
+#ifdef NEED_BLACK_BOX // Black box?? What?
 //---------------------------------------------------------------------------------------------
 CON_COMMAND( nb_dump_debug_history, "Dumps debug history for the bot under the cursor to the blackbox" )
 {
@@ -876,7 +896,9 @@ CON_COMMAND( nb_dump_debug_history, "Dumps debug history for the bot under the c
 #endif // NEED_BLACK_BOX
 
 
-//---------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotManager::CollectAllBots( CUtlVector< INextBot * > *botVector )
 {
 	if ( !botVector )

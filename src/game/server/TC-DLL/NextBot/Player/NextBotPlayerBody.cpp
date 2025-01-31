@@ -1,7 +1,8 @@
-// NextBotPlayerBody.cpp
-// Implementation of Body interface for CBasePlayer-derived classes
-// Author: Michael Booth, October 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -21,11 +22,9 @@ ConVar nb_head_aim_resettle_angle( "nb_head_aim_resettle_angle", "100", FCVAR_CH
 ConVar nb_head_aim_resettle_time( "nb_head_aim_resettle_time", "0.3", FCVAR_CHEAT, "How long the bot pauses to 'recenter' its virtual mouse on its virtual mousepad" );
 
 
-//-----------------------------------------------------------------------------------------------
-/** 
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the fire button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PressFireButtonReply::OnSuccess( INextBot *bot )
 {
 	INextBotPlayerInput *playerInput = dynamic_cast< INextBotPlayerInput * >( bot->GetEntity() );
@@ -36,11 +35,9 @@ void PressFireButtonReply::OnSuccess( INextBot *bot )
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/** 
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the alternate fire button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PressAltFireButtonReply::OnSuccess( INextBot *bot )
 {
 	INextBotPlayerInput *playerInput = dynamic_cast< INextBotPlayerInput * >( bot->GetEntity() );
@@ -51,11 +48,9 @@ void PressAltFireButtonReply::OnSuccess( INextBot *bot )
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/** 
- * A useful reply for IBody::AimHeadTowards.  When the
- * head is aiming on target, press the jump button.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PressJumpButtonReply::OnSuccess( INextBot *bot )
 {
 	INextBotPlayerInput *playerInput = dynamic_cast< INextBotPlayerInput * >( bot->GetEntity() );
@@ -65,25 +60,24 @@ void PressJumpButtonReply::OnSuccess( INextBot *bot )
 	}
 }
 
-
-//-----------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerBody::PlayerBody( INextBot *bot ) : IBody( bot )
 {
 	m_player = static_cast< CBasePlayer * >( bot->GetEntity() );
 }
 
-
-//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 PlayerBody::~PlayerBody()
 {
 }
 
-
-//-----------------------------------------------------------------------------------------------
-/**
- * reset to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::Reset( void )
 {
 	m_posture = STAND;
@@ -107,11 +101,9 @@ void PlayerBody::Reset( void )
 
 extern ConVar bot_mimic;// ( "bot_mimic", "0", 0, "Bot uses usercmd of player by index." );
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Update internal state.
- * Do this every tick to keep head aims smooth and accurate
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::Upkeep( void )
 {
 	// If mimicking the player, don't modify the view angles.
@@ -325,18 +317,18 @@ void PlayerBody::Upkeep( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::SetPosition( const Vector &pos )
 {
 	m_player->SetAbsOrigin( pos );	
 	return true;
 }
 
-
-//-----------------------------------------------------------------------------------------------
-/**
- * Return the eye position of the bot in world coordinates
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerBody::GetEyePosition( void ) const
 {
 	m_eyePos = m_player->EyePosition();
@@ -349,10 +341,9 @@ CBaseEntity *PlayerBody::GetEntity( void )
 	return m_player;
 }
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return the view unit direction vector in world coordinates
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerBody::GetViewVector( void ) const
 {
 	m_player->EyeVectors( &m_viewVector );
@@ -360,10 +351,9 @@ const Vector &PlayerBody::GetViewVector( void ) const
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Aim the bot's head towards the given goal
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::AimHeadTowards( const Vector &lookAtPos, LookAtPriorityType priority, float duration, INextBotReply *replyWhenAimed, const char *reason )
 {
 	if ( duration <= 0.0f )
@@ -466,11 +456,9 @@ void PlayerBody::AimHeadTowards( const Vector &lookAtPos, LookAtPriorityType pri
 	}
 }
 
-
-//-----------------------------------------------------------------------------------------------
-/**
- * Aim the bot's head towards the given goal
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::AimHeadTowards( CBaseEntity *subject, LookAtPriorityType priority, float duration, INextBotReply *replyWhenAimed, const char *reason )
 {
 	if ( duration <= 0.0f )
@@ -599,20 +587,18 @@ void PlayerBody::AimHeadTowards( CBaseEntity *subject, LookAtPriorityType priori
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if head is not rapidly turning to look somewhere else
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsHeadSteady( void ) const
 {
 	return m_headSteadyTimer.HasStarted();
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return the duration that the bot's head has been on-target
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetHeadSteadyDuration( void ) const
 {
 	// return ( IsHeadAimingOnTarget() ) ? m_headSteadyTimer.GetElapsedTime() : 0.0f;
@@ -620,22 +606,27 @@ float PlayerBody::GetHeadSteadyDuration( void ) const
 }
 
 
-//-----------------------------------------------------------------------------------------------
-// Clear out currently pending replyWhenAimed callback
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::ClearPendingAimReply( void )
 {
 	m_lookAtReplyWhenAimed = NULL;
 }
 
 
-//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetMaxHeadAngularVelocity( void ) const
 {
 	return nb_saccade_speed.GetFloat();
 }
 
 
-//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::StartActivity( Activity act, unsigned int flags )
 {
 	// player animation state is controlled on the client
@@ -643,160 +634,143 @@ bool PlayerBody::StartActivity( Activity act, unsigned int flags )
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return currently animating activity
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Activity PlayerBody::GetActivity( void ) const
 {
 	return ACT_INVALID;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if currently animating activity matches the given one
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsActivity( Activity act ) const
 {
 	return false;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if currently animating activity has any of the given flags
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::HasActivityType( unsigned int flags ) const
 {
 	return false;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Request a posture change
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::SetDesiredPosture( PostureType posture )
 {
 	m_posture = posture;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Get posture body is trying to assume
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 IBody::PostureType PlayerBody::GetDesiredPosture( void ) const
 {
 	return m_posture;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body is trying to assume this posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsDesiredPosture( PostureType posture ) const
 {
 	return ( posture == m_posture );
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body's actual posture matches its desired posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsInDesiredPosture( void ) const
 {
 	return true;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return body's current actual posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 IBody::PostureType PlayerBody::GetActualPosture( void ) const
 {
 	return m_posture;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body is actually in the given posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsActualPosture( PostureType posture ) const
 {
 	return ( posture == m_posture );
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body's current posture allows it to move around the world
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsPostureMobile( void ) const
 {
 	return true;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body's posture is in the process of changing to new posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsPostureChanging( void ) const
 {
 	return false;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Arousal level change
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void PlayerBody::SetArousal( ArousalType arousal )
 {
 	m_arousal = arousal;
 }
 
-
-//-----------------------------------------------------------------------------------------------
-/**
- * Get arousal level
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 IBody::ArousalType PlayerBody::GetArousal( void ) const
 {
 	return m_arousal;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return true if body is at this arousal level
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool PlayerBody::IsArousal( ArousalType arousal ) const
 {
 	return ( arousal == m_arousal );
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Width of bot's collision hull in XY plane
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetHullWidth( void ) const
 {
 	return VEC_HULL_MAX_SCALED( m_player ).x - VEC_HULL_MIN_SCALED( m_player ).x;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Height of bot's current collision hull based on posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetHullHeight( void ) const
 {
 	if ( m_posture == CROUCH )
@@ -808,30 +782,27 @@ float PlayerBody::GetHullHeight( void ) const
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Height of bot's collision hull when standing
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetStandHullHeight( void ) const
 {
 	return VEC_HULL_MAX_SCALED( m_player ).z - VEC_HULL_MIN_SCALED( m_player ).z;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Height of bot's collision hull when crouched
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float PlayerBody::GetCrouchHullHeight( void ) const
 {
 	return VEC_DUCK_HULL_MAX.z - VEC_DUCK_HULL_MIN.z;
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return current collision hull minimums based on actual body posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerBody::GetHullMins( void ) const
 {
 	if ( m_posture == CROUCH )
@@ -847,10 +818,9 @@ const Vector &PlayerBody::GetHullMins( void ) const
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return current collision hull maximums based on actual body posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &PlayerBody::GetHullMaxs( void ) const
 {
 	if ( m_posture == CROUCH )
@@ -866,10 +836,9 @@ const Vector &PlayerBody::GetHullMaxs( void ) const
 }
 
 
-//-----------------------------------------------------------------------------------------------
-/**
- * Return the bot's collision mask (hack until we get a general hull trace abstraction here or in the locomotion interface)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 unsigned int PlayerBody::GetSolidMask( void ) const
 {
 	return ( m_player ) ? m_player->PlayerSolidMask() : MASK_PLAYERSOLID;

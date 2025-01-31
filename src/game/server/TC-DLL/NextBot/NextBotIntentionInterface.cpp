@@ -1,7 +1,8 @@
-// NextBotIntentionInterface.cpp
-// Interface for intentional thinking
-// Author: Michael Booth, November 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -12,10 +13,9 @@
 #include "tier0/memdbgon.h"
 
 
-//------------------------------------------------------------------------------------------------------------------------
-/**
- * Given a subject, return the world space position we should aim at
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Vector IIntention::SelectTargetPoint( const INextBot *me, const CBaseCombatCharacter *subject ) const
 {
 	for ( INextBotEventResponder *sub = FirstContainedResponder(); sub; sub = NextContainedResponder( sub ) )
@@ -42,10 +42,9 @@ Vector IIntention::SelectTargetPoint( const INextBot *me, const CBaseCombatChara
 }
 
 
-//------------------------------------------------------------------------------------------------------------------------
-/**
- * Given two threats, decide which one is more dangerous
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const CKnownEntity *IIntention::SelectMoreDangerousThreat( const INextBot *me, const CBaseCombatCharacter *subject, const CKnownEntity *threat1, const CKnownEntity *threat2 ) const
 {
 	if ( !threat1 || threat1->IsObsolete() )

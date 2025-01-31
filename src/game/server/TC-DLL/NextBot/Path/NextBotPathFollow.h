@@ -1,7 +1,8 @@
-// NextBotPathFollow.h
-// Path following
-// Author: Michael Booth, April 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_PATH_FOLLOWER_
 #define _NEXT_BOT_PATH_FOLLOWER_
@@ -14,10 +15,9 @@ class INextBot;
 class ILocomotion;
 
 
-//--------------------------------------------------------------------------------------------------------
-/**
- * A PathFollower extends a Path to include mechanisms to move along (follow) it
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PathFollower : public Path
 {
 public:

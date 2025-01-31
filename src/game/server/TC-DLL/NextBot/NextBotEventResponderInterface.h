@@ -1,7 +1,8 @@
-// NextBotEventResponderInterface.h
-// Interface for propagating and responding to events
-// Author: Michael Booth, May 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_EVENT_RESPONDER_INTERFACE_H_
 #define _NEXT_BOT_EVENT_RESPONDER_INTERFACE_H_
@@ -17,7 +18,9 @@ struct animevent_t;
 #include "ai_speech.h"
 
 
-//--------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 enum MoveToFailureType
 {
 	FAIL_NO_PATH_EXISTS,
@@ -25,13 +28,9 @@ enum MoveToFailureType
 	FAIL_FELL_OFF,
 };
 
-//--------------------------------------------------------------------------------------------------------------------------
-/**
- * Events propagated to/between components.
- * To add an event, add its signature here and implement its propagation
- * to derived classes via FirstContainedResponder() and NextContainedResponder().
- * NOTE: Also add a translator to the Action class in NextBotBehavior.h.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotEventResponder
 {
 public:
@@ -43,10 +42,9 @@ public:
 	virtual INextBotEventResponder *FirstContainedResponder( void ) const  { return NULL; }
 	virtual INextBotEventResponder *NextContainedResponder( INextBotEventResponder *current ) const { return NULL; }
 	
-	//
-	// Events.  All events must be 'extended' by calling the derived class explicitly to ensure propagation.
-	// Each event must implement its propagation in this interface class.
-	//
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual void OnLeaveGround( CBaseEntity *ground );		// invoked when bot leaves ground for any reason
 	virtual void OnLandOnGround( CBaseEntity *ground );		// invoked when bot lands on the ground after being in the air
 
@@ -102,7 +100,7 @@ public:
 	virtual void OnWin( void );
 	virtual void OnLose( void );
 
-#ifdef DOTA_SERVER_DLL
+#ifdef DOTA_SERVER_DLL // Shet, Dota 2
 	virtual void OnCommandMoveTo( const Vector &pos );
 	virtual void OnCommandMoveToAggressive( const Vector &pos );
 	virtual void OnCommandAttack( CBaseEntity *victim, bool bDeny );

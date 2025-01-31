@@ -3,6 +3,7 @@
 // Basic ground-based movement for NextBotCombatCharacters
 // Author: Michael Booth, February 2009
 // Note: This is a refactoring of ZombieBotLocomotion from L4D
+// ^^^ wtf, L4D source code part?
 
 #include "cbase.h"
 
@@ -23,10 +24,12 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#pragma warning( disable : 4355 )			// warning 'this' used in base member initializer list - we're using it safely
+#pragma warning( disable : 4355 )	// warning 'this' used in base member initializer list - we're using it safely
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotGroundLocomotion::NextBotGroundLocomotion( INextBot *bot ) : ILocomotion( bot )
 {
 	m_nextBot = NULL;
@@ -40,16 +43,17 @@ NextBotGroundLocomotion::NextBotGroundLocomotion( INextBot *bot ) : ILocomotion(
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotGroundLocomotion::~NextBotGroundLocomotion()
 {
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Reset locomotor to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Reset( void )
 {
 	BaseClass::Reset();
@@ -87,10 +91,9 @@ void NextBotGroundLocomotion::Reset( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move the bot along a ladder
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::TraverseLadder( void )
 {
 	// not climbing a ladder right now
@@ -98,10 +101,9 @@ bool NextBotGroundLocomotion::TraverseLadder( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Update internal state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Update( void )
 {
 	VPROF_BUDGET( "NextBotGroundLocomotion::Update", "NextBot" );
@@ -312,11 +314,9 @@ void NextBotGroundLocomotion::Update( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move directly towards given position.
- * We need to do this in-air as well to land jumps.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Approach( const Vector &rawPos, float goalWeight )
 {
 	BaseClass::Approach( rawPos );
@@ -327,7 +327,9 @@ void NextBotGroundLocomotion::Approach( const Vector &rawPos, float goalWeight )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::ApplyAccumulatedApproach( void )
 {
 	VPROF_BUDGET( "NextBotGroundLocomotion::ApplyAccumulatedApproach", "NextBot" );
@@ -438,10 +440,9 @@ void NextBotGroundLocomotion::ApplyAccumulatedApproach( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move the bot to the precise given position immediately, 
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::DriveTo( const Vector &pos )
 {
 	BaseClass::DriveTo( pos );
@@ -449,11 +450,9 @@ void NextBotGroundLocomotion::DriveTo( const Vector &pos )
 	UpdatePosition( pos );
 }
 
-
-//--------------------------------------------------------------------------------------------
-/*
- * Trace filter solely for use with DetectCollision() below.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class GroundLocomotionCollisionTraceFilter : public CTraceFilterSimple
 {
 public:
@@ -481,11 +480,9 @@ public:
 	INextBot *m_me;
 };
 
-
-//----------------------------------------------------------------------------------------------------------
-/**
- * Check for collisions during move and attempt to resolve them
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::DetectCollision( trace_t *pTrace, int &recursionLimit, const Vector &from, const Vector &to, const Vector &vecMins, const Vector &vecMaxs )
 {
 	IBody *body = GetBot()->GetBodyInterface();
@@ -546,7 +543,9 @@ bool NextBotGroundLocomotion::DetectCollision( trace_t *pTrace, int &recursionLi
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Vector NextBotGroundLocomotion::ResolveCollision( const Vector &from, const Vector &to, int recursionLimit )
 {
 	VPROF_BUDGET( "NextBotGroundLocomotion::ResolveCollision", "NextBotExpensive" );
@@ -764,11 +763,9 @@ Vector NextBotGroundLocomotion::ResolveCollision( const Vector &from, const Vect
 	return resolvedGoal;
 }
 
-
-//--------------------------------------------------------------------------------------------------------
-/**
- * Collect the closest actors
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class ClosestActorsScan
 {
 public:
@@ -832,10 +829,11 @@ public:
 
 
 #ifdef SKIPME
-//----------------------------------------------------------------------------------------------------------
-/**
- * Push away zombies that are interpenetrating
- */
+//-----------------------------------------------------------------------------
+// Push away zombies that are interpenetrating
+//-----------------------------------------------------------------------------
+
+// ^^^ L4D source code part 2
 Vector NextBotGroundLocomotion::ResolveZombieCollisions( const Vector &pos )
 {
 	Vector adjustedNewPos = pos;
@@ -889,10 +887,9 @@ Vector NextBotGroundLocomotion::ResolveZombieCollisions( const Vector &pos )
 #endif // _DEBUG
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move to newPos, resolving any collisions along the way
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::UpdatePosition( const Vector &newPos )
 {
 	VPROF_BUDGET( "NextBotGroundLocomotion::UpdatePosition", "NextBot" );
@@ -918,10 +915,9 @@ void NextBotGroundLocomotion::UpdatePosition( const Vector &newPos )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/** 
- * Prevent bot from sliding through floor, and snap to the ground if we're very near it
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::UpdateGroundConstraint( void )
 {
 	VPROF_BUDGET( "NextBotGroundLocomotion::UpdateGroundConstraint", "NextBotExpensive" );
@@ -1048,7 +1044,9 @@ void NextBotGroundLocomotion::UpdateGroundConstraint( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 /*
 void NextBotGroundLocomotion::StandUp( void )
 {
@@ -1068,20 +1066,18 @@ void NextBotGroundLocomotion::StandUp( void )
 */
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Initiate a climb to an adjacent high ledge
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::ClimbUpToLedge( const Vector &landingGoal, const Vector &landingForward, const CBaseEntity *obstacle )
 {
 	return false;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Initiate a jump across an empty volume of space to far side
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::JumpAcrossGap( const Vector &landingGoal, const Vector &landingForward )
 {
 	// can only jump if we're on the ground
@@ -1135,10 +1131,9 @@ void NextBotGroundLocomotion::JumpAcrossGap( const Vector &landingGoal, const Ve
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Initiate a simple undirected jump in the air
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Jump( void )
 {
 	// can only jump if we're on the ground
@@ -1164,50 +1159,45 @@ void NextBotGroundLocomotion::Jump( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Set movement speed to running
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Run( void )
 {
 	m_desiredSpeed = GetRunSpeed();
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Set movement speed to walking
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Walk( void )
 {
 	m_desiredSpeed = GetWalkSpeed();
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Set movement speed to stopeed
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::Stop( void )
 {
 	m_desiredSpeed = 0.0f;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return true if standing on something
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::IsOnGround( void ) const
 {
 	return (m_nextBot->GetGroundEntity() != NULL);
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Invoked when bot leaves ground for any reason
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::OnLeaveGround( CBaseEntity *ground )
 {
 	m_nextBot->SetGroundEntity( NULL );
@@ -1220,10 +1210,9 @@ void NextBotGroundLocomotion::OnLeaveGround( CBaseEntity *ground )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/** 
- * Invoked when bot lands on the ground after being in the air
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::OnLandOnGround( CBaseEntity *ground )
 {
 	if ( GetBot()->IsDebugging( NEXTBOT_LOCOMOTION ) )
@@ -1233,10 +1222,9 @@ void NextBotGroundLocomotion::OnLandOnGround( CBaseEntity *ground )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Get maximum speed bot can reach, regardless of desired speed
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float NextBotGroundLocomotion::GetSpeedLimit( void ) const
 {
 	// if we're crouched, move at reduced speed
@@ -1250,10 +1238,9 @@ float NextBotGroundLocomotion::GetSpeedLimit( void ) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Climb the given ladder to the top and dismount
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::ClimbLadder( const CNavLadder *ladder, const CNavArea *dismountGoal )
 {
 	// if we're already climbing this ladder, don't restart
@@ -1280,10 +1267,9 @@ void NextBotGroundLocomotion::ClimbLadder( const CNavLadder *ladder, const CNavA
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Descend the given ladder to the bottom and dismount
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::DescendLadder( const CNavLadder *ladder, const CNavArea *dismountGoal )
 {
 	// if we're already descending this ladder, don't restart
@@ -1317,68 +1303,72 @@ void NextBotGroundLocomotion::DescendLadder( const CNavLadder *ladder, const CNa
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::IsUsingLadder( void ) const
 {
 	return ( m_ladder != NULL );
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * We are actually on the ladder right now, either climbing up or down
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::IsAscendingOrDescendingLadder( void ) const
 {
 	return IsUsingLadder();
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return position of "feet" - point below centroid of bot at feet level
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &NextBotGroundLocomotion::GetFeet( void ) const
 {
 	return m_nextBot->GetPosition();
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector & NextBotGroundLocomotion::GetAcceleration( void ) const
 {
 	return m_acceleration;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::SetAcceleration( const Vector &accel )
 {
 	m_acceleration = accel;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::SetVelocity( const Vector &vel )
 {
 	m_velocity = vel;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return current world space velocity
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &NextBotGroundLocomotion::GetVelocity( void ) const
 {
 	return m_velocity;
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Invoked when an bot reaches its MoveTo goal
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::OnMoveToSuccess( const Path *path )
 {
 	// stop
@@ -1387,10 +1377,9 @@ void NextBotGroundLocomotion::OnMoveToSuccess( const Path *path )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Invoked when an bot fails to reach a MoveTo goal
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::OnMoveToFailure( const Path *path, MoveToFailureType reason )
 {
 	// stop
@@ -1399,17 +1388,18 @@ void NextBotGroundLocomotion::OnMoveToFailure( const Path *path, MoveToFailureTy
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotGroundLocomotion::DidJustJump( void ) const
 {
 	return IsClimbingOrJumping() && (m_nextBot->GetAbsVelocity().z > 0.0f);
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Rotate body to face towards "target"
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotGroundLocomotion::FaceTowards( const Vector &target )
 {
 	const float deltaT = GetUpdateInterval();

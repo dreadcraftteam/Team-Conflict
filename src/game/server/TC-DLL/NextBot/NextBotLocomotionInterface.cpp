@@ -1,7 +1,8 @@
-// NextBotLocomotionInterface.cpp
-// Common functionality for all NextBot locomotors
-// Author: Michael Booth, April 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -23,10 +24,9 @@
 
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Reset to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 ILocomotion::ILocomotion( INextBot *bot ) : INextBotComponent( bot )
 {
 	Reset();
@@ -53,10 +53,9 @@ void ILocomotion::Reset( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Update internal state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::Update( void )
 {
 	StuckMonitor();
@@ -88,7 +87,9 @@ void ILocomotion::Update( void )
 }
 
 
-//----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::AdjustPosture( const Vector &moveGoal )
 {
 	// This function has no effect if we're not standing or crouching
@@ -145,10 +146,9 @@ void ILocomotion::AdjustPosture( const Vector &moveGoal )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move directly towards the given position
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::Approach( const Vector &goalPos, float goalWeight )
 {
 	// there is a desire to move
@@ -156,10 +156,9 @@ void ILocomotion::Approach( const Vector &goalPos, float goalWeight )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Move the bot to the precise given position immediately
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::DriveTo( const Vector &pos )
 {
 	// there is a desire to move
@@ -167,11 +166,9 @@ void ILocomotion::DriveTo( const Vector &pos )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return true if this locomotor could potentially move along the line given.
- * If false is returned, fraction of walkable ray is returned in 'fraction'
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool ILocomotion::IsPotentiallyTraversable( const Vector &from, const Vector &to, TraverseWhenType when, float *fraction ) const
 {
 	VPROF_BUDGET( "Locomotion::IsPotentiallyTraversable", "NextBotExpensive" );
@@ -224,11 +221,9 @@ bool ILocomotion::IsPotentiallyTraversable( const Vector &from, const Vector &to
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return true if there is a possible "gap" that will need to be jumped over
- * If true is returned, fraction of ray before gap is returned in 'fraction'
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool ILocomotion::HasPotentialGap( const Vector &from, const Vector &desiredTo, float *fraction ) const
 {
 	VPROF_BUDGET( "Locomotion::HasPotentialGap", "NextBot" );
@@ -274,11 +269,9 @@ bool ILocomotion::HasPotentialGap( const Vector &from, const Vector &desiredTo, 
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return true if there is a "gap" here when moving in the given direction.
- * A "gap" is a vertical dropoff that is too high to jump back up to.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool ILocomotion::IsGap( const Vector &pos, const Vector &forward ) const
 {
 	VPROF_BUDGET( "Locomotion::IsGap", "NextBotSpiky" );
@@ -381,10 +374,9 @@ bool ILocomotion::IsAreaTraversable( const CNavArea *baseArea ) const
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Reset stuck status to un-stuck
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::ClearStuckStatus( const char *reason )
 {
 	if ( IsStuck() )
@@ -406,10 +398,9 @@ void ILocomotion::ClearStuckStatus( const char *reason )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/** 
- * Stuck check
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void ILocomotion::StuckMonitor( void )
 {
 	// a timer is needed to smooth over a few frames of inactivity due to state changes, etc.
@@ -512,7 +503,9 @@ void ILocomotion::StuckMonitor( void )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 const Vector &ILocomotion::GetFeet( void ) const
 {
 	return GetBot()->GetEntity()->GetAbsOrigin();

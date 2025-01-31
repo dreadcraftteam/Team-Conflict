@@ -1,7 +1,8 @@
-// NextBotPlayer.h
-// A CBasePlayer bot based on the NextBot technology
-// Author: Michael Booth, November 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_PLAYER_H_
 #define _NEXT_BOT_PLAYER_H_
@@ -23,15 +24,9 @@ extern ConVar NextBotPlayerMove;
 
 
 
-//--------------------------------------------------------------------------------------------------
-/**
- * Instantiate a NextBot derived from CBasePlayer and spawn it into the environment.
- * Assumes class T is derived from CBasePlayer, and has the following method that
- * creates a new entity of type T and returns it:
- *
- * static CBasePlayer *T::AllocatePlayerEntity( edict_t *pEdict, const char *playerName )
- *
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename T > 
 T * NextBotCreatePlayerBot( const char *name, bool bReportFakeClient = true )
 {
@@ -79,12 +74,9 @@ T * NextBotCreatePlayerBot( const char *name, bool bReportFakeClient = true )
 }
 
 
-//--------------------------------------------------------------------------------------------------
-/**
- * Interface to access player input buttons.
- * Unless a duration is given, each button is released at the start of the next frame.
- * The release methods allow releasing a button before its duration has elapsed.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class INextBotPlayerInput
 {
 public:
@@ -128,10 +120,9 @@ public:
 };
 
 
-//--------------------------------------------------------------------------------------------------
-/**
- * Drive a CBasePlayer-derived entity via NextBot logic
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 class NextBotPlayer : public PlayerType, public INextBot, public INextBotPlayerInput
 {
@@ -163,8 +154,9 @@ public:
 	// allocate a bot and bind it to the edict
 	static CBasePlayer *AllocatePlayerEntity( edict_t *edict, const char *playerName );
 
-	//------------------------------------------------------------------------
-	// utility methods
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	float GetDistanceBetween( CBaseEntity *other ) const;						// return distance between us and the given entity
 	bool IsDistanceBetweenLessThan( CBaseEntity *other, float range ) const;	// return true if distance between is less than the given value
 	bool IsDistanceBetweenGreaterThan( CBaseEntity *other, float range ) const;	// return true if distance between is greater than the given value
@@ -173,8 +165,9 @@ public:
 	bool IsDistanceBetweenLessThan( const Vector &target, float range ) const;	// return true if distance between is less than the given value
 	bool IsDistanceBetweenGreaterThan( const Vector &target, float range ) const;	// return true if distance between is greater than the given value
 
-	//------------------------------------------------------------------------
-	// INextBotPlayerInput
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual void PressFireButton( float duration = -1.0f );
 	virtual void ReleaseFireButton( void );
 
@@ -213,8 +206,9 @@ public:
 
 	virtual void SetButtonScale( float forward, float right );
 
-	//------------------------------------------------------------------------
-	// Event hooks into NextBot system 
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
 	virtual int OnTakeDamage_Dying( const CTakeDamageInfo &info );
 	virtual void Event_Killed( const CTakeDamageInfo &info );
@@ -225,14 +219,13 @@ public:
 	virtual	void Weapon_Drop( CBaseCombatWeapon *weapon, const Vector *target, const Vector *velocity );	// for OnDrop
 	virtual void OnMainActivityComplete( Activity newActivity, Activity oldActivity );
 	virtual void OnMainActivityInterrupted( Activity newActivity, Activity oldActivity );
-	//------------------------------------------------------------------------
 
 	bool IsAbleToAutoCenterOnLadders( void ) const;
 
 	virtual void AvoidPlayers( CUserCmd *pCmd ) { }								// some game types allow players to pass through each other, this method pushes them apart
 
 public:
-	// begin INextBot ------------------------------------------------------------------------------------------------------------------
+	// begin INextBot
 	virtual void Update( void );												// (EXTEND) update internal state
 
 protected:
@@ -484,7 +477,9 @@ inline void NextBotPlayer< PlayerType >::SetButtonScale( float forward, float ri
 
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline NextBotPlayer< PlayerType >::NextBotPlayer( void )
 {
@@ -495,14 +490,18 @@ inline NextBotPlayer< PlayerType >::NextBotPlayer( void )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline NextBotPlayer< PlayerType >::~NextBotPlayer()
 {
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Spawn( void )
 {
@@ -532,7 +531,9 @@ inline void NextBotPlayer< PlayerType >::Spawn( void )
 
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline void _NextBot_BuildUserCommand( CUserCmd *cmd, const QAngle &viewangles, float forwardmove, float sidemove, float upmove, int buttons, byte impulse )
 {
 	Q_memset( cmd, 0, sizeof( CUserCmd ) );
@@ -550,7 +551,9 @@ inline void _NextBot_BuildUserCommand( CUserCmd *cmd, const QAngle &viewangles, 
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::PhysicsSimulate( void )
 {
@@ -716,8 +719,9 @@ inline void NextBotPlayer< PlayerType >::PhysicsSimulate( void )
 	PlayerType::PhysicsSimulate();
 }
 
-
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::OnNavAreaChanged( CNavArea *enteredArea, CNavArea *leftArea )
 {
@@ -728,7 +732,9 @@ inline void NextBotPlayer< PlayerType >::OnNavAreaChanged( CNavArea *enteredArea
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Touch( CBaseEntity *other )
 {
@@ -744,7 +750,9 @@ inline void NextBotPlayer< PlayerType >::Touch( CBaseEntity *other )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Weapon_Equip( CBaseCombatWeapon *weapon )
 {
@@ -759,7 +767,9 @@ inline void NextBotPlayer< PlayerType >::Weapon_Equip( CBaseCombatWeapon *weapon
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Weapon_Drop( CBaseCombatWeapon *weapon, const Vector *target, const Vector *velocity )
 {
@@ -769,7 +779,9 @@ inline void NextBotPlayer< PlayerType >::Weapon_Drop( CBaseCombatWeapon *weapon,
 }
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::OnMainActivityComplete( Activity newActivity, Activity oldActivity )
 {
@@ -780,7 +792,9 @@ inline void NextBotPlayer< PlayerType >::OnMainActivityComplete( Activity newAct
 }
 
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::OnMainActivityInterrupted( Activity newActivity, Activity oldActivity )
 {
@@ -791,7 +805,9 @@ inline void NextBotPlayer< PlayerType >::OnMainActivityInterrupted( Activity new
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Update( void )
 {
@@ -802,7 +818,9 @@ inline void NextBotPlayer< PlayerType >::Update( void )
 	}
 }
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline bool NextBotPlayer< PlayerType >::IsAbleToAutoCenterOnLadders( void ) const
 {
@@ -811,7 +829,9 @@ inline bool NextBotPlayer< PlayerType >::IsAbleToAutoCenterOnLadders( void ) con
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline int NextBotPlayer< PlayerType >::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 {
@@ -832,7 +852,9 @@ inline int NextBotPlayer< PlayerType >::OnTakeDamage_Alive( const CTakeDamageInf
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline int NextBotPlayer< PlayerType >::OnTakeDamage_Dying( const CTakeDamageInfo &info )
 {
@@ -853,7 +875,9 @@ inline int NextBotPlayer< PlayerType >::OnTakeDamage_Dying( const CTakeDamageInf
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::Event_Killed( const CTakeDamageInfo &info )
 {
@@ -865,7 +889,9 @@ inline void NextBotPlayer< PlayerType >::Event_Killed( const CTakeDamageInfo &in
 
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::HandleAnimEvent( animevent_t *event )
 {

@@ -1,7 +1,8 @@
-// NextBotPlayerLocomotion.h
-// Locomotor for CBasePlayer derived bots
-// Author: Michael Booth, November 2005
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_PLAYER_LOCOMOTION_H_
 #define _NEXT_BOT_PLAYER_LOCOMOTION_H_
@@ -12,10 +13,9 @@
 
 class CBasePlayer;
 
-//--------------------------------------------------------------------------------------------------
-/**
- * Basic player locomotion implementation
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class PlayerLocomotion : public ILocomotion
 {
 public:

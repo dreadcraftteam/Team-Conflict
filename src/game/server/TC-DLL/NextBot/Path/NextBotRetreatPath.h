@@ -1,25 +1,24 @@
-// NextBotRetreatPath.h
-// Maintain and follow a path that leads safely away from the given Actor
-// Author: Michael Booth, February 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_RETREAT_PATH_
 #define _NEXT_BOT_RETREAT_PATH_
 
 #include "nav.h"
-#include "NextBotInterface.h"
-#include "NextBotLocomotionInterface.h"
+#include "TC-DLL/Nextbot/NextBotInterface.h"
+#include "TC-DLL/Nextbot/NextBotLocomotionInterface.h"
 #include "NextBotRetreatPath.h"
-#include "NextBotUtil.h"
+#include "TC-DLL/Nextbot/NextBotUtil.h"
 #include "NextBotPathFollow.h"
 #include "tier0/vprof.h"
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * A RetreatPath extends a PathFollower to periodically recompute a path 
- * away from a threat, and to move along the path away from that threat.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class RetreatPath : public PathFollower
 {
 public:
@@ -62,11 +61,9 @@ inline void RetreatPath::Invalidate( void )
 }
 
 
-
-//----------------------------------------------------------------------------------------------
-/**
- * Maintain a path to our chase threat and move along that path
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline void RetreatPath::Update( INextBot *bot, CBaseEntity *threat )
 {
 	VPROF_BUDGET( "RetreatPath::Update", "NextBot" );
@@ -95,10 +92,9 @@ inline void RetreatPath::Update( INextBot *bot, CBaseEntity *threat )
 }
 
 
-//--------------------------------------------------------------------------------------------------------------
-/**
- * Build a path away from retreatFromArea up to retreatRange in length.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class RetreatPathBuilder
 {
 public:
@@ -230,9 +226,9 @@ public:
 	}
 
 
-	/**
-	 * Build a vector of adjacent areas reachable from the given area
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	void CollectAdjacentAreas( CNavArea *area )
 	{
 		m_adjAreaIndex = 0;			
@@ -333,9 +329,9 @@ public:
 		}
 	}
 	
-	/**
-	 * Cost minimizes path length traveled thus far and "danger" (proximity to threat(s))
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	float Cost( CNavArea *area, CNavArea *fromArea, const CNavLadder *ladder )
 	{
 		// check if we can use this area
@@ -495,10 +491,9 @@ private:
 };
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Periodically rebuild the path away from our threat
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline void RetreatPath::RefreshPath( INextBot *bot, CBaseEntity *threat )
 {
 	VPROF_BUDGET( "RetreatPath::RefreshPath", "NextBot" );

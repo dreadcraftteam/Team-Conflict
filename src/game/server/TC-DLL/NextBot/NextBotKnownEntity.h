@@ -1,20 +1,15 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
-// NextBotKnownEntity.h
-// Encapsulation of being aware of an entity
-// Author: Michael Booth, June 2009
+//
+// 
+//
+//========================================================================//
 
 #ifndef NEXT_BOT_KNOWN_ENTITY_H
 #define NEXT_BOT_KNOWN_ENTITY_H
 
-//----------------------------------------------------------------------------
-/**
- * A "known entity" is an entity that we have seen or heard at some point
- * and which may or may not be immediately visible to us right now but which
- * we remember the last place we encountered it, and when.
- *
- * TODO: Enhance interface to allow for sets of areas where an unseen entity 
- * could potentially be, knowing his last position and his rate of movement.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class CKnownEntity
 {
 public:

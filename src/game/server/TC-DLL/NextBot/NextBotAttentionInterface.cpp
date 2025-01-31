@@ -1,7 +1,8 @@
-// NextBotAttentionInterface.cpp
-// Manage what this bot pays attention to
-// Author: Michael Booth, April 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #include "cbase.h"
 
@@ -15,10 +16,9 @@
 #include "tier0/memdbgon.h"
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Reset to initial state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IAttention::Reset( void )
 {
 	m_body = GetBot()->GetBodyInterface();
@@ -27,16 +27,17 @@ void IAttention::Reset( void )
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Update internal state
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IAttention::Update( void )
 {
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IAttention::AttendTo( CBaseEntity *who, const char *reason )
 {
 	if ( !IsAwareOf( who ) )
@@ -51,7 +52,9 @@ void IAttention::AttendTo( CBaseEntity *who, const char *reason )
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IAttention::AttendTo( const Vector &where, IAttention::SignificanceLevel significance, const char *reason )
 {
 	PointOfInterest p;
@@ -63,7 +66,9 @@ void IAttention::AttendTo( const Vector &where, IAttention::SignificanceLevel si
 }
 
 
-//------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void IAttention::Disregard( CBaseEntity *who, const char *reason )
 {
 	FOR_EACH_VEC( m_attentionSet, it )
@@ -82,10 +87,9 @@ void IAttention::Disregard( CBaseEntity *who, const char *reason )
 }
 
 
-//------------------------------------------------------------------------------------------
-/**
- * Return true if given actor is in our attending set
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IAttention::IsAwareOf( CBaseEntity *who ) const
 {
 	FOR_EACH_VEC( m_attentionSet, it )

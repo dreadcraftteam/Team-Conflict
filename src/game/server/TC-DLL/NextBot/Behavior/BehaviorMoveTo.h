@@ -1,16 +1,16 @@
-// BehaviorMoveTo.h
-// Move to a potentially far away position
-// Author: Michael Booth, June 2007
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _BEHAVIOR_MOVE_TO_H_
 #define _BEHAVIOR_MOVE_TO_H_
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Move to a potentially far away position, using path planning.
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 class BehaviorMoveTo : public Action< Actor >
 {
@@ -35,7 +35,9 @@ private:
 };
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline BehaviorMoveTo< Actor, PathCost >::BehaviorMoveTo( const Vector &goal, Action< Actor > *successAction, Action< Actor > *failAction )
 {
@@ -46,7 +48,9 @@ inline BehaviorMoveTo< Actor, PathCost >::BehaviorMoveTo( const Vector &goal, Ac
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline bool BehaviorMoveTo< Actor, PathCost >::ComputePath( Actor *me, const Vector &goal, PathFollower *path )
 {
@@ -55,7 +59,9 @@ inline bool BehaviorMoveTo< Actor, PathCost >::ComputePath( Actor *me, const Vec
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline ActionResult< Actor > BehaviorMoveTo< Actor, PathCost >::OnStart( Actor *me, Action< Actor > *priorAction )
 {
@@ -73,7 +79,9 @@ inline ActionResult< Actor > BehaviorMoveTo< Actor, PathCost >::OnStart( Actor *
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline ActionResult< Actor > BehaviorMoveTo< Actor, PathCost >::Update( Actor *me, float interval )
 {
@@ -95,7 +103,9 @@ inline ActionResult< Actor > BehaviorMoveTo< Actor, PathCost >::Update( Actor *m
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline EventDesiredResult< Actor > BehaviorMoveTo< Actor, PathCost >::OnMoveToSuccess( Actor *me, const Path *path )
 {
@@ -108,7 +118,9 @@ inline EventDesiredResult< Actor > BehaviorMoveTo< Actor, PathCost >::OnMoveToSu
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 template < typename Actor, typename PathCost >
 inline EventDesiredResult< Actor > BehaviorMoveTo< Actor, PathCost >::OnMoveToFailure( Actor *me, const Path *path, MoveToFailureType reason )
 {

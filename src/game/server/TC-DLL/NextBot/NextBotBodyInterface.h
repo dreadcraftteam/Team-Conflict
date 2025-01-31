@@ -1,7 +1,8 @@
-// NextBotBodyInterface.h
-// Control and information about the bot's body state (posture, animation state, etc)
-// Author: Michael Booth, April 2006
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 
 #ifndef _NEXT_BOT_BODY_INTERFACE_H_
 #define _NEXT_BOT_BODY_INTERFACE_H_
@@ -13,10 +14,9 @@ class INextBot;
 struct animevent_t;
 
 
-//----------------------------------------------------------------------------------------------------------------
-/**
- * The interface for control and information about the bot's body state (posture, animation state, etc)
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class IBody : public INextBotComponent
 {
 public:
@@ -34,8 +34,8 @@ public:
 	 */
 	virtual bool SetPosition( const Vector &pos );
 
-	virtual const Vector &GetEyePosition( void ) const;					// return the eye position of the bot in world coordinates
-	virtual const Vector &GetViewVector( void ) const;					// return the view unit direction vector in world coordinates
+	virtual const Vector &GetEyePosition( void ) const;		// return the eye position of the bot in world coordinates
+	virtual const Vector &GetViewVector( void ) const;		// return the view unit direction vector in world coordinates
 
 	enum LookAtPriorityType
 	{
@@ -104,10 +104,9 @@ public:
 	virtual bool IsPostureChanging( void ) const;						// return true if body's posture is in the process of changing to new posture
 	
 	
-	/**
-	 * "Arousal" is the level of excitedness/arousal/anxiety of the body.
-	 * Is changes instantaneously to avoid complex interactions with posture transitions.
-	 */
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
 	enum ArousalType
 	{
 		NEUTRAL,
@@ -226,20 +225,18 @@ inline bool IBody::IsArousal( ArousalType arousal ) const
 	return true;
 }
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Width of bot's collision hull in XY plane
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline float IBody::GetHullWidth( void ) const
 {
 	return 26.0f;
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Height of bot's current collision hull based on posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline float IBody::GetHullHeight( void ) const
 {
 	switch( GetActualPosture() )
@@ -258,30 +255,27 @@ inline float IBody::GetHullHeight( void ) const
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Height of bot's collision hull when standing
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline float IBody::GetStandHullHeight( void ) const
 {
 	return 68.0f;
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Height of bot's collision hull when crouched
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline float IBody::GetCrouchHullHeight( void ) const
 {
 	return 32.0f;
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Return current collision hull minimums based on actual body posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline const Vector &IBody::GetHullMins( void ) const
 {
 	static Vector hullMins;
@@ -294,10 +288,9 @@ inline const Vector &IBody::GetHullMins( void ) const
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------------
-/**
- * Return current collision hull maximums based on actual body posture
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 inline const Vector &IBody::GetHullMaxs( void ) const
 {
 	static Vector hullMaxs;

@@ -1,7 +1,7 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
-// NextBotCombatCharacter.cpp
-// Next generation bot system
-// Author: Michael Booth, April 2005
+//
+// 
+//
 //========================================================================//
 
 #include "cbase.h"
@@ -26,9 +26,9 @@
 
 ConVar NextBotStop( "nb_stop", "0", FCVAR_CHEAT | FCVAR_REPLICATED, "Stop all NextBots" );
 
-//-----------------------------------------------------------------------------------------------------
-// Command to add a Simple Bot where your crosshairs are aiming
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
 {
 	CBasePlayer *player = UTIL_GetCommandClient();
@@ -47,7 +47,7 @@ CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
 		return;
 	}
 
-	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("simple_bot"));
+	NextBotCombatCharacter *bot = static_cast< NextBotCombatCharacter * >(CreateEntityByName("nb_bot"));
 	if (bot)
 	{
 		Vector forward = player->GetAbsOrigin() - result.endpos;
@@ -64,7 +64,9 @@ CON_COMMAND_F(nb_bot_add, "Add a NextBot.", FCVAR_CHEAT)
 	}
 }
 
-//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class CSendBotCommand
 {
 public:
@@ -97,7 +99,9 @@ CON_COMMAND_F( nb_command, "Sends a command string to all bots", FCVAR_CHEAT )
 
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 BEGIN_DATADESC( NextBotCombatCharacter )
 
 	DEFINE_THINKFUNC( DoThink ),
@@ -105,19 +109,25 @@ BEGIN_DATADESC( NextBotCombatCharacter )
 END_DATADESC()
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 IMPLEMENT_SERVERCLASS_ST( NextBotCombatCharacter, DT_NextBot )
 END_SEND_TABLE()
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotDestroyer::NextBotDestroyer( int team )
 {
 	m_team = team;
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotDestroyer::operator() ( INextBot *bot  )
 {
 	if ( m_team == TEAM_ANY || bot->GetEntity()->GetTeamNumber() == m_team )
@@ -137,7 +147,9 @@ bool NextBotDestroyer::operator() ( INextBot *bot  )
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 CON_COMMAND_F( nb_delete_all, "Delete all non-player NextBot entities.", FCVAR_CHEAT )
 {
 	// Listenserver host or rcon access only!
@@ -173,7 +185,9 @@ CON_COMMAND_F( nb_delete_all, "Delete all non-player NextBot entities.", FCVAR_C
 }
 
 
-//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 class NextBotApproacher
 {
 public:
@@ -225,8 +239,9 @@ CON_COMMAND_F( nb_move_to_cursor, "Tell all NextBots to move to the cursor posit
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool IgnoreActorsTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask )
 {
 	CBaseEntity *entity = EntityFromEntityHandle( pServerEntity );
@@ -234,8 +249,9 @@ bool IgnoreActorsTraceFilterFunction( IHandleEntity *pServerEntity, int contents
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool VisionTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask )
 {
 	// Honor BlockLOS also to allow seeing through partially-broken doors
@@ -244,9 +260,9 @@ bool VisionTraceFilterFunction( IHandleEntity *pServerEntity, int contentsMask )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 NextBotCombatCharacter::NextBotCombatCharacter( void )
 
 {
@@ -255,7 +271,9 @@ NextBotCombatCharacter::NextBotCombatCharacter( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::Spawn( void )
 {
 	BaseClass::Spawn();
@@ -295,7 +313,9 @@ bool NextBotCombatCharacter::IsAreaTraversable( const CNavArea *area ) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::DoThink( void )
 {
 	VPROF_BUDGET( "NextBotCombatCharacter::DoThink", "NextBot" );
@@ -331,7 +351,9 @@ void NextBotCombatCharacter::DoThink( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::Touch( CBaseEntity *other )
 {
 	if ( ShouldTouch( other ) )
@@ -351,7 +373,9 @@ void NextBotCombatCharacter::Touch( CBaseEntity *other )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::SetModel( const char *szModelName )
 {
 	// actually change the model
@@ -362,7 +386,9 @@ void NextBotCombatCharacter::SetModel( const char *szModelName )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::Ignite( float flFlameLifetime, bool bNPCOnly, float flSize, bool bCalledByLevelDesigner )
 {
 	BaseClass::Ignite( flFlameLifetime, bNPCOnly, flSize, bCalledByLevelDesigner );
@@ -372,7 +398,9 @@ void NextBotCombatCharacter::Ignite( float flFlameLifetime, bool bNPCOnly, float
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::Ignite( float flFlameLifetime, CBaseEntity *pAttacker )
 {
 	if ( IsOnFire() )
@@ -394,7 +422,9 @@ void NextBotCombatCharacter::Ignite( float flFlameLifetime, CBaseEntity *pAttack
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 int NextBotCombatCharacter::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 {
 	// track our last attacker
@@ -410,7 +440,9 @@ int NextBotCombatCharacter::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 int NextBotCombatCharacter::OnTakeDamage_Dying( const CTakeDamageInfo &info )
 {
 	// track our last attacker	
@@ -425,10 +457,9 @@ int NextBotCombatCharacter::OnTakeDamage_Dying( const CTakeDamageInfo &info )
 	return CBaseCombatCharacter::OnTakeDamage_Dying( info );
 }
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Can't use CBaseCombatCharacter's Event_Killed because it will immediately ragdoll us
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 static int g_DeathStartEvent = 0;
 void NextBotCombatCharacter::Event_Killed( const CTakeDamageInfo &info )
 {
@@ -465,7 +496,9 @@ void NextBotCombatCharacter::Event_Killed( const CTakeDamageInfo &info )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::PerformCustomPhysics( Vector *pNewPosition, Vector *pNewVelocity, QAngle *pNewAngles, QAngle *pNewAngVelocity )
 {
 	ILocomotion *mover = GetLocomotionInterface();
@@ -477,7 +510,9 @@ void NextBotCombatCharacter::PerformCustomPhysics( Vector *pNewPosition, Vector 
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotCombatCharacter::BecomeRagdoll( const CTakeDamageInfo &info, const Vector &forceVector )
 {
 	// See if there's a ragdoll magnet that should influence our force.
@@ -495,7 +530,9 @@ bool NextBotCombatCharacter::BecomeRagdoll( const CTakeDamageInfo &info, const V
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::HandleAnimEvent( animevent_t *event )
 {
 	// propagate event to components
@@ -503,10 +540,9 @@ void NextBotCombatCharacter::HandleAnimEvent( animevent_t *event )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Propagate event into NextBot event responders
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::OnNavAreaChanged( CNavArea *enteredArea, CNavArea *leftArea )
 {
 	INextBotEventResponder::OnNavAreaChanged( enteredArea, leftArea );
@@ -515,7 +551,9 @@ void NextBotCombatCharacter::OnNavAreaChanged( CNavArea *enteredArea, CNavArea *
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Vector NextBotCombatCharacter::EyePosition( void )
 {
 	if ( GetBodyInterface() )
@@ -527,10 +565,9 @@ Vector NextBotCombatCharacter::EyePosition( void )
 }
 
 
-//----------------------------------------------------------------------------------------------------------
-/**
- * Return true if this object can be +used by the bot
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 bool NextBotCombatCharacter::IsUseableEntity( CBaseEntity *entity, unsigned int requiredCaps )
 {
 	if ( entity )
@@ -549,7 +586,9 @@ bool NextBotCombatCharacter::IsUseableEntity( CBaseEntity *entity, unsigned int 
 }
 
 
-//----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 void NextBotCombatCharacter::UseEntity( CBaseEntity *entity, USE_TYPE useType )
 {
 	if ( IsUseableEntity( entity ) )

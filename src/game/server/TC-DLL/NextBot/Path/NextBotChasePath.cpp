@@ -1,8 +1,8 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
 //
-// Purpose:
+// 
 //
-//=============================================================================
+//========================================================================//
 
 #include "cbase.h"
 
@@ -13,10 +13,9 @@
 #include "tier0/memdbgon.h"
 
 
-//----------------------------------------------------------------------------------------------
-/**
- * Try to cutoff our chase subject
- */
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 Vector ChasePath::PredictSubjectPosition( INextBot *bot, CBaseEntity *subject ) const
 {
 	ILocomotion *mover = bot->GetLocomotionInterface();

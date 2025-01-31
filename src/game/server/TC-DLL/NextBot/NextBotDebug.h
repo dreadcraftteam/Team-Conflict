@@ -1,8 +1,10 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// 
+//
+//========================================================================//
 #ifndef NEXTBOT_DEBUG_H
 #define NEXTBOT_DEBUG_H
-//------------------------------------------------------------------------------
-// Debug flags for nextbot
 
 enum NextBotDebugType 
 {
