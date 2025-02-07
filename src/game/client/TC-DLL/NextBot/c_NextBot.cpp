@@ -1,16 +1,14 @@
+//========= Copyright Valve Corporation, All rights reserved. ============//
 // C_NextBot.cpp
 // Client-side implementation of Next generation bot system
 // Author: Michael Booth, April 2005
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========================================================================//
 
 #include "cbase.h"
 #include "C_NextBot.h"
 #include "debugoverlay_shared.h"
 #include <bitbuf.h>
 #include "viewrender.h"
-
-//Old glow system:
-//#include "TC-DLL/Glow/ge_screeneffects.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

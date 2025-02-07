@@ -51,8 +51,7 @@ $Project "Client (TEAM-CONFLICT)"
 			}
 			$Folder "Weapons"
 			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\weapon_lasergun.h"
+				
 			}
 			$Folder "Background"
 			{

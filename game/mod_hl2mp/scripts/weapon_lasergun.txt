@@ -2,25 +2,24 @@
 
 WeaponData
 {
-	// Weapon fdata is loaded by both the Game and Client DLLs.
+	// Weapon data is loaded by both the Game and Client DLLs.
 	"printname"	"LASER-GUN
-	"viewmodel"				"models/weapons/v_gauss.mdl"
+	"viewmodel"			"models/weapons/v_gauss.mdl"
 	"playermodel"			"models/weapons/w_gauss.mdl"
 	"anim_prefix"			"gauss"
-	"bucket"				"2"
+	"bucket"			"5"
 	"bucket_position"		"2"
-	"weapon_category"   		"8"
 
-	"clip_size"				"-1"
+	"clip_size"			"-1"
 	"clip2_size"			"-1"
-	"default_clip"			"200"
+	"default_clip"			"100"
 	"default_clip2"			"-1"
 
 	"primary_ammo"			"GaussEnergy"
 	"secondary_ammo"		"None"
 
 	"weight"				"2"
-	"item_flags"			"68"
+	"item_flags"			"0"
 
 	// Sounds for the weapon. There is a max of 16 sounds per category (i.e. max 16 "single_shot" sounds)
 	SoundData
