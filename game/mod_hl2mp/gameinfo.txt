@@ -1,9 +1,7 @@
 "GameInfo"
 {
 	game	"TEAM-CONFLICT"
-	title	"TEAM-CONFLICT"
-
-	developer "DREADCRAFT TEAM"
+	title	""
 
 	type multiplayer_only
 
