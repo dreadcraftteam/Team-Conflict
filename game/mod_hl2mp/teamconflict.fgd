@@ -1,0 +1,5 @@
+@PointClass base(Item) studio("models/items/healthkit.mdl") = item_health_rotating: "Health Kit (Rotating)"
+[
+	GiveHealth(integer) : "Health to give" : 25
+	RespawnTime(float) : "Respawn time" : 20
+]
