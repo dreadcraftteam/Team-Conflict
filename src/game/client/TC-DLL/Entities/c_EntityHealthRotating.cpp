@@ -17,7 +17,7 @@ class C_HealthRotating : public C_BaseAnimating
 	DECLARE_CLIENTCLASS();
 public:
 	C_HealthRotating() {
-		ClientRotAng = QAngle(0, 0, 0);
+		ClientRotAng = QAngle(45, 0, 0);
 		m_bRespawning = m_bRespawning_Cache = false;
 	}
 	void Spawn() { ClientThink(); }
