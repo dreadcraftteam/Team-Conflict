@@ -53,6 +53,11 @@ $Project "Client (TEAM-CONFLICT)"
 			{
 				
 			}
+			$Folder "Entities"
+			{
+				$File	"$SRCDIR\game\client\TC-DLL\Entities\c_EntityHealthRotating.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Entities\c_EntityAmmoRotating.cpp"
+			}
 			$Folder "Background"
 			{
 				$File	"$SRCDIR\game\client\TC-DLL\animated_background.cpp"

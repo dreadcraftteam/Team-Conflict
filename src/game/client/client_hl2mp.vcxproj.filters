@@ -52,6 +52,9 @@
     <Filter Include="Source Files\TC-DLL\Background">
       <UniqueIdentifier>{17B183EF-9708-3239-04F0-93A2058A860A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC-DLL\Entities">
+      <UniqueIdentifier>{2CB29754-3AAF-24A3-C15C-36832D09235A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC-DLL\NextBot">
       <UniqueIdentifier>{8F936C12-33C6-F4E7-6BFA-13B88C395115}</UniqueIdentifier>
     </Filter>
@@ -3382,6 +3385,12 @@
     <ClCompile Include="..\..\game\client\TC-DLL\animated_background.cpp">
       <Filter>Source Files\TC-DLL\Background</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityAmmoRotating.cpp">
+      <Filter>Source Files\TC-DLL\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityHealthRotating.cpp">
+      <Filter>Source Files\TC-DLL\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">
       <Filter>Source Files\TC-DLL\NextBot</Filter>
     </ClCompile>
@@ -3603,9 +3612,6 @@
     </ClCompile>
     <ClCompile Include="toolframework_client.cpp">
       <Filter>Tool Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="TC-DLL\Entities\c_EntityHealth.cpp">
-      <Filter>Source Files\TC-DLL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

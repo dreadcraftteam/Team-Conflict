@@ -95,6 +95,11 @@ $Project "Server (TEAM-CONFLICT)"
 			{
 			
 			}
+			$Folder "Entities"
+			{
+				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityHealthRotating.cpp"
+				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityAmmoRotating.cpp"
+			}
 		}
 		
 		$File	"ai_relationship.cpp"

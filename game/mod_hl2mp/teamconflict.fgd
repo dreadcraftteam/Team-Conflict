@@ -1,5 +1,10 @@
-@PointClass base(Item) studio("models/items/healthkit.mdl") = item_health_rotating: "Health Kit (Rotating)"
+@PointClass base(Item) studio("models/items/healthkit.mdl") = item_health_rotating: "Health Box (Rotating)"
 [
 	GiveHealth(integer) : "Health to give" : 25
+	RespawnTime(float) : "Respawn time" : 20
+]
+@PointClass base(Item) studio("models/items/boxmrounds.mdl") = item_ammo_rotating: "Ammo Box (Rotating)"
+[
+	GiveAmmo(integer) : "Ammo to give" : 25
 	RespawnTime(float) : "Respawn time" : 20
 ]
