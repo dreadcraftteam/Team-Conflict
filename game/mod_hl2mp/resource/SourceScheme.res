@@ -43,9 +43,9 @@ Scheme
 	BaseSettings
 	{
 		// vgui_controls color specifications
-		Border.Bright					"BorderBright"	// the lit side of a control
-		Border.Dark						"BorderDark"		// the dark/unlit side of a control
-		Border.Selection				"BorderSelection"			// the additional border color for displaying the default/selected button
+		Border.Bright					"90 90 90 255"			// the lit side of a control
+		Border.Dark						"BorderDark"			// the dark/unlit side of a control
+		Border.Selection				"BorderSelection"		// the additional border color for displaying the default/selected button
  
 		Button.TextColor				"White"
 		Button.BgColor					"Blank"
@@ -75,8 +75,8 @@ Scheme
 		Frame.TitleTextInsetX			16
 		Frame.ClientInsetX				8
 		Frame.ClientInsetY				6
-		Frame.BgColor					"145 145 145 255"	[$WIN32]
-		Frame.OutOfFocusBgColor			"145 145 145 255"	[$WIN32]
+		Frame.BgColor					"38 38 38 255"	[$WIN32]
+		Frame.OutOfFocusBgColor			"38 38 38 255"	[$WIN32]
 		Frame.FocusTransitionEffectTime	"0"							// time it takes for a window to fade in/out on focus/out of focus
 		Frame.TransitionEffectTime		"0"				[$WIN32]	// time it takes for a window to fade in/out on open/close
 		Frame.TransitionEffectTime		"0"				[$X360]		// time it takes for a window to fade in/out on open/close
@@ -85,7 +85,7 @@ Scheme
 		FrameGrip.Color2				"BorderSelection"
 		FrameTitleButton.FgColor		"200 200 200 196"
 		FrameTitleButton.BgColor		"Blank"
-		FrameTitleButton.DisabledFgColor	"255 255 255 192"
+		FrameTitleButton.DisabledFgColor	"0 0 0 192"
 		FrameTitleButton.DisabledBgColor	"Blank"
 		FrameSystemButton.FgColor		"Blank"
 		FrameSystemButton.BgColor		"Blank"
