@@ -13,6 +13,11 @@
 //-----------------------------------------------------------------------------
 LINK_ENTITY_TO_CLASS(simple_bot, CNextBotBase);
 
+
+#ifndef TF_DLL
+PRECACHE_REGISTER(simple_bot);
+#endif
+
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
@@ -47,8 +52,9 @@ CNextBotBase::~CNextBotBase()
 void CNextBotBase::Precache()
 {
 	BaseClass::Precache();
-
+#ifndef DOTA_DLL
 	PrecacheModel("models/kleiner.mdl");
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -83,8 +89,9 @@ void CNextBotBase::Spawn(void)
 	// wtf??
 	Weapon_Equip(GetBestWeapon());
 	Weapon_SetActivity(Weapon_TranslateActivity(ACT_HL2MP_RUN), 0);
-
+#ifndef DOTA_DLL
 	SetModel("models/kleiner.mdl");
+#endif
 }
 
 

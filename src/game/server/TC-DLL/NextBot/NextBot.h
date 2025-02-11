@@ -46,7 +46,7 @@ public:
 	virtual void HandleAnimEvent( animevent_t *event );
 	virtual void OnNavAreaChanged( CNavArea *enteredArea, CNavArea *leftArea );
 	virtual void Touch( CBaseEntity *other );
-	virtual void SetModel( const char *szModelName );
+	virtual void SetModel(const char* szModelName);
 	virtual void Ignite( float flFlameLifetime, bool bNPCOnly = true, float flSize = 0.0f, bool bCalledByLevelDesigner = false );
 	virtual void Ignite( float flFlameLifetime, CBaseEntity *pAttacker );
 
