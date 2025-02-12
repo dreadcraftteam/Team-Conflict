@@ -2061,24 +2061,24 @@ void CServerGameDLL::LoadSpecificMOTDMsg( const ConVar &convar, const char *pszS
 
 	if ( !bFound )
 	{
-		Msg( "'%s' not found; not loaded\n", szPreferredFilename );
+		//Msg( "'%s' not found; not loaded\n", szPreferredFilename );
 		return;
 	}
 
 	if ( buf.TellPut() > 2048 )
 	{
-		Warning("'%s' is too big; not loaded\n", szResolvedFilename );
+		//Warning("'%s' is too big; not loaded\n", szResolvedFilename );
 		return;
 	}
 	buf.PutChar( '\0' );
 
 	if ( V_stricmp( szPreferredFilename, szResolvedFilename ) == 0)
 	{
-		Msg( "Set %s from file '%s'\n", pszStringName, szResolvedFilename );
+		//Msg( "Set %s from file '%s'\n", pszStringName, szResolvedFilename );
 	}
 	else
 	{
-		Msg( "Set %s from file '%s'.  ('%s' was not found.)\n", pszStringName, szResolvedFilename, szPreferredFilename );
+		//Msg( "Set %s from file '%s'.  ('%s' was not found.)\n", pszStringName, szResolvedFilename, szPreferredFilename );
 	}
 
 	g_pStringTableInfoPanel->AddString( CBaseEntity::IsServer(), pszStringName, buf.TellPut(), buf.Base() );
