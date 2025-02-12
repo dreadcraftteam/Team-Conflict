@@ -15,85 +15,6 @@
 	{
 		"Node_000"
 		{
-			"iType"		"53"
-			"pos_x"		"-38.968803"
-			"pos_y"		"-397.294556"
-			"size_x"		"93.000000"
-			"size_y"		"-80.000000"
-			"iPreview"		"1"
-			"bridges"
-			{
-				"jackIn_00"
-				{
-					"iTarget_node"		"5"
-					"iTarget_jack"		"0"
-				}
-			}
-		}
-		"Node_001"
-		{
-			"iType"		"19"
-			"pos_x"		"98.478233"
-			"pos_y"		"-367.401031"
-			"size_x"		"91.000000"
-			"size_y"		"-80.000000"
-			"iPreview"		"1"
-			"bridges"
-			{
-				"jackIn_00"
-				{
-					"iTarget_node"		"0"
-					"iTarget_jack"		"0"
-				}
-				"jackIn_01"
-				{
-					"iTarget_node"		"29"
-					"iTarget_jack"		"0"
-				}
-			}
-			"i_mat_rotation"		"0"
-		}
-		"Node_002"
-		{
-			"iType"		"17"
-			"pos_x"		"247.738037"
-			"pos_y"		"-373.782776"
-			"size_x"		"91.000000"
-			"size_y"		"-80.000000"
-			"iPreview"		"1"
-			"bridges"
-			{
-				"jackIn_00"
-				{
-					"iTarget_node"		"1"
-					"iTarget_jack"		"0"
-				}
-				"jackIn_01"
-				{
-					"iTarget_node"		"30"
-					"iTarget_jack"		"0"
-				}
-			}
-		}
-		"Node_003"
-		{
-			"iType"		"50"
-			"pos_x"		"174.049500"
-			"pos_y"		"-225.131470"
-			"size_x"		"93.000000"
-			"size_y"		"-80.000000"
-			"iPreview"		"1"
-			"bridges"
-			{
-				"jackIn_00"
-				{
-					"iTarget_node"		"32"
-					"iTarget_jack"		"3"
-				}
-			}
-		}
-		"Node_004"
-		{
 			"iType"		"3"
 			"pos_x"		"-398.377380"
 			"pos_y"		"-133.358490"
@@ -116,29 +37,7 @@
 			"numColor_Flag_0"		"8"
 			"numColor_Flag_1"		"8"
 		}
-		"Node_005"
-		{
-			"iType"		"18"
-			"pos_x"		"-156.413239"
-			"pos_y"		"-408.062256"
-			"size_x"		"91.000000"
-			"size_y"		"-80.000000"
-			"iPreview"		"1"
-			"bridges"
-			{
-				"jackIn_00"
-				{
-					"iTarget_node"		"3"
-					"iTarget_jack"		"0"
-				}
-				"jackIn_01"
-				{
-					"iTarget_node"		"33"
-					"iTarget_jack"		"2"
-				}
-			}
-		}
-		"Node_006"
+		"Node_001"
 		{
 			"iType"		"19"
 			"pos_x"		"-173.927490"
@@ -150,18 +49,18 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"4"
+					"iTarget_node"		"0"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"7"
+					"iTarget_node"		"2"
 					"iTarget_jack"		"0"
 				}
 			}
 			"i_mat_rotation"		"0"
 		}
-		"Node_007"
+		"Node_002"
 		{
 			"iType"		"5"
 			"pos_x"		"-290.359222"
@@ -171,7 +70,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"10"
 		}
-		"Node_008"
+		"Node_003"
 		{
 			"iType"		"1"
 			"pos_x"		"-369.736969"
@@ -193,7 +92,7 @@
 			"dTFlag_Color_0"		"8"
 			"dTFlag_Color_1"		"8"
 		}
-		"Node_009"
+		"Node_004"
 		{
 			"iType"		"19"
 			"pos_x"		"-182.680115"
@@ -205,18 +104,18 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"12"
+					"iTarget_node"		"7"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"13"
+					"iTarget_node"		"8"
 					"iTarget_jack"		"0"
 				}
 			}
 			"i_mat_rotation"		"0"
 		}
-		"Node_010"
+		"Node_005"
 		{
 			"iType"		"27"
 			"pos_x"		"-46.110237"
@@ -228,13 +127,13 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"9"
+					"iTarget_node"		"4"
 					"iTarget_jack"		"0"
 				}
 			}
 			"swizzleString"		"xx"
 		}
-		"Node_011"
+		"Node_006"
 		{
 			"iType"		"55"
 			"pos_x"		"80.769218"
@@ -246,17 +145,17 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"8"
+					"iTarget_node"		"3"
 					"iTarget_jack"		"1"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"14"
+					"iTarget_node"		"9"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_02"
 				{
-					"iTarget_node"		"10"
+					"iTarget_node"		"5"
 					"iTarget_jack"		"0"
 				}
 			}
@@ -265,7 +164,7 @@
 			"iTexTrans_scale"		"1"
 			"iTexTrans_trans"		"1"
 		}
-		"Node_012"
+		"Node_007"
 		{
 			"iType"		"5"
 			"pos_x"		"-309.826294"
@@ -275,7 +174,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"2"
 		}
-		"Node_013"
+		"Node_008"
 		{
 			"iType"		"12"
 			"pos_x"		"-324.485809"
@@ -285,7 +184,7 @@
 			"iPreview"		"1"
 			"flSmartVal0"		"0.000000"
 		}
-		"Node_014"
+		"Node_009"
 		{
 			"iType"		"5"
 			"pos_x"		"-36.294399"
@@ -295,7 +194,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"0.0001 0.0001"
 		}
-		"Node_015"
+		"Node_010"
 		{
 			"iType"		"2"
 			"pos_x"		"283.738525"
@@ -307,22 +206,22 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"22"
+					"iTarget_node"		"18"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"8"
+					"iTarget_node"		"3"
 					"iTarget_jack"		"1"
 				}
 				"jackIn_02"
 				{
-					"iTarget_node"		"11"
+					"iTarget_node"		"6"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_03"
 				{
-					"iTarget_node"		"18"
+					"iTarget_node"		"15"
 					"iTarget_jack"		"0"
 				}
 			}
@@ -342,7 +241,7 @@
 			"numColor_Flag_0"		"8"
 			"numColor_Flag_1"		"8"
 		}
-		"Node_016"
+		"Node_011"
 		{
 			"iType"		"20"
 			"pos_x"		"89.661728"
@@ -354,17 +253,27 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"17"
+					"iTarget_node"		"13"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"34"
+					"iTarget_node"		"12"
 					"iTarget_jack"		"0"
 				}
 			}
 		}
-		"Node_017"
+		"Node_012"
+		{
+			"iType"		"65"
+			"pos_x"		"-31.195328"
+			"pos_y"		"484.970428"
+			"size_x"		"60.000000"
+			"size_y"		"-17.000000"
+			"iPreview"		"1"
+			"flSmartVal0"		"0.000000"
+		}
+		"Node_013"
 		{
 			"iType"		"5"
 			"pos_x"		"-30.398453"
@@ -374,7 +283,17 @@
 			"iPreview"		"1"
 			"szConstantString"		"1"
 		}
-		"Node_018"
+		"Node_014"
+		{
+			"iType"		"5"
+			"pos_x"		"85.462997"
+			"pos_y"		"471.348877"
+			"size_x"		"50.000000"
+			"size_y"		"-17.000000"
+			"iPreview"		"1"
+			"szConstantString"		"64"
+		}
+		"Node_015"
 		{
 			"iType"		"20"
 			"pos_x"		"231.879395"
@@ -386,17 +305,17 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"16"
+					"iTarget_node"		"11"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"35"
+					"iTarget_node"		"14"
 					"iTarget_jack"		"0"
 				}
 			}
 		}
-		"Node_019"
+		"Node_016"
 		{
 			"iType"		"17"
 			"pos_x"		"-126.988373"
@@ -408,29 +327,17 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"21"
+					"iTarget_node"		"17"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"20"
+					"iTarget_node"		"33"
 					"iTarget_jack"		"0"
 				}
 			}
 		}
-		"Node_020"
-		{
-			"iType"		"81"
-			"pos_x"		"-172.072479"
-			"pos_y"		"-3.334938"
-			"size_x"		"50.000000"
-			"size_y"		"-50.000000"
-			"iPreview"		"1"
-			"i_num_comps"		"1"
-			"fl_value_min"		"0.000000"
-			"fl_value_max"		"10.000000"
-		}
-		"Node_021"
+		"Node_017"
 		{
 			"iType"		"19"
 			"pos_x"		"-245.665894"
@@ -442,18 +349,18 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"4"
+					"iTarget_node"		"0"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"4"
+					"iTarget_node"		"0"
 					"iTarget_jack"		"2"
 				}
 			}
 			"i_mat_rotation"		"0"
 		}
-		"Node_022"
+		"Node_018"
 		{
 			"iType"		"27"
 			"pos_x"		"-61.266670"
@@ -465,13 +372,13 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"8"
+					"iTarget_node"		"3"
 					"iTarget_jack"		"0"
 				}
 			}
 			"swizzleString"		"x y z 1"
 		}
-		"Node_023"
+		"Node_019"
 		{
 			"iType"		"5"
 			"pos_x"		"-194.002930"
@@ -481,7 +388,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"0.3 0.59 0.11"
 		}
-		"Node_024"
+		"Node_020"
 		{
 			"iType"		"21"
 			"pos_x"		"83.139908"
@@ -493,22 +400,22 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"31"
+					"iTarget_node"		"27"
 					"iTarget_jack"		"1"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"25"
+					"iTarget_node"		"21"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_02"
 				{
-					"iTarget_node"		"1"
+					"iTarget_node"		"31"
 					"iTarget_jack"		"0"
 				}
 			}
 		}
-		"Node_025"
+		"Node_021"
 		{
 			"iType"		"23"
 			"pos_x"		"-62.651627"
@@ -520,17 +427,17 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"31"
+					"iTarget_node"		"27"
 					"iTarget_jack"		"1"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"23"
+					"iTarget_node"		"19"
 					"iTarget_jack"		"0"
 				}
 			}
 		}
-		"Node_026"
+		"Node_022"
 		{
 			"iType"		"4"
 			"pos_x"		"580.325378"
@@ -542,14 +449,14 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"28"
+					"iTarget_node"		"24"
 					"iTarget_jack"		"0"
 				}
 			}
 			"numColors"		"1"
 			"enable_Depth"		"0"
 		}
-		"Node_027"
+		"Node_023"
 		{
 			"iType"		"19"
 			"pos_x"		"264.335266"
@@ -561,18 +468,18 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"24"
+					"iTarget_node"		"20"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"2"
+					"iTarget_node"		"32"
 					"iTarget_jack"		"0"
 				}
 			}
 			"i_mat_rotation"		"0"
 		}
-		"Node_028"
+		"Node_024"
 		{
 			"iType"		"26"
 			"pos_x"		"387.000519"
@@ -584,17 +491,17 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"27"
+					"iTarget_node"		"23"
 					"iTarget_jack"		"0"
 				}
 				"jackIn_01"
 				{
-					"iTarget_node"		"31"
+					"iTarget_node"		"27"
 					"iTarget_jack"		"5"
 				}
 			}
 		}
-		"Node_029"
+		"Node_025"
 		{
 			"iType"		"5"
 			"pos_x"		"78.614052"
@@ -604,7 +511,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"0.4"
 		}
-		"Node_030"
+		"Node_026"
 		{
 			"iType"		"5"
 			"pos_x"		"220.455261"
@@ -614,7 +521,7 @@
 			"iPreview"		"1"
 			"szConstantString"		"0.8"
 		}
-		"Node_031"
+		"Node_027"
 		{
 			"iType"		"29"
 			"pos_x"		"-226.464340"
@@ -626,7 +533,7 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"4"
+					"iTarget_node"		"0"
 					"iTarget_jack"		"0"
 				}
 			}
@@ -637,31 +544,120 @@
 			"szDemoTexturePath"		"_rt_FullFrameFB"
 			"iFallbackMode"		"0"
 		}
-		"Node_032"
+		"Node_028"
 		{
-			"iType"		"29"
-			"pos_x"		"2.025377"
-			"pos_y"		"-221.102631"
-			"size_x"		"122.000000"
+			"iType"		"50"
+			"pos_x"		"174.049500"
+			"pos_y"		"-225.131470"
+			"size_x"		"93.000000"
 			"size_y"		"-80.000000"
 			"iPreview"		"1"
 			"bridges"
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"6"
+					"iTarget_node"		"35"
+					"iTarget_jack"		"3"
+				}
+			}
+		}
+		"Node_029"
+		{
+			"iType"		"18"
+			"pos_x"		"-156.413239"
+			"pos_y"		"-408.062256"
+			"size_x"		"91.000000"
+			"size_y"		"-80.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"28"
+					"iTarget_jack"		"0"
+				}
+				"jackIn_01"
+				{
+					"iTarget_node"		"34"
+					"iTarget_jack"		"2"
+				}
+			}
+		}
+		"Node_030"
+		{
+			"iType"		"53"
+			"pos_x"		"-38.968803"
+			"pos_y"		"-397.294556"
+			"size_x"		"93.000000"
+			"size_y"		"-80.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"29"
 					"iTarget_jack"		"0"
 				}
 			}
-			"iSRGB"		"0"
-			"iTextureType"		"1"
-			"IsCubemap"		"0"
-			"iLookupoverride"		"0"
-			"szDemoTexturePath"		"texture_samples\noise_2d"
-			"szFallbackTexturePath"		"texture_samples\noise_2d"
-			"iFallbackMode"		"4"
+		}
+		"Node_031"
+		{
+			"iType"		"19"
+			"pos_x"		"98.478233"
+			"pos_y"		"-367.401031"
+			"size_x"		"91.000000"
+			"size_y"		"-80.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"30"
+					"iTarget_jack"		"0"
+				}
+				"jackIn_01"
+				{
+					"iTarget_node"		"25"
+					"iTarget_jack"		"0"
+				}
+			}
+			"i_mat_rotation"		"0"
+		}
+		"Node_032"
+		{
+			"iType"		"17"
+			"pos_x"		"247.738037"
+			"pos_y"		"-373.782776"
+			"size_x"		"91.000000"
+			"size_y"		"-80.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"31"
+					"iTarget_jack"		"0"
+				}
+				"jackIn_01"
+				{
+					"iTarget_node"		"26"
+					"iTarget_jack"		"0"
+				}
+			}
 		}
 		"Node_033"
+		{
+			"iType"		"81"
+			"pos_x"		"-172.072479"
+			"pos_y"		"-3.334938"
+			"size_x"		"50.000000"
+			"size_y"		"-50.000000"
+			"iPreview"		"1"
+			"i_num_comps"		"1"
+			"fl_value_min"		"0.000000"
+			"fl_value_max"		"10.000000"
+		}
+		"Node_034"
 		{
 			"iType"		"29"
 			"pos_x"		"1.958828"
@@ -673,7 +669,7 @@
 			{
 				"jackIn_00"
 				{
-					"iTarget_node"		"19"
+					"iTarget_node"		"16"
 					"iTarget_jack"		"0"
 				}
 			}
@@ -681,29 +677,33 @@
 			"iTextureType"		"1"
 			"IsCubemap"		"0"
 			"iLookupoverride"		"0"
-			"szDemoTexturePath"		"texture_samples\noise_2d"
+			"szDemoTexturePath"		"effects\filmscan"
 			"szFallbackTexturePath"		"texture_samples\noise_2d"
 			"iFallbackMode"		"4"
 		}
-		"Node_034"
-		{
-			"iType"		"65"
-			"pos_x"		"-31.195328"
-			"pos_y"		"484.970428"
-			"size_x"		"60.000000"
-			"size_y"		"-17.000000"
-			"iPreview"		"1"
-			"flSmartVal0"		"0.000000"
-		}
 		"Node_035"
 		{
-			"iType"		"5"
-			"pos_x"		"85.462997"
-			"pos_y"		"471.348877"
-			"size_x"		"50.000000"
-			"size_y"		"-17.000000"
+			"iType"		"29"
+			"pos_x"		"2.025377"
+			"pos_y"		"-221.102631"
+			"size_x"		"122.000000"
+			"size_y"		"-80.000000"
 			"iPreview"		"1"
-			"szConstantString"		"10"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"1"
+					"iTarget_jack"		"0"
+				}
+			}
+			"iSRGB"		"0"
+			"iTextureType"		"1"
+			"IsCubemap"		"0"
+			"iLookupoverride"		"0"
+			"szDemoTexturePath"		"effects\filmscan"
+			"szFallbackTexturePath"		"texture_samples\noise_2d"
+			"iFallbackMode"		"4"
 		}
 	}
 }

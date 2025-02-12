@@ -36,7 +36,7 @@ VS_OUTPUT main( const VS_INPUT In )
 	float _var1 = float( 2.000000 ) * _g_Time;
 	float2 _var2 = float( 1.000000 ) / _g_TexelSize;
 	float2 _var3 = _var1.xx;
-	_var2 = _var2 / float( 10.000000 );
+	_var2 = _var2 / float( 64.000000 );
 	{
 		float2 center_def = float2( 0.5f, 0.5f );
 		float rot_def = float( 0.0f );
