@@ -81,6 +81,10 @@ $Project "Client (TEAM-CONFLICT)"
 					//$File	"$SRCDIR\game\client\ShaderEditor\Grass\CGrassCluster.cpp"
 				}
 			}
+			$Folder "Hands"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
+			}
 		}
 
 		$Folder	"HL2 DLL"

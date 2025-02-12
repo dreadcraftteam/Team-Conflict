@@ -156,6 +156,8 @@ void CHL2MP_Player::Precache( void )
 	PrecacheScriptSound( "NPC_MetroPolice.Die" );
 	PrecacheScriptSound( "NPC_CombineS.Die" );
 	PrecacheScriptSound( "NPC_Citizen.die" );
+
+	//PrecacheModel("models/hands/c_hands.mdl");
 }
 
 void CHL2MP_Player::GiveAllItems( void )
@@ -296,6 +298,8 @@ void CHL2MP_Player::Spawn(void)
 	SetPlayerUnderwater(false);
 
 	m_bReady = false;
+
+	//GetViewModel(1)->SetModel("models/hands/c_hands.mdl");
 }
 
 void CHL2MP_Player::PickupObject( CBaseEntity *pObject, bool bLimitMassAndSize )

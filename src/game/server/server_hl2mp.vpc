@@ -93,12 +93,16 @@ $Project "Server (TEAM-CONFLICT)"
 			}
 			$Folder "Weapons"
 			{
-			
+				
 			}
 			$Folder "Entities"
 			{
 				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityHealthRotating.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityAmmoRotating.cpp"
+			}
+			$Folder "Hands"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
 			}
 		}
 		
