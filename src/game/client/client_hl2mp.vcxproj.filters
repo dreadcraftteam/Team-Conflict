@@ -58,6 +58,9 @@
     <Filter Include="Source Files\TC-DLL\Hands">
       <UniqueIdentifier>{42788272-683B-5BE6-720E-3C2106063B91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC-DLL\Instructor">
+      <UniqueIdentifier>{90DA1220-89A0-2360-88D6-BD607580694E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC-DLL\NextBot">
       <UniqueIdentifier>{8F936C12-33C6-F4E7-6BFA-13B88C395115}</UniqueIdentifier>
     </Filter>
@@ -1982,6 +1985,15 @@
     <ClInclude Include="..\..\game\client\TC-DLL\animated_background.h">
       <Filter>Source Files\TC-DLL\Background</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\c_baselesson.h">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\c_gameinstructor.h">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.h">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.h">
       <Filter>Source Files\TC-DLL\NextBot</Filter>
     </ClInclude>
@@ -3396,6 +3408,15 @@
     </ClCompile>
     <ClCompile Include="..\..\game\shared\TC-DLL\Hands\hand_viewmodel.cpp">
       <Filter>Source Files\TC-DLL\Hands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\c_baselesson.cpp">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\c_gameinstructor.cpp">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.cpp">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">
       <Filter>Source Files\TC-DLL\NextBot</Filter>

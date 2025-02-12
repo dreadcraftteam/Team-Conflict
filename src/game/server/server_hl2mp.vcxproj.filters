@@ -40,6 +40,9 @@
     <Filter Include="Source Files\TC DLL\Hands">
       <UniqueIdentifier>{587CBF53-4F0F-6696-F3A3-2F8B46BCD96B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC DLL\Instructor">
+      <UniqueIdentifier>{E171679F-E4B6-538D-8466-D9443C99966A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC DLL\NextBot">
       <UniqueIdentifier>{6AE45702-EFF7-E8A5-1A04-26A0F6140F9D}</UniqueIdentifier>
     </Filter>
@@ -3513,6 +3516,9 @@
     </ClCompile>
     <ClCompile Include="..\..\game\shared\TC-DLL\Hands\hand_viewmodel.cpp">
       <Filter>Source Files\TC DLL\Hands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\server\TC-DLL\Instructor\env_instructor_hint.cpp">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBot.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>

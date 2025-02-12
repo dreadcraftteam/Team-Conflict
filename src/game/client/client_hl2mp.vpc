@@ -85,6 +85,15 @@ $Project "Client (TEAM-CONFLICT)"
 			{
 				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
 			}
+			$Folder "Instructor"
+			{
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_baselesson.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_baselesson.h"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_gameinstructor.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_gameinstructor.h"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.h"
+			}
 		}
 
 		$Folder	"HL2 DLL"
