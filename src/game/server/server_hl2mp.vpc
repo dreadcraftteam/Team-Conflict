@@ -104,6 +104,10 @@ $Project "Server (TEAM-CONFLICT)"
 			{
 				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
 			}
+			$Folder "Instructor"
+			{
+				$File 	"$SRCDIR\game\server\TC-DLL\Instructor\env_instructor_hint.cpp"
+			}
 		}
 		
 		$File	"ai_relationship.cpp"
