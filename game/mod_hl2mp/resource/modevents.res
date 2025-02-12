@@ -48,10 +48,7 @@
 		"player"	"byte"		// entindex of the player
 		"achievement"	"short"		// achievement ID
 	}
-}
-"infestedevents"
-{
-	"set_instructor_group_enabled"
+		"set_instructor_group_enabled"
 	{
 		"group"		"string"
 		"enabled"	"short"
