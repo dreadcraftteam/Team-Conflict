@@ -3,7 +3,7 @@
 // Purpose: An entity for creating instructor hints entirely with map logic
 //
 // $NoKeywords: $
-//=============================================================================//
+//=====================================================================================//
 
 #include "cbase.h"
 #include "baseentity.h"
@@ -132,7 +132,6 @@ DEFINE_KEYFIELD(m_iszReplace_Key, FIELD_STRING, "hint_replace_key"),
             }
             else
             {
-                Warning("Failed to play server side instructor hint: no player specified for hint\n");
                 Assert(0);
             }
         }

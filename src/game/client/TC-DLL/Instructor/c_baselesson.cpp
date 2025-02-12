@@ -2,7 +2,7 @@
 //
 // Purpose:		Client handler implementations for instruction players how to play
 //
-//=============================================================================//
+//=====================================================================================//
 
 #include "cbase.h"
 
@@ -90,10 +90,7 @@ void CBaseLesson::AddPrerequisite(const char *pchLessonName)
 {
     if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "\t%s: ", GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Adding prereq ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\"", pchLessonName);
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
     }
 
     const CBaseLesson *pPrerequisite = GetGameInstructor().GetLesson(pchLessonName);
@@ -352,13 +349,11 @@ bool CBaseLesson::DoDelayedPlayerSwaps() const
         {
             // There is still no client representation of the new player, we'll have to try again later
             if (gameinstructor_verbose.GetInt() > 1)
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tFailed delayed player swap!");
 
             return false;
         }
 
         if (gameinstructor_verbose.GetInt() > 1)
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tSuccessful delayed player swap!");
 
         m_pDelayedPlayerSwap[m_iNumDelayedPlayerSwaps - 1].phHandleToChange->Set(pNewPlayer);
         m_iNumDelayedPlayerSwaps--;
@@ -1231,10 +1226,7 @@ void CScriptedIconLesson::Init()
 
     if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Initializing scripted lesson ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
     }
 
     if (!IsDefaultHolder())
@@ -1272,9 +1264,7 @@ void CScriptedIconLesson::Init()
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tListen for open event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\"", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
                 }
             }
 
@@ -1286,9 +1276,7 @@ void CScriptedIconLesson::Init()
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tListen for close event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\"", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
                 }
             }
 
@@ -1300,9 +1288,7 @@ void CScriptedIconLesson::Init()
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tListen for success event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "\"%s\"", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
                 }
             }
         }
@@ -1320,10 +1306,7 @@ void CScriptedIconLesson::InitPrerequisites()
 {
     if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Initializing prereqs for scripted lesson ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\"", GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
     }
 
     for (int iPrerequisit = 0; iPrerequisit < m_PrerequisiteNames.Count(); ++iPrerequisit)
@@ -1351,10 +1334,7 @@ void CScriptedIconLesson::OnOpen()
 
         if (gameinstructor_verbose.GetInt() > 1 && ShouldShowSpew())
         {
-            ConColorMsg(Color(255, 128, 64, 255), "GAME INSTRUCTOR: ");
-            ConColorMsg(Color(64, 128, 255, 255), "OnOpen event ");
-            ConColorMsg(Color(0, 255, 0, 255), "\"%s\"", pLessonEvent->szEventName.String());
-            ConColorMsg(Color(64, 128, 255, 255), "received for lesson \"%s\"...\n", GetName());
+
         }
 
         ProcessElements(NULL, &(pLessonEvent->elements));
@@ -1392,10 +1372,7 @@ void CScriptedIconLesson::Update()
 
             if (bShowSpew)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Update event ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseUpdate, "\"%s\"", pLessonEvent->szEventName.String());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "received for lesson \"%s\"...\n", GetName());
+
             }
 
             ProcessElements(NULL, &(pLessonEvent->elements));
@@ -1509,11 +1486,7 @@ void CScriptedIconLesson::ProcessOpenGameEvents(const CScriptedIconLesson *pRoot
         // We don't want more than one of this type, and there is already one open
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pRootLesson->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        "open events NOT processed (there is already an open lesson of this type).\n");
+
         }
 
         return;
@@ -1527,10 +1500,7 @@ void CScriptedIconLesson::ProcessOpenGameEvents(const CScriptedIconLesson *pRoot
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Open event ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\"", pLessonEvent->szEventName.String());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "received for lesson \"%s\"...\n", GetName());
+
             }
 
             if (m_pDefaultHolder)
@@ -1551,7 +1521,7 @@ void CScriptedIconLesson::ProcessOpenGameEvents(const CScriptedIconLesson *pRoot
             {
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\tAll elements returned true. Opening!\n");
+
                 }
 
                 MEM_ALLOC_CREDIT();
@@ -1595,17 +1565,13 @@ void CScriptedIconLesson::ProcessCloseGameEvents(const CScriptedIconLesson *pRoo
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Close event ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\"", pLessonEvent->szEventName.String());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "received for lesson \"%s\"...\n", GetName());
+
             }
 
             if (ProcessElements(event, &(pLessonEvent->elements)))
             {
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tAll elements returned true. Closing!\n");
                 }
 
                 CloseOpportunity("Close event elements completed.");
@@ -1625,17 +1591,14 @@ void CScriptedIconLesson::ProcessSuccessGameEvents(const CScriptedIconLesson *pR
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Success event ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "\"%s\"", pLessonEvent->szEventName.String());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "received for lesson \"%s\"...\n", GetName());
+
             }
 
             if (ProcessElements(event, &(pLessonEvent->elements)))
             {
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "\tAll elements returned true. Succeeding!\n");
+
                 }
 
                 MarkSucceeded();
@@ -1652,8 +1615,7 @@ LessonVariable LessonVariableFromString(const char *pchName, bool bWarnOnInvalid
 
     if (bWarnOnInvalidNames)
     {
-        AssertMsg(0, "Invalid scripted lesson variable!");
-        DevWarning("Invalid scripted lesson variable: %s\n", pchName);
+
     }
 
     return LESSON_VARIABLE_TOTAL;
@@ -1731,14 +1693,13 @@ void CScriptedIconLesson::InitElementsFromKeys(CUtlVector<LessonElement_t> *pLes
 
         if (!pchParam)
         {
-            DevWarning("No parameter specified for action: \"%s\"\n", pSubKey->GetName());
+
         }
         else
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t\tElement \"%s %s\" added.\n", pSubKey->GetName(),
-                            pSubKey->GetString());
+
             }
 
             // See if our param is a scripted var
@@ -1835,9 +1796,7 @@ void CScriptedIconLesson::InitFromKeys(KeyValues *pKey)
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tAdding open event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\" ", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+  
                 }
 
                 InitElementsFromKeys(&(pLessonEvent->elements), pEventKey);
@@ -1853,9 +1812,7 @@ void CScriptedIconLesson::InitFromKeys(KeyValues *pKey)
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tAdding close event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
                 }
 
                 InitElementsFromKeys(&(pLessonEvent->elements), pEventKey);
@@ -1871,9 +1828,7 @@ void CScriptedIconLesson::InitFromKeys(KeyValues *pKey)
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tAdding success event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "\"%s\" ", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
                 }
 
                 InitElementsFromKeys(&(pLessonEvent->elements), pEventKey);
@@ -1889,9 +1844,7 @@ void CScriptedIconLesson::InitFromKeys(KeyValues *pKey)
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tAdding onopen event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\" ", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
                 }
 
                 InitElementsFromKeys(&(pLessonEvent->elements), pEventKey);
@@ -1907,9 +1860,7 @@ void CScriptedIconLesson::InitFromKeys(KeyValues *pKey)
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tAdding update event ");
-                    ConColorMsg(CBaseLesson::m_rgbaVerboseUpdate, "\"%s\" ", pLessonEvent->szEventName.String());
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "...\n");
+
                 }
 
                 InitElementsFromKeys(&(pLessonEvent->elements), pEventKey);
@@ -1963,7 +1914,7 @@ bool CScriptedIconLesson::ProcessElements(IGameEvent *event, const CUtlVector<Le
             // This element failed
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tPrevious element returned false.\n");
+                
             }
 
             nContinueScope = m_iScopeDepth - 1;
@@ -1989,7 +1940,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for closing (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tScopeIn()\n");
+            
         }
 
         m_iScopeDepth++;
@@ -2000,7 +1951,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for closing (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tScopeOut()\n");
+            
         }
 
         m_iScopeDepth--;
@@ -2018,7 +1969,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for closing (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tCloseOpportunity()\n");
+           
         }
 
         CloseOpportunity("Close action.");
@@ -2029,7 +1980,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for succeeding (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tMarkSucceeded()\n");
+           
         }
 
         MarkSucceeded();
@@ -2041,7 +1992,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tm_fLockTime = gpGlobals->curtime\n");
+            
         }
 
         m_fLockTime = gpGlobals->curtime;
@@ -2054,9 +2005,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tIsPresentComplete() ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%s ", (bPresentComplete) ? ("true") : ("false"));
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (pLessonElement->bNot) ? ("!= true\n") : ("== true\n"));
+
         }
 
         return (pLessonElement->bNot) ? (!bPresentComplete) : (bPresentComplete);
@@ -2066,7 +2015,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for setting presentation status (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tPresentStart()\n");
+
         }
 
         PresentStart();
@@ -2077,7 +2026,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         // Special case for setting presentation status (we don't need variables for this)
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tPresentEnd()\n");
+
         }
 
         PresentEnd();
@@ -2117,7 +2066,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
                 break;
             case FIELD_EHANDLE:
             case FIELD_FUNCTION:
-                DevWarning("Can't use this variable type with this parameter type in lesson script.\n");
+
                 break;
             }
         }
@@ -2137,7 +2086,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         }
         else
         {
-            DevWarning("Invalid event field name and not a float \"%s\".\n", pParamName);
+
             return false;
         }
         break;
@@ -2165,7 +2114,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
                 break;
             case FIELD_EHANDLE:
             case FIELD_FUNCTION:
-                DevWarning("Can't use this variable type with this parameter type in lesson script.\n");
+
                 break;
             }
         }
@@ -2185,7 +2134,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         }
         else
         {
-            DevWarning("Invalid event field name and not an integer \"%s\".\n", pParamName);
+
             return false;
         }
         break;
@@ -2309,8 +2258,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
 
                     if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                     {
-                        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tPlayer param \"%s\" returned NULL.\n",
-                                    pParamName);
+
                     }
                     return false;
                 }
@@ -2320,8 +2268,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
             case FIELD_BOOLEAN:
             case FIELD_STRING:
             case FIELD_FUNCTION:
-                DevWarning("Can't use this variable type with this parameter type in lesson script.\n");
-                break;
+               break;
             }
         }
         else if (event && !(event->IsEmpty(pParamName)))
@@ -2337,7 +2284,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tPlayer param \"%s\" returned NULL.\n", pParamName);
+                    
                 }
                 return false;
             }
@@ -2354,7 +2301,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         }
         else
         {
-            DevWarning("Invalid event field name \"%s\".\n", pParamName);
+            
             return false;
         }
         break;
@@ -2379,8 +2326,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
 
                     if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                     {
-                        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tEntity param \"%s\" returned NULL.\n",
-                                    pParamName);
+
                     }
                     return false;
                 }
@@ -2390,7 +2336,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
             case FIELD_BOOLEAN:
             case FIELD_STRING:
             case FIELD_FUNCTION:
-                DevWarning("Can't use this variable type with this parameter type in lesson script.\n");
+                
                 break;
             }
         }
@@ -2399,8 +2345,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
             int iEntID = event->GetInt(pParamName);
             if (iEntID >= NUM_ENT_ENTRIES)
             {
-                AssertMsg(0, "Invalid entity ID used in game event field!");
-                DevWarning("Invalid entity ID used in game event (%s) for param (%s).", event->GetName(), pParamName);
+
                 return false;
             }
 
@@ -2415,7 +2360,7 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
 
                 if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
                 {
-                    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tEntity param \"%s\" returned NULL.\n", pParamName);
+
                 }
                 return false;
             }
@@ -2437,7 +2382,6 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         }
         else
         {
-            DevWarning("Invalid event field name \"%s\".\n", pParamName);
             return false;
         }
         break;
@@ -2452,7 +2396,6 @@ bool CScriptedIconLesson::ProcessElement(IGameEvent *event, const LessonElement_
         }
         else
         {
-            DevWarning("Invalid convar name \"%s\".\n", pParamName);
             return false;
         }
     }
@@ -2485,8 +2428,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_SET:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         fVar = fParam;
@@ -2495,8 +2437,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_ADD:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] += [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         fVar += fParam;
@@ -2505,8 +2446,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_SUBTRACT:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] -= [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         fVar -= fParam;
@@ -2515,8 +2455,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_MULTIPLY:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] *= [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+ 
         }
 
         fVar *= fParam;
@@ -2525,10 +2464,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_IS:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f ", fVar);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         return (bNot) ? (fVar != fParam) : (fVar == fParam);
@@ -2536,10 +2472,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_LESS_THAN:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f ", fVar);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         return (bNot) ? (fVar >= fParam) : (fVar < fParam);
@@ -2550,11 +2483,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t([%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "0x%X ", iTemp1);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "& [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "0x%X", iTemp2);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") == 0\n") : (") != 0\n"));
+
         }
 
         return (bNot) ? ((iTemp1 & iTemp2) == 0) : ((iTemp1 & iTemp2) != 0);
@@ -2566,11 +2495,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tUTIL_CountNumBitsSet([%s]) ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", iTemp1);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (" != [%s] ") : (" == [%s] "),
-                        pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp2);
+
         }
 
         return (bNot) ? (iTemp1 != iTemp2) : (iTemp1 == iTemp2);
@@ -2582,17 +2507,12 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tUTIL_CountNumBitsSet([%s]) ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", iTemp1);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (" >= [%s] ") : (" < [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp2);
+
         }
 
         return (bNot) ? (iTemp1 >= iTemp2) : (iTemp1 < iTemp2);
     }
     }
-
-    DevWarning("Invalid lesson action type used with \"%s\" variable type.\n", pchVarName);
 
     return false;
 }
@@ -2638,7 +2558,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_SET: {
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = [%s]\n", pchVarName, pchParamName->String());
+
         }
 
         hVar = pParam;
@@ -2648,8 +2568,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_IS:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("\t[%s] != [%s]\n") : ("\t[%s] == [%s]\n"),
-                        pchVarName, pchParamName->String());
+
         }
 
         return (bNot) ? (pVar != pParam) : (pVar == pParam);
@@ -2659,10 +2578,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->DistTo( [%s] )", pchVarName,
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "...\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle or Param handle returned NULL!\n");
+
             }
 
             return false;
@@ -2678,9 +2594,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->DistTo( [%s] ) ", pchVarName,
-                        pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", m_fOutput);
+
         }
 
         return true;
@@ -2691,10 +2605,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->AngularDistTo( [%s] )", pchVarName,
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "...\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle or Param handle returned NULL!\n");
+
             }
 
             return false;
@@ -2725,9 +2636,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->AngularDistTo( [%s] ) ", pchVarName,
-                        pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", m_fOutput);
+
         }
 
         return true;
@@ -2740,11 +2649,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcpy( [stringINVALID], [%s]->GetPlayerName() ",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tParam selecting string is out of range!\n");
+
             }
 
             return false;
@@ -2769,11 +2674,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcpy( [%s], [%s]->GetPlayerName() ",
-                            pchParamNameTemp, pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle returned NULL!\n");
+
             }
 
             return false;
@@ -2783,10 +2684,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcpy( [%s], [%s]->GetPlayerName() ", pchParamNameTemp,
-                        pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pString->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         return true;
@@ -2797,14 +2695,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t!FClassnameIs( [%s] ") : ("\tFClassnameIs( [%s] "), pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "...");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
 
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle returned NULL!\n");
             }
 
             return false;
@@ -2812,12 +2703,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? ("\t!FClassnameIs( [%s] ") : ("\tFClassnameIs( [%s] "), pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%s", pVar->GetClassname());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         return (bNot) ? (!FClassnameIs(pVar, pchParam)) : (FClassnameIs(pVar, pchParam));
@@ -2830,12 +2716,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetTeamNumber() ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle returned NULL!\n");
+
             }
 
             return false;
@@ -2843,10 +2724,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetTeamNumber() ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", pVar->GetTeamNumber());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp);
+
         }
 
         return (bNot) ? (pVar->GetTeamNumber() != iTemp) : (pVar->GetTeamNumber() == iTemp);
@@ -2859,12 +2737,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_stricmp( [%s]->ModelName() ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "...");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") != 0\n") : (") == 0\n"));
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseAnimating returned NULL!\n");
+
             }
 
             return false;
@@ -2883,11 +2756,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_stricmp( [%s]->ModelName() ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%s", pchModelName);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") != 0\n") : (") == 0\n"));
+
         }
 
         return (bNot) ? (Q_stricmp(pchModelName, pchParam) != 0) : (Q_stricmp(pchModelName, pchParam) == 0);
@@ -2900,12 +2769,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetHealth() ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle returned NULL!\n");
+
             }
 
             return false;
@@ -2913,10 +2777,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetHealth() ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", pVar->GetHealth());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i\n", iTemp);
+
         }
 
         return (bNot) ? (pVar->GetHealth() >= iTemp) : (pVar->GetHealth() < iTemp);
@@ -2927,12 +2788,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->HealthFraction() ", pchVarName, pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle returned NULL!\n");
+
             }
 
             return false;
@@ -2940,10 +2796,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->HealthFraction() ", pchVarName, pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f ", pVar->HealthFraction());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%f\n", fParam);
+
         }
 
         float fHealthPercentage = 1.0f;
@@ -2963,9 +2816,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[entityINVALID] = [%s]->GetActiveWeapon()\n",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tParam selecting string is out of range!\n");
+
             }
 
             return false;
@@ -2998,9 +2849,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = [%s]->GetActiveWeapon()", pchParamNameTemp,
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3010,9 +2859,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = [%s]->GetActiveWeapon()", pchParamNameTemp,
-                        pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"\n", pchParam);
+
         }
 
         return true;
@@ -3030,12 +2877,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->GetName() ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"\n", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3047,12 +2889,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->GetName() ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"\n", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetActiveWeapon returned NULL!\n");
+
             }
 
             return false;
@@ -3060,10 +2897,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->GetName() ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pBaseCombatWeapon->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? ("!= [%s] ") : ("== [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"\n", pchParam);
+
         }
 
         return (bNot) ? (Q_stricmp(pBaseCombatWeapon->GetName(), pchParam) != 0)
@@ -3082,12 +2916,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t![%s]->Weapon_OwnsThisType([%s] ") : ("\t[%s]->Weapon_OwnsThisType([%s] "),
-                            pchVarName, pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3095,11 +2924,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? ("\t![%s]->Weapon_OwnsThisType([%s] ") : ("\t[%s]->Weapon_OwnsThisType([%s] "),
-                        pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         return (bNot) ? (pBaseCombatCharacter->Weapon_OwnsThisType(pchParam) == NULL)
@@ -3118,9 +2943,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->Weapon_GetActiveSlot() ...\n",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3132,9 +2955,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->Weapon_GetActiveSlot() ...\n",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetActiveWeapon returned NULL!\n");
+ 
             }
 
             return false;
@@ -3164,11 +2985,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[output] = [%s]->Weapon_GetSlot([%s] ", pchVarName,
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ") ...\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3201,11 +3018,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[entity1] = [%s]->GetWeapon([%s] ", pchVarName,
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%i\"", nTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3215,10 +3028,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[entity1] = [%s]->GetWeapon([%s] ", pchVarName,
-                        pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%i\"", nTemp);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         return true;
@@ -3236,13 +3046,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->Clip1Percentage() ",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%.1f\n", fParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BaseCombatCharacter returned NULL!\n");
+
             }
 
             return false;
@@ -3254,13 +3058,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->Clip1Percentage() ",
-                            pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "... ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "),
-                            pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%.1f\n", fParam);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetActiveWeapon returned NULL!\n");
+
             }
 
             return false;
@@ -3276,10 +3074,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetActiveWeapon()->Clip1Percentage() ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%.1f ", fClip1Percentage);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (">= [%s] ") : ("< [%s] "), pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%.1f\n", fParam);
+
         }
 
         return (bNot) ? (fClip1Percentage >= fParam) : (fClip1Percentage < fParam);
@@ -3294,11 +3089,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetWeaponInSlot( ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? (")->AmmoPercentage() >= 30\n") : (")->AmmoPercentage() < 30\n"));
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BasePlayer returned NULL!\n");
+
             }
 
             return false;
@@ -3324,11 +3115,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetWeaponInSlot( ", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? (")->AmmoPercentage() >= 30\n") : (")->AmmoPercentage() < 30\n"));
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetActiveWeapon returned NULL!\n");
+
             }
 
             return false;
@@ -3348,11 +3135,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s]->GetWeaponInSlot( ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "%i ", iTemp);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? (")->AmmoPercentage() >= 30 ") : (")->AmmoPercentage() < 30 "));
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bAmmoLow) ? ("true\n") : ("false\n"));
+
         }
 
         return bAmmoLow;
@@ -3367,11 +3150,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoFull()\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BasePlayer returned NULL!\n");
+
             }
 
             return false;
@@ -3397,11 +3176,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoFull()\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetWeaponInSlot returned NULL!\n");
+
             }
 
             return false;
@@ -3416,11 +3191,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoFull() ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, (bAmmoFull) ? ("true\n") : ("false\n"));
+
         }
 
         return (bNot) ? (!bAmmoFull) : (bAmmoFull);
@@ -3435,11 +3206,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoEmpty()\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as BasePlayer returned NULL!\n");
+
             }
 
             return false;
@@ -3465,11 +3232,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoEmpty()\n");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar GetWeaponInSlot returned NULL!\n");
+
             }
 
             return false;
@@ -3483,12 +3246,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? ("\t![%s]->GetWeaponInSlot( ") : ("\t[%s]->GetWeaponInSlot( "), pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "%i ", iTemp);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")->AmmoEmpty() ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, (bAmmoEmpty) ? ("true") : ("false"));
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, " )\n");
+
         }
 
         return (bNot) ? (!bAmmoEmpty) : (bAmmoEmpty);
@@ -3542,11 +3300,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            (bNot) ? ("\tC_BaseEntity::Instance([%s]->GetUseEntity()) != [%s]\n")
-                                   : ("\tC_BaseEntity::Instance([%s]->GetUseEntity()) == [%s]\n"),
-                            pchVarName, pchParamName->String());
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as Player returned NULL!\n");
+
             }
 
             return false;
@@ -3554,10 +3308,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        (bNot) ? ("\tC_BaseEntity::Instance([%s]->GetUseEntity()) != [%s]\n")
-                               : ("\tC_BaseEntity::Instance([%s]->GetUseEntity()) == [%s]\n"),
-                        pchVarName, pchParamName->String());
+
         }
 
         return (bNot) ? (C_BaseEntity::Instance(pBasePlayer->GetUseEntity()) != pParam)
@@ -3571,9 +3322,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            "\t[entityINVALID] = C_BaseEntity::Instance([%s]->GetUseEntity())\n", pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tParam selecting string is out of range!\n");
+
             }
 
             return false;
@@ -3600,9 +3349,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         {
             if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = C_BaseEntity::Instance([%s]->GetUseEntity())\n",
-                            pchParamNameTemp, pchVarName);
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\tVar handle as Player returned NULL!\n");
+
             }
 
             return false;
@@ -3612,8 +3359,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\t[%s] = C_BaseEntity::Instance([%s]->GetUseEntity())\n",
-                        pchParamNameTemp, pchVarName);
+
         }
 
         return true;
@@ -3676,8 +3422,6 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         }*/
     }
 
-    DevWarning("Invalid lesson action type used with \"%s\" variable type.\n", pchVarName);
-
     return false;
 }
 
@@ -3691,17 +3435,13 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
         const CBaseLesson *pLesson = GetGameInstructor().GetLesson(pchParamName->String());
         if (!pLesson)
         {
-            DevWarning("Invalid lesson specified: \"%s\".", pchParamName->String());
+
             return false;
         }
 
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(Color(64, 128, 255, 255),
-                        (bNot) ? ("\t!( [\"%s\"]->IsInstanceActive() ") : ("\t( [\"%s\"]->IsInstanceActive() "),
-                        pchParamName->String());
-            ConColorMsg(Color(255, 255, 255, 255), "\"%s\"", (pLesson->IsInstanceActive() ? "true" : "false"));
-            ConColorMsg(Color(64, 128, 255, 255), " )\n");
+
         }
 
         return (bNot) ? (!pLesson->IsInstanceActive()) : (pLesson->IsInstanceActive());
@@ -3710,9 +3450,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_SET:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcpy([%s], [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         *pchVar = pchParam;
@@ -3721,9 +3459,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_ADD:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcat([%s], [%s] ", pchVarName, pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ")\n");
+
         }
 
         char szTemp[256];
@@ -3736,11 +3472,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_IS:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcmp([%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchVar->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") != 0\n") : (") == 0\n"));
+
         }
 
         return (bNot) ? (Q_strcmp(pchVar->String(), pchParam) != 0) : (Q_strcmp(pchVar->String(), pchParam) == 0);
@@ -3748,11 +3480,7 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_HAS_PREFIX:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tStringHasPrefix([%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchVar->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") == false\n") : (") == true\n"));
+
         }
 
         return (bNot) ? (!StringHasPrefix(pchVar->String(), pchParam)) : (StringHasPrefix(pchVar->String(), pchParam));
@@ -3760,17 +3488,11 @@ bool CScriptedIconLesson::ProcessElementAction(int iAction, bool bNot, const cha
     case LESSON_ACTION_LESS_THAN:
         if (gameinstructor_verbose.GetInt() > 0 && ShouldShowSpew())
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\tQ_strcmp([%s] ", pchVarName);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\"%s\"", pchVar->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ", [%s] ", pchParamName->String());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "\"%s\"", pchParam);
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, (bNot) ? (") >= 0\n") : (") < 0\n"));
+
         }
 
         return (bNot) ? (Q_strcmp(pchVar->String(), pchParam) >= 0) : (Q_strcmp(pchVar->String(), pchParam) < 0);
     }
-
-    DevWarning("Invalid lesson action type used with \"%s\" variable type.\n", pchVarName);
 
     return false;
 }

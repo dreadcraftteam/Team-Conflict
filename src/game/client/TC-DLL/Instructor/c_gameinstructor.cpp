@@ -2,7 +2,7 @@
 //
 // Purpose:		Client handler implementations for instruction players how to play
 //
-//=============================================================================//
+//=====================================================================================//
 
 #include "cbase.h"
 
@@ -111,8 +111,7 @@ bool C_GameInstructor::Init()
 
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Inicializando...\n");
+
     }
 
     m_bNoDraw = false;
@@ -154,8 +153,7 @@ void C_GameInstructor::Shutdown()
 {
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Apagando...\n");
+
     }
 
     CloseAllOpenOpportunities();
@@ -231,8 +229,7 @@ void C_GameInstructor::Update(float frametime)
         // Safe spot to clean out stale lessons if spectator changed
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Spectated player changed...\n");
+
         }
 
         CloseAllOpenOpportunities();
@@ -303,12 +300,7 @@ void C_GameInstructor::Update(float frametime)
     // Set the priority for next frame
     if (gameinstructor_verbose.GetInt() > 1 && m_iCurrentPriority != iCurrentPriority)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Priority changed from ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "%i ", m_iCurrentPriority);
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "to ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "%i", iCurrentPriority);
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
     }
 
     m_iCurrentPriority = iCurrentPriority;
@@ -327,8 +319,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Set to draw...\n");
+
             }
 
             m_bNoDraw = false;
@@ -340,8 +331,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Set to not draw...\n");
+
             }
 
             m_bNoDraw = true;
@@ -352,8 +342,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
     {
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Round ended...\n");
+
         }
 
         CloseAllOpenOpportunities();
@@ -368,8 +357,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
     {
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Round started...\n");
+
         }
 
         CloseAllOpenOpportunities();
@@ -389,8 +377,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Local player died...\n");
+
             }
 
             for (int i = m_OpenOpportunities.Count() - 1; i >= 0; --i)
@@ -412,8 +399,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Local player changed team (or disconnected)...\n");
+
             }
 
             CloseAllOpenOpportunities();
@@ -428,8 +414,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Local player disconnected...\n");
+
             }
 
             CloseAllOpenOpportunities();
@@ -439,8 +424,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
     {
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Map transition...\n");
+
         }
 
         CloseAllOpenOpportunities();
@@ -449,8 +433,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(Color(255, 128, 64, 255), "[INSTRUCTOR]: ");
-                ConColorMsg(Color(64, 128, 255, 255), "Set to draw...\n");
+
             }
 
             m_bNoDraw = false;
@@ -466,8 +449,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
     {
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "New map...\n");
+
         }
 
         CloseAllOpenOpportunities();
@@ -476,8 +458,7 @@ void C_GameInstructor::FireGameEvent(IGameEvent *event)
         {
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(Color(255, 128, 64, 255), "[INSTRUCTOR]: ");
-                ConColorMsg(Color(64, 128, 255, 255), "Set to draw...\n");
+
             }
 
             m_bNoDraw = false;
@@ -506,10 +487,7 @@ void C_GameInstructor::DefineLesson(CBaseLesson *pLesson)
 {
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Lesson ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseName, "\"%s\" ", pLesson->GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "defined.\n");
+
     }
 
     m_Lessons.AddToTail(pLesson);
@@ -555,7 +533,6 @@ bool C_GameInstructor::ReadSaveData()
     m_bHasLoadedSaveData = true;
 
 #ifdef _X360
-    DevMsg("Read Game Instructor for splitscreen slot %d\n", m_nSplitScreenSlot);
 
     if (m_nSplitScreenSlot < 0)
         return false;
@@ -663,7 +640,6 @@ bool C_GameInstructor::WriteSaveData()
     m_bDirtySaveData = false;
 
 #ifdef _X360
-    DevMsg("Write Game Instructor for splitscreen slot %d at time: %.1f\n", m_nSplitScreenSlot, flPlatTime);
 
     if (m_nSplitScreenSlot < 0)
         return false;
@@ -757,8 +733,7 @@ void C_GameInstructor::ResetDisplaysAndSuccesses()
 {
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Reset all lesson display and success counts.\n");
+
     }
 
     for (int i = 0; i < m_Lessons.Count(); ++i)
@@ -780,10 +755,7 @@ void C_GameInstructor::MarkDisplayed(const char *pchLessonName)
 
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Lesson ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\" ", pLesson->GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "marked as displayed.\n");
+
     }
 
     if (pLesson->IncDisplayCount())
@@ -801,10 +773,7 @@ void C_GameInstructor::MarkSucceeded(const char *pchLessonName)
 
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Lesson ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseSuccess, "\"%s\" ", pLesson->GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "marked as succeeded.\n");
+
     }
 
     if (pLesson->IncSuccessCount())
@@ -847,10 +816,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
     {
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLesson->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "NOT opened (because root lesson could not be found).\n");
+
         }
 
         delete pLesson;
@@ -864,11 +830,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
         // If the player is dead don't allow lessons that can't be opened when dead
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLesson->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                        "NOT opened (because player is dead and can_open_when_dead not set).\n");
+
         }
 
         delete pLesson;
@@ -880,10 +842,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
         // If the prereqs haven't been met, don't open it
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "[INSTRUCTOR]: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLesson->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "NOT opened (because prereqs haven't been met).\n");
+
         }
 
         delete pLesson;
@@ -932,10 +891,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
             // Take the place of the previous instance
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\" ", pLesson->GetName());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "replacing open lesson of same type.\n");
+
             }
 
             pLesson->TakePlaceOf(pLessonToReplace);
@@ -946,11 +902,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
             // Don't add another lesson of this type
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLesson->GetName());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain,
-                            "NOT opened (there is too many started lessons of this type).\n");
+
             }
 
             delete pLesson;
@@ -960,10 +912,7 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
 
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\" ", pLesson->GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "opened.\n");
+
     }
 
     m_OpenOpportunities.AddToTail(pLesson);
@@ -975,8 +924,6 @@ bool C_GameInstructor::OpenOpportunity(CBaseLesson *pLesson)
 //=========================================================
 void C_GameInstructor::DumpOpenOpportunities()
 {
-    ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-    ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Open lessons...\n");
 
     for (int i = m_OpenOpportunities.Count() - 1; i >= 0; --i)
     {
@@ -1001,7 +948,6 @@ void C_GameInstructor::DumpOpenOpportunities()
             color = CBaseLesson::m_rgbaVerboseClose;
         }
 
-        ConColorMsg(color, "\t%s\n", pLesson->GetName());
     }
 }
 
@@ -1143,10 +1089,7 @@ bool C_GameInstructor::UpdateActiveLesson(CBaseLesson *pLesson, const CBaseLesso
             // Lesson hasn't been started and hasn't been learned
             if (gameinstructor_verbose.GetInt() > 0)
             {
-                ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Started lesson ");
-                ConColorMsg(CBaseLesson::m_rgbaVerboseOpen, "\"%s\"", pLesson->GetName());
-                ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
             }
         }
         else
@@ -1180,10 +1123,7 @@ void C_GameInstructor::UpdateInactiveLesson(CBaseLesson *pLesson)
         // Lesson hasn't been stopped
         if (gameinstructor_verbose.GetInt() > 0)
         {
-            ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Stopped lesson ");
-            ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\"", pLesson->GetName());
-            ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, ".\n");
+
         }
 
         pLesson->Stop();
@@ -1247,11 +1187,7 @@ void C_GameInstructor::CloseOpportunity(CBaseLesson *pLesson)
 
     if (gameinstructor_verbose.GetInt() > 0)
     {
-        ConColorMsg(CBaseLesson::m_rgbaVerboseHeader, "GAME INSTRUCTOR: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "Opportunity ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "\"%s\" ", pLesson->GetName());
-        ConColorMsg(CBaseLesson::m_rgbaVerbosePlain, "closed for reason: ");
-        ConColorMsg(CBaseLesson::m_rgbaVerboseClose, "%s\n", pLesson->GetCloseReason());
+
     }
 
     pLesson->StopListeningForAllEvents();
@@ -1291,7 +1227,6 @@ void C_GameInstructor::ReadLessonsFromFile(const char *pchFileName)
         // Ensure that lessons aren't added twice
         if (GetLesson_Internal(m_pScriptKeys->GetName()))
         {
-            DevWarning("Lesson \"%s\" defined twice!\n", m_pScriptKeys->GetName());
             continue;
         }
 

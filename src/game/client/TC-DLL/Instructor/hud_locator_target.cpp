@@ -3,7 +3,7 @@
 // Purpose: See header file
 //
 // $NoKeywords: $
-//=============================================================================//
+//=====================================================================================//
 
 #include "cbase.h"
 #include "hud_locator_target.h"
@@ -363,7 +363,6 @@ void CLocatorTarget::SetCaptionColor(const char *pszCaptionColor)
     }
     else
     {
-        DevWarning("caption_color format incorrect. RRR,GGG,BBB expected.\n");
     }
 }
 
@@ -1157,7 +1156,7 @@ void CLocatorPanel::Paint(void)
 
     if (iterations == MAX_UNCLUTTER_ITERATIONS)
     {
-        DevWarning("Game instructor hit MAX_UNCLUTTER_ITERATIONS!\n");
+
     }
 
     float flLocatorLerpRest = locator_lerp_rest.GetFloat();
@@ -1274,7 +1273,7 @@ bool CLocatorPanel::ValidateTargetTextures(CLocatorTarget *pTarget)
         // was changed.
         if (Q_strlen(szIconTextureName) == 0)
         {
-            DevWarning("Locator Target has no onscreen texture name!\n");
+
             return false;
         }
         else
@@ -1309,7 +1308,7 @@ bool CLocatorPanel::ValidateTargetTextures(CLocatorTarget *pTarget)
         {
             if (!pTarget->m_pIcon_onscreen)
             {
-                DevWarning("Locator Target has no offscreen texture name and can't fall back!\n");
+                
             }
             else
             {
@@ -1581,8 +1580,6 @@ void CLocatorPanel::DrawPointerBackground(CLocatorTarget *pTarget, int nPointerX
 
     Color rgbaBorder = locator_background_border_color.GetColor();
     rgbaBorder[3] *= fAlpha;
-
-    DevMsg("[TODO] vgui::surface()->DrawWordBubble \n");
 
     // vgui::surface()->DrawWordBubble( nPosX, nPosY, nPosX + nBackgroundWide, nPosY + nBackgroundTall,
     // locator_background_border_thickness.GetInt(),  rgbaBackground, rgbaBorder, bPointer, nPointerX, nPointerY,
@@ -2162,7 +2159,6 @@ int CLocatorPanel::AddTarget()
         }
     }
 
-    DevWarning("Locator Panel has no free targets!\n");
     return -1;
 }
 

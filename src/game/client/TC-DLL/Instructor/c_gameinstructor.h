@@ -2,7 +2,7 @@
 //
 // Purpose:		Client handler for instruction players how to play
 //
-//=============================================================================//
+//=====================================================================================//
 
 #ifndef _C_GAMEINSTRUCTOR_H_
 #define _C_GAMEINSTRUCTOR_H_
