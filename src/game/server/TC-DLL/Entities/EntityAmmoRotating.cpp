@@ -4,10 +4,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#define AMMO_DECAL "example_model_material" // DONT TOUCH THIS! 
 #define AMMO_MODEL "models/items/boxmrounds.mdl"
 #define AMMO_MIN_HEIGHT 50
-int AmmoPickupDecalIndex; // set by CAmmoRotating::Precache()
 
 #define SF_SUPPRESS_PICKUP_DECAL	0x00000002
 
@@ -98,7 +96,6 @@ void CAmmoRotating::Activate()
 	if(tr.DidHit())
 	{
 		if ( !HasSpawnFlags( SF_SUPPRESS_PICKUP_DECAL ) )
-			engine->StaticDecal(tr.endpos, AmmoPickupDecalIndex,0,0,false); // mark the location of the pickup
 		SetAbsOrigin( GetAbsOrigin() + ( Vector(0,0, AMMO_MIN_HEIGHT*(1-tr.fraction)) ) );
 	}
 }
@@ -108,7 +105,6 @@ void CAmmoRotating::Precache()
 	PrecacheModel(AMMO_MODEL );
 	PrecacheScriptSound( "HL2Player.PickupWeapon" );
 	PrecacheScriptSound( "AlyxEmp.Charge" );
-	AmmoPickupDecalIndex = UTIL_PrecacheDecal(AMMO_DECAL, true );
 }
 
 // Called from CItem::ItemTouch()

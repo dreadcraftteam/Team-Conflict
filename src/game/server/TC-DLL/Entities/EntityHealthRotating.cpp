@@ -4,10 +4,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#define HEALTH_DECAL "example_model_material" // DONT TOUCH THIS! 
 #define HEALTH_MODEL "models/items/healthkit.mdl"
 #define HEALTH_MIN_HEIGHT 50
-int PickupDecalIndex; // set by CHealthRotating::Precache()
 
 #define SF_SUPPRESS_PICKUP_DECAL	0x00000002
 
@@ -98,7 +96,6 @@ void CHealthRotating::Activate()
 	if(tr.DidHit())
 	{
 		if ( !HasSpawnFlags( SF_SUPPRESS_PICKUP_DECAL ) )
-			engine->StaticDecal(tr.endpos,PickupDecalIndex,0,0,false); // mark the location of the pickup
 		SetAbsOrigin( GetAbsOrigin() + ( Vector(0,0, HEALTH_MIN_HEIGHT*(1-tr.fraction)) ) );
 	}
 }
@@ -108,7 +105,6 @@ void CHealthRotating::Precache()
 	PrecacheModel(HEALTH_MODEL );
 	PrecacheScriptSound( "HealthKit.Touch" );
 	PrecacheScriptSound( "AlyxEmp.Charge" );
-	PickupDecalIndex = UTIL_PrecacheDecal(HEALTH_DECAL, true );
 }
 
 // Called from CItem::ItemTouch()
