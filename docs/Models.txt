@@ -1,0 +1,12 @@
+//
+//	What models should I add to the game?
+//
+
+hand_commander (models/hands/hand_commander)
+hand_supporter (models/hands/hand_supporter)
+hand_builder (models/hands/hand_builder)
+hand_rasher (models/hands/hand_rasher)
+hand_soldier (models/hands/hand_soldier)
+hand_flamer (models/hands/hand_flamer)
+hand_sniper (models/hands/hand_sniper)
+hand_medic (models/hands/hand_medic)
