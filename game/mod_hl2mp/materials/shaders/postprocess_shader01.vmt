@@ -1,4 +1,4 @@
 "editor_shader" 
 { 
-	" $shadername " 	"postprocess_shader01" 
+	"$shadername" 	"postprocess_shader01" 
 }

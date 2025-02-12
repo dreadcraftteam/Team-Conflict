@@ -58,8 +58,8 @@ DESCRIPTION SERVER_OPTIONS
 	"maxplayers"
 	{
 		"Max Players"
-		{ NUMBER 1 32 }
-		{ "32" }
+		{ NUMBER 1 100 }
+		{ "16" }
 	}
 
 	"mp_timelimit"
