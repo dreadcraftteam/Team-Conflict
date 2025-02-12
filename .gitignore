@@ -69,3 +69,7 @@ user_custom
 
 # shader files
 *.tmp
+
+# worldcraft files
+*.prt
+*.vmx
