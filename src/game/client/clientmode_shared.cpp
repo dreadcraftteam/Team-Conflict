@@ -861,7 +861,6 @@ void ClientModeShared::LevelInit( const char *newmap )
 //-----------------------------------------------------------------------------
 void ClientModeShared::LevelShutdown( void )
 {
-	g_pScreenSpaceEffects->DisableScreenSpaceEffect("ge_entglow");
 	// Reset the third person camera so we don't crash
 	g_ThirdPersonManager.Init();
 

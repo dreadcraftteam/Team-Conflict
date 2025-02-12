@@ -66,17 +66,11 @@ void CHLModeManager::CreateMove( float flInputSampleTime, CUserCmd *cmd )
 
 void CHLModeManager::LevelInit( const char *newmap )
 {
-	//Old glow system:
-	//	g_pScreenSpaceEffects->EnableScreenSpaceEffect("ge_entglow");
-
 	g_pClientMode->LevelInit( newmap );
 }
 
 void CHLModeManager::LevelShutdown( void )
 {
-	//Old glow system:
-	//g_pScreenSpaceEffects->DisableScreenSpaceEffect("ge_entglow");
-
 	g_pClientMode->LevelShutdown();
 }
 
