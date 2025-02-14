@@ -94,11 +94,6 @@ $Project "vgui_controls"
 	"vgui2\vgui_controls\vgui_controls.vpc" [$WIN32||$X360||$POSIX]
 }
 
-$Project "GameUI"
-{
-	"gameui\GameUI.vpc" [$WINDOWS||$X360||$POSIX]
-}
-
 $Project "vice"
 {
 	"utils\vice\vice.vpc" [$WIN32]

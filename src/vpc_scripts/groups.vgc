@@ -12,7 +12,6 @@ $Group "gamedlls"
 {
 	"client"
 	"server"
-	"GameUI"
 }
 
 $Group "game"
@@ -23,7 +22,6 @@ $Group "game"
 	"server"
 	"tier1"
 	"vgui_controls"
-	"GameUI"
 }
 
 $Group "shaders"
@@ -57,7 +55,6 @@ $Group "everything"
 	"vtfdiff"
 	"vvis_dll"
 	"vvis_launcher"
-	"GameUI"
 }
 
 $Group "dedicated"
