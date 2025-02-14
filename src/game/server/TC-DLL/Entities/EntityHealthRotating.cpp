@@ -103,7 +103,7 @@ void CHealthRotating::Activate()
 void CHealthRotating::Precache()
 {
 	PrecacheModel(HEALTH_MODEL );
-	PrecacheScriptSound( "HealthKit.Touch" );
+	PrecacheScriptSound( "HL2Player.PickupWeapon" );
 	PrecacheScriptSound( "AlyxEmp.Charge" );
 }
 
@@ -120,7 +120,7 @@ bool CHealthRotating::MyTouch( CBasePlayer *pPlayer )
 		UserMessageBegin( PlayerFilter, "ItemPickup" );
 		WRITE_STRING( GetClassname() );
 		MessageEnd();
-		EmitSound( PlayerFilter, pPlayer->entindex(), "HealthKit.Touch" ); // this should be done by the HUD really
+		EmitSound( PlayerFilter, pPlayer->entindex(), "HL2Player.PickupWeapon" ); // this should be done by the HUD really
 
 		Respawn();
 		return true;
