@@ -25,7 +25,7 @@
 #include "matsys_controls/matsyscontrols.h"
 #include "TC-DLL\VGUI\vgui_teammenu.h"
 #include "TC-DLL\VGUI\vgui_classmenu.h"
-#include "TC-DLL\animated_background.h"
+#include "TC-DLL\Background\tc_background.h"
 #include "baseviewport.h"
 
 #ifdef SIXENSE

@@ -60,8 +60,8 @@ $Project "Client (TEAM-CONFLICT)"
 			}
 			$Folder "Background"
 			{
-				$File	"$SRCDIR\game\client\TC-DLL\animated_background.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\animated_background.h"
+				$File	"$SRCDIR\game\client\TC-DLL\Background\tc_background.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Background\tc_background.h"
 			}
 			$Folder "Shader Editor" [$WIN32]
 			{
@@ -71,26 +71,24 @@ $Project "Client (TEAM-CONFLICT)"
 					$File	"$SRCDIR\game\client\ShaderEditor\IVShaderEditor.h"
 					$File	"$SRCDIR\game\client\ShaderEditor\ShaderEditorSystem.h"
 					$File	"$SRCDIR\game\client\ShaderEditor\SEdit_ModelRender.h"
-					//$File	"$SRCDIR\game\client\ShaderEditor\Grass\CGrassCluster.h"
 				}
 			
 				$Folder	"Implementation Files"
 				{
 					$File	"$SRCDIR\game\client\ShaderEditor\ShaderEditorSystem.cpp"
 					$File	"$SRCDIR\game\client\ShaderEditor\SEdit_ModelRender.cpp"
-					//$File	"$SRCDIR\game\client\ShaderEditor\Grass\CGrassCluster.cpp"
 				}
 			}
 			$Folder "Hands"
 			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp"
 			}
 			$Folder "Instructor"
 			{
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_baselesson.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_baselesson.h"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_gameinstructor.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\c_gameinstructor.h"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_baselesson.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_baselesson.h"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_gameinstructor.cpp"
+				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_gameinstructor.h"
 				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.cpp"
 				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.h"
 			}

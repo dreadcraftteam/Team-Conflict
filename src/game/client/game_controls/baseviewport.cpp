@@ -56,7 +56,7 @@
 #include "replay/ienginereplay.h"
 #endif
 
-#include "TC-DLL\animated_background.h"
+#include "TC-DLL\Background\tc_background.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

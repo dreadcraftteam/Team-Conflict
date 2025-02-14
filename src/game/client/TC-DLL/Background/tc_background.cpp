@@ -1,11 +1,11 @@
-//========= Copyright Jorge "BSVino" Rodriguez, All rights reserved. ============//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
 //
-// Purpose: 
+// Purpose: Animated background general code
 //
-//====================================================================================//
+//======================================================================//
 
 #include "cbase.h"
-#include "animated_background.h"
+#include "tc_background.h"
 #include <cdll_client_int.h>
 #include <ienginevgui.h>
 #include <KeyValues.h>

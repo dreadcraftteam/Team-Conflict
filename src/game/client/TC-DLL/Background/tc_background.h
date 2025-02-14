@@ -1,8 +1,8 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
 //
-// Purpose: 
+// Purpose: Animated background general code
 //
-//=============================================================================//
+//======================================================================//
 
 #ifndef MENU_BACKGROUND_H
 #define MENU_BACKGROUND_H

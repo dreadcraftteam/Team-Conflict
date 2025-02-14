@@ -102,7 +102,7 @@ $Project "Server (TEAM-CONFLICT)"
 			}
 			$Folder "Hands"
 			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Hands\hand_viewmodel.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp"
 			}
 			$Folder "Instructor"
 			{

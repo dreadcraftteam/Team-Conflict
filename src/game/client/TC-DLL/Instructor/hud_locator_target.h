@@ -1,9 +1,8 @@
-//====== Copyright © 1996-2008, Valve Corporation, All rights reserved. =========//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
-// Purpose: Add entities to this system, and the Locator will maintain an arrow
-//			on the HUD that points to the entities when they are offscreen.
+// Purpose: Client handler implementations for instruction players how to play
 //
-//===============================================================================//
+//==============================================================================//
 
 #ifndef L4D_HUD_LOCATOR_H
 #define L4D_HUD_LOCATOR_H

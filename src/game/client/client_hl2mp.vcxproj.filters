@@ -1982,16 +1982,16 @@
     <ClInclude Include="..\..\game\shared\sixense\sixense_convars_extern.h">
       <Filter>Source Files\Sixense</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\animated_background.h">
+    <ClInclude Include="..\..\game\client\TC-DLL\Background\tc_background.h">
       <Filter>Source Files\TC-DLL\Background</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\c_baselesson.h">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\c_gameinstructor.h">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.h">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\tc_baselesson.h">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\tc_gameinstructor.h">
       <Filter>Source Files\TC-DLL\Instructor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.h">
@@ -3397,7 +3397,7 @@
     <ClCompile Include="..\..\game\shared\sixense\sixense_convars.cpp">
       <Filter>Source Files\Sixense</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\animated_background.cpp">
+    <ClCompile Include="..\..\game\client\TC-DLL\Background\tc_background.cpp">
       <Filter>Source Files\TC-DLL\Background</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityAmmoRotating.cpp">
@@ -3406,16 +3406,16 @@
     <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityHealthRotating.cpp">
       <Filter>Source Files\TC-DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\hand_viewmodel.cpp">
+    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp">
       <Filter>Source Files\TC-DLL\Hands</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\c_baselesson.cpp">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\c_gameinstructor.cpp">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.cpp">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\tc_baselesson.cpp">
+      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\tc_gameinstructor.cpp">
       <Filter>Source Files\TC-DLL\Instructor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">

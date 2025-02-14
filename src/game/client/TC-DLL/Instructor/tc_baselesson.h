@@ -1,8 +1,8 @@
-//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
-// Purpose:		Client handler for instruction players how to play
+// Purpose: Client handler implementations for instruction players how to play
 //
-//=====================================================================================//
+//==============================================================================//
 
 #ifndef _C_BASELESSON_H_
 #define _C_BASELESSON_H_

@@ -1,13 +1,13 @@
-//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
-// Purpose:		Client handler implementations for instruction players how to play
+// Purpose: Client handler implementations for instruction players how to play
 //
-//=====================================================================================//
+//==============================================================================//
 
 #include "cbase.h"
 
-#include "c_gameinstructor.h"
-#include "c_baselesson.h"
+#include "tc_gameinstructor.h"
+#include "tc_baselesson.h"
 #include "filesystem.h"
 #include "vprof.h"
 #include "ixboxsystem.h"

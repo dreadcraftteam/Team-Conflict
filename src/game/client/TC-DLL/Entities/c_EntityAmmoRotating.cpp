@@ -1,3 +1,9 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
+//
+// Purpose: Rotating Pickup Entity
+//
+//======================================================================//
+
 #include "cbase.h"
 #include "dlight.h"
 #include "r_efx.h"

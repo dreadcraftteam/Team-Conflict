@@ -1,9 +1,8 @@
-//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
-// Purpose: See header file
+// Purpose: Client handler implementations for instruction players how to play
 //
-// $NoKeywords: $
-//=====================================================================================//
+//==============================================================================//
 
 #include "cbase.h"
 #include "hud_locator_target.h"

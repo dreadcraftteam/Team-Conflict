@@ -3514,7 +3514,7 @@
     <ClCompile Include="..\..\game\server\TC-DLL\Entities\EntityHealthRotating.cpp">
       <Filter>Source Files\TC DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\hand_viewmodel.cpp">
+    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp">
       <Filter>Source Files\TC DLL\Hands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\server\TC-DLL\Instructor\env_instructor_hint.cpp">
