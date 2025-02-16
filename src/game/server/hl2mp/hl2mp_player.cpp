@@ -157,7 +157,7 @@ void CHL2MP_Player::Precache( void )
 	PrecacheScriptSound( "NPC_CombineS.Die" );
 	PrecacheScriptSound( "NPC_Citizen.die" );
 
-	//PrecacheModel("models/hands/c_hands.mdl");
+	PrecacheModel("models/hands/c_hands.mdl");
 }
 
 void CHL2MP_Player::GiveAllItems( void )
@@ -299,7 +299,7 @@ void CHL2MP_Player::Spawn(void)
 
 	m_bReady = false;
 
-	//GetViewModel(1)->SetModel("models/hands/c_hands.mdl");
+	GetViewModel(1)->SetModel("models/hands/c_hands.mdl");
 }
 
 void CHL2MP_Player::PickupObject( CBaseEntity *pObject, bool bLimitMassAndSize )
@@ -1196,6 +1196,8 @@ void CHL2MP_Player::Event_Killed( const CTakeDamageInfo &info )
 	subinfo.SetDamageForce( m_vecTotalBulletForce );
 
 	SetNumAnimOverlays( 0 );
+
+	GetViewModel(1)->SetModel("");
 
 	// Note: since we're dead, it won't draw us on the client, but we don't set EF_NODRAW
 	// because we still want to transmit to the clients in our PVS.
