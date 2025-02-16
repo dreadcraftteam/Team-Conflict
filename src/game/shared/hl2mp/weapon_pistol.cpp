@@ -123,9 +123,9 @@ BEGIN_PREDICTION_DATA( CWeaponPistol )
 	DEFINE_PRED_FIELD( m_nNumShotsFired, FIELD_INTEGER, FTYPEDESC_INSENDTABLE ),
 END_PREDICTION_DATA()
 #endif
-
-LINK_ENTITY_TO_CLASS( weapon_pistol, CWeaponPistol );
-PRECACHE_WEAPON_REGISTER( weapon_pistol );
+// Weapon hided!!!
+//LINK_ENTITY_TO_CLASS( weapon_pistol, CWeaponPistol );
+//PRECACHE_WEAPON_REGISTER( weapon_pistol );
 
 #ifndef CLIENT_DLL
 acttable_t CWeaponPistol::m_acttable[] = 
