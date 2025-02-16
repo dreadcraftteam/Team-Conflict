@@ -69,9 +69,6 @@ END_PREDICTION_DATA()
 
 #endif
 
-LINK_ENTITY_TO_CLASS( weapon_slam, CWeapon_SLAM );
-PRECACHE_WEAPON_REGISTER(weapon_slam);
-
 #ifndef CLIENT_DLL
 
 BEGIN_DATADESC( CWeapon_SLAM )

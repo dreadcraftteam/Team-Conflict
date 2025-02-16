@@ -82,9 +82,6 @@ END_NETWORK_TABLE()
 BEGIN_PREDICTION_DATA( CWeaponSMG1 )
 END_PREDICTION_DATA()
 
-LINK_ENTITY_TO_CLASS( weapon_smg1, CWeaponSMG1 );
-PRECACHE_WEAPON_REGISTER(weapon_smg1);
-
 #ifndef CLIENT_DLL
 acttable_t	CWeaponSMG1::m_acttable[] = 
 {
