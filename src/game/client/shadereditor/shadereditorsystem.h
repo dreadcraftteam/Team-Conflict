@@ -1,3 +1,11 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//		Created: Biohazard90
+//		Updated: DREADCRAFT
+//
+//==============================================================================//
+
 #ifndef SHEDITSYSTEM_H
 #define SHEDITSYSTEM_H
 

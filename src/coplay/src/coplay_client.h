@@ -1,3 +1,11 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//      Created: CoaXion
+//      Updated: DREADCRAFT
+//
+//==============================================================================//
+
 #ifndef COPLAY_CLIENT_H
 #define COPLAY_CLIENT_H
 #pragma once

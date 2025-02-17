@@ -1,10 +1,10 @@
-// ******************************************************
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose:
-//		-	Handles model rendering requests from the
-//			shader editor library
-// 
-// ******************************************************
+//		Created: Biohazard90
+//		Updated: DREADCRAFT
+//
+//==============================================================================//
 
 #include "cbase.h"
 

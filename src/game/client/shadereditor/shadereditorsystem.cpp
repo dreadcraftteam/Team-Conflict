@@ -1,11 +1,10 @@
-// ******************************************************
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose:
-//		-	Connects the shader editor
-//		-	Sends data from the main viewsetup
-//		-	exposes client callbacks to shaders
-// 
-// ******************************************************
+//		Created: Biohazard90
+//		Updated: DREADCRAFT
+//
+//==============================================================================//
 
 #include "cbase.h"
 #include "client_factorylist.h"

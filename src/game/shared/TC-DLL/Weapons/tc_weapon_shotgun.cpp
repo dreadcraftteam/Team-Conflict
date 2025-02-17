@@ -1,6 +1,7 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose:
+//		Created: DREADCRAFT
 //
 //==============================================================================//
 

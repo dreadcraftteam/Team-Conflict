@@ -1,3 +1,12 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose: Hand viewmodel main file!
+// 
+//		Created: Ozxybox
+//		Updated: DREADCRAFT
+//
+//==============================================================================//
+
 #include "cbase.h"
 #include "baseviewmodel_shared.h"
 

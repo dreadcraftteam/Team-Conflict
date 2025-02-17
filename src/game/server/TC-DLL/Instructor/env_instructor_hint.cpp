@@ -1,9 +1,10 @@
-﻿//========= Copyright DREADCRAFT TEAM, All rights reserved. ===========================//
+﻿//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose: An entity for creating instructor hints entirely with map logic
+//      Created: DREADCRAFT
+//      Reference: L4D, AlienSwarm
 //
-// $NoKeywords: $
-//=====================================================================================//
+//==============================================================================//
 
 #include "cbase.h"
 #include "baseentity.h"

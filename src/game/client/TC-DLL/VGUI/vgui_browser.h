@@ -1,3 +1,9 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//
+//==============================================================================//
+
 #include "GameUI/IGameUI.h"
 #include "vgui_controls/Panel.h"
 #include "vgui_controls/Button.h"

@@ -1,4 +1,12 @@
-﻿#include "cbase.h"
+﻿//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//      Created: CoaXion
+//      Updated: DREADCRAFT
+//
+//==============================================================================//
+
+#include "cbase.h"
 #include "coplay_connection.h"
 #include "coplay_system.h"
 #include <inetchannel.h>

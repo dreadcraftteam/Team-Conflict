@@ -1,3 +1,11 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//		Created: Biohazard90
+//		Updated: DREADCRAFT
+//
+//==============================================================================//
+
 #ifndef IV_SHADEREDITOR
 #define IV_SHADEREDITOR
 

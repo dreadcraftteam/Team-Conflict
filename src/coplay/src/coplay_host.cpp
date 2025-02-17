@@ -1,3 +1,11 @@
+//========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
+//
+// Purpose:
+//      Created: CoaXion
+//      Updated: DREADCRAFT
+//
+//==============================================================================//
+
 #include <cbase.h>
 #include <inetchannel.h>
 #include <inetchannelinfo.h>
