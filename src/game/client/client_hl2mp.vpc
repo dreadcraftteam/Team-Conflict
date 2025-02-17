@@ -5,7 +5,6 @@
 //-----------------------------------------------------------------------------
 
 $Macro SRCDIR		"..\.."
-$Macro GAMENAME 	"hl2mp" [!$SOURCESDK]
 $Macro GAMENAME 	"teamconflict" [$SOURCESDK]
 
 $Include "$SRCDIR\game\client\client_base.vpc"
