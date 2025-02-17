@@ -76,7 +76,6 @@ protected:
 	DECLARE_DATADESC();
 	DECLARE_SERVERCLASS();
 };
-LINK_ENTITY_TO_CLASS( crossbow_bolt, CCrossbowBolt );
 
 BEGIN_DATADESC( CCrossbowBolt )
 	// Function Pointers
@@ -470,10 +469,6 @@ BEGIN_PREDICTION_DATA( CWeaponCrossbow )
 	DEFINE_PRED_FIELD( m_bMustReload, FIELD_BOOLEAN, FTYPEDESC_INSENDTABLE ),
 END_PREDICTION_DATA()
 #endif
-
-LINK_ENTITY_TO_CLASS( weapon_crossbow, CWeaponCrossbow );
-
-PRECACHE_WEAPON_REGISTER( weapon_crossbow );
 
 #ifndef CLIENT_DLL
 
