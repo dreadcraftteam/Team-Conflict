@@ -3442,6 +3442,51 @@
     <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
       <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp">
+      <Filter>Source Files\TC-DLL\Weapons</Filter>
+    </ClCompile>
     <ClCompile Include="c_basetempentity.cpp">
       <Filter>Source Files\Temporary Entities</Filter>
     </ClCompile>

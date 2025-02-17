@@ -90,10 +90,6 @@ $Project "Server (TEAM-CONFLICT)"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
 				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
 			}
-			$Folder "Weapons"
-			{
-				
-			}
 			$Folder "Entities"
 			{
 				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityHealthRotating.cpp"
@@ -106,6 +102,24 @@ $Project "Server (TEAM-CONFLICT)"
 			$Folder "Instructor"
 			{
 				$File 	"$SRCDIR\game\server\TC-DLL\Instructor\env_instructor_hint.cpp"
+			}
+			$Folder "Weapons"
+			{
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp"
+				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp"
 			}
 		}
 		
