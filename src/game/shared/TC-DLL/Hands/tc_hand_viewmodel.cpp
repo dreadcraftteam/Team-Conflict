@@ -2,7 +2,7 @@
 //
 // Purpose: Hand viewmodel main file!
 // 
-//		Created: Ozxybox
+//		Created by: Ozxybox
 //		Updated: DREADCRAFT
 //
 //==============================================================================//

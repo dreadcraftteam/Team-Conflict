@@ -1,7 +1,8 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
 //
 // Purpose: Animated background general code
-//		Created: DREADCRAFT
+// 
+//		Created by: DREADCRAFT
 //
 //======================================================================//
 

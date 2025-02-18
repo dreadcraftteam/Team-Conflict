@@ -1,7 +1,7 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ============//
 //
 // Purpose: Rotating Pickup Entity
-//		Created: DREADCRAFT
+//		Created by: DREADCRAFT
 //
 //======================================================================//
 

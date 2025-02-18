@@ -1,7 +1,8 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose:
-//		Created: Biohazard90
+// 
+//		Created by: Biohazard90
 //		Updated: DREADCRAFT
 //
 //==============================================================================//

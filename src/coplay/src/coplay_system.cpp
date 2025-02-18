@@ -1,7 +1,8 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose:
-//      Created: CoaXion
+// 
+//      Created by: CoaXion
 //      Updated: DREADCRAFT
 //
 //==============================================================================//

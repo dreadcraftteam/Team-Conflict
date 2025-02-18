@@ -1,7 +1,8 @@
 //========= Copyright DREADCRAFT TEAM, All rights reserved. ====================//
 //
 // Purpose: Client handler implementations for instruction players how to play
-//      Created: DREADCRAFT
+// 
+//      Created by: DREADCRAFT
 //      Reference: L4D, AlienSwarm
 //
 //==============================================================================//
