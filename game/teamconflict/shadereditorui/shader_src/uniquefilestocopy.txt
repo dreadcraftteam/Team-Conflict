@@ -12,5 +12,5 @@ common_flashlight_fxc.h
 common_parallax.h
 d:\user\applications\steam\steamapps\common\source sdk base 2013 multiplayer\bin\\shadercompile.exe
 d:\user\applications\steam\steamapps\common\source sdk base 2013 multiplayer\bin\\shadercompile_dll.dll
-sunrays_calc_vs30.fxc
-sunrays_calc_ps30.fxc
+tc_postprocess_shader_vs30.fxc
+tc_postprocess_shader_ps30.fxc
