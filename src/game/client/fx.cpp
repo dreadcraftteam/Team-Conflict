@@ -32,6 +32,7 @@
 //Precahce the effects
 #ifndef TF_CLIENT_DLL
 CLIENTEFFECT_REGISTER_BEGIN( PrecacheMuzzleFlash )
+CLIENTEFFECT_MATERIAL( "effects/muzzleflashX" )
 CLIENTEFFECT_MATERIAL( "effects/muzzleflash1" )
 CLIENTEFFECT_MATERIAL( "effects/muzzleflash2" )
 CLIENTEFFECT_MATERIAL( "effects/muzzleflash3" )
@@ -228,6 +229,10 @@ void FX_MuzzleEffect(
 		pParticle->m_flDieTime		= /*bOneFrame ? 0.0001f : */0.1f;
 
 		pParticle->m_vecVelocity.Init();
+
+		C_BasePlayer* pPlayer = C_BasePlayer::GetLocalPlayer();
+		Vector velocity = pPlayer->GetLocalVelocity();
+		pParticle->m_vecVelocity += velocity;
 
 		if ( !pFlashColor )
 		{

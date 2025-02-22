@@ -4179,10 +4179,22 @@ void C_BaseAnimating::FireObsoleteEvent( const Vector& origin, const QAngle& ang
 
 			if ( iAttachment != -1 && m_Attachments.Count() > iAttachment )
 			{
-				GetAttachment( iAttachment+1, attachOrigin, attachAngles );
-				int entId = render->GetViewEntity();
-				ClientEntityHandle_t hEntity = ClientEntityList().EntIndexToHandle( entId );
-				tempents->MuzzleFlash( attachOrigin, attachAngles, atoi( options ), hEntity, bFirstPerson );
+				//GetAttachment( iAttachment+1, attachOrigin, attachAngles );
+				//int entId = render->GetViewEntity();
+				//ClientEntityHandle_t hEntity = ClientEntityList().EntIndexToHandle( entId );
+				//tempents->MuzzleFlash( attachOrigin, attachAngles, atoi( options ), hEntity, bFirstPerson );
+			}
+			if (input->CAM_IsThirdPerson())
+			{
+				C_BaseCombatWeapon* pWeapon = GetActiveWeapon();
+				pWeapon->GetAttachment(1, attachOrigin, attachAngles);
+			}
+			else
+			{
+				C_BasePlayer* pPlayer = C_BasePlayer::GetLocalPlayer();
+				CBaseViewModel* vm = pPlayer->GetViewModel();
+				vm->GetAttachment(1, attachOrigin, attachAngles);
+				engine->GetViewAngles(attachAngles);
 			}
 		}
 		break;
