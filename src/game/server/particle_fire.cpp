@@ -38,3 +38,6 @@ CParticleFire::CParticleFire()
 	m_vDirection.Init();
 #endif
 }
+
+
+

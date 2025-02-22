@@ -15,6 +15,7 @@
 	#include "c_hl2mp_player.h"
 #else
 
+	#include "nav_mesh.h"
 	#include "eventqueue.h"
 	#include "player.h"
 	#include "gamerules.h"
@@ -32,10 +33,6 @@
 	#include "voice_gamemgr.h"
 	#include "hl2mp_gameinterface.h"
 	#include "hl2mp_cvars.h"
-
-#ifdef DEBUG	
-	#include "hl2mp_bot_temp.h"
-#endif
 
 extern void respawn(CBaseEntity *pEdict, bool fCopyCorpse);
 
@@ -130,7 +127,6 @@ static const char *s_PreserveEnts[] =
 	"predicted_viewmodel",
 	"worldspawn",
 	"point_devshot_camera",
-	"hand_viewmodel",
 	"", // END Marker
 };
 
@@ -180,8 +176,8 @@ char *sTeamNames[] =
 {
 	"Unassigned",
 	"Spectator",
-	"Green",
-	"Red",
+	"Combine",
+	"Rebels",
 };
 
 CHL2MPRules::CHL2MPRules()
@@ -326,8 +322,8 @@ void CHL2MPRules::Think( void )
 	{
 		if( IsTeamplay() == true )
 		{
-			CTeam *pCombine = g_Teams[TEAM_GREEN];
-			CTeam *pRebels = g_Teams[TEAM_RED];
+			CTeam *pCombine = g_Teams[TEAM_COMBINE];
+			CTeam *pRebels = g_Teams[TEAM_REBELS];
 
 			if ( pCombine->GetScore() >= flFragLimit || pRebels->GetScore() >= flFragLimit )
 			{
@@ -802,11 +798,11 @@ void CHL2MPRules::ClientSettingsChanged( CBasePlayer *pPlayer )
 		{
 			if ( Q_stristr( szModelName, "models/human") )
 			{
-				pHL2Player->ChangeTeam( TEAM_RED );
+				pHL2Player->ChangeTeam( TEAM_REBELS );
 			}
 			else
 			{
-				pHL2Player->ChangeTeam( TEAM_GREEN );
+				pHL2Player->ChangeTeam( TEAM_COMBINE );
 			}
 		}
 	}
@@ -839,7 +835,10 @@ int CHL2MPRules::PlayerRelationship( CBaseEntity *pPlayer, CBaseEntity *pTarget 
 
 const char *CHL2MPRules::GetGameDescription( void )
 { 
-	return "TEAM-CONFLICT"; 
+	if ( IsTeamplay() )
+		return "Team Deathmatch"; 
+
+	return "Deathmatch"; 
 } 
 
 bool CHL2MPRules::IsConnectedUserInfoChangeAllowed( CBasePlayer *pPlayer )
@@ -867,6 +866,37 @@ void CHL2MPRules::Precache( void )
 {
 	CBaseEntity::PrecacheScriptSound( "AlyxEmp.Charge" );
 }
+
+#ifdef GAME_DLL
+bool CHL2MPRules::IsOfficialMap( void )
+{ 
+	static const char *s_OfficialMaps[] =
+	{
+		"devtest",
+		"dm_lockdown",
+		"dm_overwatch",
+		"dm_powerhouse",
+		"dm_resistance",
+		"dm_runoff",
+		"dm_steamlab",
+		"dm_underpass",
+		"halls3",
+	};
+
+	char szCurrentMap[MAX_MAP_NAME];
+	Q_strncpy( szCurrentMap, STRING( gpGlobals->mapname ), sizeof( szCurrentMap ) );
+
+	for ( int i = 0; i < ARRAYSIZE( s_OfficialMaps ); ++i )
+	{
+		if ( !Q_stricmp( s_OfficialMaps[i], szCurrentMap ) )
+		{
+			return true;
+		}
+	}
+
+	return BaseClass::IsOfficialMap();
+}
+#endif
 
 bool CHL2MPRules::ShouldCollide( int collisionGroup0, int collisionGroup1 )
 {
@@ -933,7 +963,6 @@ CAmmoDef *GetAmmoDef()
 		def.AddAmmoType("SMG1_Grenade",		DMG_BURN,					TRACER_NONE,			0,			0,			3,			0,							0 );
 		def.AddAmmoType("Grenade",			DMG_BURN,					TRACER_NONE,			0,			0,			5,			0,							0 );
 		def.AddAmmoType("slam",				DMG_BURN,					TRACER_NONE,			0,			0,			5,			0,							0 );
-		def.AddAmmoType("GaussEnergy",		DMG_SHOCK,					TRACER_LINE_AND_WHIZ,	0,			0,			150,		BULLET_IMPULSE(200, 1225),	0 );
 	}
 
 	return &def;
@@ -948,32 +977,6 @@ CAmmoDef *GetAmmoDef()
 		"Automatically switch to picked up weapons (if more powerful)" );
 
 #else
-
-#ifdef DEBUG
-
-	// Handler for the "bot" command.
-	void Bot_f()
-	{		
-		// Look at -count.
-		int count = 1;
-		count = clamp( count, 1, 16 );
-
-		int iTeam = TEAM_GREEN;
-				
-		// Look at -frozen.
-		bool bFrozen = false;
-			
-		// Ok, spawn all the bots.
-		while ( --count >= 0 )
-		{
-			BotPutInServer( bFrozen, iTeam );
-		}
-	}
-
-
-	ConCommand cc_Bot( "bot", Bot_f, "Add a bot.", FCVAR_CHEAT );
-
-#endif
 
 	bool CHL2MPRules::FShouldSwitchWeapon( CBasePlayer *pPlayer, CBaseCombatWeapon *pWeapon )
 	{		
@@ -1029,8 +1032,8 @@ void CHL2MPRules::RestartGame()
 
 	// Respawn entities (glass, doors, etc..)
 
-	CTeam *pRebels = GetGlobalTeam( TEAM_RED );
-	CTeam *pCombine = GetGlobalTeam( TEAM_GREEN );
+	CTeam *pRebels = GetGlobalTeam( TEAM_REBELS );
+	CTeam *pCombine = GetGlobalTeam( TEAM_COMBINE );
 
 	if ( pRebels )
 	{
@@ -1057,6 +1060,13 @@ void CHL2MPRules::RestartGame()
 		gameeventmanager->FireEvent( event );
 	}
 }
+
+#ifdef GAME_DLL
+void CHL2MPRules::OnNavMeshLoad( void )
+{
+	TheNavMesh->SetPlayerSpawnName( "info_player_deathmatch" );
+}
+#endif
 
 void CHL2MPRules::CleanUpMap()
 {

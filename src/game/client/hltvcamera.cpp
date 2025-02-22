@@ -384,10 +384,10 @@ void C_HLTVCamera::CalcRoamingView(Vector& eyeOrigin, QAngle& eyeAngles, float& 
 
 		AngleVectors ( m_LastCmd.viewangles, &forward, &right, &up);  // Determine movement angles
 
-		//if ( m_LastCmd.buttons & IN_SPEED )
-		//{
-		//	factor /= 2.0f;
-		//}
+		if ( m_LastCmd.buttons & IN_SPEED )
+		{
+			factor /= 2.0f;
+		}
 
 		// Copy movement amounts
 		float fmove = m_LastCmd.forwardmove * factor;
@@ -647,25 +647,18 @@ void C_HLTVCamera::SpecNextPlayer( bool bInverse )
 	SetAutoDirector( false );
 }
 
-void C_HLTVCamera::SpecNamedPlayer( const char *szPlayerName )
+void C_HLTVCamera::SpecPlayerByPredicate( const char *szSearch )
 {
-	for ( int index = 1; index <= gpGlobals->maxClients; ++index )
-	{
-		C_BasePlayer *pPlayer =	UTIL_PlayerByIndex( index );
-
-		if ( !pPlayer )
-			continue;
-
-		if ( !FStrEq( szPlayerName, pPlayer->GetPlayerName() ) )
-			continue;
-
-		// only follow living players or dedicated spectators
-		if ( pPlayer->IsObserver() && pPlayer->GetTeamNumber() != TEAM_SPECTATOR )
-			continue;
-
-		SetPrimaryTarget( index );
+	C_BasePlayer *pPlayer =	UTIL_PlayerByCommandArg( szSearch );
+	if ( !pPlayer )
 		return;
-	}
+
+	// only follow living players or dedicated spectators
+	if ( pPlayer->IsObserver() && pPlayer->GetTeamNumber() != TEAM_SPECTATOR )
+		return;
+
+	SetPrimaryTarget( pPlayer->entindex() );
+	return;
 }
 
 void C_HLTVCamera::FireGameEvent( IGameEvent * event)

@@ -10,6 +10,12 @@
 #include "steamtypes.h"
 #include "steamuniverse.h"
 
+// Josh: Fixes building gcsdk which passes in stuff from protobuf.
+#if defined( PLATFORM_64BITS ) && defined( LINUX )
+#include <stdint.h>
+#define INT64_DIFFERENT_FROM_INT64_T
+#endif
+
 // General result codes
 enum EResult
 {
@@ -838,6 +844,7 @@ inline bool CSteamID::IsValid() const
 }
 
 #if defined( INCLUDED_STEAM2_USERID_STRUCTS ) 
+#include "steamcommon.h" // TSteamGlobalUserID
 
 //-----------------------------------------------------------------------------
 // Purpose: Initializes a steam ID from a Steam2 ID structure

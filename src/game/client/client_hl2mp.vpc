@@ -5,22 +5,21 @@
 //-----------------------------------------------------------------------------
 
 $Macro SRCDIR		"..\.."
-$Macro GAMENAME 	"teamconflict" [$SOURCESDK]
+$Macro GAMENAME 	"hl2mp" [!$SOURCESDK]
+$Macro GAMENAME 	"mod_hl2mp" [$SOURCESDK]
 
 $Include "$SRCDIR\game\client\client_base.vpc"
-$Include "$SRCDIR\coplay\src\coplay.vpc"
 
 $Configuration
 {
 	$Compiler
 	{
 		$AdditionalIncludeDirectories		"$BASE;hl2mp\ui,.\hl2mp,$SRCDIR\game\shared\hl2mp,.\hl2,.\hl2\elements,$SRCDIR\game\shared\hl2"
-		$PreprocessorDefinitions			"$BASE;HL2MP;HL2_CLIENT_DLL;GLOWS_ENABLE;SOURCE_2013"
-		$TreatWarningsAsErrors			    "No (/WX-)"
+		$PreprocessorDefinitions			"$BASE;HL2MP;HL2_CLIENT_DLL;NEXT_BOT"
 	}
 }
 
-$Project "Client (TEAM-CONFLICT)"
+$Project "Client (HL2MP)"
 {
 	$Folder	"Source Files"
 	{
@@ -35,76 +34,11 @@ $Project "Client (TEAM-CONFLICT)"
 		$File	"$SRCDIR\game\shared\predicted_viewmodel.h"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.cpp"
 		$File	"$SRCDIR\game\shared\teamplay_round_timer.h"
-		
-		$Folder "TC-DLL"
+
+		$Folder	"NextBot"
 		{
-			$Folder "NextBot"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\NextBot\c_NextBot.h"
-			}
-			$Folder "VGUI"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_browser.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\VGUI\vgui_browser.h"
-			}
-			$Folder "Entities"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\Entities\c_EntityHealthRotating.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Entities\c_EntityAmmoRotating.cpp"
-			}
-			$Folder "Background"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\Background\tc_background.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Background\tc_background.h"
-			}
-			$Folder "Shader Editor" [$WIN32]
-			{
-				$Folder	"Header Files"
-				{
-					$File	"$SRCDIR\game\client\ShaderEditor\ISEdit_ModelRender.h"
-					$File	"$SRCDIR\game\client\ShaderEditor\IVShaderEditor.h"
-					$File	"$SRCDIR\game\client\ShaderEditor\ShaderEditorSystem.h"
-					$File	"$SRCDIR\game\client\ShaderEditor\SEdit_ModelRender.h"
-				}
-			
-				$Folder	"Implementation Files"
-				{
-					$File	"$SRCDIR\game\client\ShaderEditor\ShaderEditorSystem.cpp"
-					$File	"$SRCDIR\game\client\ShaderEditor\SEdit_ModelRender.cpp"
-				}
-			}
-			$Folder "Hands"
-			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp"
-			}
-			$Folder "Instructor"
-			{
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_baselesson.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_baselesson.h"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_gameinstructor.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\tc_gameinstructor.h"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.cpp"
-				$File	"$SRCDIR\game\client\TC-DLL\Instructor\hud_locator_target.h"
-			}
-			$Folder "Weapons"
-			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp"
-			}
+			$File	"NextBot\C_NextBot.cpp"
+			$File	"NextBot\C_NextBot.h"
 		}
 
 		$Folder	"HL2 DLL"

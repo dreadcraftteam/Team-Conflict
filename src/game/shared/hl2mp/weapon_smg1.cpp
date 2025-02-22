@@ -82,6 +82,9 @@ END_NETWORK_TABLE()
 BEGIN_PREDICTION_DATA( CWeaponSMG1 )
 END_PREDICTION_DATA()
 
+LINK_ENTITY_TO_CLASS( weapon_smg1, CWeaponSMG1 );
+PRECACHE_WEAPON_REGISTER(weapon_smg1);
+
 #ifndef CLIENT_DLL
 acttable_t	CWeaponSMG1::m_acttable[] = 
 {
@@ -200,7 +203,7 @@ void CWeaponSMG1::SecondaryAttack( void )
 	{
 		SendWeaponAnim( ACT_VM_DRYFIRE );
 		BaseClass::WeaponSound( EMPTY );
-		m_flNextSecondaryAttack = gpGlobals->curtime + 0.5f;
+		m_flNextEmptySoundTime = m_flNextSecondaryAttack = gpGlobals->curtime + 0.5f;
 		return;
 	}
 
@@ -241,6 +244,9 @@ void CWeaponSMG1::SecondaryAttack( void )
 
 	// Can blow up after a short delay (so have time to release mouse button)
 	m_flNextSecondaryAttack = gpGlobals->curtime + 1.0f;
+
+	// misyl: Stop dryfire taking over if we have 1 ammo left.
+	m_flNextEmptySoundTime = gpGlobals->curtime + 1.0f;
 }
 
 //-----------------------------------------------------------------------------

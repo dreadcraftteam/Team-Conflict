@@ -23,10 +23,6 @@
 #include <KeyValues.h>
 #include "filesystem.h"
 #include "matsys_controls/matsyscontrols.h"
-#include "TC-DLL\VGUI\vgui_teammenu.h"
-#include "TC-DLL\VGUI\vgui_classmenu.h"
-#include "TC-DLL\Background\tc_background.h"
-#include "baseviewport.h"
 
 #ifdef SIXENSE
 #include "sixense/in_sixense.h"
@@ -133,10 +129,6 @@ static void VGui_VideoMode_AdjustForModeChange( void )
 	fps->Destroy();
 	messagechars->Destroy();
 	loadingdisc->Destroy();
-
-	CBaseViewport* pViewPort = dynamic_cast<CBaseViewport*>(g_pClientMode->GetViewport());
-	if (pViewPort)
-		pViewPort->StartMainMenuVideo();
 
 	// Recreate our panels.
 	VPANEL gameToolParent = enginevgui->GetPanel( PANEL_CLIENTDLL_TOOLS );
@@ -273,11 +265,13 @@ void VGui_PreRender()
 	if ( IsPC() )
 	{
 		loadingdisc->SetLoadingVisible( engine->IsDrawingLoadingImage() && !engine->IsPlayingDemo() );
+		
+		bool bShowPausedImage = !enginevgui->IsGameUIVisible() && cl_showpausedimage.GetBool() && engine->IsPaused() && !engine->IsTakingScreenshot() && !engine->IsPlayingDemo();
 #if !defined( TF_CLIENT_DLL )
-		loadingdisc->SetPausedVisible( !enginevgui->IsGameUIVisible() && cl_showpausedimage.GetBool() && engine->IsPaused() && !engine->IsTakingScreenshot() && !engine->IsPlayingDemo() );
+		loadingdisc->SetPausedVisible( bShowPausedImage, engine->GetPausedExpireTime()  );
 #else
-		bool bShowPausedImage = cl_showpausedimage.GetBool() && ( TFGameRules() && !TFGameRules()->IsInTraining() );
-		loadingdisc->SetPausedVisible( !enginevgui->IsGameUIVisible() && bShowPausedImage && engine->IsPaused() && !engine->IsTakingScreenshot() && !engine->IsPlayingDemo() );
+		bShowPausedImage &= ( TFGameRules() && !TFGameRules()->IsInTraining() );
+		loadingdisc->SetPausedVisible( bShowPausedImage, engine->GetPausedExpireTime() );
 #endif
 	}
 }

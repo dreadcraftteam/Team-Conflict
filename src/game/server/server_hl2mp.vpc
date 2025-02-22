@@ -5,124 +5,25 @@
 //-----------------------------------------------------------------------------
 
 $Macro SRCDIR		"..\.."
-$Macro GAMENAME 	"teamconflict" [$SOURCESDK]
+$Macro GAMENAME 	"hl2mp" [!$SOURCESDK]
+$Macro GAMENAME 	"mod_hl2mp" [$SOURCESDK]
 
 $Include "$SRCDIR\game\server\server_base.vpc"
-$Include "$SRCDIR\game\server\nav_mesh.vpc" [$SOURCESDK]
+$Include "$SRCDIR\game\server\nav_mesh.vpc"
 
 $Configuration
 {
 	$Compiler
 	{
 		$AdditionalIncludeDirectories	"$BASE;$SRCDIR\game\shared\hl2,.\hl2,.\hl2mp,$SRCDIR\game\shared\hl2mp"
-		$PreprocessorDefinitions		"$BASE;HL2MP;HL2_DLL;GLOWS_ENABLE"
-		$TreatWarningsAsErrors			"No (/WX-)"
+		$PreprocessorDefinitions		"$BASE;HL2MP;HL2_DLL;NEXT_BOT"
 	}
 }
 
-$Project "Server (TEAM-CONFLICT)"
+$Project "Server (HL2MP)"
 {
 	$Folder	"Source Files"
 	{
-		$Folder "TC DLL"
-		{
-			$Folder "NextBot"
-			{
-				$Folder "Behavior"
-				{
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorBackUp.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Behavior\BehaviorMoveTo.h"
-				}
-				$Folder "Actions"
-				{
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Actions\NextBotBase.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Actions\NextBotBase.h"
-				}
-				$Folder "NavMeshEntities"
-				{
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.h"
-				}
-				$Folder "Path"
-				{
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotChasePath.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotChasePath.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotPath.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotPath.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotPathFollow.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotPathFollow.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Path\NextBotRetreatPath.h"
-				}
-				$Folder "Player"
-				{
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayer.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayer.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayerBody.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayerBody.h"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.cpp"
-					$File	"$SRCDIR\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.h"
-				}
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBot.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBot.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotAttentionInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotAttentionInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotBehavior.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotBodyInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotBodyInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotComponentInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotComponentInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotContextualQueryInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotDebug.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotEventResponderInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotGroundLocomotion.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotGroundLocomotion.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotHearingInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotIntentionInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotIntentionInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotKnownEntity.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotLocomotionInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotLocomotionInterface.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotManager.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotManager.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotUtil.h"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp"
-			}
-			$Folder "Entities"
-			{
-				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityHealthRotating.cpp"
-				$File	"$SRCDIR\game\server\TC-DLL\Entities\EntityAmmoRotating.cpp"
-			}
-			$Folder "Hands"
-			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp"
-			}
-			$Folder "Instructor"
-			{
-				$File 	"$SRCDIR\game\server\TC-DLL\Instructor\env_instructor_hint.cpp"
-			}
-			$Folder "Weapons"
-			{
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp"
-				$File	"$SRCDIR\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp"
-			}
-		}
-		
 		$File	"ai_relationship.cpp"
 		$File	"basegrenade_concussion.cpp"
 		$File	"basegrenade_contact.cpp"
@@ -159,6 +60,73 @@ $Project "Server (TEAM-CONFLICT)"
 		$File	"trigger_area_capture.h"
 		$File   "$SRCDIR\game\shared\teamplay_round_timer.cpp"
 		$File   "$SRCDIR\game\shared\teamplay_round_timer.h"
+
+		$Folder "NextBot"
+		{
+			$File	"NextBot\NextBot.cpp"
+			$File	"NextBot\NextBot.h"
+			$File	"NextBot\NextBotBehavior.h"
+			$File	"NextBot\NextBotManager.cpp"
+			$File	"NextBot\NextBotManager.h"
+			$File	"NextBot\NextBotUtil.h"
+			$File	"NextBot\NextBotKnownEntity.h"
+			$File	"NextBot\NextBotGroundLocomotion.cpp"
+			$File	"NextBot\NextBotGroundLocomotion.h"
+			$File	"NextBot\simple_bot.cpp"
+			$File	"NextBot\simple_bot.h"
+
+			$Folder "NextBotInterfaces"
+			{
+				$File	"NextBot\NextBotBodyInterface.cpp"
+				$File	"NextBot\NextBotBodyInterface.h"
+				$File	"NextBot\NextBotComponentInterface.cpp"
+				$File	"NextBot\NextBotComponentInterface.h"
+				$File	"NextBot\NextBotEventResponderInterface.h"
+				$File	"NextBot\NextBotHearingInterface.h"
+				$File	"NextBot\NextBotIntentionInterface.cpp"
+				$File	"NextBot\NextBotIntentionInterface.h"
+				$File	"NextBot\NextBotInterface.cpp"
+				$File	"NextBot\NextBotInterface.h"
+				$File	"NextBot\NextBotLocomotionInterface.cpp"
+				$File	"NextBot\NextBotLocomotionInterface.h"
+				$File	"NextBot\NextBotVisionInterface.cpp"
+				$File	"NextBot\NextBotVisionInterface.h"
+				$File	"NextBot\NextBotContextualQueryInterface.h"
+			}
+
+			$Folder "NextBotPath"
+			{
+				$File	"NextBot\Path\NextBotChasePath.cpp"
+				$File	"NextBot\Path\NextBotChasePath.h"
+				$File	"NextBot\Path\NextBotRetreatPath.h"
+				$File	"NextBot\Path\NextBotPath.cpp"
+				$File	"NextBot\Path\NextBotPath.h"
+				$File	"NextBot\Path\NextBotPathFollow.cpp"
+				$File	"NextBot\Path\NextBotPathFollow.h"
+			}
+			
+			$Folder "NextBotPlayer"
+			{
+				$File	"NextBot\Player\NextBotPlayerBody.cpp"
+				$File	"NextBot\Player\NextBotPlayerBody.h"
+				$File	"NextBot\Player\NextBotPlayerLocomotion.cpp"
+				$File	"NextBot\Player\NextBotPlayerLocomotion.h"
+				$File	"NextBot\Player\NextBotPlayer.cpp"
+				$File	"NextBot\Player\NextBotPlayer.h"
+			}
+
+			$Folder "NextBotCommonBehaviors"
+			{
+				$File	"NextBot\Behavior\BehaviorBackUp.h"
+				$File	"NextBot\Behavior\BehaviorMoveTo.h"
+			}
+
+			$Folder "NextBotNavMeshEntities"
+			{
+				$File	"NextBot\NavMeshEntities\func_nav_prerequisite.cpp"
+				$File	"NextBot\NavMeshEntities\func_nav_prerequisite.h"
+			}
+		}
 
 		$Folder	"HL2 DLL"
 		{
@@ -343,8 +311,6 @@ $Project "Server (TEAM-CONFLICT)"
 
 		$Folder	"HL2MP"
 		{
-			$File	"hl2mp\hl2mp_bot_temp.cpp"
-			$File	"hl2mp\hl2mp_bot_temp.h"
 			$File	"hl2mp\hl2mp_client.cpp"
 			$File	"hl2mp\hl2mp_cvars.cpp"
 			$File	"hl2mp\hl2mp_gameinterface.cpp"
@@ -357,6 +323,70 @@ $Project "Server (TEAM-CONFLICT)"
 			$File	"$SRCDIR\game\shared\hl2mp\hl2mp_player_shared.h"
 			$File	"$SRCDIR\game\shared\hl2mp\hl2mp_weapon_parse.cpp"
 			$File	"$SRCDIR\game\shared\hl2mp\hl2mp_weapon_parse.h"
+
+			$Folder "Bots"
+			{
+				$File "hl2mp\bot\hl2mp_bot.cpp"
+				$File "hl2mp\bot\hl2mp_bot.h"
+				$File "hl2mp\bot\hl2mp_bot_body.cpp"
+				$File "hl2mp\bot\hl2mp_bot_body.h"
+				$File "hl2mp\bot\hl2mp_bot_locomotion.cpp"
+				$File "hl2mp\bot\hl2mp_bot_locomotion.h"
+				$File "hl2mp\bot\hl2mp_bot_manager.cpp"
+				$File "hl2mp\bot\hl2mp_bot_manager.h"
+				$File "hl2mp\bot\hl2mp_bot_squad.cpp"
+				$File "hl2mp\bot\hl2mp_bot_squad.h"
+				$File "hl2mp\bot\hl2mp_bot_vision.cpp"
+				$File "hl2mp\bot\hl2mp_bot_vision.h"
+
+				$Folder "Behaviour"
+				{
+					$Folder "Nav Entities"
+					{
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_destroy_entity.cpp"
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_destroy_entity.h"
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_move_to.cpp"
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_move_to.h"
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_wait.cpp"
+						$File	"hl2mp\bot\behavior\nav_entities\hl2mp_bot_nav_ent_wait.h"
+					}
+
+					$File "hl2mp\bot\behavior\hl2mp_bot_approach_object.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_approach_object.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_attack.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_attack.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_behavior.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_behavior.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_dead.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_dead.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_ammo.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_ammo.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_health.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_health.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_prop.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_get_prop.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_melee_attack.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_melee_attack.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_move_to_vantage_point.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_move_to_vantage_point.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_retreat_to_cover.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_retreat_to_cover.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_scenario_monitor.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_scenario_monitor.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_seek_and_destroy.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_seek_and_destroy.h"
+					$File "hl2mp\bot\behavior\hl2mp_bot_tactical_monitor.cpp"
+					$File "hl2mp\bot\behavior\hl2mp_bot_tactical_monitor.h"
+				}
+
+				$Folder "Map Entities"
+				{
+					$File "hl2mp\bot\map_entities\hl2mp_bot_generator.cpp"
+					$File "hl2mp\bot\map_entities\hl2mp_bot_generator.h"
+					$File "hl2mp\bot\map_entities\hl2mp_bot_proxy.cpp"
+					$File "hl2mp\bot\map_entities\hl2mp_bot_proxy.h"
+				}
+			}
 			
 			$Folder	"Weapons"
 			{

@@ -95,6 +95,9 @@ enum EFriendFlags
 #endif 
 struct FriendGameInfo_t
 {
+	static constexpr uint16 QUERY_PORT_NOT_INITIALIZED = 0xFFFF;	// We haven't asked the GS for this query port's actual value yet.
+	static constexpr uint16 QUERY_PORT_ERROR           = 0xFFFE;	// We were unable to get the query port for this server.
+
 	CGameID m_gameID;
 	uint32 m_unGameIP;
 	uint16 m_usGamePort;

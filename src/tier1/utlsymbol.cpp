@@ -289,19 +289,19 @@ void CUtlSymbolTable::RemoveAll()
 
 
 
-//class CUtlFilenameSymbolTable::HashTable : public CUtlStableHashtable<CUtlConstString>
-//{
-//};
-//
-//CUtlFilenameSymbolTable::CUtlFilenameSymbolTable()
-//{
-//	m_Strings = new HashTable;
-//}
-//
-//CUtlFilenameSymbolTable::~CUtlFilenameSymbolTable()
-//{
-//	delete m_Strings;
-//}
+class CUtlFilenameSymbolTable::HashTable : public CUtlStableHashtable<CUtlConstString>
+{
+};
+
+CUtlFilenameSymbolTable::CUtlFilenameSymbolTable()
+{
+	m_Strings = new HashTable;
+}
+
+CUtlFilenameSymbolTable::~CUtlFilenameSymbolTable()
+{
+	delete m_Strings;
+}
 
 
 //-----------------------------------------------------------------------------
@@ -340,8 +340,8 @@ FileNameHandle_t CUtlFilenameSymbolTable::FindOrAddFileName( const char *pFileNa
 	// not found, lock and look again
 	FileNameHandleInternal_t handle;
 	m_lock.LockForWrite();
-	//handle.path = m_Strings->Insert( basepath ) + 1;
-	//handle.file = m_Strings->Insert( filename ) + 1;
+	handle.path = m_Strings->Insert( basepath ) + 1;
+	handle.file = m_Strings->Insert( filename ) + 1;
 	//handle.path = m_StringPool.FindStringHandle( basepath );
 	//handle.file = m_StringPool.FindStringHandle( filename );
 	//if ( handle.path != m_Strings.InvalidHandle() && handle.file )
@@ -385,8 +385,8 @@ FileNameHandle_t CUtlFilenameSymbolTable::FindFileName( const char *pFileName )
 	Assert( (uint16)(m_Strings->InvalidHandle() + 1) == 0 );
 
 	m_lock.LockForRead();
-/*	handle.path = m_Strings->Find(basepath) + 1;
-	handle.file = m_Strings->Find(filename) + 1*/;
+	handle.path = m_Strings->Find(basepath) + 1;
+	handle.file = m_Strings->Find(filename) + 1;
 	//handle.path = m_StringPool.FindStringHandle(basepath);
 	//handle.file = m_StringPool.FindStringHandle(filename);
 	m_lock.UnlockRead();
@@ -415,22 +415,22 @@ bool CUtlFilenameSymbolTable::String( const FileNameHandle_t& handle, char *buf,
 	m_lock.LockForRead();
 	//const char *path = m_StringPool.HandleToString(internal->path);
 	//const char *fn = m_StringPool.HandleToString(internal->file);
-	//const char *path = (*m_Strings)[ internal->path - 1 ].Get();
-	//const char *fn = (*m_Strings)[ internal->file - 1].Get();
+	const char *path = (*m_Strings)[ internal->path - 1 ].Get();
+	const char *fn = (*m_Strings)[ internal->file - 1].Get();
 	m_lock.UnlockRead();
 
-	//if ( !path || !fn )
-	//{
-	//	return false;
-	//}
+	if ( !path || !fn )
+	{
+		return false;
+	}
 
-	//Q_strncpy( buf, path, buflen );
-	//Q_strncat( buf, fn, buflen, COPY_ALL_CHARACTERS );
+	Q_strncpy( buf, path, buflen );
+	Q_strncat( buf, fn, buflen, COPY_ALL_CHARACTERS );
 
 	return true;
 }
 
 void CUtlFilenameSymbolTable::RemoveAll()
 {
-	//m_Strings->Purge();
+	m_Strings->Purge();
 }

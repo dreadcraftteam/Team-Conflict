@@ -10,9 +10,6 @@
 #include "clientmode_hlnormal.h"
 #include "panelmetaclassmgr.h"
 
-//Old glow system:
-//#include "TC-DLL/Glow/ge_screeneffects.h"
-
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 

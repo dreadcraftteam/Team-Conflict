@@ -34,7 +34,6 @@
 #define SIZE_AMMO_357_LARGE			20
 #define SIZE_AMMO_CROSSBOW			6
 #define	SIZE_AMMO_AR2_ALTFIRE		1
-#define SIZE_AMMO_GAUSSGUN			25
 
 #define SF_ITEM_START_CONSTRAINED	0x00000001
 
@@ -78,6 +77,10 @@ public:
 #if defined( HL2MP ) || defined( TF_DLL )
 	void	FallThink( void );
 	float  m_flNextResetCheckTime;
+#endif
+
+#if defined( HL2MP )
+	virtual const char *GetWeaponClassForAmmo() const { return NULL; }
 #endif
 
 	DECLARE_DATADESC();

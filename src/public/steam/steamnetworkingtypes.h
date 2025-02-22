@@ -15,6 +15,9 @@
 
 //-----------------------------------------------------------------------------
 // SteamNetworkingSockets config.
+
+// Orange box: use standalone SteamNetworkingSockets until we integrate to Steamworks version
+
 #if !defined(STEAMNETWORKINGSOCKETS_STANDALONELIB) && !defined(STEAMNETWORKINGSOCKETS_STEAMAPI)
 	#define STEAMNETWORKINGSOCKETS_STEAMAPI
 #endif

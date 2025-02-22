@@ -96,6 +96,9 @@ BEGIN_PREDICTION_DATA( CWeaponShotgun )
 END_PREDICTION_DATA()
 #endif
 
+LINK_ENTITY_TO_CLASS( weapon_shotgun, CWeaponShotgun );
+PRECACHE_WEAPON_REGISTER(weapon_shotgun);
+
 #ifndef CLIENT_DLL
 acttable_t	CWeaponShotgun::m_acttable[] = 
 {

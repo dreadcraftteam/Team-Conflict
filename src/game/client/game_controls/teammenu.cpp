@@ -92,7 +92,7 @@ CTeamMenu::CTeamMenu(IViewPort *pViewPort) : Frame(NULL, PANEL_TEAM )
 	m_pMapInfoHTML = new HTML( this, "MapInfoHTML");
 #endif
 
-	//LoadControlSettings("Resource/UI/TeamMenu.res");
+	LoadControlSettings("Resource/UI/TeamMenu.res");
 	InvalidateLayout();
 
 	m_szMapName[0] = 0;
@@ -407,6 +407,7 @@ void CTeamMenu::OnKeyCodePressed(KeyCode code)
 	case KEY_XSTICK1_LEFT:
 	case KEY_XSTICK2_LEFT:
 	case KEY_LEFT:
+	case STEAMCONTROLLER_DPAD_LEFT:
 		nDir = -1;
 		break;
 
@@ -418,6 +419,7 @@ void CTeamMenu::OnKeyCodePressed(KeyCode code)
 	case KEY_XSTICK1_RIGHT:
 	case KEY_XSTICK2_RIGHT:
 	case KEY_RIGHT:
+	case STEAMCONTROLLER_DPAD_RIGHT:
 		nDir = 1;
 		break;
 	}
@@ -442,15 +444,4 @@ void CTeamMenu::OnKeyCodePressed(KeyCode code)
 	{
 		BaseClass::OnKeyCodePressed( code );
 	}
-}
-
-void CTeamMenu::OnCommand(const char* command)
-{
-	if (Q_stricmp(command, "vguicancel"))
-	{
-		engine->ClientCmd(const_cast<char*>(command));
-	}
-	Close();
-	gViewPortInterface->ShowBackGround(false);
-	BaseClass::OnCommand(command);
 }
