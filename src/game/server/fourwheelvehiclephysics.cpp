@@ -1335,10 +1335,10 @@ void CFourWheelVehiclePhysics::UpdateDriverControls( CUserCmd *cmd, float flFram
 		m_controls.brake = 0.0f;
 	}
 
-	if ( ( nButtons & IN_SPEED ) && !IsEngineDisabled() && bThrottle )
-	{
-		m_controls.boost = 1.0f;
-	}
+	//if ( ( nButtons & IN_SPEED ) && !IsEngineDisabled() && bThrottle )
+	//{
+	//	m_controls.boost = 1.0f;
+	//}
 
 	// Using has brakepedal for handbrake as well.
 	if ( ( nButtons & IN_JUMP ) && m_controls.bHasBrakePedal )

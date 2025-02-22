@@ -33,6 +33,9 @@ public:
 	CBaseViewport();
 	virtual ~CBaseViewport();
 
+	void StartMainMenuVideo();
+	void StopMainMenuVideo();
+
 	virtual IViewPortPanel* CreatePanelByName(const char *szPanelName);
 	virtual IViewPortPanel* FindPanelByName(const char *szPanelName);
 	virtual IViewPortPanel* GetActivePanel( void );
@@ -68,22 +71,10 @@ public:
 
 	virtual int GetDeathMessageStartHeight( void );	
 
+private:
+	class CMainMenu* m_pMainMenuPanel;
+
 	// virtual void ChatInputPosition( int *x, int *y );
-
-	// Check if any panel other than the scoreboard is visible
-	virtual bool IsAnyPanelVisibleExceptScores();
-
-	// Walk through all the panels. Handler should be an object taking an IViewPortPanel*
-	template<typename THandler> void ForEachPanel( THandler handler )
-	{
-		FOR_EACH_VEC( m_Panels, i )
-		{
-			handler( m_Panels[i] );
-		}
-	}
-
-	// Check if the named panel is visible
-	virtual bool IsPanelVisible( const char* panel );
 	
 public: // IGameEventListener:
 	virtual void FireGameEvent( IGameEvent * event);

@@ -56,6 +56,8 @@
 #include "replay/ienginereplay.h"
 #endif
 
+#include "TC-DLL\Background\tc_background.h"
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -176,6 +178,8 @@ CBaseViewport::CBaseViewport() : vgui::EditablePanel( NULL, "CBaseViewport")
 	m_pLastActivePanel = NULL;
 	g_lastPanel = NULL;
 
+	m_pMainMenuPanel = NULL;
+
 	vgui::HScheme scheme = vgui::scheme()->LoadSchemeFromFileEx( enginevgui->GetPanel( PANEL_CLIENTDLL ), "resource/ClientScheme.res", "ClientScheme");
 	SetScheme(scheme);
 	SetProportional( true );
@@ -223,6 +227,18 @@ void CBaseViewport::OnScreenSizeChanged(int iOldWide, int iOldTall)
 	vgui::ipanel()->MoveToBack( m_pBackGround->GetVPanel() ); // really send it to the back 
 #endif
 
+	bool bRestartMainMenuVideo = false;
+
+	if (m_pMainMenuPanel)
+		bRestartMainMenuVideo = m_pMainMenuPanel->IsVideoPlaying();
+
+	m_pMainMenuPanel = new CMainMenu(NULL, NULL);
+	m_pMainMenuPanel->SetZPos(500);
+	m_pMainMenuPanel->SetVisible(false);
+
+	if (bRestartMainMenuVideo)
+		m_pMainMenuPanel->StartVideo();
+
 	// hide all panels when reconnecting 
 	ShowPanel( PANEL_ALL, false );
 
@@ -235,6 +251,7 @@ void CBaseViewport::OnScreenSizeChanged(int iOldWide, int iOldTall)
 
 void CBaseViewport::CreateDefaultPanels( void )
 {
+	AddNewPanel(CreatePanelByName(PANEL_CLASS), "PANEL_CLASS");
 #ifndef _XBOX
 	AddNewPanel( CreatePanelByName( PANEL_SCOREBOARD ), "PANEL_SCOREBOARD" );
 	AddNewPanel( CreatePanelByName( PANEL_INFO ), "PANEL_INFO" );
@@ -259,43 +276,6 @@ void CBaseViewport::UpdateAllPanels( void )
 			p->Update();
 		}
 	}
-}
-
-// Check if we have any visible panel (that's not the MainMenuOverride or the Scoreboard)
-bool CBaseViewport::IsAnyPanelVisibleExceptScores()
-{
-	int count = m_Panels.Count();
-	for ( int i = 0; i < count; i++ )
-	{
-		IViewPortPanel *p = m_Panels[i];
-
-		if ( p->IsVisible() && Q_strcmp("MainMenuOverride", p->GetName()) && Q_strcmp("scores", p->GetName()) )
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-bool CBaseViewport::IsPanelVisible( const char* panel )
-{
-	int count = m_Panels.Count();
-
-	for ( int i = 0; i < count; i++ )
-	{
-		IViewPortPanel *p = m_Panels[i];
-		if ( p->IsVisible() )
-		{
-			const char* panel_name = p->GetName();
-			if ( !Q_strcmp( panel, panel_name ) )
-			{
-				return true;
-			}
-		}
-	}
-
-	return false;
 }
 
 IViewPortPanel* CBaseViewport::CreatePanelByName(const char *szPanelName)
@@ -500,6 +480,12 @@ IViewPortPanel* CBaseViewport::GetActivePanel( void )
 
 void CBaseViewport::RemoveAllPanels( void)
 {
+	if (m_pMainMenuPanel)
+	{
+		m_pMainMenuPanel->MarkForDeletion();
+		m_pMainMenuPanel = NULL;
+	}
+
 	g_lastPanel = NULL;
 	for ( int i=0; i < m_Panels.Count(); i++ )
 	{
@@ -520,10 +506,12 @@ void CBaseViewport::RemoveAllPanels( void)
 
 CBaseViewport::~CBaseViewport()
 {
-	m_bInitialized = false;
+	if (!m_bHasParent && m_pMainMenuPanel)
+		m_pMainMenuPanel->MarkForDeletion();
+	m_pMainMenuPanel = NULL;
 
-	if ( gViewPortInterface == this )
-		gViewPortInterface = NULL;
+
+	m_bInitialized = false;
 
 #ifndef _XBOX
 	if ( !m_bHasParent && m_pBackGround )
@@ -551,6 +539,12 @@ void CBaseViewport::Start( IGameUIFuncs *pGameUIFuncs, IGameEventManager2 * pGam
 	m_pBackGround->SetZPos( -20 ); // send it to the back 
 	m_pBackGround->SetVisible( false );
 #endif
+
+	m_pMainMenuPanel = new CMainMenu(NULL, NULL);
+	m_pMainMenuPanel->SetZPos(500);
+	m_pMainMenuPanel->SetVisible(false);
+	m_pMainMenuPanel->StartVideo();
+
 	CreateDefaultPanels();
 
 	m_GameEventManager->AddListener( this, "game_newmap", false );
@@ -755,7 +749,25 @@ void CBaseViewport::ReloadScheme(const char *fromFile)
 
 int CBaseViewport::GetDeathMessageStartHeight( void )
 {
-	return YRES(16);
+	return YRES(2);
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void CBaseViewport::StartMainMenuVideo()
+{
+	if (m_pMainMenuPanel)
+		m_pMainMenuPanel->StartVideo();
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void CBaseViewport::StopMainMenuVideo()
+{
+	if (m_pMainMenuPanel)
+		m_pMainMenuPanel->StopVideo();
 }
 
 void CBaseViewport::Paint()

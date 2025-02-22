@@ -29,7 +29,6 @@ enum objtype_t
 	O_OBSOLETE,
 	O_SLIDER,
 	O_CATEGORY,
-	O_BUTTON,
 };
 
 typedef struct

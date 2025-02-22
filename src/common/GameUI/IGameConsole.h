@@ -12,10 +12,6 @@
 
 #include "tier1/interface.h"
 
-namespace vgui
-{
-	typedef uintp VPANEL;
-}
 
 //-----------------------------------------------------------------------------
 // Purpose: interface to game/dev console
@@ -37,7 +33,7 @@ public:
 	// return true if the console has focus
 	virtual bool IsConsoleVisible() = 0;
 
-	virtual void SetParent( vgui::VPANEL parent ) = 0;
+	virtual void SetParent( intp parent ) = 0;
 };
 
 #define GAMECONSOLE_INTERFACE_VERSION "GameConsole004"

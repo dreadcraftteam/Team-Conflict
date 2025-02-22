@@ -5,10 +5,8 @@
 #ifndef _FUNCTOR_UTILS_H_
 #define _FUNCTOR_UTILS_H_
 
-#ifdef NEXT_BOT
-#include "NextBotInterface.h"
-#include "NextBotManager.h"
-#endif // NEXT_BOT
+#include "TC-DLL/NextBot/NextBotInterface.h"
+#include "TC-DLL/NextBot/NextBotManager.h"
 
 //--------------------------------------------------------------------------------------------------------
 /**
@@ -323,14 +321,12 @@ inline bool ForEachActor( Functor &func )
 		if ( !player->IsConnected() )
 			continue;
 
-#ifdef NEXT_BOT
 		// skip bots - ForEachCombatCharacter will catch them
 		INextBot *bot = player->MyNextBotPointer();
 		if ( bot )
 		{
 			continue;
 		}
-#endif // NEXT_BOT
 
 		if ( func( player ) == false )
 		{
@@ -338,12 +334,14 @@ inline bool ForEachActor( Functor &func )
 		}
 	}
 
-#ifdef NEXT_BOT
-	// iterate all NextBots
 	return TheNextBots().ForEachCombatCharacter( func );
-#else
-	return true;
-#endif // NEXT_BOT
+
+//#ifdef NEXT_BOT
+//	// iterate all NextBots
+//	return TheNextBots().ForEachCombatCharacter( func );
+//#else
+//	return true;
+//#endif // NEXT_BOT
 }
 
 

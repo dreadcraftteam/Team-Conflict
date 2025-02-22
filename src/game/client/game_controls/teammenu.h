@@ -52,8 +52,6 @@ public:
   	virtual bool IsVisible() { return BaseClass::IsVisible(); }
 	virtual void SetParent( vgui::VPANEL parent ) { BaseClass::SetParent( parent ); }
 
-	virtual GameActionSet_t GetPreferredActionSet() { return GAME_ACTION_SET_IN_GAME_HUD; }
-
 public:
 	
 	void AutoAssign();
@@ -70,7 +68,8 @@ protected:
 	virtual void SetLabelText(const char *textEntryName, const char *text);
 	virtual void LoadMapPage( const char *mapName );
 	// virtual void MakeTeamButtons( void );
-	
+	virtual void OnCommand(const char* command);
+
 	// command callbacks
 	// MESSAGE_FUNC_INT( OnTeamButton, "TeamButton", team );
 

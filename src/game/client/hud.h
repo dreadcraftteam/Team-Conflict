@@ -161,15 +161,6 @@ public:
 
 	void						SetScreenShotTime( float flTime ){ m_flScreenShotTime = flTime; }
 
-	// Walk through all the HUD elements. Handler should be an object taking a CHudElement*
-	template<typename THandler> void ForEachHudElement( THandler handler )
-	{
-		FOR_EACH_VEC( m_HudList, i )
-		{
-			handler( m_HudList[i] );
-		}
-	}
-
 public:
 
 	int							m_iKeyBits;
@@ -202,6 +193,37 @@ private:
 };
 
 extern CHud gHUD;
+
+//-----------------------------------------------------------------------------
+// Purpose: CHudIcons
+//-----------------------------------------------------------------------------
+class CHudIcons
+{
+public:
+	CHudIcons();
+	~CHudIcons();
+
+	void						Init();
+	void						Shutdown();
+
+	CHudTexture* GetIcon(const char* szIcon);
+
+	// loads a new icon into the list, without duplicates
+	CHudTexture* AddUnsearchableHudIconToList(CHudTexture& texture);
+	CHudTexture* AddSearchableHudIconToList(CHudTexture& texture);
+
+	void						RefreshHudTextures();
+
+private:
+
+	void						SetupNewHudTexture(CHudTexture* t);
+	bool						m_bHudTexturesLoaded;
+	// Global list of known icons
+	CUtlDict< CHudTexture*, int >		m_Icons;
+
+};
+
+CHudIcons& HudIcons();
 
 //-----------------------------------------------------------------------------
 // Global fonts used in the client DLL

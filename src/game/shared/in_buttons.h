@@ -28,7 +28,6 @@
 #define IN_ALT1			(1 << 14)
 #define IN_ALT2			(1 << 15)
 #define IN_SCORE		(1 << 16)   // Used by client.dll for when scoreboard is held down
-#define IN_SPEED		(1 << 17)	// Player is holding the speed key
 #define IN_WALK			(1 << 18)	// Player holding walk key
 #define IN_ZOOM			(1 << 19)	// Zoom key for HUD zoom
 #define IN_WEAPON1		(1 << 20)	// weapon defines these bits

@@ -18,6 +18,11 @@
 
 class CHudViewport;
 
+namespace vgui
+{
+	typedef unsigned long HScheme;
+}
+
 
 //-----------------------------------------------------------------------------
 // Purpose: 
@@ -32,6 +37,14 @@ public:
 
 	virtual void	Init();
 	virtual int		GetDeathMessageStartHeight( void );
+
+	class Viewport : public CBaseViewport
+	{
+
+	public:
+		virtual void CreateDefaultPanels() override;
+		IViewPortPanel* CreatePanelByName(const char* szPanelName);
+	};
 };
 
 extern IClientMode *GetClientModeNormal();

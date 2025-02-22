@@ -1,8 +1,8 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright Valve Corporation, All rights reserved. ===================//
 //
 // Functionality to render a glowing outline around client renderable objects.
 //
-//===============================================================================
+//===============================================================================//
 
 #include "cbase.h"
 #include "glow_outline_effect.h"
