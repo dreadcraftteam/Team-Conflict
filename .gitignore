@@ -75,4 +75,4 @@ user_custom
 *.vmx
 
 # other stuff
-source-sdk/
+standalone/
