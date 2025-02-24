@@ -73,3 +73,6 @@ user_custom
 # worldcraft files
 *.prt
 *.vmx
+
+# other stuff
+source-sdk/
