@@ -1,0 +1,10 @@
+//
+//	Idea:
+//
+
+Make a game that tells the story of two factories that share anything and started a war.
+The game should be much more functional than AMod.
+
+There will be classes in the game to make the game more team-based.
+
+- Artem S. (a.k.a. DREADCRAFT, original developer of TEAM-CONFLICT)

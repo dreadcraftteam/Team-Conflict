@@ -1,0 +1,11 @@
+//
+//	What classes are there in the game:
+//
+
+SOLDIER (Ray Newman, British)
+BUILDER (Mike Rosemberg, USA)
+RASHER (Viktor Gromov, Russia)
+FLAMER (? ?, Latvia)
+SUPPORTER (Harry Brown, USA)
+SNIPER (Artem Volkov, Russia)
+MEDIC (Ludwig Heisenberg, Germany)
