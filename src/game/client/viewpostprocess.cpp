@@ -2631,15 +2631,6 @@ void DoEnginePostProcessing( int x, int y, int w, int h, bool bFlashlightIsOn, b
 #if defined( _X360 )
 	pRenderContext->PopVertexShaderGPRAllocation();
 #endif
-	static IMaterial* pMat = materials->FindMaterial("shaders/tc_postprocess_shader", TEXTURE_GROUP_OTHER);
-	if (pMat)
-	{
-		pMat->AddRef();
-		UpdateScreenEffectTexture();
-		pRenderContext->DrawScreenSpaceRectangle(pMat, 0, 0, w, h,
-			0, 0, w - 1, h - 1,
-			w, h);
-	}
 }
 
 // Motion Blur Material Proxy =========================================================================================
