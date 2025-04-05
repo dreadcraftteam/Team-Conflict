@@ -18,6 +18,10 @@ $Group "game"
 {
 	"client"
 	"server"
+	"raytrace"
+	"mathlib"
+	"tier1"
+	"vgui_controls"
 }
 
 $Group "shaders"
