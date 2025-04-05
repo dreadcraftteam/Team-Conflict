@@ -5,8 +5,8 @@
 #ifndef _FUNCTOR_UTILS_H_
 #define _FUNCTOR_UTILS_H_
 
-#include "TC-DLL/NextBot/NextBotInterface.h"
-#include "TC-DLL/NextBot/NextBotManager.h"
+#include "tc/NextBot/NextBotInterface.h"
+#include "tc/NextBot/NextBotManager.h"
 
 //--------------------------------------------------------------------------------------------------------
 /**

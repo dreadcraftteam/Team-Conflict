@@ -23,9 +23,9 @@
 #include <KeyValues.h>
 #include "filesystem.h"
 #include "matsys_controls/matsyscontrols.h"
-#include "TC-DLL\VGUI\vgui_teammenu.h"
-#include "TC-DLL\VGUI\vgui_classmenu.h"
-#include "TC-DLL\Background\tc_background.h"
+#include "tc\VGUI\vgui_teammenu.h"
+#include "tc\VGUI\vgui_classmenu.h"
+#include "tc\Background\tc_background.h"
 #include "baseviewport.h"
 
 #ifdef SIXENSE

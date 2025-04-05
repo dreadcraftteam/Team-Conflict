@@ -109,7 +109,7 @@ extern ConVar tf_mm_servermode;
 #include "nav_mesh.h"
 #endif
 
-#include "TC-DLL/NextBot/NextBotManager.h"
+#include "tc/NextBot/NextBotManager.h"
 
 #ifdef USES_ECON_ITEMS
 #include "econ_item_system.h"

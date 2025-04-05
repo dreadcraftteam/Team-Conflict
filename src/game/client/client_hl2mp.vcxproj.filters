@@ -46,41 +46,35 @@
     <Filter Include="Source Files\Sixense">
       <UniqueIdentifier>{5595354B-BE1B-8C7C-B3CB-72257228B6D3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TC DLL">
+      <UniqueIdentifier>{29C3B133-14C2-33F7-EF5D-98722878CF0B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\Background">
+      <UniqueIdentifier>{D1A8954B-3B17-FBC5-AD20-BA7368807FBA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\Entities">
+      <UniqueIdentifier>{F2FAC8D1-2AF9-651B-ECC8-B86BB6144AD9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\Hands">
+      <UniqueIdentifier>{587CBF53-4F0F-6696-F3A3-2F8B46BCD96B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\Instructor">
+      <UniqueIdentifier>{E171679F-E4B6-538D-8466-D9443C99966A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\NextBot">
+      <UniqueIdentifier>{6AE45702-EFF7-E8A5-1A04-26A0F6140F9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\VGUI">
+      <UniqueIdentifier>{F0C2949D-3A03-7238-4250-27A7C60E17BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TC DLL\Weapons">
+      <UniqueIdentifier>{AF06E64C-8DF1-8310-E1D9-1D544C7907CE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\TC-DLL">
       <UniqueIdentifier>{C9B047B5-5B5B-6202-2748-B64910557737}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TC-DLL\Background">
-      <UniqueIdentifier>{17B183EF-9708-3239-04F0-93A2058A860A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Entities">
-      <UniqueIdentifier>{2CB29754-3AAF-24A3-C15C-36832D09235A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Hands">
-      <UniqueIdentifier>{42788272-683B-5BE6-720E-3C2106063B91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Instructor">
-      <UniqueIdentifier>{90DA1220-89A0-2360-88D6-BD607580694E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\NextBot">
-      <UniqueIdentifier>{8F936C12-33C6-F4E7-6BFA-13B88C395115}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TC-DLL\P2P">
       <UniqueIdentifier>{45DFCA29-5862-1DCC-D76F-F31EC8DEE27F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Shader Editor">
-      <UniqueIdentifier>{CAB0C752-6BBD-60DF-6F91-9F23E757E9DF}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Shader Editor\Header Files">
-      <UniqueIdentifier>{59DE7A72-DCFD-9377-3152-36AF1870E7E0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Shader Editor\Implementation Files">
-      <UniqueIdentifier>{D30F06B3-0489-997A-22F8-F8A9C2CDCA1D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\VGUI">
-      <UniqueIdentifier>{AE9CD192-F05D-83D8-F5EC-A93BF47A1F01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TC-DLL\Weapons">
-      <UniqueIdentifier>{D19F96BF-0160-33D9-BC51-E43AAA5DCF5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Temporary Entities">
       <UniqueIdentifier>{9EECF4A3-83FE-A929-1B71-69EABF89B7EA}</UniqueIdentifier>
@@ -1982,20 +1976,23 @@
     <ClInclude Include="..\..\game\shared\sixense\sixense_convars_extern.h">
       <Filter>Source Files\Sixense</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Background\tc_background.h">
-      <Filter>Source Files\TC-DLL\Background</Filter>
+    <ClInclude Include="..\..\game\client\tc\Background\tc_background.h">
+      <Filter>Source Files\TC DLL\Background</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.h">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClInclude Include="..\..\game\client\tc\Instructor\hud_locator_target.h">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\tc_baselesson.h">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClInclude Include="..\..\game\client\tc\Instructor\tc_baselesson.h">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\Instructor\tc_gameinstructor.h">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClInclude Include="..\..\game\client\tc\Instructor\tc_gameinstructor.h">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.h">
-      <Filter>Source Files\TC-DLL\NextBot</Filter>
+    <ClInclude Include="..\..\game\client\tc\NextBot\c_NextBot.h">
+      <Filter>Source Files\TC DLL\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\game\client\tc\VGUI\vgui_browser.h">
+      <Filter>Source Files\TC DLL\VGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\coplay\src\coplay.h">
       <Filter>Source Files\TC-DLL\P2P</Filter>
@@ -2011,21 +2008,6 @@
     </ClInclude>
     <ClInclude Include="..\..\coplay\src\coplay_system.h">
       <Filter>Source Files\TC-DLL\P2P</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\ShaderEditor\ISEdit_ModelRender.h">
-      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\ShaderEditor\IVShaderEditor.h">
-      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\ShaderEditor\SEdit_ModelRender.h">
-      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\ShaderEditor\ShaderEditorSystem.h">
-      <Filter>Source Files\TC-DLL\Shader Editor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.h">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\public\tools\bonelist.h">
       <Filter>Tool Framework</Filter>
@@ -3397,29 +3379,77 @@
     <ClCompile Include="..\..\game\shared\sixense\sixense_convars.cpp">
       <Filter>Source Files\Sixense</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Background\tc_background.cpp">
-      <Filter>Source Files\TC-DLL\Background</Filter>
+    <ClCompile Include="..\..\game\client\tc\Background\tc_background.cpp">
+      <Filter>Source Files\TC DLL\Background</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityAmmoRotating.cpp">
-      <Filter>Source Files\TC-DLL\Entities</Filter>
+    <ClCompile Include="..\..\game\client\tc\Entities\c_EntityAmmoRotating.cpp">
+      <Filter>Source Files\TC DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Entities\c_EntityHealthRotating.cpp">
-      <Filter>Source Files\TC-DLL\Entities</Filter>
+    <ClCompile Include="..\..\game\client\tc\Entities\c_EntityHealthRotating.cpp">
+      <Filter>Source Files\TC DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp">
-      <Filter>Source Files\TC-DLL\Hands</Filter>
+    <ClCompile Include="..\..\game\shared\tc\Hands\tc_hand_viewmodel.cpp">
+      <Filter>Source Files\TC DLL\Hands</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\hud_locator_target.cpp">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClCompile Include="..\..\game\client\tc\Instructor\hud_locator_target.cpp">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\tc_baselesson.cpp">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClCompile Include="..\..\game\client\tc\Instructor\tc_baselesson.cpp">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\Instructor\tc_gameinstructor.cpp">
-      <Filter>Source Files\TC-DLL\Instructor</Filter>
+    <ClCompile Include="..\..\game\client\tc\Instructor\tc_gameinstructor.cpp">
+      <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\NextBot\c_NextBot.cpp">
-      <Filter>Source Files\TC-DLL\NextBot</Filter>
+    <ClCompile Include="..\..\game\client\tc\NextBot\c_NextBot.cpp">
+      <Filter>Source Files\TC DLL\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\client\tc\VGUI\vgui_browser.cpp">
+      <Filter>Source Files\TC DLL\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_ak47.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_crowbar.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_deagle.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_doublepistols.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_fireaxe.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_grenadelauncher.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_hmg.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_mac10.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_machete.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_medkit.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_mp5.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_pistol.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_shotgun.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_sniperrifle.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_spas12.cpp">
+      <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="..\..\coplay\src\coplay_client.cpp">
       <Filter>Source Files\TC-DLL\P2P</Filter>
@@ -3432,60 +3462,6 @@
     </ClCompile>
     <ClCompile Include="..\..\coplay\src\coplay_system.cpp">
       <Filter>Source Files\TC-DLL\P2P</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\ShaderEditor\SEdit_ModelRender.cpp">
-      <Filter>Source Files\TC-DLL\Shader Editor\Implementation Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\ShaderEditor\ShaderEditorSystem.cpp">
-      <Filter>Source Files\TC-DLL\Shader Editor\Implementation Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\client\TC-DLL\VGUI\vgui_browser.cpp">
-      <Filter>Source Files\TC-DLL\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp">
-      <Filter>Source Files\TC-DLL\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="c_basetempentity.cpp">
       <Filter>Source Files\Temporary Entities</Filter>

@@ -7,10 +7,10 @@
 #ifndef SIMPLE_BOT_H
 #define SIMPLE_BOT_H
 
-#include "TC-DLL/NextBot/NextBot.h"
-#include "TC-DLL/NextBot/NextBotBehavior.h"
-#include "TC-DLL/NextBot/NextBotGroundLocomotion.h"
-#include "TC-DLL/NextBot/Path/NextBotPathFollow.h"
+#include "tc/NextBot/NextBot.h"
+#include "tc/NextBot/NextBotBehavior.h"
+#include "tc/NextBot/NextBotGroundLocomotion.h"
+#include "tc/NextBot/Path/NextBotPathFollow.h"
 
 
 //-----------------------------------------------------------------------------

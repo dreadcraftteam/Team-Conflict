@@ -8,7 +8,7 @@
 
 #include "nav_mesh.h"
 
-#include "TC-DLL/NextBot/NextBot.h"
+#include "tc/NextBot/NextBot.h"
 #include "NextBotPlayer.h"
 
 #include "in_buttons.h"

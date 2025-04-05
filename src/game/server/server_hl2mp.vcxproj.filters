@@ -1838,85 +1838,85 @@
     <ClInclude Include="nav_pathfind.h">
       <Filter>Source Files\Navigation Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBot.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBot.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotAttentionInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotAttentionInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotBehavior.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotBehavior.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotBodyInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotBodyInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotComponentInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotComponentInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotContextualQueryInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotContextualQueryInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotDebug.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotDebug.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotEventResponderInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotEventResponderInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotGroundLocomotion.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotGroundLocomotion.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotHearingInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotHearingInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotIntentionInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotIntentionInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotKnownEntity.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotKnownEntity.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotLocomotionInterface.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotLocomotionInterface.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotManager.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotManager.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NextBotUtil.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NextBotUtil.h">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Actions\NextBotBase.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Actions\NextBotBase.h">
       <Filter>Source Files\TC DLL\NextBot\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Behavior\BehaviorBackUp.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Behavior\BehaviorBackUp.h">
       <Filter>Source Files\TC DLL\NextBot\Behavior</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Behavior\BehaviorMoveTo.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Behavior\BehaviorMoveTo.h">
       <Filter>Source Files\TC DLL\NextBot\Behavior</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\NavMeshEntities\func_nav_prerequisite.h">
       <Filter>Source Files\TC DLL\NextBot\NavMeshEntities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotChasePath.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Path\NextBotChasePath.h">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotPath.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Path\NextBotPath.h">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotPathFollow.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Path\NextBotPathFollow.h">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotRetreatPath.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Path\NextBotRetreatPath.h">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayer.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Player\NextBotPlayer.h">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerBody.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Player\NextBotPlayerBody.h">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.h">
+    <ClInclude Include="..\..\game\server\tc\NextBot\Player\NextBotPlayerLocomotion.h">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClInclude>
     <ClInclude Include="plasma.h">
@@ -3508,115 +3508,115 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\Entities\EntityAmmoRotating.cpp">
+    <ClCompile Include="..\..\game\server\tc\Entities\EntityAmmoRotating.cpp">
       <Filter>Source Files\TC DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\Entities\EntityHealthRotating.cpp">
+    <ClCompile Include="..\..\game\server\tc\Entities\EntityHealthRotating.cpp">
       <Filter>Source Files\TC DLL\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Hands\tc_hand_viewmodel.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Hands\tc_hand_viewmodel.cpp">
       <Filter>Source Files\TC DLL\Hands</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\Instructor\env_instructor_hint.cpp">
+    <ClCompile Include="..\..\game\server\tc\Instructor\env_instructor_hint.cpp">
       <Filter>Source Files\TC DLL\Instructor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBot.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBot.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotAttentionInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotAttentionInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotBodyInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotBodyInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotComponentInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotComponentInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotGroundLocomotion.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotGroundLocomotion.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotIntentionInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotIntentionInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotLocomotionInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotLocomotionInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotManager.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotManager.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NextBotVisionInterface.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NextBotVisionInterface.cpp">
       <Filter>Source Files\TC DLL\NextBot</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Actions\NextBotBase.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Actions\NextBotBase.cpp">
       <Filter>Source Files\TC DLL\NextBot\Actions</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\NavMeshEntities\func_nav_prerequisite.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\NavMeshEntities\func_nav_prerequisite.cpp">
       <Filter>Source Files\TC DLL\NextBot\NavMeshEntities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotChasePath.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Path\NextBotChasePath.cpp">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotPath.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Path\NextBotPath.cpp">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Path\NextBotPathFollow.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Path\NextBotPathFollow.cpp">
       <Filter>Source Files\TC DLL\NextBot\Path</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayer.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Player\NextBotPlayer.cpp">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerBody.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Player\NextBotPlayerBody.cpp">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\server\TC-DLL\NextBot\Player\NextBotPlayerLocomotion.cpp">
+    <ClCompile Include="..\..\game\server\tc\NextBot\Player\NextBotPlayerLocomotion.cpp">
       <Filter>Source Files\TC DLL\NextBot\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_ak47.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_ak47.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_crowbar.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_crowbar.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_deagle.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_deagle.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_doublepistols.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_doublepistols.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_fireaxe.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_fireaxe.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_grenadelauncher.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_grenadelauncher.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_hmg.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_hmg.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mac10.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_mac10.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_machete.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_machete.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_medkit.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_medkit.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_mp5.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_mp5.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_pistol.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_pistol.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_shotgun.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_shotgun.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_sniperrifle.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_sniperrifle.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\game\shared\TC-DLL\Weapons\tc_weapon_spas12.cpp">
+    <ClCompile Include="..\..\game\shared\tc\Weapons\tc_weapon_spas12.cpp">
       <Filter>Source Files\TC DLL\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="basetempentity.cpp">

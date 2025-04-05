@@ -7,7 +7,7 @@
 #ifndef _NEXT_BOT_PATH_H_
 #define _NEXT_BOT_PATH_H_
 
-#include "TC-DLL/NextBot/NextBotInterface.h"
+#include "tc/NextBot/NextBotInterface.h"
 
 #include "tier0/vprof.h"
 

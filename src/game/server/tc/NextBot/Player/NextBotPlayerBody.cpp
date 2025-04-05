@@ -6,7 +6,7 @@
 
 #include "cbase.h"
 
-#include "TC-DLL/NextBot/NextBot.h"
+#include "tc/NextBot/NextBot.h"
 #include "NextBotPlayerBody.h"
 #include "NextBotPlayer.h"
 

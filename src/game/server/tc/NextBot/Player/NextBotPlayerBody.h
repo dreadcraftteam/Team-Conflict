@@ -7,7 +7,7 @@
 #ifndef _NEXT_BOT_PLAYER_BODY_H_
 #define _NEXT_BOT_PLAYER_BODY_H_
 
-#include "TC-DLL/NextBot/NextBotBodyInterface.h"
+#include "tc/NextBot/NextBotBodyInterface.h"
 
 
 //-----------------------------------------------------------------------------
