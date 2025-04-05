@@ -75,4 +75,5 @@ user_custom
 *.vmx
 
 # other stuff
-standalone/
+/standalone/
+/models/
