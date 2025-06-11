@@ -1,4 +1,4 @@
 # TEAM-CONFLICT
 My old abandoned project on an old version of the engine
 
-Not for commercial purporses
+Not for commercial purporses.
